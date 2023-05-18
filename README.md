@@ -8,7 +8,7 @@ This project was started on **Mon. 15 May, 2023** by a group of 1 (a.k.a. [moi �
 > TO MY TEACHERS (i.e. [Ruben](?), [Nicolas](?), [Aurélie](?) and co.): thanks for these amazingly intuitive projects; they light up a fire in me 🔥🔥, and make me excited `&&` happy to get outta bed every morning - **You Guys Rock !!!** 🙏❤️ 😘.
 
 
-So, I decided to name this web app **`Muvisho`** - a unique name which combines elements of "movie" and "show" (i.e. tv or series) - and created a MySQL Database named **muvisho** saved as [cinetech.sql](./cinetech.sql) as per the [project requirements](#requirements). It is worth mentioning that Directory [Structure](#structure) and object-relational mapping (ORM) of **`Muvisho`** were heavily inspired by [Lavarel](https://laravel.com/)'s and its [**Eloquent Models**](https://laravel.com/docs/10.x/eloquent) 😜 respcetively.
+So, I decided to name this web app **`Muvisho`** - a unique name which combines elements of "movie" and "show" (i.e. tv or series) - and created a MySQL Database named **muvisho** saved as [cinetech.sql](./cinetech.sql) as per the [project requirements](#requirements). It is worth mentioning that the [folder & file structure](#structure) and object-relational mapping (ORM) of **`Muvisho`** were heavily inspired by [Lavarel](https://laravel.com/)'s and its [**Eloquent Models**](https://laravel.com/docs/10.x/eloquent) 😜 respcetively.
 
 > NOTE: [Guzzle Http Client](https://docs.guzzlephp.org/en/stable/) will be used to send HTTP requests to [TMDB API](https://https://developer.themoviedb.org/docs).
 
@@ -54,8 +54,10 @@ These are a couple of the main requirements for this school project:
 > REMEMBER: Submit your database, including the *`CREATE`* query in a file named **"cinetech.sql”**
 
 ## Personal Challenge
+> Status: ‍👨🏽‍💻 🏃🏽‍♂️ (working so fast rn, you could call me Usain Bolt 😅...) 
 
 I'm challenging myself - an "aller plus loin", if you will 😌 - to combine two of my previous "big" projects namely [Blog JS / blog-js](https://github.com/abraham-ukachi/blog-js) (a Single Page Application | SPA)  & [Maxaboom / boutique-en-ligne](https://github.com/abraham-ukachi/boutique-en-ligne) (an MVC structured website using [AltoRouter](https://altorouter.com)) as well as the skills I learned during their development in order to create or takle this **`Muvisho`** project.
+
 
 ## Jobs 
 > MOTTO: I'll always do [**more**](#More) 😜
@@ -70,17 +72,136 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 3 | *`Comment - Model`* | **app/Models/Comment.php** | Pending |
 | 4 | *`Reply - Model`* | **app/Models/Reply.php** | Pending |
 | 5 | *`Log - Model`* | **app/Models/Log.php** | Pending |
-| 6 | *`OnlineUser - Model`* | **app/Models/OnlineUser.php** | Pending |
+| 6 | *`OnlineUser - Model`* | **app/Models/OnlineUser.php** | Pending | 
 | 7 | *`UserArchive - Model`* | **app/Models/UserArchive.php** | Pending |
-| 8 | *`Model - Abstract`* | **app/Models/Model.php** | Pending |
-| 9 | *`App - View`* | **app/Views/App.php** | Pending |
-| 10 | *`Authentication - Controller`* | **app/Controllers/AuthController.php** | Pending |
-| 11 | *`Favorite - Controller`* | **app/Controllers/FavoriteController.php** | Pending |
-| 12 | *`Comment - Controller`* | **app/Controllers/CommentController.php** | Pending |
-| 13 | *`Reply - Controller`* | **app/Controllers/ReplyController.php** | Pending |
-| 14 | *`Index - PHP`* | **root/public/index.php** | Pending |
+| 8 | *`Search - Model`* | **TBD** | TBD |
+| 9 | *`Model - Abstract`* | **app/Models/Abstract/Model.php** | Pending |
+| 10 | *`Model - Interface`* | **app/Models/ModelInterface.php** | Pending |
+| 11 | *`App - PHP View`* | **app/Views/App.php** | Pending |
+| 12 | *`Authentication - Controller`* | **app/Controllers/AuthController.php** | Pending |
+| 13 | *`Favorite - Controller`* | **app/Controllers/FavoriteController.php** | Pending |
+| 14 | *`Comment - Controller`* | **app/Controllers/CommentController.php** | Pending |
+| 15 | *`Reply - Controller`* | **app/Controllers/ReplyController.php** | Pending |
+| 16 | *`Home - Controller`* | **app/Controllers/HomeController.php** | Pending |
+| 17 | *`Search - Controller`* | **app/Controllers/SearchController.php** | Pending |
+| 18 | *`Movie - Controller`* | **app/Controllers/MovieController.php** | Pending |
+| 19 | *`TV (Show & Series) - Controller`* | **app/Controllers/TVController.php** | Pending |
+| 20 | *`Account - Controller`* | **app/Controllers/AccountController.php** | Pending |
+| 21 | *`Controller - Abstract`* | **app/Controllers/Abstract/Controller.php** | Pending |
+| 22 | *`Controller - Interface`* | **app/Controllers/ControllerInterface.php** | Pending |
+| 23 | *`Home - Route`* | **root/routes/home-route.php** | Pending |
+| 24 | *`Authentication - Route`* | **root/routes/authentication-route.php** | Pending |
+| 25 | *`Movie - Route`* | **root/routes/movie-route.php** | Pending |
+| 26 | *`TV (Show & Series) - Route`* | **root/routes/tv-route.php** | Pending |
+| 27 | *`Search - Route`* | **root/routes/search-route.php** | Pending |
+| 28 | *`Account - Route`* | **root/routes/account-route.php** | Pending |
+| 29 | *`Home - JS Page`* | **root/public/src/pages/home-page.js** | Pending |
+| 30 | *`Login - JS Page`* | **root/public/src/pages/login-page.js** | Pending |
+| 31 | *`Register - JS Page`* | **root/public/src/pages/register-page.js** | Pending |
+| 32 | *`Account - JS Page`* | **root/public/src/pages/account-page.js** | Pending |
+| 33 | *`Search - JS Page`* | **root/public/src/pages/search-page.js** | Pending |
+| 34 | *`Movies - JS Page`* | **root/public/src/pages/movies-page.js** | Pending |
+| 35 | *`TV (Show & Series) - JS Page`* | **root/public/src/pages/series-page.js** | Pending |
+| 36 | *`Database - Muvisho`* | **root/database/Database.php** | Pending |
+| 37 | *`Muvisho / Cinetech - SQL`* | **cinetech.sql** | Pending |
+| 38 | *`Index - PHP`* | **root/public/index.php** | Pending |
+
+> WARNING: This list is a working progress and will change soon
+
+> NOTE: (\*) = still needs to be updated
+>       (TBD) = to be determined ;)
 
 
+
+## Structure
+
+The **`MVC`**, **`SPA`** and **`LARAVEL`** inspired folder & file structure of this project:
+
+
+- [**root**](./root/)
+- - [**conifg**](./root/config/)
+- - * .env
+- - [**database**](./root/database/)
+- - * *Database.php*
+- - [**public**](./root/public/)
+- - * [**src**](./root/public/src/)
+- - * - [**pages**](./root/public/src/pages/)
+- - * - [**views**](./root/public/src/views/)
+- - * - [**screens**](./root/public/src/screens/)
+- - * - Engine.js
+- - * - Screen.js
+- - * - Page.js
+- - * - View.js
+- - * - App.js
+- - * [**assets**](./root/public/assets/)
+- - * ...
+- - * manifest.json
+- - * **index.php**
+- - [**routes**](./root/routes/)
+- - [**tests**](./root/tests/)
+- - [**vendor**](./root/vendor/)
+- - ...
+- [**app**](./app/)
+- - [**Models**](./app/Models/)
+- - [**Views**](./root/Views/)
+- - * *App.php* 
+- - [**Contollers**](./root/Controllers/)
+- .htaccess 
+- LICENSE
+- CONTRIBUTING.md
+- README.md
+- **cinetech.sql**
+- *muvisho_translator.mjs*
+
+> NOTE: This is just a relatively short snippet, and should get periodically updated.
+
+
+## More
+
+These are some of the things we did or plan to do, in addition to this project's [job requirements](#Requirements):
+
+| No. | Name | File | Status |
+|:----|:-----|:-----|:-------|
+| 1 | *`Pop In - Animation`* | **pop-in-animation.css** | Pending | 
+| 2 | *`Fade In - Animation`* | **fade-in-animation.css** | Pending | 
+| 3 | *`Slide From Down - Animation`* | **slide-from-down-animation.css** | Pending |
+| 4 | *`Slide From Up - Animation`* | **slide-from-up-animation.css** | Pending | 
+| 5 | *`Slide Left - Animation`* | **slide-left-animation.css** | Pending |
+| 6 | *`Slide From Left - Animation`* | **slide-from-left-animation.css** | Pending |
+| 7 | *`Slide Right - Animation`* | **slide-right-animation.css** | Pending |
+| 8 | *`Slide From Right - Animation`* | **slide-from-right-animation.css** | Pending | 
+| 9 | *`Manifest - JSON File`* | **root/public/manifest.json** | Pending |
+| 10 | *`Package - JSON File`* | **package.json** | Pending |
+| 11 | *`Fade Out - Animation`* | **fade-out-animation.css** | Pending |
+| 12 | *`Slide Down - Animation`* | **slide-down-animation.css** | Pending |
+| 13 | *`Slide Up - Animation`* | **slide-up-animation.css** | Pending |
+| 14 | *`Translator - Script`* | **muvisho_translator.mjs** | Pending |
+| 15 | *`DotEnv - Database`* | **root/database/DotEnv.php** | Pending |
+| 16 | *`User Seeder - Database`* | **root/database/seeders/UserSeeder.php** | Pending |
+| 17 | *`App - JS Class`* | **root/public/src/App.js** | Pending |
+| 18 | *`Screen - JS Class`* | **root/public/src/Screen.js** | Pending |
+| 19 | *`Page - JS Class`* | **root/public/src/Page.js** | Pending |
+| 20 | *`View - JS Class`* | **root/public/src/View.js** | Pending |
+| 21 | *`Router - JS Helper`* | **root/public/src/helpers/router.js** | Pending |
+| 22 | *`MediaWatcher - JS Helper`* | **root/public/src/helpers/mediawatcher.js** | Pending |
+| 23 | *`Splash - JS Screen`* | **root/public/src/screens/splash-screen.js** | Pending |
+| 24 | *`Welcome - JS Screen`* | **root/public/src/screens/welcome-screen.js** | Pending |
+| 25 | *`Default Home - JS View`* | **root/.../views/home/default-home-view.js** | Pending |
+| 26 | *`Default Login - JS View`* | **root/.../views/login/default-login-view.js** | Pending |
+| 27 | *`Default Register - JS View`* | **root/.../views/register/default-register-view.js** | Pending |
+| 28 | *`Default Movies - JS View`* | **root/.../views/movies/default-movies-view.js** | Pending |
+| 29 | *`Default Series - JS View`* | **root/.../views/series/default-series-view.js** | Pending |
+| 30 | *`Default Account - JS View`* | **root/.../views/series/default-account-view.js** | Pending |
+| 31 | *`Engine - JS Class`* | **root/public/src/Engine.js** | Pending |
+| 32 | *`Loader - JS Mixin`* | **root/.../helpers/mixins/loader-mixin.js** | Pending |
+| 33 | *`Service - JS Mixin`* | **root/.../helpers/mixins/service-mixin.js** | Pending |
+| 34 | *`Event - JS Mixin`* | **root/.../helpers/mixins/event-mixin.js** | Pending |
+| 35 | *`LiveStorage - JS Helper`* | **root/public/src/helpers/LiveStorage.js** | Pending |
+
+
+
+> NOTE: (\*) = still needs to be updated. <br>
+> There's certainly a couple of file I must've forgot or not added yet, so I'll keep the above list updated obv. :)
 
 
 ## Database
@@ -270,6 +391,7 @@ open http://localhost/cinetech
 
 ## TODOs
 
+- [ ] Rename default `js` views from say, "**default-home-view.js**" to something like: "**default.js**"
 - [ ] Create a *`users_pref`* MySQL Table to store users' preference like **theme**, **language**, etc...
 - [ ] Use [HTTP Client](https://laravel.com/docs/10.x/http-client#request-data) from [Laravel](https://laravel.com/docs/10.x) for quick outgoing Https requests, instead of [Guzzle HTTP Client](http://docs.guzzlephp.org/en/stable/).
 - [ ] Use [UUID](https://www.mysqltutorial.org/mysql-uuid/) as `users` primary key.
@@ -302,3 +424,12 @@ open http://localhost/cinetech
 |:----|:----------|:----------|:-----|
 | 1. | N/A | N/A | - |
 
+--- 
+
+## Credits
+
+---
+
+## License
+
+This **`Muvisho`** / **`cinetech`** project is [MIT Licensed](./root/public/LICENSE) ;)
