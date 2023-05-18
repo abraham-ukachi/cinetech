@@ -1,0 +1,26 @@
+# project: cinetech (muvisho)
+# file: .htaccess 
+# author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
+
+
+# ====================================================
+# 4 AltoRouter - MuviSho
+# ----------------------------------------------------
+# Rewriting all requests to index.php in 
+# root's public folder (i.e. /root/public/index.php)
+# ====================================================
+
+
+
+
+# Enable the rewrite engine (mod_rewrite for Apache)
+RewriteEngine On
+
+# Set the base path of MuviSho
+# This is the path where MuviSho is installed relative to the domain name
+# For production, use your domain name's root folder (e.g. /)
+RewriteBase /cinetech/
+
+
+# Rewrite all requests to the public/index.php file in the root folder
+RewriteRule ^(.*)$ root/public/index.php [L]
