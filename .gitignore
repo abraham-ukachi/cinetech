@@ -128,3 +128,15 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Vim files
+*.swp
+*.swo
+*.swn
+*.swm
+
+# DS_Store
+.DS_Store
+
+# Backups
+backups/
