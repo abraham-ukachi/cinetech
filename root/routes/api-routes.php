@@ -43,7 +43,7 @@
 
 
 // declare the `routes` namespace
-namespace Muvisho\Routes;
+namespace Muvisho\Routes\Api;
 
 // use muvisho's `ApiController` class
 // use Muvisho\Controllers\ApiController;
@@ -60,11 +60,11 @@ namespace Muvisho\Routes;
 
 
 // Include these routes from the `api` folder
-// require __DIR__ . '/api/authentication-route.php'; // <- authentication route
-// require __DIR__ . '/api/movie-route.php'; // <- movie route
-// require __DIR__ . '/api/series-route.php'; // <- series route
-// require __DIR__ . '/api/comment-route.php'; // <- comment route
-// require __DIR__ . '/api/favorite-route.php'; // <- favorite route
-// require __DIR__ . '/api/reply-route.php'; // <- reply route
-// require __DIR__ . '/api/account-route.php'; // <- account route
+// require __MUVISHO_ROUTES_DIR__ . '/api/authentication-route.php'; // <- authentication route
+// require __MUVISHO_ROUTES_DIR__ . '/api/movie-route.php'; // <- movie route
+// require __MUVISHO_ROUTES_DIR__ . '/api/series-route.php'; // <- series route
+// require __MUVISHO_ROUTES_DIR__ . '/api/comment-route.php'; // <- comment route
+// require __MUVISHO_ROUTES_DIR__ . '/api/favorite-route.php'; // <- favorite route
+// require __MUVISHO_ROUTES_DIR__ . '/api/reply-route.php'; // <- reply route
+// require __MUVISHO_ROUTES_DIR__ . '/api/account-route.php'; // <- account route
 
