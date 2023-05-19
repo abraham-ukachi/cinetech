@@ -104,7 +104,7 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 35 | *`TV (Show & Series) - JS Page`* | **root/public/src/pages/series-page.js** | Pending |
 | 36 | *`Database - Muvisho`* | **root/database/Database.php** | Pending |
 | 37 | *`Muvisho / Cinetech - SQL`* | **cinetech.sql** | Pending |
-| 38 | *`Index - PHP`* | **root/public/index.php** | *_In progress_* |
+| 38 | *`Index - PHP`* | **root/public/index.php** | [Done](./root/public/index.php)\* |
 | 39 | *`App - Controller`* | **app/Controllers/AppController.php** | Pending |
 | 40 | *`App Routes`* | **app/Controllers/app-routes.php** | [Done](./root/routes/app-routes.php)\* |
 | 41 | *`API Routes`* | **app/Controllers/api-routes.php** | [Done](./root/routes/api-routes.php)\* |
