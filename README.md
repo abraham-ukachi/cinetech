@@ -168,8 +168,8 @@ These are some of the things we did or plan to do, in addition to this project's
 
 | No. | Name | File | Status |
 |:----|:-----|:-----|:-------|
-| 1 | *`Pop In - Animation`* | **pop-in-animation.css** | *_In progress_* | 
-| 2 | *`Fade In - Animation`* | **fade-in-animation.css** | Pending | 
+| 1 | *`Pop In - Animation`* | **pop-in-animation.css** | [Done](./root/public/assets/animations/fade-in-animation.css) | 
+| 2 | *`Fade In - Animation`* | **fade-in-animation.css** | *_In progress_* | 
 | 3 | *`Slide From Down - Animation`* | **slide-from-down-animation.css** | Pending |
 | 4 | *`Slide From Up - Animation`* | **slide-from-up-animation.css** | Pending | 
 | 5 | *`Slide Left - Animation`* | **slide-left-animation.css** | Pending |
