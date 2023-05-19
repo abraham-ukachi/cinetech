@@ -178,7 +178,7 @@ These are some of the things we did or plan to do, in addition to this project's
 | 8 | *`Slide From Right - Animation`* | **slide-from-right-animation.css** | [Done](./root/public/assets/animations/slide-from-right-animation.css) | 
 | 9 | *`Manifest - JSON File`* | **root/public/manifest.json** | Pending |
 | 10 | *`Package - JSON File`* | **package.json** | Pending |
-| 11 | *`Fade Out - Animation`* | **fade-out-animation.css** | Pending |
+| 11 | *`Fade Out - Animation`* | **fade-out-animation.css** | [Done](./root/public/assets/animations/fade-out-animation.css) |
 | 12 | *`Slide Down - Animation`* | **slide-down-animation.css** | [Done](./root/public/assets/animations/slide-down-animation.css) |
 | 13 | *`Slide Up - Animation`* | **slide-up-animation.css** | Pending |
 | 14 | *`Translator - Script`* | **muvisho_translator.mjs** | Pending |
