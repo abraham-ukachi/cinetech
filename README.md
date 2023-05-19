@@ -106,7 +106,7 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 37 | *`Muvisho / Cinetech - SQL`* | **cinetech.sql** | Pending |
 | 38 | *`Index - PHP`* | **root/public/index.php** | Pending |
 | 39 | *`App - Controller`* | **app/Controllers/AppController.php** | Pending |
-| 40 | *`App Routes`* | **app/Controllers/app-routes.php** | *_In progress_* |
+| 40 | *`App Routes`* | **app/Controllers/app-routes.php** | [Done](./root/routes/app-routes.php)\* |
 | 41 | *`API Routes`* | **app/Controllers/api-routes.php** | [Done](./root/routes/api-routes.php)\* |
 
 > WARNING: This list is a working progress and will change soon
