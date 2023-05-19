@@ -174,8 +174,8 @@ These are some of the things we did or plan to do, in addition to this project's
 | 4 | *`Slide From Up - Animation`* | **slide-from-up-animation.css** | [Done](./root/public/assets/animations/slide-from-up-animation.css) | 
 | 5 | *`Slide Left - Animation`* | **slide-left-animation.css** | [Done](./root/public/assets/animations/slide-left-animation.css) |
 | 6 | *`Slide From Left - Animation`* | **slide-from-left-animation.css** | [Done](./root/public/assets/animations/slide-from-left-animation.css) |
-| 7 | *`Slide Right - Animation`* | **slide-right-animation.css** | Pending |
-| 8 | *`Slide From Right - Animation`* | **slide-from-right-animation.css** | Pending | 
+| 7 | *`Slide Right - Animation`* | **slide-right-animation.css** | [Done](./root/public/assets/animations/slide-right-animation.css) |
+| 8 | *`Slide From Right - Animation`* | **slide-from-right-animation.css** | *_In progress_* | 
 | 9 | *`Manifest - JSON File`* | **root/public/manifest.json** | Pending |
 | 10 | *`Package - JSON File`* | **package.json** | Pending |
 | 11 | *`Fade Out - Animation`* | **fade-out-animation.css** | Pending |
