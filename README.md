@@ -180,7 +180,7 @@ These are some of the things we did or plan to do, in addition to this project's
 | 10 | *`Package - JSON File`* | **package.json** | Pending |
 | 11 | *`Fade Out - Animation`* | **fade-out-animation.css** | [Done](./root/public/assets/animations/fade-out-animation.css) |
 | 12 | *`Slide Down - Animation`* | **slide-down-animation.css** | [Done](./root/public/assets/animations/slide-down-animation.css) |
-| 13 | *`Slide Up - Animation`* | **slide-up-animation.css** | Pending |
+| 13 | *`Slide Up - Animation`* | **slide-up-animation.css** | [Done](./root/public/assets/animations/slide-up-animation.css) |
 | 14 | *`Translator - Script`* | **muvisho_translator.mjs** | Pending |
 | 15 | *`DotEnv - Database`* | **root/database/DotEnv.php** | Pending |
 | 16 | *`User Seeder - Database`* | **root/database/seeders/UserSeeder.php** | Pending |
