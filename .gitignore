@@ -140,3 +140,7 @@ dist
 
 # Backups
 backups/
+
+# Vendor
+vendor/
+
