@@ -61,7 +61,7 @@
 ?><!DOCTYPE html>
     
 <!-- HTML -->
-<html lang="<?= $this->lang ?>">
+<html lang="<?//= $this->lang ?>">
 
 <!-- HEAD -->
 <head>
@@ -69,10 +69,10 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-  <meta name="description" content="<?= $this->i18n->getString('muvishoDescription') ?>">
+  <meta name="description" content="<?//= $this->i18n->getString('muvishoDescription') ?>">
   
   <!-- Title -->
-  <title> <?= $this->i18n->getString('muvisho') ?> | <?= $this->i18n->getString('muvishoDescriptionShort') ?></title>
+  <title> <?//= $this->i18n->getString('muvisho') ?> | <?//= $this->i18n->getString('muvishoDescriptionShort') ?></title>
 
    
   <!-- Base -->
@@ -121,7 +121,7 @@
 <!-- End of HEAD -->
   
   
-<body class="theme <?= $this->theme ?>" fullbleed>
+<body class="theme <?//= $this->theme ?>" fullbleed>
 
   <!-- Spinner -->
   <!-- NOTE: This will be removed when the App is ready -->
@@ -137,6 +137,7 @@
       pointer-events: none;
     "
   /> <!-- End of Spinner -->
+  
 
   <!-- App -->
   <!-- TODO: Replace this with a `<muvisho-app>` custom element -->
