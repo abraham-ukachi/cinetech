@@ -21,6 +21,8 @@ RewriteEngine On
 # For production, use your domain name's root folder (e.g. /)
 RewriteBase /cinetech/
 
+# only rewrite if the requested file doesn't exist
+RewriteCond %{REQUEST_FILENAME} !-f
 
 # Rewrite all requests to the public/index.php file in the root folder
 RewriteRule ^(.*)$ root/public/index.php [L]
