@@ -1,0 +1,40 @@
+{
+  "name": "muvisho",
+  "version": "0.0.1",
+  "description": "A simple, fast and reliable web app that allows you to watch movies and TV shows online for free without registration, subscription or annoying ads.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "restart-xampp": "sudo /Applications/XAMPP/xamppfiles/xampp restart",
+    "start": "open http://localhost/cinetect/",
+    "test": "open http://localhost/cinetect/test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abraham-ukachi/cinetech.git"
+  },
+  "keywords": [
+    "cinetech",
+    "movies",
+    "series",
+    "tv",
+    "shows",
+    "tmdb-api",
+    "api",
+    "pdo",
+    "php",
+    "js"
+  ],
+  "author": "Abraham Ukachi <abraham.ukachi@laplateforme.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abraham-ukachi/cinetech/issues"
+  },
+  "homepage": "https://github.com/abraham-ukachi/cinetech#readme",
+  "devDependencies": {
+    "grunt": "^1.6.1",
+    "grunt-contrib-jshint": "^3.2.0"
+  }
+}
