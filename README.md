@@ -147,6 +147,8 @@ The **`MVC`**, **`SPA`** and **`LARAVEL`** inspired folder & file structure of t
 - - [**tests**](./root/tests/)
 - - [**vendor**](./root/vendor/)
 - - ...
+- - package.json
+- - **composer.json**
 - [**app**](./app/)
 - - [**Models**](./app/Models/)
 - - [**Views**](./root/Views/)
