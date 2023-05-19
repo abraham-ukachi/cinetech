@@ -1,0 +1,25 @@
+{
+    "name": "abraham-ukachi/cinetech",
+    "description": "Muvisho - The #1 Free Movies & Shows Collection Online powered by The Movie Database (TMDB) API",
+    "type": "project",
+    "require": {
+        "fakerphp/faker": "^1.22",
+        "altorouter/altorouter": "^2.0",
+        "guzzlehttp/guzzle": "^7.6"
+        
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Muvisho\\": "../root/",
+            "Muvisho\\Database\\": "../root/database",
+            "Muvisho\\Routes\\": "../root/routes"
+        }
+    },
+    "authors": [
+        {
+            "name": "abraham-ukachi",
+            "email": "abraham.ukachi@laplateforme.io"
+        }
+    ]
+}
