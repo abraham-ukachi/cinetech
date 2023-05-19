@@ -1,0 +1,40 @@
+{
+  "name": "Muvisho",
+  "short_name": "muvisho",
+  "description": "A simple, fast and reliable web app that allows you to watch movies and TV shows online for free without registration, subscription or annoying ads.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#A67C52",
+  "background_color": "#A67C52",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+
+      "src": "assets/images/manifest/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+
+      "src": "assets/images/manifest/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/manifest/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/manifest/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/manifest/icon-square-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
