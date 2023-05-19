@@ -197,7 +197,10 @@ These are some of the things we did or plan to do, in addition to this project's
 | 33 | *`Service - JS Mixin`* | **root/.../helpers/mixins/service-mixin.js** | Pending |
 | 34 | *`Event - JS Mixin`* | **root/.../helpers/mixins/event-mixin.js** | Pending |
 | 35 | *`LiveStorage - JS Helper`* | **root/public/src/helpers/LiveStorage.js** | Pending |
-
+| 36 | *`I18n - Controller Helper`* | **app/Controllers/Helpers/I18n.php** | Pending |
+| 37 | *`Painter - Controller Helper`* | **app/Controllers/Helpers/Painter.php** | Pending |
+| 38 | *`Response Handler - Controller Helper`* | **app/Controllers/Helpers/ResponseHandler.php** | Pending |
+| 39 | *`Validation Handler - Controller Helper`* | **app/Controllers/Helpers/ValidationHandler.php** | Pending |
 
 
 > NOTE: (\*) = still needs to be updated. <br>
