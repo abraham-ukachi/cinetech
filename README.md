@@ -89,12 +89,12 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 20 | *`Account - Controller`* | **app/Controllers/AccountController.php** | Pending |
 | 21 | *`Controller - Abstract`* | **app/Controllers/Abstract/Controller.php** | Pending |
 | 22 | *`Controller - Interface`* | **app/Controllers/ControllerInterface.php** | Pending |
-| 23 | *`Home - Route`* | **root/routes/home-route.php** | Pending |
-| 24 | *`Authentication - Route`* | **root/routes/authentication-route.php** | Pending |
-| 25 | *`Movie - Route`* | **root/routes/movie-route.php** | Pending |
-| 26 | *`TV (Show & Series) - Route`* | **root/routes/tv-route.php** | Pending |
-| 27 | *`Search - Route`* | **root/routes/search-route.php** | Pending |
-| 28 | *`Account - Route`* | **root/routes/account-route.php** | Pending |
+| 23 | *`Home - API Route`* | **root/routes/api/home-route.php** | Pending |
+| 24 | *`Authentication - Route`* | **root/routes/api/authentication-route.php** | Pending |
+| 25 | *`Movie - API Route`* | **root/routes/api/movie-route.php** | Pending |
+| 26 | *`TV (Show & Series) - API Route`* | **root/routes/api/tv-route.php** | Pending |
+| 27 | *`Search - API Route`* | **root/routes/api/search-route.php** | Pending |
+| 28 | *`Account - API Route`* | **root/routes/api/account-route.php** | Pending |
 | 29 | *`Home - JS Page`* | **root/public/src/pages/home-page.js** | Pending |
 | 30 | *`Login - JS Page`* | **root/public/src/pages/login-page.js** | Pending |
 | 31 | *`Register - JS Page`* | **root/public/src/pages/register-page.js** | Pending |
@@ -106,7 +106,8 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 37 | *`Muvisho / Cinetech - SQL`* | **cinetech.sql** | Pending |
 | 38 | *`Index - PHP`* | **root/public/index.php** | Pending |
 | 39 | *`App - Controller`* | **app/Controllers/AppController.php** | Pending |
-| 40 | *`App - Route`* | **app/Controllers/app-route.php** | *_In progress_* |
+| 40 | *`App Routes`* | **app/Controllers/app-routes.php** | *_In progress_* |
+| 41 | *`API Routes`* | **app/Controllers/api-routes.php** | Pending |
 
 > WARNING: This list is a working progress and will change soon
 
@@ -140,6 +141,9 @@ The **`MVC`**, **`SPA`** and **`LARAVEL`** inspired folder & file structure of t
 - - * manifest.json
 - - * **index.php**
 - - [**routes**](./root/routes/)
+- - * [**api**](./root/routes/api/)
+- - * api-routes.php
+- - * app-routes.php
 - - [**tests**](./root/tests/)
 - - [**vendor**](./root/vendor/)
 - - ...
