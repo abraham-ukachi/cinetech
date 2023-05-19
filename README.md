@@ -168,19 +168,19 @@ These are some of the things we did or plan to do, in addition to this project's
 
 | No. | Name | File | Status |
 |:----|:-----|:-----|:-------|
-| 1 | *`Pop In - Animation`* | **pop-in-animation.css** | Pending | 
-| 2 | *`Fade In - Animation`* | **fade-in-animation.css** | Pending | 
-| 3 | *`Slide From Down - Animation`* | **slide-from-down-animation.css** | Pending |
-| 4 | *`Slide From Up - Animation`* | **slide-from-up-animation.css** | Pending | 
-| 5 | *`Slide Left - Animation`* | **slide-left-animation.css** | Pending |
-| 6 | *`Slide From Left - Animation`* | **slide-from-left-animation.css** | Pending |
-| 7 | *`Slide Right - Animation`* | **slide-right-animation.css** | Pending |
-| 8 | *`Slide From Right - Animation`* | **slide-from-right-animation.css** | Pending | 
+| 1 | *`Pop In - Animation`* | **pop-in-animation.css** | [Done](./root/public/assets/animations/pop-in-animation.css) | 
+| 2 | *`Fade In - Animation`* | **fade-in-animation.css** | [Done](./root/public/assets/animations/fade-in-animation.css) | 
+| 3 | *`Slide From Down - Animation`* | **slide-from-down-animation.css** | [Done](./root/public/assets/animations/slide-from-down-animation.css) |
+| 4 | *`Slide From Up - Animation`* | **slide-from-up-animation.css** | [Done](./root/public/assets/animations/slide-from-up-animation.css) | 
+| 5 | *`Slide Left - Animation`* | **slide-left-animation.css** | [Done](./root/public/assets/animations/slide-left-animation.css) |
+| 6 | *`Slide From Left - Animation`* | **slide-from-left-animation.css** | [Done](./root/public/assets/animations/slide-from-left-animation.css) |
+| 7 | *`Slide Right - Animation`* | **slide-right-animation.css** | [Done](./root/public/assets/animations/slide-right-animation.css) |
+| 8 | *`Slide From Right - Animation`* | **slide-from-right-animation.css** | [Done](./root/public/assets/animations/slide-from-right-animation.css) | 
 | 9 | *`Manifest - JSON File`* | **root/public/manifest.json** | Pending |
 | 10 | *`Package - JSON File`* | **package.json** | Pending |
-| 11 | *`Fade Out - Animation`* | **fade-out-animation.css** | Pending |
-| 12 | *`Slide Down - Animation`* | **slide-down-animation.css** | Pending |
-| 13 | *`Slide Up - Animation`* | **slide-up-animation.css** | Pending |
+| 11 | *`Fade Out - Animation`* | **fade-out-animation.css** | [Done](./root/public/assets/animations/fade-out-animation.css) |
+| 12 | *`Slide Down - Animation`* | **slide-down-animation.css** | [Done](./root/public/assets/animations/slide-down-animation.css) |
+| 13 | *`Slide Up - Animation`* | **slide-up-animation.css** | [Done](./root/public/assets/animations/slide-up-animation.css) |
 | 14 | *`Translator - Script`* | **muvisho_translator.mjs** | Pending |
 | 15 | *`DotEnv - Database`* | **root/database/DotEnv.php** | Pending |
 | 16 | *`User Seeder - Database`* | **root/database/seeders/UserSeeder.php** | Pending |
