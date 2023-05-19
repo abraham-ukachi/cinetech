@@ -13,7 +13,8 @@
         "psr-4": {
             "Muvisho\\": "../root/",
             "Muvisho\\Database\\": "../root/database",
-            "Muvisho\\Routes\\": "../root/routes"
+            "Muvisho\\Routes\\": "../root/routes",
+            "Muvisho\\Routes\\Api\\": "../root/routes/api"
         }
     },
     "authors": [
