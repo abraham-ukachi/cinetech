@@ -77,7 +77,7 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 8 | *`Search - Model`* | **TBD** | TBD |
 | 9 | *`Model - Abstract`* | **app/Models/Abstract/Model.php** | Pending |
 | 10 | *`Model - Interface`* | **app/Models/ModelInterface.php** | Pending |
-| 11 | *`App - PHP View`* | **app/Views/App.php** | *_In progress_* |
+| 11 | *`App - PHP View`* | **app/Views/App.php** | [Done](./app/Views/App.php)\* |
 | 12 | *`Authentication - Controller`* | **app/Controllers/AuthController.php** | Pending |
 | 13 | *`Favorite - Controller`* | **app/Controllers/FavoriteController.php** | Pending |
 | 14 | *`Comment - Controller`* | **app/Controllers/CommentController.php** | Pending |
