@@ -76,7 +76,7 @@
 
    
   <!-- Base -->
-  <base href="/cinetech/">
+  <base href="/cinetech/root/public/">
 
   <!-- Logo - Icon -->
   <link rel="icon" href="assets/images/favicon.ico">
