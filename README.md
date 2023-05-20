@@ -186,7 +186,7 @@ These are some of the things we did or plan to do, in addition to this project's
 | 14 | *`Translator - Script`* | **muvisho_translator.mjs** | Pending |
 | 15 | *`DotEnv - Database`* | **root/database/DotEnv.php** | Pending |
 | 16 | *`User Seeder - Database`* | **root/database/seeders/UserSeeder.php** | Pending |
-| 17 | *`App - JS Class`* | **root/public/src/App.js** | Pending |
+| 17 | *`App - JS Class`* | **root/public/src/App.js** | *_In progress_* |
 | 18 | *`Screen - JS Class`* | **root/public/src/Screen.js** | Pending |
 | 19 | *`Page - JS Class`* | **root/public/src/Page.js** | Pending |
 | 20 | *`View - JS Class`* | **root/public/src/View.js** | Pending |
