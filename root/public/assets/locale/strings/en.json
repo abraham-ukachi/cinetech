@@ -1,0 +1,316 @@
+{
+  "appName": "Maxaboom",
+  "appDescription": "Maxaboom is a free, open source, and easy to use web app that allows you to discover and buy your perfect musical instrument.",
+  "abrahamUkachi": "Abraham Ukachi",
+  "axelVair": "Axel Vair",
+  "morganeMarechal": "Morgane Marechal",
+  "catherineTranchand": "Catherine Tranchand",
+ 
+  "en": "English", 
+  "fr": "French",
+  "ru": "Russian",
+  "es": "Spanish",
+
+  "hello": "Hello",
+  "gm": "Good morning",
+  "ga": "Good afternoon",
+  "ge": "Good evening",
+  "gn": "Good night",
+
+  "greeting": "We have prepared new instruments for you 🎺🥁🎹💃🕺😅",
+
+  "searchProducts": "Search products",
+
+  "searchInstruments": "Search instruments",
+
+  "splashScreen": "Splash screen",
+
+  "welcome": "Welcome",
+  "home": "Home",
+  "shop": "Shop",
+  "profile": "Profile",
+  "settings": "Settings",
+  "products": "Products",
+  "contact": "Contact",
+  "admin": "Admin",
+  "dashboard": "Dashboard",
+  "contactUs": "Contact us",
+  "about": "About",
+  "aboutUs": "About us",
+  "login": "Login",
+  "logout": "Logout",
+  "register": "Register",
+  "myAccount": "My account",
+  "categories": "Categories",
+  "search": "Search",
+  "checkout": "Checkout",
+  "cart": "Cart",
+
+  "loginHint": "connect to your Maxaboom account",
+  "authHint": "Login / Register",
+  "profileHint": "Your Profile",
+
+  "searchHint": "Search for cool products / intruments",
+  "dashboardHint": "Open your dashboard",
+  "homeHint": "Go to the home page",
+  "accountHint": "Go to your account",
+  "cartHint": "Go to your cart",
+  "likesHint": "Go to your likes",
+  "settingsHint": "Go to the settings page",
+  "usersHint": "Go to the users page",
+  "productsHint": "Go to the products page",
+
+  "orders": "Orders",
+  "order": "Order",
+  "wallet": "Wallet",
+  "orderDetails": "Order details",
+  "orderNumber": "Order number",
+  "orderDate": "Order date",
+  "orderStatus": "Order status",
+  "orderTotal": "Order total",
+  "orderSubtotal": "Order subtotal",
+  "orderShipping": "Order shipping",
+  "orderTax": "Order tax",
+  "orderDiscount": "Order discount",
+  "orderPaymentMethod": "Order payment method",
+  "orderShippingMethod": "Order shipping method",
+  "orderShippingAddress": "Order shipping address",
+  "orderBillingAddress": "Order billing address",
+  "orderItems": "Order items",
+  "orderItem": "Order item",
+  "orderItemName": "Order item name",
+  "orderItemPrice": "Order item price",
+  "orderItemQuantity": "Order item quantity",
+
+  "latestProducts": "Latest products",
+  "popularProducts": "Popular products",
+  "cheapestProducts": "Cheapest products",
+  
+  "addToCart": "Add to cart",
+  "cartEmpty": "Your cart is empty",
+  "cartEmptyMessage": "You have no items in your shopping cart.",
+  "dontHaveAccount": "Don't have an account?",
+  "alreadyHaveAccount": "Already have an account?",
+
+  "log_out": "Log out",
+  "log_in": "Log in",
+  "logoutConfirmMessage": "Are you sure you want to log out?",
+
+
+  "deleteYourAccount": "Delete your account",
+
+  "deleteAccount": "Delete account",
+  "deleteAccountConfirmMessage": "Are you sure you want to delete your account? This will permanently erase all your data.",
+
+  "yes": "Yes",
+  "no": "No",
+  "delete": "Delete",
+  "cancel": "Cancel",
+
+  "errorLogout": "Failed to log out",
+  "successLogout": "Logged out successfully",
+
+  "errorDeleteAccount": "Failed to delete account",
+  "successDeleteAccount": "Account deleted successfully",
+
+  "yourInformation": "Your information",
+  "yourAddress": "Your address",
+  "yourAddresses": "Your addresses",
+  "editRemoveSetAddress": "Edit, remove, or set default address",
+
+  "changeYourEmailAddress": "Change your email address",
+  "purchases": "Purchases",
+  "changePassword": "Change password",
+
+  "firstName": "First name",
+  "lastName": "Last name",
+  "email": "Email",
+
+  "youAreNotConnected": "You are not connected",
+  "youAreNotConnectedMessage": "You must be connected to access this page. If you think this message is wrong, please contact us.",
+  "identity": "Identity",
+  "password": "Password",
+  "mandatoryField": "Mandatory field",
+
+  "newEmail": "New email",
+  "confirmNewEmail": "Confirm new email",
+  "changeEmail": "Change email",
+
+  "oldPassword": "Old password",
+  "newPassword": "New password",
+  "confirmNewPassword": "Confirm new password",
+  "changePassword": "Change password",
+
+  "placeholderFirstName": "Enter your first name",
+  "placeholderLastName": "Enter your last name",
+  "placeholderEmail": "Enter your email",
+  "placeholderNewEmail": "Enter your new email",
+  "placeholderConfirmNewEmail": "Confirm your new email",
+
+  "placeholderOldPassword": "Enter your old password",
+
+  "exampleEmail": "your.name@maxaboom.shop",
+
+  "dateOfBirth": "Date of Birth",
+  "dobFormat": "DD/MM/YYYY",
+
+  "oldPasswordIsVisible": "Old password is visible",
+  "newPasswordIsVisible": "New password is visible",
+  "confirmNewPasswordIsVisible": "Confirm new password is visible",
+
+  "oldPasswordIsHidden": "Old password is hidden",
+  "newPasswordIsHidden": "New password is hidden",
+  "confirmNewPasswordIsHidden": "Confirm new password is hidden",
+  
+  "save": "Save",
+
+
+
+  "firstNameErrorMessageValueMissing": "Your first name is required 😜",
+
+  "firstNameErrorMessageTooShort": "Your first name is too short 🤔",
+
+  "firstNameErrorMessageTooLong": "Your first name is too long 😱",
+
+  "firstNameErrorMessagePatternMismatch": "Please enter a valid first name 😅",
+
+
+
+  "lastNameErrorMessageValueMissing": "Your last name is required 😜",
+
+  "lastNameErrorMessageTooShort": "Your last name is too short 🤔",
+
+  "lastNameErrorMessageTooLong": "Your last name is too long 😱",
+
+  "lastNameErrorMessagePatternMismatch": "Please enter a valid last name 😅",
+
+  "deleteCartTitle": "Remove product ?",
+
+  "deleteCartMessage": "Are you sure you want to remove this product from your cart?",
+
+
+  "heroTitle": "Discover your perfect musical instrument",
+  "discoverYour_s": "Discover your %s",
+  "perfectInstrument": "Perfect instrument",
+  "perfectMusicalInstrument": "Perfect musical instrument",
+  "heroSubtitle": "Maxaboom is a free, open source, and easy to use web app that allows you to discover and buy your perfect musical instrument.",
+
+
+  "shopNow": "Shop now",
+  "exploreMore": "Explore more",
+
+  "help": "Help",
+
+  "theme": "Theme",
+  "changeTheme": "Change theme",
+
+  "language": "Language",
+  "languages": "Languages",
+
+  "changeLanguage": "Change language",
+
+  "aboutMaxaboom": "About Maxaboom",
+
+  "buyAProduct": "Buy a product",
+
+  "stepSearchTitle": "Search",
+  "stepTapTitle": "Tap",
+  "stepPlayTitle": "Play",
+
+  "stepSearchDescription": "+200 instruments to choose from",
+  "stepTapDescription": "Checkout in seconds with our blistering fast checkout process",
+  "stepPlayDescription": "Play your new instrument and enjoy your music",
+
+  "ourTopCategories": "Our Top Categories",
+  "topCategories": "Top Categories",
+
+  "pianos": "Pianos",
+  "guitars": "Guitars",
+  "drums": "Drums",
+  "violin": "Violins",
+  "saxophones": "Saxophones",
+  "flutes": "Flutes",
+  "percussions": "Percussions",
+  "trumpets": "Trumpets",
+  "dj": "DJ",
+  "wind-instruments": "Wind instruments",
+  "percussion": "Percussion",
+
+  "addToLikes": "Add to likes",
+
+  "copyrightText": "Maxaboom. All rights reserved.",
+
+  "madeWithLove": "Made with ❤️  by Maxaboom Team",
+  
+  "productAddedToCart": "Product added to cart",
+
+  "failedToAddProductToCart": "Failed to add product to cart",
+
+  "productRemovedFromCart": "Product removed from cart",
+
+  "failedToRemoveProductFromCart": "Failed to remove product from cart",
+
+  "productAddedToYourCart": "Product added to your cart",
+
+  "failedToAddProductToYourCart": "Failed to add product to your cart",
+
+  "productRemovedFromYourCart": "Product removed from your cart",
+
+  "failedToRemoveProductFromYourCart": "Failed to remove product from your cart",
+
+  "goToHome": "Go to home",
+  "account": "Account",
+
+  "likes": "Likes",
+  "users": "Users",
+
+  "addAllToCart": "Add all to cart",
+
+  "removeAllFromCart": "Remove all from cart",
+
+  "removeAll": "Remove all",
+
+  "view": "View",
+
+  "seeDetails": "See details",
+
+  "seeMore": "See more",
+
+  "seeLess": "See less",
+
+  "seeAll": "See all",
+
+  "buy": "Buy",
+
+  "likedProducts": "Liked products",
+  "emptyList": "Empty list 😢",
+  "noLikedProducts": "No liked products",
+  "noLikedProductsMessage": "You have no liked products yet. Start adding some now by clicking on the heart icon of a product card.",
+  "checkoutProducts": "Checkout products",
+  "qty": "Qty",
+  "quantity": "Quantity",
+  "removeCart": "Remove Cart",
+  "cancel": "Cancel",
+  "remove": "Remove",
+  "startShopping": "Start shopping",
+  "productQtyIncreased": "Product quantity increased",
+  "failedToIncreaseProductQty": "Failed to increase product quantity",
+
+  "productQtyDecreased": "Product quantity decreased",
+  "failedToDecreaseProductQty": "Failed to decrease product quantity",
+
+  "pickATheme": "Pick a theme",
+  "pickALanguage": "Pick a language",
+
+  "light": "Light",
+  "dark": "Dark",
+  "classic": "Classic",
+
+  "themeChangedTo": "Theme changed to %s",
+  "langChangedTo": "Language changed to %s"
+
+    
+}
+
+
+
