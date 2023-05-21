@@ -24,7 +24,6 @@
 * @name: Live Storage
 * @type: helper
 * @author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
-* @contributor: Hajar Aslan <hajar.aslan@laplateforme.io>
 *
 * Example usage:
 *   1-|> import { LiveStorage } from './src/helpers/LiveStorage.js';
