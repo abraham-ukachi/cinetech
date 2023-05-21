@@ -188,8 +188,8 @@ These are some of the things we did or plan to do, in addition to this project's
 | 16 | *`User Seeder - Database`* | **root/database/seeders/UserSeeder.php** | Pending |
 | 17 | *`App - JS Class`* | **root/public/src/App.js** | [Done](./root/public/src/App.js)\* |
 | 18 | *`Screen - JS Class`* | **root/public/src/Screen.js** | [Done](./root/public/src/Screen.js)\* |
-| 19 | *`Page - JS Class`* | **root/public/src/Page.js** | *_In progress_* |
-| 20 | *`View - JS Class`* | **root/public/src/View.js** | Pending |
+| 19 | *`Page - JS Class`* | **root/public/src/Page.js** | [Done](./root/public/src/Page.js)\* |
+| 20 | *`View - JS Class`* | **root/public/src/View.js** | *_In progress_* |
 | 21 | *`Router - JS Helper`* | **root/public/src/helpers/router.js** | [Done](./root/public/src/helpers/router.js)\* |
 | 22 | *`MediaWatcher - JS Helper`* | **root/public/src/helpers/mediawatcher.js** | [Done](./root/public/src/helpers/mediawatcher.js)\* |
 | 23 | *`Splash - JS Screen`* | **root/public/src/screens/splash-screen.js** | Pending |
