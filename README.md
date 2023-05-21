@@ -204,7 +204,7 @@ These are some of the things we did or plan to do, in addition to this project's
 | 32 | *`Loader - JS Mixin`* | **root/.../helpers/mixins/loader-mixin.js** | [Done](./root/public/src/helpers/mixins/loader-mixin.js)\* |
 | 33 | *`Service - JS Mixin`* | **root/.../helpers/mixins/service-mixin.js** | [Done](./root/public/src/helpers/mixins/service-mixin.js)\* |
 | 34 | *`Event - JS Mixin`* | **root/.../helpers/mixins/event-mixin.js** | [Done](./root/public/src/helpers/mixins/event-mixin.js)\* |
-| 35 | *`LiveStorage - JS Helper`* | **root/public/src/helpers/LiveStorage.js** | Pending |
+| 35 | *`LiveStorage - JS Helper`* | **root/public/src/helpers/LiveStorage.js** | *_In progress_* |
 | 36 | *`I18n - Controller Helper`* | **app/Controllers/Helpers/I18n.php** | Pending |
 | 37 | *`Painter - Controller Helper`* | **app/Controllers/Helpers/Painter.php** | Pending |
 | 38 | *`Response Handler - Controller Helper`* | **app/Controllers/Helpers/ResponseHandler.php** | Pending |
