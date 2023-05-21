@@ -192,7 +192,7 @@ These are some of the things we did or plan to do, in addition to this project's
 | 20 | *`View - JS Class`* | **root/public/src/View.js** | [Done](./root/public/src/View.js)\* |
 | 21 | *`Router - JS Helper`* | **root/public/src/helpers/router.js** | [Done](./root/public/src/helpers/router.js)\* |
 | 22 | *`MediaWatcher - JS Helper`* | **root/public/src/helpers/mediawatcher.js** | [Done](./root/public/src/helpers/mediawatcher.js)\* |
-| 23 | *`Splash - JS Screen`* | **root/public/src/screens/splash-screen.js** | *_In progress_* |
+| 23 | *`Splash - JS Screen`* | **root/public/src/screens/splash-screen.js** | [Done](./root/public/src/screens/splash-screen.js)\* |
 | 24 | *`Welcome - JS Screen`* | **root/public/src/screens/welcome-screen.js** | Pending |
 | 25 | *`Default Home - JS View`* | **root/.../views/home/default-home-view.js** | Pending |
 | 26 | *`Default Login - JS View`* | **root/.../views/login/default-login-view.js** | Pending |
