@@ -200,7 +200,7 @@ These are some of the things we did or plan to do, in addition to this project's
 | 28 | *`Default Movies - JS View`* | **root/.../views/movies/default-movies-view.js** | Pending |
 | 29 | *`Default Series - JS View`* | **root/.../views/series/default-series-view.js** | Pending |
 | 30 | *`Default Account - JS View`* | **root/.../views/series/default-account-view.js** | Pending |
-| 31 | *`Engine - JS Class`* | **root/public/src/Engine.js** | *_In progress_* |
+| 31 | *`Engine - JS Class`* | **root/public/src/Engine.js** | [Done](./root/public/src/Engine.js)\* |
 | 32 | *`Loader - JS Mixin`* | **root/.../helpers/mixins/loader-mixin.js** | Pending |
 | 33 | *`Service - JS Mixin`* | **root/.../helpers/mixins/service-mixin.js** | Pending |
 | 34 | *`Event - JS Mixin`* | **root/.../helpers/mixins/event-mixin.js** | Pending |
