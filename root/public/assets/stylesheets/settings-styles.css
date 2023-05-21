@@ -1,0 +1,714 @@
+/*
+* @license MIT
+* cinetech (muvisho)
+* Copyright (c) 2023 Abraham Ukachi. The Muvisho Project Contributors. All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE
+* 
+* @name: Settings 
+* @type: Stylesheets 
+* @author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
+*/
+
+/* Importing some VIP styles */
+@import '../theme/color.css'; /* <- color from theme */
+@import '../animations/fade-in-animation.css'; /* <- fade in animation */
+@import '../animations/slide-from-down-animation.css'; /* <- slide from down animation */
+
+/* ==== SETTINGS STYLES === */
+
+/* Classic Theme */
+.classic.theme {
+  /* social logo colors */
+  --github-color: white;
+  --linkedin-color: darkblue;
+  --instagram-color: purple;
+  --twitter-color: #2887EC;
+}
+
+/* Dark Theme */
+.dark.theme {
+  /* social logo colors */
+  --github-color: white;
+  --linkedin-color: cyan;
+  --instagram-color: #de60a9;
+  --twitter-color: #2887EC;
+}
+
+/* Light Theme */
+.light.theme {
+  /* social logo colors */
+  --github-color: black;
+  --linkedin-color: darkblue;
+  --instagram-color: #740b28;
+  --twitter-color: #34add8
+}
+
+/* BODY */
+body {
+  
+  /* Slide From Down Animation */
+  --slide-from-down-animation-duration: 1s;
+  --slide-from-down-animation-delay: 0s;
+
+  /* Fade In Animation */
+  --fade-in-animation-duration: 1s;
+  --fade-in-animation-delay: 0s;
+}
+
+
+
+/* UL Settings List */
+ul.settings.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+
+/* LI Setting */
+li.setting {
+  position: relative;
+  padding: 8px 24px 8px 16px;
+  border-radius: 0;
+  overflow: hidden;
+  margin: 16px 0;
+
+  transform: scale(1);
+
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  transition: all .2s ease;
+
+}
+
+li.setting:active {
+  -webkit-transform: scale(0.98);
+  -moz-transform: scale(0.98);
+  transform: scale(0.98);
+}
+
+/* Background in LI Setting */
+li.setting span.bg {
+  background: transparent;
+  opacity: 0.04; 
+}
+
+/* Link in LI Setting */
+li.setting > a.link {
+  --link-color: var(--on-background-color);
+  
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+li.setting:hover span.bg {
+  background: var(--on-background-color);
+}
+
+li.setting:hover > a.link {
+  text-decoration: none;
+}
+
+/* Div of Link in LI Setting */
+li.setting > a.link > div {
+  flex: 1;
+}
+
+/* H5 title of settings list */
+li.setting h5 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+/* P details of settings list */
+li.setting p {
+  font-size: 14px;
+  margin: 0;
+  opacity: var(--opacity-text-inactive);
+}
+
+/* Icon in setting */
+li.setting .icon {
+  opacity: var(--opacity-icon-disabled);
+
+  transform: translateX(0);
+
+  -webkit-transition: transform .2s ease;
+  -moz-transition: transform .2s ease;
+  transition: transform .2s ease;
+}
+
+li.setting:hover .icon {
+  transform: translateX(12px);
+}
+
+
+/** ==|> Container Styles   <|== **/
+
+/* Container in Contents */
+#content > .container {
+  width: 100%;
+  height: calc(100vh - var(--app-bar-size, 54px));
+  box-sizing: border-box;
+  padding: 8px 16px;
+  /* overflow: hidden; */
+}
+
+/* Logo Wrapper */
+.logo-wrapper {
+  padding: 24px;
+  margin-top: 48px;
+}
+
+/* App Name */
+.app-name {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 8px;
+}
+
+/* App Version */
+.app-version {
+  padding: 0;
+  margin: 0 auto;
+  font-size: 14px;
+  opacity: var(--opacity-text-inactive);
+  font-weight: 400;
+}
+
+
+/* Social List */
+
+ul.social.list {
+  margin-top: 100px;
+}
+
+/* Logos LI in Social list */
+
+.social.list li.logo {
+  margin: 0 12px;
+}
+
+.social.list a {
+  opacity: var(--opacity-icon-disabled);
+}
+
+.social.list a:hover {
+  opacity: var(--opacity-icon-active);
+}
+
+.social.list a:hover span.icon {
+  background-color: var(--social-logo-color, inherit);
+}
+
+/* Icons in Social List */
+.social.list span.icon {
+  display: block;
+  position: relative;
+  width: var(--social-logo-size, 24px);
+  height: var(--social-logo-size, 24px);
+
+  background-color: var(--on-background-color);
+
+  -webkit-mask: var(--social-logo-icon) no-repeat 50% 50%;
+  -moz-mask: var(--social-logo-icon) no-repeat 50% 50%;
+  mask: var(--social-logo-icon) no-repeat 50% 50%;
+
+  -webkit-mask-size: cover;
+  -moz-mask-size: cover;
+  mask-size: cover;
+
+
+  -webkit-transition: background-color 0.1s ease;
+  -moz-transition: background-color 0.1s ease;
+  transition: background-color 0.1s ease;
+}
+
+/* Github Logo Icon */
+li.logo.github .icon {
+  --social-logo-icon: url('../../assets/logos/svg/logo-github.svg');
+  --social-logo-color: var(--github-color);
+}
+
+/* LinkedIn Logo Icon */
+li.logo.linkedin .icon {
+  --social-logo-icon: url('../../assets/logos/svg/logo-linkedin.svg');
+  --social-logo-color: var(--linkedin-color);
+}
+
+/* InstaGram Logo Icon */
+li.logo.instagram .icon {
+  --social-logo-icon: url('../../assets/logos/svg/logo-instagram.svg');
+  --social-logo-color: var(--instagram-color);
+}
+
+/* Twitter Logo Icon */
+li.logo.twitter .icon {
+  --social-logo-icon: url('../../assets/logos/svg/logo-twitter.svg');
+  --social-logo-color: var(--twitter-color);
+}
+
+
+/* App Author */
+.app-author {
+  margin: 12px auto;
+  font-size: 12px;
+}
+
+/* Heart Emoji in App Author */
+.app-author .heart-emoji {
+  color: #cd4d4d;
+  font-size: 16px;
+  margin: 2px;
+}
+
+
+
+/* Image of app-author */
+.app-author img {
+  width: 22px;
+  height: 22px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50px;
+  margin: 0 8px;
+  padding: 1px;
+}
+
+/* Span of app-author */
+.app-author span {}
+
+/* Copyright */
+.copyright {
+  /* margin-top: 100px; */
+  text-align: justify;
+  user-select: none;
+}
+
+/* Paragraphs in copyright */
+.copyright p {
+  font-size: 10px;
+  margin: 0;
+  line-height: 16px;
+  opacity: var(--opacity-text-disabled);
+}
+
+
+/** ==<| End of Container Styles  |>== **/
+
+
+/** === Grid + Languages Styles === **/
+
+/* Default Grid */
+.grid {
+  display: grid;
+}
+
+/* Grid Languages */
+.grid.languages {
+  list-style: none;
+  margin: 16px 24px;
+  padding: 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+/* Language Button  */
+button.language {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  outline: 0 solid var(--outline-color);
+  color: var(--language-text-color, var(--on-background-color));
+
+  -webkit-tap-highlight-color: transparent;
+
+  transform: scale(1);
+
+  -webkit-transition: transform .2s ease;
+  -moz-transition: transform .2s ease;
+  transition: transform .2s ease;
+}
+
+/* Hover & Focus Language Button */
+button.language:hover, button.language:focus {
+  outline-width: 3px;
+}
+/* Just focused language button */
+button.language:focus {
+  outline-color: var(--tertiary-color);  
+}
+
+button.language:active {
+  transform: scale(0.95);
+}
+
+/* All background span in buttons */
+button > span.bg {
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--opacity-md-icon-disabled);
+}
+
+/* Background of Language Button */
+button.language > span.bg {
+  background: var(--language-background-color, var(--surface-variant-color));
+}
+
+/* Greeting (H2) of Language Button */
+button.language > h2.greeting {
+  margin: 16px 0;
+}
+
+
+/* Text (P) of Language Button */
+button.language > p.text {
+  margin: 0;
+  flex: 1;
+  opacity: var(--opacity-text-inactive);
+  letter-spacing: normal;
+}
+
+
+/* Name (H4) of Language Button */
+button.language > h4.name {
+  color: var(--language-accent-color, var(--primary-color));
+  margin: 12px 0;
+  font-size: 16px;
+  opacity: var(--opacity-text-inactive);
+}
+
+
+
+/* Selected Language - List Item in grid */
+button.language[selected] {
+  --language-background-color: var(--primary-container-color);
+  --language-text-color: var(--on-primary-container-color);
+  --language-accent-color: var(--primary-color);
+}
+
+/* Background of Selected Language - List Item in grid */
+button.language[selected] > span.bg {
+  opacity: var(--opacity-md-active);
+}
+
+/* Name (H4) of Selected Language */
+button.language[selected] > h4.name {
+  opacity: var(--opacity-text-active);
+}
+
+/** ==> End of Languages Grid Styles <== **/
+
+
+
+/** ==< Themes List Styles >== **/
+
+/* Themes Lists  - UL */
+ul.themes.list {
+  list-style: none;
+  padding: 8px 16px;
+}
+
+ul.themes > li {
+  margin: 12px 0;
+  padding: 4px 12px;
+  box-sizing: border-box;
+}
+
+/* Button in Themes UL */
+ul.themes button {
+  --material-icon-color: var(--on-background-color);
+
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  color: inherit;
+  align-items: center;
+  text-align: left;
+  font-size: 20px;
+  cursor: pointer;
+  border: 0; 
+  outline: 0 solid;
+  padding: 0 12px;
+}
+
+/* Button & Background SPAN in Themes UL */
+ul.themes button, ul.themes span.bg {
+  border-radius: 8px;
+}
+
+ul.themes span.bg {
+  opacity: 0.08;
+}
+
+/* [selected] Button in Themes UL */
+ul.themes button[selected] {
+  background: var(--primary-container-color);
+  color: var(--on-primary-container-color);
+  --material-icon-color: var(--on-primary-container-color);
+}
+
+/* Icon of all Buttons in Themes UL */
+ul.themes button > .icon {
+  margin: 8px;
+}
+
+ul.themes button > .check.icon {
+  opacity: var(--opacity-md-icon-inactive);
+}
+
+/* Icon of all [selected] Buttons in Themes UL*/
+ul.themes button[selected] > .check.icon {
+  --material-icon-color: var(--primary-color);
+  opacity: var(--opacity-md-icon-active);
+} 
+
+/* Label of all Buttons in Themes UL */
+ul.themes button > .label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0 8px;
+}
+
+
+/* ON Hover - Buttons in Themes UL */
+ul.themes button:not([selected]):hover {
+  /* background: var(--surface-variant-color);
+  color: var(--on-surface-variant-color); */
+}
+
+ul.themes button:not([selected]):hover > span.bg {
+  background: var(--on-background-color);
+}
+
+
+/* On Focus - Buttons in Themes UL */
+ul.themes button:focus {
+  outline-color: var(--tertiary-color);
+  outline-width: 3px;
+}
+
+/** ==> End of Themes List Styles <== **/
+
+
+
+/* Delete Account - Button Wrapper */
+.delete-account.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  height: 200px;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+/* Link of Delete Account - Button Wrapper */
+.delete-account.button-wrapper > a {
+  width: 100%;
+  height: auto;
+  outline: none;
+}
+
+
+/* Delete Your Account - BUTTON  */
+button#deleteYourAccount {
+
+  background: var(--error-container-color);
+  color: var(--on-error-container-color);
+  /*
+  background: var(--error-color);
+  color: var(--on-error-color);
+  */
+  border: 0;
+  padding: 6px 12px;
+
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  height: inherit;
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+
+
+  -webkit-transition: background 200ms ease;
+  -moz-transition: background 200ms ease;
+  transition: background 200ms ease;
+
+}
+
+.button-wrapper > a:hover button#deleteYourAccount, 
+.button-wrapper > a:focus button#deleteYourAccount {
+  background: var(--error-color);
+  color: var(--on-error-color);
+}
+
+    
+#deleteAccountDialog {
+  --dialog-button-color-hover: transparent;
+  --dialog-button-text-color: inherit;
+}
+
+/* Confirm dialog button of Delete Account Dialog */
+#deleteAccountDialog .dialog-button[confirm] {
+  --dialog-button-text-color: var(--error-color);
+ /* --dialog-button-color-hover: var(--error-container-color);
+  --dialog-button-text-color: var(--error-color); */
+}
+
+/* Done Icon Button */
+#doneIconButton:not(:disabled) {
+  --icon-button-opacity: var(--opacity-icon-active);
+  --icon-button-color: var(--primary-color);
+}
+
+/* Disabled - Done Icon Button */
+#doneIconButton:disabled {
+
+}
+
+
+/* Wrapper of Content */
+#content > .wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* 
+ * --> Wide - Layout <--
+ * Phone: ? (Responsive)
+ * Dimension: 460px+ (width)
+ *
+ * ***************************************
+ * when the viewport is bigger than 460px,
+ * layout changes to wide-layout.
+ * ***************************************
+ */
+@media (min-width: 460px) {
+
+  /* UL Settings List */
+  ul.settings.list {
+    padding: 16px 24px;
+  }
+
+  /* LI Setting */
+  li.setting {
+    border-radius: 8px;
+  }
+
+  /* H5 title of settings list */
+  li.setting h5 {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  /* P details of settings list */
+  li.setting p {
+    font-size: 14px;
+  }
+
+
+  /* Name (H4) of Language Button */
+  button.language > h4.name {
+    font-size: 24px;
+  }
+
+  ul.themes > li {
+    padding: 8px 16px;
+  }
+  
+  /* Buttons in Themes UL */
+  ul.themes button {
+    height: 80px;
+    padding: 0 24px;
+  }
+
+  /* Icon of all Buttons in Themes UL */
+  ul.themes button > .icon {
+    font-size: 32px;
+  }
+
+  /* Label of all Buttons in Themes UL */
+  ul.themes button > .label {
+    margin: 0 12px;
+  }
+
+  /* Delete Your Account - BUTTON */
+  button#deleteYourAccount {
+    font-size: 20px;
+    padding: 12px 16px;
+  }
+
+  /* Link of Delete Account - Button Wrapper */
+  .delete-account.button-wrapper > a {
+    width: 90%;
+  }
+}
+
+
+
+/* 
+ * --> Tablet - Device <--
+ * Phone: ? (Responsive)
+ * Width: 768px <-to-> 1024px
+ */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* App Logo */
+  #appLogo {}
+
+}
+
+
+/* 
+ * --> Laptop - Device <--
+ * Phone: ? (Responsive)
+ * Width: 1024px <-to-> 2560px
+ */
+@media (min-width: 1024px) and (max-width: 2560px) {
+
+  /* App Logo */
+  #appLogo {}
+
+}
+
+
+/* ====  END of LOGIN STYLES === */

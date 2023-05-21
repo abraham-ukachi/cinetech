@@ -1,0 +1,348 @@
+/*
+* @license MIT
+* cinetech (muvisho)
+* Copyright (c) 2023 Abraham Ukachi. The Muvisho Project Contributors. All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE
+* 
+* @name: Welcome 
+* @type: Stylesheets 
+* @author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
+*/
+
+/* Importing some VIP styles */
+@import '../theme/color.css'; /* <- color from theme */
+
+/* @import '../animations/fade-in-animation.css'; /* <- fade in animation */
+/* @import '../animations/slide-from-down-animation.css'; /* <- slide from down animation */
+
+/* ==== WELCOME STYLES === */
+
+
+:host {
+  /* Doodles */
+  --account-doodle: url('../images/doodles/doodle-account.svg');
+  --edit-doodle: url('../images/doodles/doodle-edit.svg');
+  --delete-doodle: url('../images/doodles/doodle-delete.svg');
+  --peace-n-love-doodle: url('../images/doodles/doodle-peace-n-love.svg');
+  --language-doodle: url('../images/doodles/doodle-language.svg');
+  --theme-doodle: url('../images/doodles/doodle-paint.svg');
+
+  --users-doodle: url('../images/doodles/doodle-users.svg');
+  --dashboard-doodle: url('../images/doodles/doodle-dashboard.svg');
+}
+
+
+/* Doodles */
+.doodle {
+  display: block;
+  width: var(--doodle-size, 250px);
+  height: var(--doodle-size, 250px);
+  background: var(--doodle-color, var(--on-background-color));
+  opacity: var(--doodle-opacity, var(--opacity-icon-inactive));
+  margin: 0 auto;
+
+  -webkit-mask: var(--doodle-image) no-repeat 50% 50%;
+  -moz-mask: var(--doodle-image) no-repeat 50% 50%;
+  mask: var(--doodle-image) no-repeat 50% 50%;
+
+  -webkit-mask-size: cover;
+  -moz-mask-size: cover;
+  mask-size: cover;
+}
+
+/* Account Doodle */
+.account-doodle {
+  --doodle-image: var(--account-doodle);
+}
+
+
+/* Edit Doodle */
+.edit-doodle {
+  --doodle-image: var(--edit-doodle);
+}
+
+
+/* Language Doodle */
+.language-doodle {
+  --doodle-image: var(--language-doodle);
+}
+
+/* Peace & Love Doodle */
+.peace-n-love-doodle {
+  --doodle-image: var(--peace-n-love-doodle);
+}
+
+
+/* Delete Doodle */
+.delete-doodle {
+  --doodle-image: var(--delete-doodle);
+}
+
+/* Theme Doodle */
+.theme-doodle {
+  --doodle-image: var(--theme-doodle);
+}
+
+/* Users Doodle */
+.users-doodle {
+  --doodle-image: var(--users-doodle);
+}
+
+/* Dashboard Doodle */
+.dashboard-doodle {
+  --doodle-image: var(--dashboard-doodle);
+}
+
+#content {
+  overflow: hidden;
+}
+
+/* Container of Content */
+#content > .container {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  overflow: scroll;
+  height: 100%;
+}
+
+/* Views in Content */
+/* Hide all views except animating and active views */
+#content > .view:not([animating]):not([active]) {
+  display: none;
+}
+
+
+/* Display Subtitle */
+.display-subtitle {
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+/* Footer */
+footer {
+  --nav-bar-size: 80px;
+}
+
+/* Container of Footer */
+footer > .container {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  padding: 0 24px;
+  max-width: 500px;
+}
+
+/* Button in Footer */
+footer button {
+  /*font-size: 18px;
+  line-height: 32px; */
+
+  /*
+    --button-background-color: var(--primary-container-color);
+    --button-text-color: var(--on-primary-container-color);
+  */
+}
+
+
+/* Dots */
+#dots {
+ width: 100%;
+ height: 24px;
+ margin: 8px 0;
+}
+
+/* Dot of Dots */
+#dots > .dot {
+  width: 10px;
+  height: 10px;
+  background: var(--on-background-color);
+  padding: 0;
+  margin: 0 5px;
+  display: block;
+  min-width: initial;
+  border-radius: 20px;
+  opacity: var(--opacity-md-icon-disabled);
+  cursor: pointer;
+
+
+  -webkit-transition: all 240ms ease;
+  -moz-transition: all 240ms ease;
+  transition: all 240ms ease;
+
+}
+
+/* Whenever a dot is hovered */
+#dots > .dot:hover {
+  opacity: var(--opacity-md-active);
+}
+
+/* Whenever a dot gains focus */
+#dots > .dot:focus-visible {
+  outline: 4px solid var(--tertiary-color);
+  opacity: var(--opacity-md-active);
+  /* background: var(--tertiary-color); */
+}
+
+
+/* Active Navigation Button */
+#dots > .dot[active] {
+  width: 40px;
+  background: var(--primary-color);
+  opacity: var(--opacity-md-active);
+}
+
+/* Skip Button */
+#skipButton {
+  color: inherit;
+  cursor: pointer;
+  opacity: var(--opacity-text-inactive);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  letter-spacing: 1.25px;
+  font-size: 1rem;
+  overflow: hidden;
+  width: auto;
+
+  -webkit-transition: all 240ms ease;
+  -moz-transition: all 240ms ease;
+  transition: all 240ms ease;
+}
+
+/* Hover over skip button */
+#skipButton:hover {
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+#skipButton[disabled] {
+  opacity: var(--opacity-text-disabled);
+  padding-left: 0;
+  padding-right: 0;
+  width: 0;
+}
+
+
+/* Settings Container */
+#settingsContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: var(--background-color);
+  color: var(--on-background-color);
+  inset: 0;
+  z-index: 100;
+  animation: fadeIn ease 300ms;
+}
+
+#settingsContainer:not([opened]) {
+  display: none;
+}
+
+
+
+/* 
+ * --> Wide - Layout <--
+ * Phone: ? (Responsive)
+ * Dimension: 460px+ (width)
+ *
+ * ***************************************
+ * when the viewport is bigger than 460px,
+ * layout changes to wide-layout.
+ * ***************************************
+ */
+@media (min-width: 460px) {
+ 
+  /* App Logo */
+  #appLogo {}
+
+  /* Footer */
+  footer {
+    --nav-bar-size: 100px;
+  }
+
+  /* Doodle */
+  .doodle {
+    --doodle-size: 300px;
+  }
+
+
+  /* Skip Button */
+  #skipButton {
+    font-size: 1.25rem;
+  }
+
+
+  /* Settings Container */
+  #settingsContainer {
+    position: relative;
+    width: 20%;
+
+    -webkit-transform: width ease 300ms;
+    -moz-transform: width ease 300ms;
+    transform: width ease 300ms;
+  }
+
+  #settingsContainer:not([opened]) {
+    max-width: 0;
+  }
+
+  #settingsContainer[opened] ~ aside {
+    width: 40%;
+  }
+
+}
+
+
+
+/* 
+ * --> Tablet - Device <--
+ * Phone: ? (Responsive)
+ * Width: 768px <-to-> 1024px
+ */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* App Logo */
+  #appLogo {}
+
+}
+
+
+/* 
+ * --> Laptop - Device <--
+ * Phone: ? (Responsive)
+ * Width: 1024px <-to-> 2560px
+ */
+@media (min-width: 1024px) and (max-width: 2560px) {
+
+  /* App Logo */
+  #appLogo {}
+
+
+}
+
+
+/* ====  END of WELCOME STYLES === */
