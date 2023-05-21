@@ -1,0 +1,374 @@
+/*
+* @license MIT
+* cinetech (muvisho)
+* Copyright (c) 2023 Abraham Ukachi. The Muvisho Project Contributors. All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*  
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE
+* 
+* @name: Home
+* @type: Stylesheets 
+* @author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
+*/
+
+/* Importing some VIP styles */
+@import '../theme/color.css'; /* <- color from theme */
+
+/* Importing some animations */
+@import '../animations/slide-from-down-animation.css';
+
+/* Importing other styles */
+@import '../stylesheets/welcome-screen-styles.css'; /* <- HACK: We need doodles!!! */
+
+
+
+/* ====  HOME STYLES === */
+
+
+/* HOST */
+:host {
+  --slide-from-down-animation-duration: 400ms;
+  --slide-from-down-animation-delay: 0ms;
+}
+
+
+/* Default Theme */
+.theme {
+  --home-image: url(../images/home-image.png);
+}
+
+/* Dark Theme */
+/*
+.theme.dark {
+  --home-image: url(../images/home-image.png);
+}
+*/
+
+
+
+/* Content */
+#content {
+}
+
+/* Container of Content */
+#content > .container {
+  padding-top: 24px;
+  text-align: center;
+  height: auto;
+  min-height: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+/* Home Image */
+span.home-image {
+  display: block;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 24px auto;
+  background-image: var(--home-image);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+/* Home Image on Dark Theme */
+/*
+.theme.dark span.home-image {
+  background-image: none;
+  background-color: var(--on-background-color);
+  opacity: var(--opacity-icon-inactive);
+
+  -webkit-mask: var(--home-image) no-repeat 50% 50%;
+  -moz-mask: var(--home-image) no-repeat 50% 50%;
+  mask: var(--home-image) no-repeat 50% 50%;
+
+  -webkit-mask-size: cover;
+  -moz-mask-size: cover;
+  mask-size: cover;
+
+}*/
+
+/* Home Title */
+h3.home-title {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* SPAN in Home Title */
+h3.home-title span {
+  color: var(--primary-color);
+}
+
+/* Home Description */
+p.home-description {
+  opacity: var(--opacity-text-inactive);
+  margin: 12px 0 24px;
+}
+
+/* Register Button */
+#registerButton {
+  --button-width: 90%;
+  --button-padding: 8px 12px;
+  
+}
+
+
+/* Login Button */
+#loginButton {
+  --button-width: 90%;
+  --button-margin: 0;
+}
+
+
+
+/* === OFFLINE Container Styles */
+
+/* Offline Container of Content */
+#content > .container[offline] {}
+
+/* === End of OFFLINE Container Styles */
+
+
+
+
+/* === ONLINE Container Styles */
+
+/* Online Container of Content */
+#content > .container[online] {
+  --doodle-size: 80px;
+  --doodle-color: var(--on-background-color);
+  --doodle-opacity: var(--opacity-icon-inactive);
+  --link-color: var(--on-background-color);
+
+  text-align: left;
+}
+
+
+/* Home Menu */
+menu.home-menu {
+  display: grid;
+  position: relative;
+  list-style-type: none;
+  width: 100%;
+  height: auto;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(150px, auto);
+  grid-gap: 20px;
+  padding: 0;
+}
+
+/* Items of Home Menu */
+menu.home-menu > li {
+  position: relative;
+  padding: 12px;
+
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+
+}
+/* Items of Home Menu */
+menu.home-menu > li[disabled],
+menu.home-menu > li[aria-disabled="true"] {
+ opacity: var(--opacity-icon-disabled); 
+}
+
+/* Items of Home Menu */
+menu.home-menu > li:hover {
+  background-color: rgba(138,80,0,0.05);
+}
+
+/* Pressed Items of Home Menu */
+menu.home-menu > li:active {
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+/* Links in Home Menu */
+menu.home-menu a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* When Links in Home Menu are hovered over and gain focus */
+menu.home-menu a:hover,
+menu.home-menu a:focus {
+  --doodle-opacity: 1;
+  --opacity-label: 1;
+  --doodle-outline-width: 5px;
+}
+
+/* When Links in Home Menu  gain focus */
+/* WARNING: I'm burning the midnight oil rn, so my mind is a bit fuzzy. Mistakes abound !!! :)*/
+menu.home-menu a:focus {
+  --doodle-color: var(--tertiary-color);
+  --doodle-outline-color: var(--tertiary-color);
+
+  outline: none;
+}
+
+menu.home-menu a:active {
+  --doodle-color: var(--primary-color);
+  --doodle-outline-color: var(--primary-color);
+}
+
+
+
+
+/* Labels in Home Menu */
+menu.home-menu span.label {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  line-height: 16px;
+  opacity: var(--opacity-label, var(--opacity-text-active));
+  font-weight: bold;
+}
+
+/* home title in online container */
+.container[online] h3.home-title {
+  font-size: 20px;
+}
+
+/* home description in online container */
+.container[online] p.home-description {
+  margin: 6px 0;
+}
+
+
+/* Doodle Wrapper */
+.doodle-wrapper {
+  width: 80px;
+  height: 80px;
+  outline: var(--doodle-outline-width, 0) solid var(--doodle-outline-color, var(--outline-color));
+  border-radius: 8px;
+  padding: 8px;
+  margin: 8px auto;
+}
+
+/* Doodles */
+.doodle {
+  --doodle-size: 80px;
+}
+
+
+/* Dividers in Home Menu  */
+menu.home-menu .dividers {
+  --divider-opacity: var(--opacity-disabled);
+  pointer-events: none;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Horizontal Divider */
+menu.home-menu .divider.horizontal {
+  top: 50%;
+}
+
+menu.home-menu .divider.vertical {
+  left: 50%;
+}
+
+/* === End of ONLINE Container Styles */
+
+
+
+
+/* 
+ * --> Wide - Layout <--
+ * Phone: ? (Responsive)
+ * Dimension: 460px+ (width)
+ *
+ * ***************************************
+ * when the viewport is bigger than 460px,
+ * layout changes to wide-layout.
+ * ***************************************
+ */
+@media (min-width: 460px) {
+
+  /* Home Title */
+  h3.home-title {
+    font-size: 18px;
+  }
+
+  /* Home Description */
+  p.home-description {
+    font-size: 18px;
+    margin-bottom: 48px;
+  }
+  
+  /* home title in online container */
+  .container[online] h3.home-title {
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  /* Doodle Wrapper */
+  .doodle-wrapper {
+    width: 90px;
+    height: 90px;
+    margin: 16px auto;
+  }
+
+  /* Doodles */
+  .doodle {
+    --doodle-size: 90px;
+  }
+
+  /* Hide settings icon button  */
+  #settingsIconButton {
+    display: none;
+  }
+
+}
+
+
+
+/* 
+ * --> Tablet - Device <--
+ * Phone: ? (Responsive)
+ * Width: 768px <-to-> 1024px
+ */
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+
+/* 
+ * --> Laptop - Device <--
+ * Phone: ? (Responsive)
+ * Width: 1024px <-to-> 2560px
+ */
+@media (min-width: 1024px) and (max-width: 2560px) {}
+
+
+/* ====  END of HOME STYLES === */

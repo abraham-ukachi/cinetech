@@ -1,0 +1,125 @@
+/*
+* @license MIT
+* cinetech (muvisho)
+* Copyright (c) 2023 Abraham Ukachi. The Muvisho Project Contributors. All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE
+* 
+* @name: Login
+* @type: Stylesheets 
+* @author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
+*/
+
+/* Importing some VIP styles */
+@import '../theme/color.css'; /* <- color from theme */
+@import '../animations/fade-in-animation.css'; /* <- fade in animation */
+@import '../animations/slide-from-down-animation.css'; /* <- slide from down animation */
+
+/* ====  LOGIN STYLES === */
+
+
+/* BODY */
+body {
+  
+  /* Slide From Down Animation */
+  --slide-from-down-animation-duration: 1s;
+  --slide-from-down-animation-delay: 0s;
+
+  /* Fade In Animation */
+  --fade-in-animation-duration: 1s;
+  --fade-in-animation-delay: 0s;
+}
+
+
+/* App Logo */
+#appLogo {}
+
+
+
+/* Wrapper of Content */
+#content > .wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Register Link */
+a.register-link {
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Input wrapper of login button */
+.login-button.input-wrapper {
+  margin: 0;
+}
+
+
+
+
+/* 
+ * --> Wide - Layout <--
+ * Phone: ? (Responsive)
+ * Dimension: 460px+ (width)
+ *
+ * ***************************************
+ * when the viewport is bigger than 460px,
+ * layout changes to wide-layout.
+ * ***************************************
+ */
+@media (min-width: 460px) {
+ 
+  /* App Logo */
+  #appLogo {}
+
+
+}
+
+
+
+/* 
+ * --> Tablet - Device <--
+ * Phone: ? (Responsive)
+ * Width: 768px <-to-> 1024px
+ */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* App Logo */
+  #appLogo {}
+
+}
+
+
+/* 
+ * --> Laptop - Device <--
+ * Phone: ? (Responsive)
+ * Width: 1024px <-to-> 2560px
+ */
+@media (min-width: 1024px) and (max-width: 2560px) {
+
+  /* App Logo */
+  #appLogo {}
+
+}
+
+
+/* ====  END of LOGIN STYLES === */

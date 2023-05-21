@@ -1,0 +1,173 @@
+/*
+* @license MIT
+* cinetech (muvisho)
+* Copyright (c) 2023 Abraham Ukachi. The Muvisho Project Contributors. All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE
+* 
+* @name: Admin
+* @type: Stylesheets 
+* @author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
+*/
+
+
+
+/* ====  ADMIN STYLES === */
+
+
+/* ROOT / HTML */
+:root {}
+
+
+/* Default Theme */
+.theme {
+  --user-background-color-hover: rgba(0, 0, 0, 0.02);
+}
+
+/* Classic Theme */
+.theme.classic {
+  --user-background-color-hover: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Light Theme */
+.theme.light {
+  --user-background-color-hover: rgba(0, 0, 0, 0.02);
+}
+
+/* Dark Theme */
+.theme.dark {
+  --user-background-color-hover: rgba(255, 255, 255, 0.02);
+}
+
+
+
+
+/* Content */
+#content {}
+
+/* Container of Content */
+#content > .container {
+ padding-left: 0;
+ padding-right: 0;
+}
+
+
+/* Users List */
+ul#usersList {}
+
+/* User */
+li.user {
+  user-select: none;
+  padding: 8px 16px;
+}
+
+/* User */
+li.user:hover {
+  background-color: var(--user-background-color-hover);
+}
+
+
+/* Avatar */
+.avatar {
+  width: var(--user-avatar-size, 60px);
+  height: var(--user-avatar-size, 60px);
+  margin-right: 8px;
+}
+
+/* Initials of Avatar */
+.avatar > .initials {
+  border-radius: 25px;
+  background: var(--secondary-color); /* b4: var(--primary-container-color); */
+  color: var(--on-secondary-color);
+  letter-spacing: 2px;
+  width: calc(var(--user-avatar-size, 60px) - 10px);
+  height: calc(var(--user-avatar-size, 60px) - 10px);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Photo of Avatar */
+.avatar > .photo {}
+
+
+/* Details of User */
+li.user > .details {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Fullname of User Details */
+li.user > .details > .fullname {
+  font-weight: bold;
+}
+
+/* Username of User Details */
+li.user > .details > .username {}
+
+/* Password of User Details */
+li.user > .details > .password {
+  width: 75%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: var(--opacity-text-disabled);
+  font-size: 10px;
+  /* line-height: 12px; */
+  /* margin-bottom: -8px; */
+}
+
+/* Delete Icon Button of User */
+li.user > .delete-icon-button {
+  
+}
+
+
+
+
+/* 
+ * --> Wide - Layout <--
+ * Phone: ? (Responsive)
+ * Dimension: 460px+ (width)
+ *
+ * ***************************************
+ * when the viewport is bigger than 460px,
+ * layout changes to wide-layout.
+ * ***************************************
+ */
+@media (min-width: 460px) {}
+
+
+
+/* 
+ * --> Tablet - Device <--
+ * Phone: ? (Responsive)
+ * Width: 768px <-to-> 1024px
+ */
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+
+/* 
+ * --> Laptop - Device <--
+ * Phone: ? (Responsive)
+ * Width: 1024px <-to-> 2560px
+ */
+@media (min-width: 1024px) and (max-width: 2560px) {}
+
+
+/* ====  END of ADMIN STYLES === */
