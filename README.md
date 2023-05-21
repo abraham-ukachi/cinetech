@@ -201,9 +201,9 @@ These are some of the things we did or plan to do, in addition to this project's
 | 29 | *`Default Series - JS View`* | **root/.../views/series/default-series-view.js** | Pending |
 | 30 | *`Default Account - JS View`* | **root/.../views/series/default-account-view.js** | Pending |
 | 31 | *`Engine - JS Class`* | **root/public/src/Engine.js** | [Done](./root/public/src/Engine.js)\* |
-| 32 | *`Loader - JS Mixin`* | **root/.../helpers/mixins/loader-mixin.js** | Pending |
-| 33 | *`Service - JS Mixin`* | **root/.../helpers/mixins/service-mixin.js** | Pending |
-| 34 | *`Event - JS Mixin`* | **root/.../helpers/mixins/event-mixin.js** | Pending |
+| 32 | *`Loader - JS Mixin`* | **root/.../helpers/mixins/loader-mixin.js** | [Done](./root/public/src/helpers/mixins/loader-mixin.js)\* |
+| 33 | *`Service - JS Mixin`* | **root/.../helpers/mixins/service-mixin.js** | [Done](./root/public/src/helpers/mixins/service-mixin.js)\* |
+| 34 | *`Event - JS Mixin`* | **root/.../helpers/mixins/event-mixin.js** | [Done](./root/public/src/helpers/mixins/event-mixin.js)\* |
 | 35 | *`LiveStorage - JS Helper`* | **root/public/src/helpers/LiveStorage.js** | Pending |
 | 36 | *`I18n - Controller Helper`* | **app/Controllers/Helpers/I18n.php** | Pending |
 | 37 | *`Painter - Controller Helper`* | **app/Controllers/Helpers/Painter.php** | Pending |
