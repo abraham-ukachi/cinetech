@@ -187,8 +187,8 @@ These are some of the things we did or plan to do, in addition to this project's
 | 15 | *`DotEnv - Database`* | **root/database/DotEnv.php** | Pending |
 | 16 | *`User Seeder - Database`* | **root/database/seeders/UserSeeder.php** | Pending |
 | 17 | *`App - JS Class`* | **root/public/src/App.js** | [Done](./root/public/src/App.js)\* |
-| 18 | *`Screen - JS Class`* | **root/public/src/Screen.js** | *_In progress_* |
-| 19 | *`Page - JS Class`* | **root/public/src/Page.js** | Pending |
+| 18 | *`Screen - JS Class`* | **root/public/src/Screen.js** | [Done](./root/public/src/Screen.js)\* |
+| 19 | *`Page - JS Class`* | **root/public/src/Page.js** | *_In progress_* |
 | 20 | *`View - JS Class`* | **root/public/src/View.js** | Pending |
 | 21 | *`Router - JS Helper`* | **root/public/src/helpers/router.js** | [Done](./root/public/src/helpers/router.js)\* |
 | 22 | *`MediaWatcher - JS Helper`* | **root/public/src/helpers/mediawatcher.js** | [Done](./root/public/src/helpers/mediawatcher.js)\* |
