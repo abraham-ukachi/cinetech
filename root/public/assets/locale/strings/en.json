@@ -1,10 +1,7 @@
 {
-  "appName": "Maxaboom",
-  "appDescription": "Maxaboom is a free, open source, and easy to use web app that allows you to discover and buy your perfect musical instrument.",
+  "appName": "Muvisho",
+  "appDescription": "Your gateway to a vast collection of millions of movies and TV shows, all available for free!",
   "abrahamUkachi": "Abraham Ukachi",
-  "axelVair": "Axel Vair",
-  "morganeMarechal": "Morgane Marechal",
-  "catherineTranchand": "Catherine Tranchand",
  
   "en": "English", 
   "fr": "French",
@@ -17,20 +14,23 @@
   "ge": "Good evening",
   "gn": "Good night",
 
-  "greeting": "We have prepared new instruments for you 🎺🥁🎹💃🕺😅",
+  "greeting": "We have prepared new collection of movies 🎬 and tv shows 📺 for you 💃🕺😅",
 
-  "searchProducts": "Search products",
+  "searchMoviesAndTV": "Search movies and TV shows",
 
-  "searchInstruments": "Search instruments",
+  "searchMovies": "Search movies",
 
   "splashScreen": "Splash screen",
 
   "welcome": "Welcome",
   "home": "Home",
-  "shop": "Shop",
   "profile": "Profile",
   "settings": "Settings",
-  "products": "Products",
+  "movies": "Movies",
+  "movie": "Movie",
+  "tvShows": "TV Shows",
+  "tvShow": "TV Show",
+  "series": "Series",
   "contact": "Contact",
   "admin": "Admin",
   "dashboard": "Dashboard",
@@ -43,52 +43,29 @@
   "myAccount": "My account",
   "categories": "Categories",
   "search": "Search",
-  "checkout": "Checkout",
-  "cart": "Cart",
 
-  "loginHint": "connect to your Maxaboom account",
+  "favorite": "Favorite",
+  "favorites": "Favorites",
+  "favoritesEmpty": "Your favorites list is empty",
+  "myFavorites": "My favorites",
+
+  "loginHint": "connect to your Muvisho account",
   "authHint": "Login / Register",
   "profileHint": "Your Profile",
 
-  "searchHint": "Search for cool products / intruments",
+  "searchHint": "Search for cool movies / series",
   "dashboardHint": "Open your dashboard",
   "homeHint": "Go to the home page",
   "accountHint": "Go to your account",
-  "cartHint": "Go to your cart",
-  "likesHint": "Go to your likes",
+  "favoritesHint": "Go to your favorites",
   "settingsHint": "Go to the settings page",
   "usersHint": "Go to the users page",
-  "productsHint": "Go to the products page",
+  "moviesHint": "Go to the movies page",
+  "seriesHint": "Go to the series page",
+  "tvShowHint": "Go to the tv show page",
 
-  "orders": "Orders",
-  "order": "Order",
-  "wallet": "Wallet",
-  "orderDetails": "Order details",
-  "orderNumber": "Order number",
-  "orderDate": "Order date",
-  "orderStatus": "Order status",
-  "orderTotal": "Order total",
-  "orderSubtotal": "Order subtotal",
-  "orderShipping": "Order shipping",
-  "orderTax": "Order tax",
-  "orderDiscount": "Order discount",
-  "orderPaymentMethod": "Order payment method",
-  "orderShippingMethod": "Order shipping method",
-  "orderShippingAddress": "Order shipping address",
-  "orderBillingAddress": "Order billing address",
-  "orderItems": "Order items",
-  "orderItem": "Order item",
-  "orderItemName": "Order item name",
-  "orderItemPrice": "Order item price",
-  "orderItemQuantity": "Order item quantity",
-
-  "latestProducts": "Latest products",
-  "popularProducts": "Popular products",
-  "cheapestProducts": "Cheapest products",
   
-  "addToCart": "Add to cart",
-  "cartEmpty": "Your cart is empty",
-  "cartEmptyMessage": "You have no items in your shopping cart.",
+  "addToFavorites": "Add to favorites",
   "dontHaveAccount": "Don't have an account?",
   "alreadyHaveAccount": "Already have an account?",
 
@@ -114,12 +91,8 @@
   "successDeleteAccount": "Account deleted successfully",
 
   "yourInformation": "Your information",
-  "yourAddress": "Your address",
-  "yourAddresses": "Your addresses",
-  "editRemoveSetAddress": "Edit, remove, or set default address",
 
   "changeYourEmailAddress": "Change your email address",
-  "purchases": "Purchases",
   "changePassword": "Change password",
 
   "firstName": "First name",
@@ -174,8 +147,6 @@
 
   "firstNameErrorMessagePatternMismatch": "Please enter a valid first name 😅",
 
-
-
   "lastNameErrorMessageValueMissing": "Your last name is required 😜",
 
   "lastNameErrorMessageTooShort": "Your last name is too short 🤔",
@@ -184,20 +155,15 @@
 
   "lastNameErrorMessagePatternMismatch": "Please enter a valid last name 😅",
 
-  "deleteCartTitle": "Remove product ?",
+  "deleteMovieTitle": "Remove movie ?",
 
-  "deleteCartMessage": "Are you sure you want to remove this product from your cart?",
+  "deleteMovieMessage": "Are you sure you want to remove this movie from your favorites?",
 
+  "deleteSeriesTitle": "Remove series?",
 
-  "heroTitle": "Discover your perfect musical instrument",
-  "discoverYour_s": "Discover your %s",
-  "perfectInstrument": "Perfect instrument",
-  "perfectMusicalInstrument": "Perfect musical instrument",
-  "heroSubtitle": "Maxaboom is a free, open source, and easy to use web app that allows you to discover and buy your perfect musical instrument.",
+  "deleteSeriesMessage": "Are you sure you want to remove this series from your favorites?",
 
 
-  "shopNow": "Shop now",
-  "exploreMore": "Explore more",
 
   "help": "Help",
 
@@ -209,68 +175,61 @@
 
   "changeLanguage": "Change language",
 
-  "aboutMaxaboom": "About Maxaboom",
+  "aboutMuvisho": "About Muvisho",
 
-  "buyAProduct": "Buy a product",
 
-  "stepSearchTitle": "Search",
-  "stepTapTitle": "Tap",
-  "stepPlayTitle": "Play",
+  "copyrightText": "Muvisho. All rights reserved.",
 
-  "stepSearchDescription": "+200 instruments to choose from",
-  "stepTapDescription": "Checkout in seconds with our blistering fast checkout process",
-  "stepPlayDescription": "Play your new instrument and enjoy your music",
-
-  "ourTopCategories": "Our Top Categories",
-  "topCategories": "Top Categories",
-
-  "pianos": "Pianos",
-  "guitars": "Guitars",
-  "drums": "Drums",
-  "violin": "Violins",
-  "saxophones": "Saxophones",
-  "flutes": "Flutes",
-  "percussions": "Percussions",
-  "trumpets": "Trumpets",
-  "dj": "DJ",
-  "wind-instruments": "Wind instruments",
-  "percussion": "Percussion",
-
-  "addToLikes": "Add to likes",
-
-  "copyrightText": "Maxaboom. All rights reserved.",
-
-  "madeWithLove": "Made with ❤️  by Maxaboom Team",
+  "madeWithLoveBy": "Made with ❤️  by %s",
   
-  "productAddedToCart": "Product added to cart",
+  "movieAddedToFavs": "Movie added to favorites",
 
-  "failedToAddProductToCart": "Failed to add product to cart",
+  "seriesAddedToFavs": "Series added to favorites",
 
-  "productRemovedFromCart": "Product removed from cart",
+  "failedToAddMovieToFavs": "Failed to add movie to favorites",
 
-  "failedToRemoveProductFromCart": "Failed to remove product from cart",
+  "failedToAddSeriesToFavs": "Failed to add series to favorites",
 
-  "productAddedToYourCart": "Product added to your cart",
+  "movieRemovedFromFavs": "Movie removed from favorites",
 
-  "failedToAddProductToYourCart": "Failed to add product to your cart",
+  "failedToRemoveMovieFromFavs": "Failed to remove movie from favorites",
 
-  "productRemovedFromYourCart": "Product removed from your cart",
+  "seriesRemovedFromFavs": "Series removed from favorites",
 
-  "failedToRemoveProductFromYourCart": "Failed to remove product from your cart",
+  "failedToRemoveSeriesFromFavs": "Failed to remove series from favorites",
 
+  "movieAddedToYourFavs": "Movie added to your favorites",
+
+  "seriesAddedToYourFavs": "Series added to your favorites",
+
+  "failedToAddMovieToYourFavs": "Failed to add movie to your favorites",
+
+  "movieRemovedFromYourFavs": "Movie removed from your favorites",
+
+  "failedToRemoveMovieFromYourFavs": "Failed to remove movie from your favorites",
+
+  "failedToAddSeriesToYourFavs": "Failed to add series to your favorites",
+
+  "seriesRemovedFromYourFavs": "Series removed from your favorites",
+
+  "failedToRemoveSeriesFromYourFavs": "Failed to remove series from your favorites",
+  
   "goToHome": "Go to home",
   "account": "Account",
 
-  "likes": "Likes",
   "users": "Users",
 
-  "addAllToCart": "Add all to cart",
-
-  "removeAllFromCart": "Remove all from cart",
+  "removeAllFromFavs": "Remove all from favorites",
 
   "removeAll": "Remove all",
 
   "view": "View",
+
+  "watch": "Watch",
+
+  "watchTrailer": "WatchTrailer",
+
+  "watchNow": "Watch now",
 
   "seeDetails": "See details",
 
@@ -280,24 +239,28 @@
 
   "seeAll": "See all",
 
-  "buy": "Buy",
 
-  "likedProducts": "Liked products",
+  "favMovies": "Favorite movies",
+
+  "favSeries": "Favorite series",
+
+  "favTVShows": "Favorite tv shows",
+
   "emptyList": "Empty list 😢",
-  "noLikedProducts": "No liked products",
-  "noLikedProductsMessage": "You have no liked products yet. Start adding some now by clicking on the heart icon of a product card.",
-  "checkoutProducts": "Checkout products",
-  "qty": "Qty",
-  "quantity": "Quantity",
-  "removeCart": "Remove Cart",
+
+  "noFavMovies": "No favorite movies",
+  "noFavMoviesMessage": "You have no favorite movies yet. Start adding some movies to your list by clicking the explore movies button below",
+
+  "noFavSeries": "No favorite series",
+  "noFavSeriesMessage": "You have no favorite series yet. Start adding some series to your list by clicking the explore movies button below",
+
+  "removeMovie": "Remove movie",
+  "removeSeries": "Remove series",
+  "removeTV": "Remove tv show",
+
   "cancel": "Cancel",
   "remove": "Remove",
-  "startShopping": "Start shopping",
-  "productQtyIncreased": "Product quantity increased",
-  "failedToIncreaseProductQty": "Failed to increase product quantity",
 
-  "productQtyDecreased": "Product quantity decreased",
-  "failedToDecreaseProductQty": "Failed to decrease product quantity",
 
   "pickATheme": "Pick a theme",
   "pickALanguage": "Pick a language",
@@ -307,8 +270,10 @@
   "classic": "Classic",
 
   "themeChangedTo": "Theme changed to %s",
-  "langChangedTo": "Language changed to %s"
+  "langChangedTo": "Language changed to %s",
 
+  "themeUpdatedTo": "Theme updated to %s",
+  "langUpdatedTo": "Language updated to %s"
     
 }
 
