@@ -264,6 +264,7 @@ footer button {
 /* Settings Container */
 #settingsContainer {
   width: 100%;
+  max-width: 100%;
   height: 100%;
   position: absolute;
   background: var(--background-color);
@@ -271,10 +272,18 @@ footer button {
   inset: 0;
   z-index: 100;
   animation: fadeIn ease 300ms;
+
+
+  overflow: hidden;
+
+  -webkit-transition: width 0.2s ease-in-out, max-width 0.2s ease-in-out;
+  -moz-transition: width 0.2s ease-in-out, max-width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out, max-width 0.2s ease-in-out;
 }
 
 #settingsContainer:not([opened]) {
-  display: none;
+  /* display: none; */
+  width: 0;
 }
 
 /* App Bar in Settings Container */
@@ -505,6 +514,11 @@ footer button {
   /* Details Container */
   #appLayout > aside {
     display: flex;
+
+    -webkit-transition: width 0.2s ease-in-out, max-width 0.2s ease-in-out;
+    -moz-transition: width 0.2s ease-in-out, max-width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out, max-width 0.2s ease-in-out;
+    
   }
 
 
