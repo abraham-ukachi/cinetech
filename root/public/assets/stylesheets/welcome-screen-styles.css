@@ -38,11 +38,14 @@
 :host {
   /* Doodles */
   --account-doodle: url('../images/doodles/doodle-account.svg');
+  --discover-doodle: url('../images/doodles/doodle-television-search.svg');
   --edit-doodle: url('../images/doodles/doodle-edit.svg');
   --delete-doodle: url('../images/doodles/doodle-delete.svg');
-  --peace-n-love-doodle: url('../images/doodles/doodle-peace-n-love.svg');
+  --muvisho-doodle: url('../images/doodles/doodle-camera.svg');
   --language-doodle: url('../images/doodles/doodle-language.svg');
   --theme-doodle: url('../images/doodles/doodle-paint.svg');
+  --favorite-doodle: url('../images/doodles/doodle-star.svg');
+  --conversation-doodle: url('../images/doodles/doodle-conversation.svg');
 
   --users-doodle: url('../images/doodles/doodle-users.svg');
   --dashboard-doodle: url('../images/doodles/doodle-dashboard.svg');
@@ -84,11 +87,22 @@
   --doodle-image: var(--language-doodle);
 }
 
-/* Peace & Love Doodle */
-.peace-n-love-doodle {
-  --doodle-image: var(--peace-n-love-doodle);
+/* Muvisho Doodle */
+.muvisho-doodle {
+  --doodle-image: var(--muvisho-doodle);
 }
 
+.discover-doodle {
+  --doodle-image: var(--discover-doodle);
+}
+
+.favorite-doodle {
+  --doodle-image: var(--favorite-doodle);
+}
+
+.conversation-doodle {
+  --doodle-image: var(--conversation-doodle);
+}
 
 /* Delete Doodle */
 .delete-doodle {
@@ -123,6 +137,7 @@
   text-align: center;
   overflow: scroll;
   height: 100%;
+  padding-top: 3rem;
 }
 
 /* Views in Content */
@@ -375,6 +390,21 @@ footer button {
 #languageIconButton[active], #themeIconButton[active] {
   color: var(--on-background-color);
 }
+
+
+/* Wallpaper */
+.wallpaper {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.wallpaper.portrait {
+  background-image: url(../images/wallpapers/portrait-wallpaper_en.png);
+}
+
 
 /* 
  * --> Wide - Layout <--
