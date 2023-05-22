@@ -209,6 +209,7 @@ These are some of the things we did or plan to do, in addition to this project's
 | 37 | *`Painter - Controller Helper`* | **app/Controllers/Helpers/Painter.php** | Pending |
 | 38 | *`Response Handler - Controller Helper`* | **app/Controllers/Helpers/ResponseHandler.php** | Pending |
 | 39 | *`Validation Handler - Controller Helper`* | **app/Controllers/Helpers/ValidationHandler.php** | Pending |
+| 40 | *`i18n - JS Helper`* | **root/public/src/helpers/i18n.js** | *_In progress_* |
 
 
 > NOTE: (\*) = still needs to be updated. <br>
