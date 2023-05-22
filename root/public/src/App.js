@@ -28,7 +28,7 @@
 * Example usage:
 *   1-|> var muvishoApp = new App(DEFAULT_LANGUAGE, LIGHT_THEME);
 *    -|>
-*    -|> muvishoApp.setTitle('Peace & Love - Blog');
+*    -|> muvishoApp.setTitle('Movies & TV Shows Online Free - Muvisho');
 *    -|>
 *    -|> muvishoApp.run();
 *
@@ -39,6 +39,7 @@ import { eventMixin } from './helpers/mixins/event-mixin.js';
 import { installStorageWatcher } from './helpers/LiveStorage.js';
 import { installRouter, getPageRoute, getViewRoute, getSearchParams } from './helpers/router.js';
 import { installMediaQueryWatcher } from './helpers/mediawatcher.js';
+import I18n from './helpers/i18n.js'; // <- i18n helper
 
 
 "use strict"; 
@@ -290,6 +291,13 @@ export class App extends Engine {
     this.currentPage = null;
     this.currentView = null;
 
+    // create n new `I18n` instance with `lang` as the default language
+    this.i18n = new I18n(lang);
+
+    // when the data is loaded,
+    // call the `onReady` method with the loaded data as parameter
+    this.i18n.dataLoaded = (data) => this._onI18nDataLoaded(data);
+
     // list of primary pages
     this.primaryPages = [ HOME_PAGE, ARTICLES_PAGE, SEARCH_PAGE, SAVES_PAGE, PROFILE_PAGE ];
 
@@ -506,7 +514,7 @@ export class App extends Engine {
     this._loadScreens([SPLASH_SCREEN]).then((loadedScreens) => this._onScreensLoaded(loadedScreens));
     
     // DEBUG [4dbsmaster]: tell me about it ;)
-    console.log(`\x1b[40m\x1b[31m[onReady]: ${this.name} is ready`); 
+    console.log(`\x1b[40m\x1b[31m[onReady]: (1) ${this.name} is ready`); 
   }
 
 
@@ -1732,6 +1740,18 @@ export class App extends Engine {
 
   }
 
+  /**
+   * Handler that is called whenever the i18n data is loaded
+   *
+   * @param { Object } loadedData
+   */
+  _onI18nDataLoaded(loadedData) {
+    // get the hello lang value
+    let hello = muvishoApp.i18n.getString('hello');
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[33m[_onI18nDataLoaded]: hello => ${hello} & loadedData => \x1b[0m\x1b[35m%o\x1b[0m \x1b[0m`, loadedData);
+  }
 
   /**
    * Handler that is called when one or more screens have been loaded
