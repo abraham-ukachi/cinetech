@@ -205,17 +205,17 @@ export class WelcomeScreen extends Screen {
                 <!-- End of Title Wrapper -->
 
                 <!-- Theme Icon Button -->
-                <a href="./?change=theme" role="icon-button" tabindex="0" id="themeIconButton" title="Change theme" class="icon-button">
+                <a href="./?change=theme" role="icon-button" tabindex="0" id="themeIconButton" title="${muvishoApp.i18n.getString('changeTheme')}" class="icon-button">
                   <span class="material-icons icon">format_paint</span>
                 </a>
 
                 <!--  Language Icon Button -->
-                <a href="./?change=language" role="icon-button" tabindex="0" id="languageIconButton" title="Change language" class="icon-button">
+                <a href="./?change=language" role="icon-button" tabindex="0" id="languageIconButton" title="${muvishoApp.i18n.getString('changeLanguage')}" class="icon-button">
                   <span class="material-icons icon">language</span>
                 </a>
 
                 <!-- Skip Button -->
-                <button id="skipButton" tabindex="0" title="Skip to the last step" naked>Skip</button>
+                <button id="skipButton" tabindex="0" title="Skip to the last step" naked>${muvishoApp.i18n.getString('skip')}</button>
 
 
               </div>
@@ -275,10 +275,10 @@ export class WelcomeScreen extends Screen {
               <!-- Footer Container -->
               <div class="container">
                 <!-- Get Started - BUTTON -->
-                <button id="getStartedButton" contained shrinks hidden>Get Started</button>
+                <button id="getStartedButton" contained shrinks hidden>${muvishoApp.i18n.getString('getStarted')}</button>
 
                 <!-- Next - BUTTON -->
-                <button id="nextButton" contained shrinks>Next</button>
+                <button id="nextButton" contained shrinks>${muvishoApp.i18n.getString('next')}</button>
 
               </div>
               <!-- End of Footer Container -->
@@ -295,12 +295,12 @@ export class WelcomeScreen extends Screen {
             <!-- App Bar -->
             <div class="app-bar flex-layout horizontal center">
               <!-- Close Settings Icon Button -->
-              <a href="./" tabindex="0" role="icon-button" id="closeSettingsIconButton" title="Close Settings" class="icon-button">
+              <a href="./" tabindex="0" role="icon-button" id="closeSettingsIconButton" title="${muvishoApp.i18n.getString('closeSettings')}" class="icon-button">
                 <span class="material-icons icon">close</span>
               </a>
 
                 <!-- Title Wrapper -->
-                <h3 class="title-wrapper">Pick a setting</h3>
+                <h3 class="title-wrapper">${muvishoApp.i18n.getString('pickASetting')}</h3>
                 <!-- End of Title Wrapper -->
 
             </div>
@@ -915,7 +915,7 @@ export class WelcomeScreen extends Screen {
     switch (changeSetting) {
       case THEME_CHANGE_SETTING:
         // update `settingsTitle`
-        settingsTitle = `Pick a theme`; 
+        settingsTitle = muvishoApp.i18n.getString('pickATheme'); 
         // hide the language settings menu
         this.languageSettingMenuEl.hidden = true;
         // show the theme settings menu
@@ -926,7 +926,7 @@ export class WelcomeScreen extends Screen {
 
       case LANGUAGE_CHANGE_SETTING:
         // update `settingsTitle`
-        settingsTitle = `Pick a language`;  
+        settingsTitle = muvishoApp.i18n.getString('pickALanguage');  
         // hide the theme settings menu
         this.themeSettingMenuEl.hidden = true;
         // show the language settings menu
@@ -1144,45 +1144,53 @@ export class WelcomeScreen extends Screen {
 
     // muvisho - welcome package
     this._welcomePackage["muvisho"] = {
-      title: "Welcome to `<em>muvisho</em>`",
-      description: "Your gateway to a vast collection of millions of movies and TV shows, all available for free! Prepare to immerse yourself in a boundless universe of entertainment, where you can explore and enjoy an extensive library of captivating content." 
+      title: muvishoApp.i18n.getString('welcomeToX').replace(/%s/, 
+        "`<em>" + muvishoApp.i18n.getString('appName') + "</em>`"),
+      description: muvishoApp.i18n.getString('welcomeDescription')
     };
 
     // account - welcome package
     this._welcomePackage["discover"] = {
-      title: "Discover movies and TV shows",
-      description: "Embark on an exhilarating journey of discovery with `<em>muvisho</em>`! Unearth hidden gems, find the latest blockbusters, and uncover your next binge-worthy obsession."
+      title: muvishoApp.i18n.getString('discoverMoviesAndSeries'), 
+      description: muvishoApp.i18n.getString('discoverDescriptionX').replace(/%s/, 
+        "`<em>" + muvishoApp.i18n.getString('appName').toLowerCase() + "</em>`")
     };
 
 
     // account - welcome package
     this._welcomePackage["account"] = {
-      title: "Create a free account",
-      description: "In less than 60 seconds, you can open your own secure and always-free `<em>muvisho</em>` account, using an email, a username of your choice, your first and last names, and a password."
+      title: muvishoApp.i18n.getString('createFreeAccount'),
+      description: muvishoApp.i18n.getString('accountDescriptionX').replace(/%s/, 
+        "`<em>" + muvishoApp.i18n.getString('appName').toLowerCase() + "</em>`")
     };
 
     // edit - welcome package
     this._welcomePackage["favorite"] = {
-      title: "Add to favorites",
-      description: "Unlock the power of personalization with `<em>muvisho</em>`! As a member, you have the ability to add a movie or TV show you like to your favorites list, ensuring that your most cherished titles are just a click away."
+      title: muvishoApp.i18n.getString('addToFavorites'),
+      description: muvishoApp.i18n.getString('favoriteDescriptionX').replace(/%s/, 
+        "`<em>" + muvishoApp.i18n.getString('appName').toLowerCase() + "</em>`")
     };
 
     // conversation - welcome package
     this._welcomePackage["conversation"] = {
-      title: "Join the conversation",
-      description: "Engage with `<em>muvisho</em>`'s vibrant community! Dive into the world of movie and TV show discussions as you leave your thoughts and read insightful comments from fellow enthusiasts."
+      title: muvishoApp.i18n.getString('joinTheConversation'),
+      description: muvishoApp.i18n.getString('conversationDescriptionX').replace(/%s/, 
+        "`<em>" + muvishoApp.i18n.getString('appName').toLowerCase() + "</em>`")
     };
 
     // language - welcome package
     this._welcomePackage["language"] = {
-      title: "Change your language",
-      description: "This Web App has currently been translated into 4 different languages (i.e. English, French, Russian and Spanish). Feel free to switch between languages anytime from the settings page."
+      title: muvishoApp.i18n.getString('changeYourLanguage'),
+      description: muvishoApp.i18n.getString('languageDescription')
     };
 
     // language - welcome package
     this._welcomePackage["theme"] = {
-      title: "Change your theme",
-      description: "Don't like how it looks? With 3 themes to choose from (<em>Classic</em> for crazy people, <em>Dark</em> for geniuses, and <em>Light</em> for simple folks), you'll never get bored. And, your eyes will thank you :)"
+      title: muvishoApp.i18n.getString('changeYourTheme'),
+      description: muvishoApp.i18n.getString('themeDescriptionXYZ').replace(/%s/, 
+        "<em>" + muvishoApp.i18n.getString('classic') + "</em>").replace(/%s/, 
+          "<em>" + muvishoApp.i18n.getString('dark') + "</em>").replace(/%s/, 
+            "<em>" + muvishoApp.i18n.getString('light') + "</em>")
     };
     
   }
