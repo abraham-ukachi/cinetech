@@ -95,7 +95,7 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 26 | *`TV (Show & Series) - API Route`* | **root/routes/api/tv-route.php** | Pending |
 | 27 | *`Search - API Route`* | **root/routes/api/search-route.php** | Pending |
 | 28 | *`Account - API Route`* | **root/routes/api/account-route.php** | Pending |
-| 29 | *`Home - JS Page`* | **root/public/src/pages/home-page.js** | Pending |
+| 29 | *`Home - JS Page`* | **root/public/src/pages/home-page.js** | *_In progress_* |
 | 30 | *`Login - JS Page`* | **root/public/src/pages/login-page.js** | Pending |
 | 31 | *`Register - JS Page`* | **root/public/src/pages/register-page.js** | Pending |
 | 32 | *`Account - JS Page`* | **root/public/src/pages/account-page.js** | Pending |
