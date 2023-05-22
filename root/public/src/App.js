@@ -55,10 +55,10 @@ export const APP_VERSION = "0.0.1";
 export const AUTHOR = "Abraham Ukachi";
 
 // base directory
-export const BASE_DIR = "/cinetech/root/public/" // "muvisho-js/"; (for production)
+export const BASE_DIR = "/cinetech/" // "muvisho-js/"; (for production)
 
 // assets directory
-export const ASSETS_DIR = `${BASE_DIR}assets/`;
+export const ASSETS_DIR = `${BASE_DIR}root/public/assets/`;
 // theme directory
 export const THEME_DIR = `${ASSETS_DIR}theme/`;
 // styles directory
@@ -67,7 +67,7 @@ export const STYLES_DIR = `${ASSETS_DIR}stylesheets/`;
 export const ANIM_DIR = `${ASSETS_DIR}animations/`;
 
 // source directory
-export const SOURCE_DIR = `${BASE_DIR}src/`;
+export const SOURCE_DIR = `${BASE_DIR}root/public/src/`;
 // screens directory
 export const SCREENS_DIR = `${SOURCE_DIR}screens/`;
 // pages directory
