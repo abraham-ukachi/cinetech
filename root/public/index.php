@@ -60,19 +60,44 @@ const APP_NAME = 'cinetech';
 // home or base directory of Muvisho
 const MUVISHO_HOME_DIR = '/' . APP_NAME;
 
+// define some paths
+const PUBLIC_PATH = 'root/public';
+const ASSETS_PATH = PUBLIC_PATH . '/assets';
+const IMAGES_PATH = ASSETS_PATH . '/images';
+const ANIMATIONS_PATH = ASSETS_PATH . '/animations';
+const FONTS_PATH = ASSETS_PATH . '/fonts';
+const LOCALE_PATH = ASSETS_PATH . '/locale';
+const LOGOS_PATH = ASSETS_PATH . '/logos';
+const THEME_PATH = ASSETS_PATH . '/theme';
+const STYLESHEETS_PATH = ASSETS_PATH . '/stylesheets';
+
 
 // define other directory constants
 
 // muvisho
-const __MUVISHO_ROUTES_DIR__ = __DIR__ . '/../routes';
-const __MUVISHO_DATABASE_DIR__ = __DIR__ . '/../database';
-const __MUVISHO_CONFIG_DIR__ = __DIR__ . '/../config';
-const __MUVISHO_TESTS_DIR__ = __DIR__ . '/../tests';
+const __MUVISHO_DIR__ = __DIR__ . '/../../root';
+const __MUVISHO_ROUTES_DIR__ = __MUVISHO_DIR__ . '/routes';
+const __MUVISHO_DATABASE_DIR__ = __MUVISHO_DIR__ . '/database';
+const __MUVISHO_CONFIG_DIR__ = __MUVISHO_DIR__ . '/config';
+const __MUVISHO_TESTS_DIR__ = __MUVISHO_DIR__ . '/tests';
+// ++++ public - assets ++++
+const __MUVISHO_PUBLIC_DIR__ = __DIR__ . '/../public';
+const __MUVISHO_ASSETS_DIR__ = __MUVISHO_PUBLIC_DIR__ . '/assets';
+const __MUVISHO_IMAGES_DIR__ = __MUVISHO_ASSETS_DIR__ . '/images';
+const __MUVISHO_ANIMATIONS_DIR__ = __MUVISHO_ASSETS_DIR__ . '/animations';
+const __MUVISHO_FONTS_DIR__ = __MUVISHO_ASSETS_DIR__ . '/fonts';
+const __MUVISHO_LOCALE_DIR__ = __MUVISHO_ASSETS_DIR__ . '/locale';
+const __MUVISHO_LOGOS_DIR__ = __MUVISHO_ASSETS_DIR__ . '/logos';
+const __MUVISHO_THEME_DIR__ = __MUVISHO_ASSETS_DIR__ . '/theme';
+const __MUVISHO_STYLESHEETS_DIR__ = __MUVISHO_ASSETS_DIR__ . '/stylesheets';
+// ++++ end of public - assets ++++
+
+
 // app
+const __APP_DIR__ = __DIR__ . '/../../app';
 const __APP_MODELS_DIR__ = __DIR__ . '/../../app/Models';
 const __APP_VIEWS_DIR__ = __DIR__ . '/../../app/Views';
 const __APP_CONTROLLERS_DIR__ = __DIR__ . '/../../app/Controllers';
-
 
 
 
