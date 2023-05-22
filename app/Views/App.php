@@ -58,6 +58,7 @@
 */
 
 
+
 ?><!DOCTYPE html>
     
 <!-- HTML -->
@@ -76,13 +77,13 @@
 
    
   <!-- Base -->
-  <base href="/cinetech/root/public/">
+  <base href="/cinetech/">
 
   <!-- Logo - Icon -->
-  <link rel="icon" href="assets/images/favicon.ico">
+  <link rel="icon" href="<?= IMAGES_PATH ?>/favicon.ico">
 
   <!-- See https://goo.gl/OOhYW5 -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="<?= PUBLIC_PATH ?>/manifest.json">
 
   <!-- See https://goo.gl/qRE0vM -->
   <meta name="theme-color" content="#A67C52">
@@ -97,14 +98,14 @@
   <meta name="apple-mobile-web-app-title" content="Muvisho">
 
   <!-- Homescreen icons -->
-  <link rel="apple-touch-icon" href="assets/images/manifest/icon-48x48.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/images/manifest/icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="96x96" href="assets/images/manifest/icon-96x96.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/images/manifest/icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="assets/images/manifest/icon-192x192.png">
+  <link rel="apple-touch-icon" href="<?= IMAGES_PATH ?>/manifest/icon-48x48.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="<?= IMAGES_PATH ?>/manifest/icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="96x96" href="<?= IMAGES_PATH ?>/manifest/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="<?= IMAGES_PATH ?>/manifest/icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="<?= IMAGES_PATH ?>/manifest/icon-192x192.png">
 
   <!-- HACK: (hard-codded typography) Fonts and Material Icons not dynamically imported in App -->
-  <link rel="stylesheet" href="assets/theme/typography.css">
+  <link rel="stylesheet" href="root/public/assets/theme/typography.css">
 
   <!-- Top-level styles -->
   <style>
@@ -126,7 +127,7 @@
   <!-- Spinner -->
   <!-- NOTE: This will be removed when the App is ready -->
   <img id="spinner" 
-    src="assets/images/gifs/spinner_loading.gif" 
+    src="./root/public/assets/images/gifs/spinner_loading.gif" 
     width="256" 
     height="256" 
     style="
@@ -145,7 +146,7 @@
 
 
   <script type="module">
-    import { App } from './src/App.js';
+    import { App } from './root/public/src/App.js';
 
     /**
      * Listen to the 'load' event from window in the browser.
