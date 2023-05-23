@@ -166,6 +166,7 @@ export class App extends Engine {
       lang: { type: String },
       theme: { type: String },
       updated: { type: Boolean },
+      labelsHidden: { type: Boolean },
 
       _navbarOrientation: { type: String }
     };
@@ -353,7 +354,8 @@ export class App extends Engine {
     this.name = APP_NAME;
     this.title = 'Muvisho';
     this.updated = false;
-    
+    this.labelsHidden = false; // <- by default both side and nav labels should be visible or shown ;)
+
     // Initialize private properties
     this._navbarOrientation = 'horizontal';
 
@@ -470,6 +472,12 @@ export class App extends Engine {
         this.setTitle(prop.value);
       }
 
+      // if the `labelsHidden` property has changed...
+      if (prop.name === 'labelsHidden') {
+        // ...handle it ;)
+        this._handleLabelsHiddenChange(prop.value, prop.oldValue);
+      }
+
       // DEBUG [4dbsmaster]: tell me about it ;)
       console.log(`\x1b[33m[changedProperties]: 
         1. prop.name => ${prop.name}
@@ -495,7 +503,31 @@ export class App extends Engine {
   }
 
 
-  /* >> Public Methods << */
+  /* >> PUBLIC METHODS << */
+
+  /**
+   * Shows all the labels in both side and nav labels
+   * NOTE: This method sets the `labelsHidden` property to FALSE
+   */
+  showLabels() {
+    this.labelsHidden = false;
+  }
+
+  /**
+   * Hides all the labels in both side and nav labels
+   * NOTE: This method sets the `labelsHidden` property to TRUE
+   */
+  hideLabels() {
+    this.labelsHidden = true;
+  }
+
+  /**
+   * Toggles all the labels in both side and nav lables
+   */
+  toggleLabels() {
+    this.labelsHidden = !this.labelsHidden;
+  }
+
 
   /**
    * Method used to run the app
@@ -894,10 +926,10 @@ export class App extends Engine {
     // Initialize the `navLinks` variable
     let navLinks = [];
 
-    // if the app's main pages element exists...
-    if (this.mainPagesEl) {
+    // if the app's pages element exists...
+    if (this.pagesEl) {
       // ...select all the elements in main pages with `nav-link` in their class list as `links`
-      let links = this.mainPagesEl.querySelectorAll((!includeLogo) ? '.nav-link:not(.logo)' : '.nav-link');
+      let links = this.pagesEl.querySelectorAll((!includeLogo) ? '.nav-link:not(.logo)' : '.nav-link');
 
       // update the `navLinks`
       navLinks = [...links];
@@ -950,7 +982,7 @@ export class App extends Engine {
   }
 
 
-  /* >> Public Setters << */
+  /* >> PUBLIC SETTERS << */
   
   /**
    * Updates the current screen of the app with the given `screen`
@@ -987,7 +1019,7 @@ export class App extends Engine {
   }
 
 
-  /* >> Public Getters << */
+  /* >> PUBLIC GETTERS << */
 
   /**
    * Returns the current screen of the app
@@ -1470,6 +1502,21 @@ export class App extends Engine {
 
   // ======== END of Dynamic HTML Templates =========  //
 
+  /**
+   * Handler that is called whenever the `labelsHidden` property changes
+   *
+   * @param { Boolean } labelsHidden
+   * @param { Boolean } oldValue
+   */
+  _handleLabelsHiddenChange(labelsHidden, oldValue) {
+    // Add or remove `no-labels` property / attribute on or from the pages element accordingly; )
+    labelsHidden ? this.pagesEl.setAttribute('nolabels', '') : this.pagesEl.removeAttribute('nolabels');
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[32m[_handleLabelsHiddenChange]: labelsHidden => ${labelsHidden} & oldValue => ${oldValue}\x1b[0m`);
+  }
+
+  
   /**
    * Handler that is called whenever the browser's URL or location changes
    *
@@ -2141,9 +2188,9 @@ export class App extends Engine {
 
 
 
-  /* >> Private Setters << */
+  /* >> PRIVATE SETTERS << */
 
-  /* >> Private Getters << */
+  /* >> PRIVATE GETTERS << */
 
 
   /**
