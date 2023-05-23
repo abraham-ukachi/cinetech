@@ -535,6 +535,8 @@ aside > span.app-logo {
 
 /* Vertical Nav Bar - or - Side Bar */
 .nav-bar.vertical, #sideBar {
+  --slide-from-left-animation-duration: 300ms;
+
   width: var(--nav-bar-size, 54px);
   height: 100%;
   padding: var(--side-bar-padding-vertical, 0);
@@ -597,7 +599,9 @@ aside > span.app-logo {
 }
 
 /* Horizontal Nav Bar */
-.nav-bar.horizontal {
+.nav-bar.horizontal, #navBar {
+  --slide-from-down-animation-duration: 300ms;
+
   padding: 0 var(--nav-bar-padding-horizontal, 0.5rem);
   width: 100%;
   justify-content: space-between;
@@ -1531,7 +1535,7 @@ em {
   /* Horizontal Nav Bar & Footer of Main */
   .nav-bar.horizontal, main > footer {
     height: var(--nav-bar-size, 100%); /* b4: 68px */
-  }
+  } 
 
   /* Responsive Horizontal Nav Bar */
   /* HACK: allows me to display the nav bar in it's [demo page](component/demo/nav-bar.php) */
