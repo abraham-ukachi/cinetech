@@ -134,6 +134,8 @@ dist
 *.swo
 *.swn
 *.swm
+*.swl
+*swk
 
 # DS_Store
 .DS_Store
