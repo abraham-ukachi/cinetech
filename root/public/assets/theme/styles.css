@@ -254,7 +254,12 @@ body, #appContainer {
 #pages {
   z-index: 1;
   background-color: var(--background-color);
-} 
+}
+
+/* [nolabels] Pages */
+#pages[nolabels] .nav-label {
+  display: none !important;
+}
 
 /* Dialogs */
 #dialogs {
