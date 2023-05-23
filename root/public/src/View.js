@@ -340,6 +340,15 @@ export class View extends Engine {
   }
 
 
+  /**
+   * Returns TRUE if the view is opened, otherwise FALSE
+   *
+   * @returns { Boolean }
+   */
+  get isOpened() {
+    return this.opened;
+  }
+
 
   /* >> Private Methods << */
 
