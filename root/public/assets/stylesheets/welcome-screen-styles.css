@@ -450,7 +450,7 @@ footer button {
   /* Settings Container */
   #settingsContainer {
     position: relative;
-    width: 20%;
+    width: 40%;
 
     -webkit-transform: width ease 300ms;
     -moz-transform: width ease 300ms;
