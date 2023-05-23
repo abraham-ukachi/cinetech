@@ -244,6 +244,11 @@ h3.app-subtitle {
   user-select: none;
 }
 
+h3.app-subtitle span {
+  font-weight: 600;
+  opacity: var(--opacity-text-active);
+  color: var(--app-subtitle-accent, var(--secondary-color)); 
+}
 
 /* Button - default text styles */
 button {
