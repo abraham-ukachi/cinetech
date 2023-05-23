@@ -99,7 +99,7 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 30 | *`Login - JS Page`* | **root/public/src/pages/login-page.js** | Pending |
 | 31 | *`Register - JS Page`* | **root/public/src/pages/register-page.js** | Pending |
 | 32 | *`Account - JS Page`* | **root/public/src/pages/account-page.js** | Pending |
-| 33 | *`Search - JS Page`* | **root/public/src/pages/search-page.js** | Pending |
+| 33 | *`Search - JS Page`* | **root/public/src/pages/search-page.js** | *_In progress_* |
 | 34 | *`Movies - JS Page`* | **root/public/src/pages/movies-page.js** | Pending |
 | 35 | *`TV (Show & Series) - JS Page`* | **root/public/src/pages/series-page.js** | Pending |
 | 36 | *`Database - Muvisho`* | **root/database/Database.php** | Pending |
