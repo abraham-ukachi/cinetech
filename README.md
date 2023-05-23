@@ -403,6 +403,7 @@ open http://localhost/cinetech
 
 ## TODOs
 
+- [ ] Create a 2-way Live Wallpaper that loops in the welcome screen
 - [ ] Rename default `js` views from say, "**default-home-view.js**" to something like: "**default.js**"
 - [ ] Create a *`users_pref`* MySQL Table to store users' preference like **theme**, **language**, etc...
 - [ ] Use [HTTP Client](https://laravel.com/docs/10.x/http-client#request-data) from [Laravel](https://laravel.com/docs/10.x) for quick outgoing Https requests, instead of [Guzzle HTTP Client](http://docs.guzzlephp.org/en/stable/).
