@@ -277,6 +277,7 @@ export class Page extends Engine {
       // Initialize the views
       this.#_initViews(loadedViews);
 
+
       // DEBUG [4dbsmaster]: tell me about it ;)
       console.log(`\x1b[33m[open]: loadedView => \x1b[0m`, loadedViews);
 
@@ -284,10 +285,13 @@ export class Page extends Engine {
 
     // await super.run();
     this.opened = true;
-
+    
     // show the page
     this.show();
 
+    // open the current view
+    // this.openView(this.getCurrentViewId());
+    
 
     // HACK / IDEA: allocating enough time before executing the `onReady()` method,
     //              this is to prepare for any unforseen issues
@@ -295,6 +299,13 @@ export class Page extends Engine {
     setTimeout(() => {
       // ...call the onReady() method
       this.onReady();
+
+      // If the current view is not opened
+      if (!this.isCurrentViewOpened) {
+        // ...open the current view, using the current view's id
+        this.openCurrentView();
+      }
+
     }, 100);
 
   }
@@ -316,6 +327,32 @@ export class Page extends Engine {
   // Hide the page
   hide() {
     this.hidden = true;
+  }
+
+
+  /**
+   * Opens the specified view
+   *
+   * @param { String } viewId - The id of the view to open 
+   */
+  openViewById(viewId = 'default') {
+    // get the view object as `viewObj`
+    let viewObj = this.getViewObject(viewId);
+
+    // open the view
+    viewObj.open();
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[40m\x1b[36m[openViewById]: viewId => ${viewId} & viewObj => \x1b[0m`, viewObj);
+  }
+
+
+  /**
+   * Method used to open the current view
+   */
+  openCurrentView() {
+    // get the current view's id
+    this.openViewById(this.view);
   }
 
 
@@ -367,6 +404,26 @@ export class Page extends Engine {
   /* >> Public Setters << */
 
   /* >> Public Getters << */
+
+  /**
+   * Returns the object view with the specified id
+   *
+   * @param { String } viewId - The id of the view to get
+   *
+   * @returns { Object<View> }
+   */
+  getViewObject(viewId = 'default') {
+    return this[viewId + this.getRealName().capitalize() + 'View'];
+  }
+
+  /**
+   * Checks whether the current view is opened or not
+   *
+   * @returns { Boolean } - TRUE if the current view is opened, FALSE otherwise
+   */
+  get isCurrentViewOpened() {
+    return this[this.getCurrentViewId()].opened;
+  }
 
   /**
    * Returns the id of the screeen.
@@ -565,8 +622,9 @@ export class Page extends Engine {
         // get the view object 
         let viewObject = this[viewId];
         console.log('VIEW OBJECT ===>>>>>>', viewObject);
-        // ...open this view
-        // await this[viewId].open();
+
+        // open this view
+        // await viewObject.open();
       }
 
       //
