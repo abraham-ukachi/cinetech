@@ -1,7 +1,7 @@
 /* 
-* @license
-* tdl
-* Copyright (c) 2023 Abraham Ukachi. The BlogJS Project Contributors. All rights reserved.
+* @license MIT
+* cinetech (muvisho)
+* Copyright (c) 2023 Abraham Ukachi. The Muvisho Project Contributors. All rights reserved.
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -71,6 +71,9 @@
   display: flex;
 }
 
+.flex {
+  flex: 1;
+}
 
 /* Screens & Fixed Layouts */
 .screen.flex-layout, .flex-layout[fixed] {
@@ -139,6 +142,17 @@
   pointer-events: none !important;
   cursor: default !important;
 }
+
+/* NO SCROLLBARS Property */
+[noscrollbars] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+[noscrollbars]::-webkit-scrollbar {
+  display: none;
+}
+
 
 /* Flex SPAN */
 span[flex] {
@@ -239,6 +253,7 @@ body, #appContainer {
 /* Pages */
 #pages {
   z-index: 1;
+  background-color: var(--background-color);
 } 
 
 /* Dialogs */
@@ -252,10 +267,120 @@ body, #appContainer {
 }
 
 
+/* === SPECIFIC VIEWPORTS ONLY === */
+
+[narrow-only], [narrow-and-wide-only] {
+  display: auto !important;
+}
+
+[tablet-only] {
+  display: none !important;
+}
+
+[wide-only], [desktop-only] {
+  display: none !important;
+}
+
+
+/* --- [ App Layout ] --- */
+
+.app-layout {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  flex: 1;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+.app-layout.view {
+  position: absolute;
+  background: var(--background-color);
+  z-index: 10;
+}
+
+/* Header of App Layout */
+.app-layout > header {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.app-layout > header::before {
+  background-color: var(--background-color);
+  inset: 0;
+  content: "";
+  position: absolute;
+  opacity: var(--app-header-opacity, 0.9);
+  width: 100%;
+  height: 100%;
+}
+
+.app-layout > header[opaque]::before {
+  opacity: var(--app-header-opacity, 1);
+}
+
+
+/* App Bars in Header */
+header > .app-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: var(--app-bar-size, 54px);
+  box-sizing: border-box;
+  padding: 0 var(--app-bar-padding, 16px);
+  background: var(--app-bar-color-background, inherit);
+  color: var(--app-bar-color-on-background, inherit);
+}
+
+/* Enable Header Sticky */
+header[sticky-enabled] {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Title Wrappers in App Bar */
+.app-bar .title-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0 8px;
+    height: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Links as Button in App Bar */
+.app-bar a[role="button"] {
+  margin: 0;
+  color: var(--on-background-color);
+  opacity: var(--opacity-md-icon-inactive);
+}
+
+.app-bar a[role="button"]:hover {
+  color: var(--primary-color);
+  opacity: var(--opacity-md-active);
+  text-decoration: none;
+}
+
+
+/* ---[ End of App Layout ]--- */
+
+
+
 /* === Toasts Styles === */
 
-/* Toasts */
-#toasts {
+/* All Toasts */
+#toasts,
+main > .toasts,
+aside > .toasts {
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -296,7 +421,8 @@ body, #appContainer {
 }
 
 /* Success - Toast Emoji */
-.toast-emoji.success {
+.toast-emoji.success,
+.toast-emoji.st {
   --toast-emoji-image: url('../images/gifs/emoji_thumbs_up.gif');
 }
 
@@ -318,6 +444,7 @@ body, #appContainer {
   position: relative;
   width: var(--aside-width, 50%);
   height: 100%;
+  z-index: 100;
 }
 
 
@@ -401,12 +528,49 @@ aside > span.app-logo {
   font-size: 0.75rem;
 }
 
-/* Vertical Nav Bar */
-.nav-bar.vertical {
+/* Vertical Nav Bar - or - Side Bar */
+.nav-bar.vertical, #sideBar {
   width: var(--nav-bar-size, 54px);
   height: 100%;
-  padding: var(--nav-bar-padding-vertical, 0);
+  padding: var(--side-bar-padding-vertical, 0);
+  background-color: var(--side-bar-background-color, var(--background-color));
 }
+
+
+/* Nav Labels of SideBar */
+#sideBar .nav-label {
+  font-size: var(--side-bar-label-size, 0.75rem);
+  line-height: 1.25rem;
+}
+
+
+/* Nav Labels of NavBar */
+#navBar .nav-label, nav-bar .nav-label {
+  font-size: var(--nav-bar-label-size, 0.7rem);
+  top: -4px;
+}
+
+/* All horizontal dividers in vertical nav bar */
+.nav-bar.vertical span.divider.horizontal,
+#sideBar span.divider.horizontal {
+  position: relative;
+  width: var(--side-bar-divider-width, 70%);
+  margin: 0 auto;
+}
+
+
+/* Content of Vertical Nav Bar / Side Bar */
+.nav-bar.vertical > [content],
+#sideBar > [content] {
+  width: 100%;
+  height: auto;
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
 
 
 /* Responsive Vertical Nav Bar */
@@ -461,9 +625,9 @@ span.app-logo {
   background-color: var(--app-logo-color, var(--on-background-color));
   opacity: var(--app-logo-opacity, inherit);
 
-  -webkit-mask: url('../../assets/logos/logo.svg') no-repeat 50% 50%;
-  -moz-mask: url('../../assets/logos/logo.svg') no-repeat 50% 50%;
-  mask: url('../../assets/logos/logo.svg') no-repeat 50% 50%;
+  -webkit-mask: url('../../assets/logos/logo-icon.svg') no-repeat 50% 50%;
+  -moz-mask: url('../../assets/logos/logo-icon.svg') no-repeat 50% 50%;
+  mask: url('../../assets/logos/logo-icon.svg') no-repeat 50% 50%;
 
   -webkit-mask-size: cover;
   -moz-mask-size: cover;
@@ -582,6 +746,139 @@ a[active] .icon-button, a[role="icon-button"][active] {
   box-sizing: border-box;
   padding: 8px 16px;
 }
+
+/* App Layout [content] styles */
+
+
+/* [content] */
+.app-layout > [content] {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  flex: 1;
+  scroll-behavior: smooth;
+}
+
+/* [content] Scrollable */
+.app-layout > [content][scrollable] {
+  overflow: scroll;
+}
+
+.app-layout > [content] > .container[not-connected] {
+  /* text-align: center; */
+}
+
+
+.app-layout > [content] > .container[not-connected] p[info] {
+  max-width: 420px;
+}
+
+/* Container of [content] */
+.app-layout > [content] > .container {
+  width: 100%;
+  min-height: calc(100vh - var(--app-bar-size, 54px));
+  height: 100%;/* b4: calc(100vh - var(--app-bar-size, 54px)); */
+  box-sizing: border-box;
+  padding: 8px 16px;
+}
+
+/* [empty] Container in [content] */
+.app-layout > [content] > .container[empty] {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 24px;
+  user-select: none;
+}
+
+.app-layout > [content] > .container[empty][not-connected] .doodle {
+  --empty-doodle-image: url('../images/lock.png');
+}
+
+
+.app-layout > [content] > .container[empty] .doodle {
+  width: var(--empty-doodle-size, 200px);
+  height: var(--empty-doodle-size, 200px);
+  background-color: inherit;
+  margin-top: -48px;
+  background-image: var(--empty-doodle-image, url('../images/doodles/doodle-todolist-empty.svg'));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+.app-layout > [content] > .container[empty] .doodle[mask] {
+
+  background-image: none;
+  background-color: var(--empty-doodle-color, var(--on-background-color));
+
+  opacity: var(--empty-doodle-opacity, var(--opacity-md-icon-inactive));
+
+  -webkit-mask-image: var(--empty-doodle-image, url('../images/doodles/doodle-todolist-empty.svg'));
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: cover;
+
+  mask-image: var(--empty-doodle-image, url('../images/doodles/doodle-todolist-empty.svg'));
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
+
+}
+
+
+.app-layout > [content] > .container[empty] .ddd {
+  width: var(--ddd-size, 200px);
+  height: var(--ddd-size, 200px);
+  background-color: inherit;
+  background-image: var(--ddd-image-url, url('../images/3d/likes-woman_excited.svg'));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+/*
+.app-layout > [content] > .container:not( > .doodle {
+  width: var(--empty-doodle-size, 200px);
+  height: var(--empty-doodle-size, 200px);
+  background-color: inherit;
+  margin-top: -48px;
+  background-image: var(--empty-doodle-image, url('../images/doodles/doodle-todolist-empty.svg'));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+*/
+
+
+/** Empty Container Title */
+.container[empty] h2, .container[empty] [title] {
+  margin: 16px;
+  margin-bottom: 6px;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+/** Empty Container Note or Description */
+.container[empty] p, .container[empty] [note] {
+  margin-top: 0;
+  opacity: 0.6;
+  font-size: 16px;
+  line-height: 24px;
+  max-width: 300px;
+}
+
+.container[empty] p span.icon {
+  position: relative;
+  top: 6px;
+}
+
+.container[empty] button, .container[empty] a[role="button"] {
+  padding: 0.5rem 3rem;
+  text-transform: capitalize;
+}
+/* === end of [content] styles === */
 
 
 /* ===<<< Form ..+.. Input Default Styles >>>=== */
@@ -1103,14 +1400,21 @@ a.nav-link {
   fill: var(--nav-icon-color, var(--on-background-color));
 }
 
+a.nav-link.icon-wrapper {
+  opacity: var(--side-bar-logo-opacity, 0.98);
+}
+
 /* App Logo in an Nav Link */
 a.nav-link span.app-logo {
-  opacity: inherit;
+  --app-logo-size: var(--side-bar-logo-size, 48px);
+  --app-logo-color: var(--side-bar-logo-color, var(--primary-color));
+  --app-logo-opacity: inherit;
 }
 
 
 /* Initials in Nav Link */
-a.nav-link span.initials {
+a.nav-link span.initials, 
+a.nav-link span[initials] {
   display: flex;
   width: 32px;
   height: 32px;
@@ -1118,7 +1422,7 @@ a.nav-link span.initials {
   text-transform: uppercase;
   border: 2px var(--on-background-color);
   color: var(--on-background-color);
-  border-style: dotted dashed;
+  /* border-style: dotted dashed; */
   flex-direction: column;
   font-weight: bold;
   justify-content: center;
@@ -1127,20 +1431,28 @@ a.nav-link span.initials {
   border-radius: 100%;
   padding: 4px;
   box-sizing: border-box;
+
+  opacity: 1;
+  border: 0;
+  font-size: 1rem;
+  color: inherit;
 }
 
 /* Active Initials */
-a.nav-link[active] span.initials {
+a.nav-link[active] span.initials,
+a.nav-link[active] span[initials] {
   border: 0;
-  background: var(--initials-background-color, var(--surface-variant-color));
-  color: var(--initials-text-color, var(--on-surface-variant-color));
+  border-style: solid;
+  border-color: var(--primary-color);
+  /*background: var(--initials-background-color, var(--surface-variant-color));
+  color: var(--initials-text-color, var(--on-surface-variant-color)); */
 }
 
 /* Active Nav Links */
 a.nav-link[active] {
   opacity: 1;
   color: var(--nav-icon-color-active, var(--primary-color));
-  pointer-events: none; 
+  /* pointer-events: none; */
 }
 
 /* App Logo in an active Nav Link */
@@ -1190,11 +1502,20 @@ em {
  * ***************************************
  */
 @media (min-width: 460px) {
-  
-  /* Vertical Nav Bar */
-  .nav-bar.vertical {
-    width: var(--nav-bar-size, 78px); /* b4: 68px */
+  /* === SPECIFIC VIEWPORTS ONLY === */
+
+  [narrow-only] {
+    display: none !important;
   }
+
+  [tablet-only], [narrow-and-tablet-only] {
+    display: auto !important;
+  }
+
+  /* Vertical Nav Bar */
+  .nav-bar.vertical, #sideBar {
+    width: var(--side-bar-size, 78px); /* b4: 78px */
+  } 
 
 
   /* Responsive Vertical Nav Bar */
@@ -1219,7 +1540,7 @@ em {
   }
 
   /* all App Bars in App Header */
-  #appHeader > .app-bar {
+  #appHeader > .app-bar, header > .app-bar {
     height: var(--app-bar-size, 60px);
   }
 
@@ -1296,6 +1617,83 @@ em {
 
 }
 
+/**
+ * --> Narrow - Horizontal Layout <--
+ * Phone: ? (Responsive)
+ * Height: 0px <-to-> 460px
+ */
+@media (max-height: 460px) {
+
+  /* Content of Vertical Nav Bar / Side Bar */
+  .nav-bar.vertical > [content],
+  #sideBar > [content] {
+    justify-content: start;
+  }
+
+}
+
+
+@media (min-width: 768px) {
+  /* === SPECIFIC VIEWPORTS ONLY === */
+  [narrow-only] {
+    display: none !important;
+  }
+
+  [tablet-only], [narrow-and-tablet-only] {
+    display: none !important;
+  }
+
+  [wide-only], [desktop-only] {
+    display: flex !important;
+  }
+
+  /* Vertical Nav Bar */
+  .nav-bar.vertical, #sideBar {
+    width: var(--side-bar-size, 90px); /* b4: 78px */
+    min-width: var(--side-bar-size, 90px); /* b4: 78px */
+  }
+}
+
+
+
+@media (max-width: 768px) {
+
+  /* ASIDE */
+  #pages > aside {
+    position: absolute;
+    inset: 0;
+    background: var(--aside-background-color, inherit);
+    color: var(--aside-text-color, inherit);
+    width: 100%;
+    height: 100%;
+
+    /*
+    -webkit-animation: slideRight 0.3s ease-in-out forwards;
+    -moz-animation: slideRight 0.3s ease-in-out forwards;
+    animation: slideRight 0.3s ease-in-out forwards;
+    */
+  }
+
+  /* Not [opened] ASIDE */
+  #pages > aside:not([opened]) {
+    display: none;
+  }
+
+  /* [opened] ASIDE */
+  #pages > aside[opened] {
+    -webkit-animation: slideFromRight 0.3s ease-in-out forwards;
+    -moz-animation: slideFromRight 0.3s ease-in-out forwards;
+    animation: slideFromRight 0.3s ease-in-out forwards;
+  }
+
+  /* [closing] ASIDE */
+  #pages > aside[closing] {
+    -webkit-animation: slideRight 0.3s ease-in-out forwards !important;
+    -moz-animation: slideRight 0.3s ease-in-out forwards !important;
+    animation: slideRight 0.3s ease-in-out forwards !important;
+  }
+
+}
 
 
 /* 
