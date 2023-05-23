@@ -82,15 +82,34 @@ export const WELCOME_SCREEN = 'welcome';
 
 // pages
 export const HOME_PAGE = 'home';
-export const SEARCH_PAGE = 'search';
-export const ARTICLES_PAGE = 'articles';
-export const SAVES_PAGE = 'saves';
+export const SEARCH_PAGE = 'search'; // <- or explore 🤔
+export const EXPLORE_PAGE = 'explore'; // <- or search 😜
+export const MOVIES_PAGE = 'movies';
+export const SERIES_PAGE = 'series';
+export const FAVORITES_PAGE = 'favorites';
+export const ACCOUNT_PAGE = 'account';
 export const PROFILE_PAGE = 'profile';
-export const ADMIN_PAGE = 'admin';
 export const SETTINGS_PAGE = 'settings';
+export const HELP_PAGE = 'help';
 
-// default view
-export const DEFAULT_VIEW = 'default';
+// export const ARTICLES_PAGE = 'articles';
+// export const SAVES_PAGE = 'saves';
+// export const PROFILE_PAGE = 'profile';
+// export const ADMIN_PAGE = 'admin';
+// export const SETTINGS_PAGE = 'settings';
+
+// views
+export const VIEW_DEFAULT = 'default';
+export const VIEW_LOGIN = 'login';
+export const VIEW_REGISTER = 'register';
+export const VIEW_INFO = 'info';
+export const VIEW_IDENTITY = 'identity';
+export const VIEW_EMAIL = 'email';
+export const VIEW_PASSWORD = 'password';
+export const VIEW_LANGUAGE = 'language';
+export const VIEW_THEME = 'theme';
+export const VIEW_CONTACT = 'contact';
+export const VIEW_ABOUT = 'about';
 
 
 // a list of all assets that have been loaded
@@ -204,12 +223,24 @@ export class App extends Engine {
    */
   static get pages() {
     return [
-      { name: HOME_PAGE , views: [DEFAULT_VIEW, 'login', 'register'] },
-      { name: SEARCH_PAGE, views: [DEFAULT_VIEW] },
-      { name: ARTICLES_PAGE, views: [DEFAULT_VIEW] },
-      { name: PROFILE_PAGE, views: [DEFAULT_VIEW, 'edit'] },
-      { name: ADMIN_PAGE, views: ['dashboard', 'users', 'articles', 'comments', 'categories', 'rights'] },
-      { name: SETTINGS_PAGE, views: [DEFAULT_VIEW, 'about', 'languages', 'theme'] },
+      { name: HOME_PAGE , views: [VIEW_DEFAULT, VIEW_LOGIN, VIEW_REGISTER] },
+
+      { name: SEARCH_PAGE, views: [VIEW_DEFAULT] },
+      { name: EXPLORE_PAGE, views: [VIEW_DEFAULT] },
+
+      { name: MOVIES_PAGE, views: [VIEW_DEFAULT] },
+
+      { name: SERIES_PAGE, views: [VIEW_DEFAULT] },
+
+      { name: FAVORITES_PAGE, views: [VIEW_DEFAULT] },
+
+      { name: ACCOUNT_PAGE, views: [VIEW_DEFAULT] },
+
+      { name: SETTINGS_PAGE, views: [VIEW_DEFAULT, VIEW_LANGUAGE, VIEW_THEME] },
+
+      { name: PROFILE_PAGE, views: [VIEW_DEFAULT, VIEW_IDENTITY, VIEW_EMAIL, VIEW_PASSWORD] },
+
+      { name: HELP_PAGE, views: [VIEW_DEFAULT, VIEW_CONTACT, VIEW_ABOUT] }
     ];
   }
 
@@ -299,7 +330,7 @@ export class App extends Engine {
     this.i18n.dataLoaded = (data) => this._onI18nDataLoaded(data);
 
     // list of primary pages
-    this.primaryPages = [ HOME_PAGE, ARTICLES_PAGE, SEARCH_PAGE, SAVES_PAGE, PROFILE_PAGE ];
+    this.primaryPages = [ HOME_PAGE, SEARCH_PAGE, MOVIES_PAGE, SERIES_PAGE, FAVORITES_PAGE, ACCOUNT_PAGE, PROFILE_PAGE ];
 
     // show / log a welcome message
     this.#showWelcomeMessage();
@@ -320,7 +351,7 @@ export class App extends Engine {
     // Initialize public properties
     this.id = 'app';
     this.name = APP_NAME;
-    this.title = 'Peace & Love';
+    this.title = 'Muvisho';
     this.updated = false;
     
     // Initialize private properties
@@ -1110,14 +1141,22 @@ export class App extends Engine {
   }
 
   /**
-   * Returns the navBar element in `mainPagesEl`
+   * Returns the navBar element in `pagesEl`
    *
    * @return { Element }
    */
   get navBarEl() {
-    return this.mainPagesEl.querySelector('.nav-bar');
+    return this.pagesEl.querySelector('.nav-bar');
   }
 
+  /**
+   * Returns the side bar element in `pagesEl`
+   *
+   * @return { Element }
+   */
+  get sideBarEl() {
+    return this.pagesEl.querySelector('#sideBar');
+  }
 
 
 
@@ -1203,6 +1242,8 @@ export class App extends Engine {
    */
   _getPagesHtmlTemplate() {
     return html`
+      <!-- NOTE: SideBar will be injected here -->
+
       <!-- Main Pages -->
       <main class="flex-layout vertical">
 
@@ -1224,6 +1265,19 @@ export class App extends Engine {
         <!-- End of Pages-Wrapper -->
   
         <!-- NOTE: NavBar will be injected here -->
+
+        <!-- Backdrop of MAIN -->
+        <div class="backdrop" fit hidden></div>
+
+        <!-- Menus of MAIN -->
+        <div class="menus" fit hidden></div>
+
+        <!-- Dialogs of MAIN -->
+        <div class="dialogs" fit hidden></div>
+
+        <!-- Toasts of MAIN -->
+        <div class="toasts" fit hidden></div>
+
   
       </main>
       <!-- End of Main Pages -->
@@ -1251,6 +1305,19 @@ export class App extends Engine {
 
         <!-- Outlined App Logo -->
         <span class="app-logo" outlined></span>
+
+
+        <!-- Backdrop of ASIDE -->
+        <div class="backdrop" fit hidden></div>
+
+        <!-- Menus of ASIDE -->
+        <div class="menus" fit hidden></div>
+
+        <!-- Dialogs of ASIDE -->
+        <div class="dialogs" fit hidden></div>
+
+        <!-- Toasts of ASIDE -->
+        <div class="toasts" fit hidden></div>
 
         <!-- Left - Vertical Divider -->
         <span class="divider vertical left"></span>
@@ -1281,34 +1348,36 @@ export class App extends Engine {
         <!-- Top - Horizontal Divider -->
         <span class="divider horizontal top"></span>
 
+        <!-- TODO: Loop through the [primaryPages] array to display each nav link ;) -->
+
         <!-- Home - NavLink -->
-        <a title="Home" href="./" class="home nav-link">
+        <a title="${this.i18n.getString('homeHint')}" href="./" class="${HOME_PAGE} nav-link">
           <span class="material-icons icon">home</span>
-          <span class="label">Home</span>
+          <span class="label nav-label">${this.i18n.getString('home')}</span>
         </a>
 
-        <!-- Articles - NavLink -->
-        <a title="Articles" href="./articles" class="articles nav-link">
-          <span class="material-icons icon">feed</span>
-          <span class="label">Articles</span>
-        </a>
-
-        <!-- Search - NavLink -->
-        <a title="Search" href="./search" class="search nav-link">
-          <span class="material-icons icon">search</span>
-          <span class="label">Search</span>
+        <!-- Movies - NavLink -->
+        <a title="${this.i18n.getString('moviesHint')}" href="./movies" class="${MOVIES_PAGE} nav-link">
+          <span class="material-icons icon">movie</span>
+          <span class="label nav-label">${this.i18n.getString('movies')}</span>
         </a>
         
-        <!-- Saves - NavLink -->
-        <a title="Saves" href="./saves" class="saves nav-link">
-          <span class="material-icons icon">bookmark_outline</span>
-          <span class="label">Saves</span>
+        <!-- Series - NavLink -->
+        <a title="${this.i18n.getString('seriesHint')}" href="./series" class="${SERIES_PAGE} nav-link">
+          <span class="material-icons icon">theaters</span>
+          <span class="label nav-label">${this.i18n.getString('tvShows')}</span>
         </a>
-
-        <!-- Profile - NavLink -->
-        <a title="Profile" href="./profile" class="profile nav-link">
+        
+        <!-- Favorites - NavLink -->
+        <a title="${this.i18n.getString('favoritesHint')}" href="./favorites" class="${FAVORITES_PAGE} nav-link">
+          <span class="material-icons icon">star_border</span>
+          <span class="label nav-label">${this.i18n.getString('favorites')}</span>
+        </a>
+        
+        <!-- Profile / Account Info - NavLink -->
+        <a title="${this.i18n.getString('profileHint')}" href="./profile" class="${PROFILE_PAGE} nav-link">
           <span class="material-icons icon">person</span>
-          <span class="label">Profile</span>
+          <span class="label nav-label">${this.i18n.getString('profile')}</span>
         </a>
 
       </nav>
@@ -1316,56 +1385,73 @@ export class App extends Engine {
 
 
     // Create a veritcal navBar html template as `vertNavbarHtmlTemplate`
+    // NOTE: This template has a `sideBar` id
     let vertNavbarHtmlTemplate = html`
-      <nav class="nav-bar vertical flex-layout center">
+      <nav id="sideBar" class="nav-bar vertical flex-layout center">
         <!-- Logo | Icon-Wrapper -->
         <a title="${this.name}" class="nav-link logo icon-wrapper" active>
           <!-- App Logo -->
           <span class="app-logo"></span>
         </a>
 
-        <span flex></span>
+        <span flex hidden></span>
 
-        <!-- Home - NavLink -->
-        <a title="Home" href="./" class="home nav-link">
-          <span class="material-icons icon">home</span>
-          <span class="label">Home</span>
-        </a>
+        <!-- Side Bar Content -->
+        <div class="vertical flex-layout flex centered" content noscrollbars>
 
-        <!-- Articles - NavLink -->
-        <a title="Articles" href="./articles" class="articles nav-link">
-          <span class="material-icons icon">feed</span>
-          <span class="label">Articles</span>
-        </a>
+          <!-- TODO: Loop through the [primaryPages] array to display each nav link ;) -->
 
-        <!-- Search - NavLink -->
-        <a title="Search" href="./search" class="search nav-link">
-          <span class="material-icons icon">search</span>
-          <span class="label">Search</span>
-        </a>
-        
-        <!-- Saves - NavLink -->
-        <a title="Saves" href="./saves" class="saves nav-link">
-          <span class="material-icons icon">bookmark_outline</span>
-          <span class="label">Saves</span>
-        </a>
+          <!-- Home - NavLink -->
+          <a title="${this.i18n.getString('homeHint')}" href="./" class="${HOME_PAGE} nav-link">
+            <span class="material-icons icon">home</span>
+            <span class="label nav-label">${this.i18n.getString('home')}</span>
+          </a>
 
-        <!-- Profile - NavLink -->
-        <a title="Profile" href="./profile" class="profile nav-link">
+          <!-- Search / Explore - NavLink -->
+          <a title="${this.i18n.getString('searchHint')}" href="./search" class="${SEARCH_PAGE}  nav-link">
+            <span class="material-icons icon">search</span>
+            <span class="label nav-label">${this.i18n.getString('search')}</span>
+          </a>
+
+          <!-- Movies - NavLink -->
+          <a title="${this.i18n.getString('moviesHint')}" href="./movies" class="${MOVIES_PAGE} nav-link">
+            <span class="material-icons icon">movie</span>
+            <span class="label nav-label">${this.i18n.getString('movies')}</span>
+          </a>
+         
+          <!-- Series - NavLink -->
+          <a title="${this.i18n.getString('seriesHint')}" href="./series" class="${SERIES_PAGE} nav-link">
+            <span class="material-icons icon">theaters</span>
+            <span class="label nav-label">${this.i18n.getString('tvShows')}</span>
+          </a>
+
+          <!-- Favorites - NavLink -->
+          <a title="${this.i18n.getString('favoritesHint')}" href="./favorites" class="${FAVORITES_PAGE} nav-link">
+            <span class="material-icons icon">star_border</span>
+            <span class="label nav-label">${this.i18n.getString('favorites')}</span>
+          </a>
+
+          <span class="divider horizontal"></span>
+
+          <!-- Account - NavLink -->
+          <a title="${this.i18n.getString('accountHint')}" href="./account" class="${ACCOUNT_PAGE} nav-link">
+            <span class="material-icons icon">settings</span>
+            <span class="label nav-label">${this.i18n.getString('account')}</span>
+          </a>
+
+        </div>
+        <!-- End of Side Bar Content -->
+
+        <span flex hidden></span>
+
+        <!-- Profile / Account Info - NavLink -->
+        <a title="${this.i18n.getString('profileHint')}" href="./profile" class="${PROFILE_PAGE} nav-link">
           <span class="material-icons icon">person</span>
-          <span class="label">Profile</span>
+          <span class="label nav-label">${this.i18n.getString('profile')}</span>
         </a>
-
-        <span class="divider horizontal"></span>
-        <!-- Settings - NavLink -->
-        <a title="Settings" href="./settings" class="settings nav-link">
-          <span class="material-icons icon">settings</span>
-        </a>
-
-        <span flex></span>
 
         <!-- Log Out - NavLink -->
-        <a title="Log out" class="nav-link" role="icon-button">
+        <a title="Log out" class="nav-link" role="icon-button" hidden>
           <span class="material-icons icon">power_settings_new</span>
         </a>
 
@@ -1584,7 +1670,7 @@ export class App extends Engine {
     // if the main pages elements are displayed...
     if (this.mainPagesEl) {
       // ...replace the 'horizontal' class of the main element w/ 'vertical'
-      this.mainPagesEl.classList.replace('horizontal', 'vertical');
+      // this.mainPagesEl.classList.replace('horizontal', 'vertical');
 
       // remove the current navBar element
       this.navBarEl.remove();
@@ -1618,16 +1704,16 @@ export class App extends Engine {
     // if the main pages elements are displayed...
     if (this.mainPagesEl) {
       // ...replace the 'vertical' class of the main element w/ 'horizontal'
-      this.mainPagesEl.classList.replace('vertical', 'horizontal');
+      // this.mainPagesEl.classList.replace('vertical', 'horizontal');
 
       // remove the current navBar element
       this.navBarEl.remove();
 
-      // get the navbar's *vertical* html template as `navbarHtml`
-      let navbarHtml = this._getNavbarHtmlTemplate('vertical');
+      // get the navbar's *vertical* html template as `sidebarHtml`
+      let sidebarHtml = this._getNavbarHtmlTemplate('vertical');
 
-      // append / insert the `navbarHtml` into `mainPagesEl` (afterbegin)
-      this.mainPagesEl.insertAdjacentHTML('afterbegin', navbarHtml);
+      // append / insert the `sidebarHtml` into `pagesEl` (afterbegin)
+      this.pagesEl.insertAdjacentHTML('afterbegin', sidebarHtml);
 
       // notify the nav links
       this.notifyNavLinks();
@@ -1715,8 +1801,16 @@ export class App extends Engine {
     // get the navbar's html template as `navbarHtml`
     let navbarHtml = this._getNavbarHtmlTemplate(this.isNarrowLayout ? 'horizontal' : 'vertical');
 
-    // append the `navbarHtml` into `mainPagesEl`
-    this.mainPagesEl.insertAdjacentHTML('beforeend', navbarHtml);
+    // If the layout is `narrow` ...
+    if (this.isNarrowLayout) {
+      // ...insert the `navbarHtml` into the `mainPagesEl` before end
+      this.mainPagesEl.insertAdjacentHTML('beforeend', navbarHtml);
+
+    } else { // <- layout is `wide`
+      // ...insert the `navbarHtml` (or sideBar) into the `pagesEl` after begin
+      this.pagesEl.insertAdjacentHTML('afterbegin', navbarHtml);
+    }
+
   }
 
 
@@ -1747,7 +1841,7 @@ export class App extends Engine {
    */
   _onI18nDataLoaded(loadedData) {
     // get the hello lang value
-    let hello = muvishoApp.i18n.getString('hello');
+    let hello = this.i18n.getString('hello');
 
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.log(`\x1b[33m[_onI18nDataLoaded]: hello => ${hello} & loadedData => \x1b[0m\x1b[35m%o\x1b[0m \x1b[0m`, loadedData);
