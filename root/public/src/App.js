@@ -200,8 +200,9 @@ export class App extends Engine {
   static get animations() {
     return [ 
       'fade-in',
-      'pop-in'
-      // 'slide-from-down'
+      'pop-in',
+      'slide-from-left',
+      'slide-from-down'
     ];
   }
 
@@ -1376,7 +1377,7 @@ export class App extends Engine {
 
     // Create a horizontal navBar html template as `horizNavbarHtmlTemplate`
     let horizNavbarHtmlTemplate = html`
-      <nav class="nav-bar horizontal flex-layout center">
+      <nav class="nav-bar slide-from-down horizontal flex-layout center">
         <!-- Top - Horizontal Divider -->
         <span class="divider horizontal top"></span>
 
@@ -1419,7 +1420,7 @@ export class App extends Engine {
     // Create a veritcal navBar html template as `vertNavbarHtmlTemplate`
     // NOTE: This template has a `sideBar` id
     let vertNavbarHtmlTemplate = html`
-      <nav id="sideBar" class="nav-bar vertical flex-layout center">
+      <nav id="sideBar" class="nav-bar slide-from-left vertical flex-layout center">
         <!-- Logo | Icon-Wrapper -->
         <a title="${this.name}" class="nav-link logo icon-wrapper" active>
           <!-- App Logo -->
