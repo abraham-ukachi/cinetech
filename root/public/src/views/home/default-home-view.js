@@ -1,7 +1,7 @@
 /* 
-* @license
-* blog-js
-* Copyright (c) 2023 Abraham Ukachi. The BlogJS Project Contributors. All rights reserved.
+* @license MIT
+* cinetech (muvisho)
+* Copyright (c) 2023 Abraham Ukachi. The Muvisho Project Contributors. All rights reserved.
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
 * @name: Default Home View
 * @type: script
 * @author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
-* @contributor: Hajar Aslan <hajar.aslan@laplateforme.io>
 *
 * Example usage:
 *   1-|> import { DefaultHomeView } from 'src/views/home/default-home-view.js';
