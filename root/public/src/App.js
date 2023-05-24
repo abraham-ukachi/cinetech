@@ -140,6 +140,29 @@ export const ERROR_TOAST_TYPE = 'error';
 // default toast timeout
 export const DEFAULT_TOAST_TIMEOUT = 5000; // <- 5 seconds
 
+// ++++++ Constants 4rm Maxaboom +++++++
+/*
+// toast types
+export const ERROR_TOAST = 'et';
+export const SUCCESS_TOAST = 'st';
+export const GOOD_TOAST = '1t';
+export const BAD_TOAST = '2t';
+export const NORMAL_TOAST = '0t';
+export const DEFAULT_TOAST = NORMAL_TOAST; // <- default toast type is normal
+// default toast timeout
+export const DEFAULT_TOAST_TIMEOUT = 5; // <- default toast timeout is 5 seconds
+export const DEFAULT_MENU_TIMEOUT = 0.5;
+export const DEFAULT_BACKDROP_TIMEOUT = 0.5;
+
+// parts
+export const MAIN_PART = '0p';
+export const ASIDE_PART = '1p';
+export const FULL_PART = '2p';
+export const DEFAULT_PART = FULL_PART; // <- default part is full
+
+*/
+// +++++ End of Constants 4rm Maxaboom +++++++
+
 console.log(Engine);
 
 
@@ -168,7 +191,8 @@ export class App extends Engine {
       updated: { type: Boolean },
       labelsHidden: { type: Boolean },
 
-      _navbarOrientation: { type: String }
+      _navbarOrientation: { type: String },
+      _pageLoading: { type: Boolean }
     };
   }
 
@@ -228,7 +252,6 @@ export class App extends Engine {
       { name: HOME_PAGE , views: [VIEW_DEFAULT, VIEW_LOGIN, VIEW_REGISTER] },
 
       { name: SEARCH_PAGE, views: [VIEW_DEFAULT] },
-      { name: EXPLORE_PAGE, views: [VIEW_DEFAULT] },
 
       { name: MOVIES_PAGE, views: [VIEW_DEFAULT] },
 
@@ -282,14 +305,14 @@ export class App extends Engine {
   static get supportedPages() {
     return [
       {id: 'home', type: 'main', name: 'Home'},
-      {id: 'articles', type: 'main', name: 'Articles'},
-      {id: 'search', type: 'main', name: 'Search'},
-      {id: 'saves', type: 'main', name: 'Saves'},
-      {id: 'profile', type: 'main', name: 'Profile'},
+      {id: 'search', type: 'aside', name: 'Search'},
+      {id: 'movies', type: 'main', name: 'Movies'},
+      {id: 'series', type: 'main', name: 'Series'},
+      {id: 'favorites', type: 'main', name: 'Favorites'},
+      {id: 'account', type: 'main', name: 'Account'},
+      {id: 'profile', type: 'aside', name: 'Profile'},
       {id: 'settings', type: 'main', name: 'Settings'},
-      {id: 'admin', type: 'main', name: 'Admin'},
-      {id: 'article', type: 'aside', name: 'Article'},
-      {id: 'editor', type: 'aside', name: 'Editor'}
+      {id: 'help', type: 'aside', name: 'Help'}
     ];
   }
 
@@ -359,6 +382,7 @@ export class App extends Engine {
 
     // Initialize private properties
     this._navbarOrientation = 'horizontal';
+    this._pageLoading = false;
 
     // ====== TESTING PROPERTIES ==========
     
@@ -386,7 +410,7 @@ export class App extends Engine {
    */
   render() {
     return html`
-      
+
       <!-- App Container --> 
       <div id="appContainer" class="theme ${this.theme}" lang="${this.lang}" fit>
 
@@ -410,8 +434,14 @@ export class App extends Engine {
         <div id="toasts" class="fade-in" fit hidden></div>
         <!-- End of Toasts -->
 
+        <!-- Progress Bar -->
+        <div id="progressBar" class="progress-bar" hidden>
+          <span class="progress-bar-value"></span>
+        </div>
+
       </div>
       <!-- End of App Container --> 
+
 
       <!-- NOTE: Style Links will be injected here -->
     `;
@@ -479,6 +509,10 @@ export class App extends Engine {
         this._handleLabelsHiddenChange(prop.value, prop.oldValue);
       }
 
+      if (prop.name === '_pageLoading') {
+        this._handlePageLoadingChange(prop.value, prop.oldValue);
+      }
+
       // DEBUG [4dbsmaster]: tell me about it ;)
       console.log(`\x1b[33m[changedProperties]: 
         1. prop.name => ${prop.name}
@@ -529,6 +563,36 @@ export class App extends Engine {
     this.labelsHidden = !this.labelsHidden;
   }
 
+
+  /**
+   * Shows the app's progress bar.
+   *
+   * @param { Boolean } intermediate - Whether the progress should be intermediate or not
+   */
+  showProgressBar(intermediate = false) {
+    // If intermediate is TRUE
+    if (intermediate) {
+      // add an `intermediate` key to the class list
+      this.progressBarEl.classList.add('intermediate');
+    }
+    
+    // Set the `hidden` property of `progressBarEl` to FALSE
+    this.progressBarEl.hidden = false;
+  }
+
+
+  /**
+   * Hides the app's progress bar.
+   */
+  hideProgressBar() {
+    // Remove any `intermediate` key from the class list of `progressBarEl`
+    this.progressBarEl.classList.remove('intermediate');
+
+    // Set the `hidden` property of `progressBarEl` to TRUE
+    this.progressBarEl.hidden = true;
+  }
+
+  
 
   /**
    * Method used to run the app
@@ -677,10 +741,10 @@ export class App extends Engine {
    */
   getSupportedPages(idsOnly = false) {
     // get the list of supported pages from the constructor as `supportedPages`
-    let supportedPages = this.constructor.supportedPages;
+    //let supportedPages = this.constructor.supportedPages;
 
     // return the `supportedPages` based on the specified `idsOnly` boolean variable
-    return (idsOnly) ? supportedPages.map((page) => page.id) : supportedPages;
+    return (idsOnly) ? App.supportedPages.map((page) => page.id) : App.supportedPages;
   }
 
   /**
@@ -826,6 +890,44 @@ export class App extends Engine {
     }
 
   }
+
+  /**
+   * Notifies the app that a page has been updated recently
+   * NOTE: This method makes hides all pages except the current, based on the current page's type. 
+   *
+   * @param { String } currentPage - the current page of the app (e.g. 'home', 'search', 'movies', etc)
+   */
+  notifyPageUpdate(currentPage = this.currentPage) {
+    // get the type of this page as `pageType`
+    let pageType = this.getPageTypeOf(currentPage);
+
+    // get all pages of the given `pageType` as `pageList`
+    let pageList = this.getAllPagesOf(pageType); 
+
+    // loop through the `pageList`,
+    // for each page element as `pageEl`
+    for (let pageEl of pageList) {
+      // If the id of this page element is the same as the current page's...
+      if (pageEl.id === `${currentPage}Page`) {
+        // ...create an [opened] property on the page
+        pageEl.setAttribute('opened', '');
+
+
+      } else { // <- not the same page
+        // So, remove any current [opened] property
+        pageEl.removeAttribute('opened');
+      }
+
+      // if the 
+      // DEBUG [4dbsmaster]: tell me about it ;)
+      console.log(`\x1b[46;30m[notifyPageUpdate] (2):  pageEl => \x1b[0m`, pageEl);
+    }
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[46;30m[notifyPageUpdate] (1): currentPage => ${currentPage} \x1b[0m`);
+
+   }
+
 
   /**
    * Update the app's nav links using the `currentPage` and `currentView`
@@ -1023,8 +1125,19 @@ export class App extends Engine {
   /* >> PUBLIC GETTERS << */
 
   /**
+   * Returns the `<div id="progressBar">` element
+   *
+   * @returns { Element } 
+   */
+  get progressBarEl() {
+    return this.shadowRoot.getElementById('progressBar');
+  }
+
+
+  /**
    * Returns the current screen of the app
-   * @param { String }
+   *
+   * @returns { String }
    */
   get currentScreen() {
     return this._currentScreen;
@@ -1032,7 +1145,8 @@ export class App extends Engine {
 
   /**
    * Returns the current page of the app 
-   * @param { String } 
+   *
+   * @returns { String } 
    */
   get currentPage() {
     return this._currentPage;
@@ -1041,7 +1155,8 @@ export class App extends Engine {
 
   /**
    * Returns the current view of the app 
-   * @param { String } 
+   *
+   * @returns { String } 
    */
   get currentView() {
     return this._currentView;
@@ -1174,6 +1289,17 @@ export class App extends Engine {
   }
 
   /**
+   * Returns the `<aside>` element in `pagesEl`
+   *
+   * @returns { Element }
+   */
+  get asidePagesEl() {
+    return this.pagesEl.querySelector('aside');
+  }
+
+
+  
+  /**
    * Returns the navBar element in `pagesEl`
    *
    * @return { Element }
@@ -1224,6 +1350,17 @@ export class App extends Engine {
     return (this.#_currentLayout === 'wide') ? true : false; // <- #NN ik ;)
   }
 
+
+  /**
+   * Method used to get a list of all pages of the specified `pageType`
+   * 
+   * @param { String } pageType - the type of the page ('main' or 'aside')
+   *
+   * @returns { NodeList }
+   */
+  getAllPagesOf(pageType = 'main') {
+    return (pageType === 'aside') ? this.asidePagesEl.querySelectorAll('.page') : this.mainPagesEl.querySelectorAll('.page') 
+  }
 
   /* >> Private Methods << */
   
@@ -1517,6 +1654,28 @@ export class App extends Engine {
     console.log(`\x1b[32m[_handleLabelsHiddenChange]: labelsHidden => ${labelsHidden} & oldValue => ${oldValue}\x1b[0m`);
   }
 
+  /**
+   * Handler that is called whenever the `_pageLoading` property changes
+   *
+   * @param { Boolean } pageLoading
+   */
+  _handlePageLoadingChange(pageLoading) {
+    // If the a page is loading...
+    if (pageLoading) {
+      // show the progress bar
+      this.showProgressBar(true); // <- true = intermediate
+
+      // TODO: disabled all nav links and/or pointer events on current page
+      
+    }else { // <- no page is loading
+      // hide the progress bar
+      this.hideProgressBar();
+    }
+
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[33m[_handlePageLoadingChange]: pageLoading => ${pageLoading}\x1b[0m`);
+  }
   
   /**
    * Handler that is called whenever the browser's URL or location changes
@@ -1602,7 +1761,7 @@ export class App extends Engine {
   
   /**
    * Method used to navigate through pages,
-   * useing the specified `page`, `view` and `params`
+   * using the specified `page`, `view` and `params`
    *
    * @param { String } page
    * @param { String } view
@@ -1634,6 +1793,9 @@ export class App extends Engine {
         // update the page's view
         pageObject.view = view;
 
+        // notify page update
+        this.notifyPageUpdate();
+
         // DEBUG [4dbsmaster]: tell me about it ;)
         console.log(`\x1b[3m[_navigatePages] (1): page loaded!!! view => ${view} & pageObject => \x1b[0m`, pageObject);
       });
@@ -1645,6 +1807,8 @@ export class App extends Engine {
       // update the page's view
       pageObject.view = view;
 
+
+
       // If the `pageObject` is not attached to this App...
       if (!pageObject.isAttached) {
         // ...open the page
@@ -1653,6 +1817,9 @@ export class App extends Engine {
         // just show the page 
         pageObject.show();
       }
+
+      // notify page update
+      this.notifyPageUpdate();
      
     }
 
