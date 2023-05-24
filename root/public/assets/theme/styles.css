@@ -245,6 +245,48 @@ body, #appContainer {
   user-select: none; */
 }
 
+
+/* Progress Bar */
+div.progress-bar {
+  position: relative;
+  width: var(--progress-bar-width, 100%);
+  height: var(--progress-bar-height, 4px);
+  z-index: 1000;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+div.progress-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: inherit;
+  height: inherit;
+  background-color: var(--primary-container-color);
+}
+
+div.progress-bar > span.progress-bar-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--progress-bar-value-width, 50%);
+  background-color: var(--primary-color);
+  z-index: 1000;
+}
+
+@keyframes intermediate-horiz {
+  from { left: -50%; }
+  to { left: 100%; }
+}
+
+/* Progress Bar - Intermediate */
+div.progress-bar.intermediate > span.progress-bar-value {
+  animation: intermediate-horiz 2s infinite;
+}
+
+
 /* Screens */
 #screens {
   z-index: 100;
@@ -296,6 +338,7 @@ body, #appContainer {
   flex: 1;
   overflow: scroll;
   scroll-behavior: smooth;
+  background-color: var(--app-layout-background-color, var(--background-color));
 }
 
 .app-layout.view {
@@ -453,6 +496,11 @@ aside > .toasts {
 }
 
 
+.page:not([opened]) {
+  display: none !important;
+}
+
+
 /* App Logo of any ASIDE */
 aside > span.app-logo {
   --app-logo-color: var(--outline-color);
@@ -552,8 +600,8 @@ aside > span.app-logo {
 
 
 /* Nav Labels of NavBar */
-#navBar .nav-label, nav-bar .nav-label {
-  font-size: var(--nav-bar-label-size, 0.7rem);
+#navBar .nav-label, .nav-bar .nav-label {
+  font-size: var(--nav-bar-label-size, 0.6rem);
   top: -4px;
 }
 
@@ -663,6 +711,7 @@ span.divider {
   background: var(--divider-color, var(--outline-color));
   opacity: var(--divider-opacity, var(--opacity-icon-disabled, 0.5));
   pointer-events: none;
+  z-index: 100;
 }
 
 /* Horizontal Dividers */
@@ -1550,7 +1599,7 @@ em {
 
   /* all App Bars in App Header */
   #appHeader > .app-bar, header > .app-bar {
-    height: var(--app-bar-size, 60px);
+    height: var(--app-bar-size, 64px);
   }
 
   /* ASIDE part of App Layout */
