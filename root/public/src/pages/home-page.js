@@ -88,7 +88,7 @@ export class HomePage extends Page {
    * @type { Array }
    */
   static get animations() {
-    return [ 'fade-in', 'slide-from-down' ];
+    return [ 'fade-in', 'slide-from-down', 'slide-from-up' ];
   }
 
 
@@ -155,7 +155,7 @@ export class HomePage extends Page {
       <!-- Home Page Container -->
       <div id="homePageContainer" class="app-layout" fit>
         <!-- Header -->
-        <header id="header" class="app-header">
+        <header id="header" class="app-header slide-from-up">
           <!-- App Bar -->
           <div id="appBar" class="app-bar">
             <!-- Title Wrapper -->
@@ -192,7 +192,7 @@ export class HomePage extends Page {
         <!-- Content -->
         <div content>
           <!-- Views - Container -->
-          <div id="views" class="container vertical flex-layout centered">
+          <div id="views" class="container vertical flex-layout centered fade-in">
 
           </div>
           <!-- End of Views - Container -->
