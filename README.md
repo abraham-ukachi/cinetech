@@ -210,7 +210,7 @@ These are some of the things we did or plan to do, in addition to this project's
 | 38 | *`Response Handler - Controller Helper`* | **app/Controllers/Helpers/ResponseHandler.php** | Pending |
 | 39 | *`Validation Handler - Controller Helper`* | **app/Controllers/Helpers/ValidationHandler.php** | Pending |
 | 40 | *`i18n - JS Helper`* | **root/public/src/helpers/i18n.js** | [Done](./root/public/src/helpers/i18n.js)\* |
-| 41 | *`Request - JS Helper`* | **root/public/src/helpers/request.js** | *_In progress_* |
+| 41 | *`Request - JS Helper`* | **root/public/src/helpers/request.js** | [Done](./root/public/src/helpers/request.js)\* |
 
 > NOTE: (\*) = still needs to be updated. <br>
 > There's certainly a couple of file I must've forgot or not added yet, so I'll keep the above list updated obv. :)
