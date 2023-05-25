@@ -125,7 +125,7 @@ export const loaderMixin = {
       // For each screen name...
       for (let screenName of screens) {
         // get the url of this screen as `screenUrl`
-        let screenUrl = screensDir + `${screenName}-screen.js`; 
+        let screenUrl = `${screensDir}/${screenName}-screen.js`; 
 
         // dynamically import the `screenUrl`
         import(screenUrl).then((module) => {
@@ -190,7 +190,7 @@ export const loaderMixin = {
       // For each page name...
       for (let pageName of pages) {
         // get the url of this page as `pageUrl`
-        let pageUrl = pagesDir + `${pageName}-page.js`; 
+        let pageUrl = `${pagesDir}/${pageName}-page.js`; 
 
         // dynamically import the `pageUrl`
         import(pageUrl).then((module) => {
@@ -262,7 +262,7 @@ export const loaderMixin = {
       // For each view name...
       for (let viewName of views) {
         // get the url of this view as `viewUrl`
-        let viewUrl = viewsDir + page + `/${viewName}-${page}-view.js`; 
+        let viewUrl = `${viewsDir}/${page}/${viewName}-${page}-view.js`; 
 
         // dynamically import the `viewUrl`
         import(viewUrl).then((module) => {
@@ -351,7 +351,7 @@ export const loaderMixin = {
       // For each theme name...
       for (let themeName of themes) {
         // ...get the url of this theme as `themeUrl`
-        let themeUrl = themesDir + `${themeName}.css`; 
+        let themeUrl = `${themesDir}/${themeName}.css`; 
         // get the theme id
         let themeId = `${themeName.toCamelCase()}Theme`; // <- returns eg: 'colorTheme'
 
@@ -433,7 +433,7 @@ export const loaderMixin = {
       // For each style name...
       for (let styleName of styles) {
         // ...get the url of this style as `styleUrl`
-        let styleUrl = stylesDir + `${styleName}-styles.css`; 
+        let styleUrl = `${stylesDir}/${styleName}-styles.css`; 
         // get the style id
         let styleId = `${styleName.toCamelCase()}Style`; // <- returns eg: 'colorStyle'
 
@@ -515,7 +515,7 @@ export const loaderMixin = {
       // For each animation name...
       for (let animationName of animations) {
         // ...get the url of this animation as `animationUrl`
-        let animationUrl = animDir + `${animationName}-animation.css`; 
+        let animationUrl = `${animDir}/${animationName}-animation.css`; 
         // get the animation id
         let animationId = `${animationName.toCamelCase()}Animation`; // <- returns eg: 'colorStyle'
 
