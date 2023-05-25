@@ -210,7 +210,7 @@ These are some of the things we did or plan to do, in addition to this project's
 | 38 | *`Response Handler - Controller Helper`* | **app/Controllers/Helpers/ResponseHandler.php** | Pending |
 | 39 | *`Validation Handler - Controller Helper`* | **app/Controllers/Helpers/ValidationHandler.php** | Pending |
 | 40 | *`i18n - JS Helper`* | **root/public/src/helpers/i18n.js** | [Done](./root/public/src/helpers/i18n.js)\* |
-
+| 41 | *`Request - JS Helper`* | **root/public/src/helpers/request.js** | Pending |
 
 > NOTE: (\*) = still needs to be updated. <br>
 > There's certainly a couple of file I must've forgot or not added yet, so I'll keep the above list updated obv. :)
@@ -422,20 +422,25 @@ open http://localhost/cinetech
 ---
 
 
-## Some Random Screenshots
+## Some Random Screenshots & Giphy Captures
 
 ### On Mobile
 
-| No. |Light Mode | Dark Mode | Note |
-|:----|:-----------|:----------|:-----|
-| 1. | N/A | N/A | - |
+|Light - Theme | Dark - Theme | Classic - Theme |
+|:-------------|:-------------|:----------------|
+| ![Splash Screen - Mobile - Light / Screenshot](./.github/screenshots/mobile/splash-screen-mobile-light.png) | ![Splash Screen - Mobile - Dark / Screenshot](./.github/screenshots/mobile/splash-screen-mobile-dark.png) | ![Splash Screen - Mobile - Classic / Screenshot](./.github/screenshots/mobile/splash-screen-mobile-classic.png) | 
+| ![Welcome Screen - Mobile - Light / GIF ](./.github/gifs/mobile/welcome-screen-mobile-light.gif) | ![Welcome Screen - Mobile - Dark / GIF](./.github/gifs/mobile/welcome-screen-mobile-dark.gif) | ![Welcome Screen - Mobile - Classic / GIF](./.github/gifs/mobile/welcome-screen-mobile-classic.gif) | 
+| N/A | N/A | N/A |
 
 
 ### On Laptop
 
-| No. |Light Mode | Dark Mode | Note |
-|:----|:----------|:----------|:-----|
-| 1. | N/A | N/A | - |
+|Light - Theme | Dark - Theme | Classic - Theme |
+|:-------------|:-------------|:----------------|
+| ![Splash Screen - Laptop - Light / Screenshot](./.github/screenshots/laptop/splash-screen-laptop-light.png) | ![Splash Screen - Laptop - Dark / Screenshot](./.github/screenshots/laptop/splash-screen-laptop-dark.png) | ![Splash Screen - Laptop - Classic / Screenshot](./.github/screenshots/laptop/splash-screen-laptop-classic.png) | 
+| ![Welcome Screen - Laptop - Light / GIF ](./.github/gifs/laptop/welcome-screen-laptop-light.gif) | ![Welcome Screen - Laptop - Dark / GIF](./.github/gifs/laptop/welcome-screen-laptop-dark.gif) | ![Welcome Screen - Laptop - Classic / GIF](./.github/gifs/laptop/welcome-screen-laptop-classic.gif) | 
+| N/A | N/A | N/A |
+
 
 --- 
 
