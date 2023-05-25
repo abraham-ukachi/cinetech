@@ -40,7 +40,7 @@ import { installStorageWatcher } from './helpers/LiveStorage.js';
 import { installRouter, getPageRoute, getViewRoute, getSearchParams } from './helpers/router.js';
 import { installMediaQueryWatcher } from './helpers/mediawatcher.js';
 import I18n from './helpers/i18n.js'; // <- i18n helper
-
+import Request from './helpers/request.js'; // <- request helper
 
 "use strict"; 
 // ^^^^^^^^^ This keeps us on our toes, as it forces us to use all pre-defined variables, among other things 😅
@@ -59,22 +59,22 @@ export const AUTHOR = "Abraham Ukachi";
 export const BASE_DIR = "/cinetech/" // "muvisho-js/"; (for production)
 
 // assets directory
-export const ASSETS_DIR = `${BASE_DIR}root/public/assets/`;
+export const ASSETS_DIR = `${BASE_DIR}root/public/assets`;
 // theme directory
-export const THEME_DIR = `${ASSETS_DIR}theme/`;
+export const THEME_DIR = `${ASSETS_DIR}/theme`;
 // styles directory
-export const STYLES_DIR = `${ASSETS_DIR}stylesheets/`;
+export const STYLES_DIR = `${ASSETS_DIR}/stylesheets`;
 // animations directory
-export const ANIM_DIR = `${ASSETS_DIR}animations/`;
+export const ANIM_DIR = `${ASSETS_DIR}/animations`;
 
 // source directory
-export const SOURCE_DIR = `${BASE_DIR}root/public/src/`;
+export const SOURCE_DIR = `${BASE_DIR}root/public/src`;
 // screens directory
-export const SCREENS_DIR = `${SOURCE_DIR}screens/`;
+export const SCREENS_DIR = `${SOURCE_DIR}/screens`;
 // pages directory
-export const PAGES_DIR = `${SOURCE_DIR}pages/`;
+export const PAGES_DIR = `${SOURCE_DIR}/pages`;
 // views directory
-export const VIEWS_DIR = `${SOURCE_DIR}views/`;
+export const VIEWS_DIR = `${SOURCE_DIR}/views`;
 
 // screens
 export const SPLASH_SCREEN = 'splash';
@@ -347,8 +347,11 @@ export class App extends Engine {
     this.currentPage = null;
     this.currentView = null;
 
-    // create n new `I18n` instance with `lang` as the default language
+    // create a new `I18n` instance with `lang` as the default language
     this.i18n = new I18n(lang);
+    // create an object of the `Request` class
+    this.request = new Request(lang);
+
 
     // when the data is loaded,
     // call the `onReady` method with the loaded data as parameter
@@ -911,7 +914,7 @@ export class App extends Engine {
       if (pageEl.id === `${currentPage}Page`) {
         // ...create an [opened] property on the page
         pageEl.setAttribute('opened', '');
-
+        
 
       } else { // <- not the same page
         // So, remove any current [opened] property
@@ -1123,6 +1126,16 @@ export class App extends Engine {
 
 
   /* >> PUBLIC GETTERS << */
+
+  /**
+   * Returns TRUE if the current device is mobile, FALSE if desktop
+   *
+   * @returns { Boolean }
+   */
+  get isTouchDevice() {
+    return 'ontouchstart' in document.documentElement;
+  }
+
 
   /**
    * Returns the `<div id="progressBar">` element
