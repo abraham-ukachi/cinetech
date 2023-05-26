@@ -141,6 +141,7 @@
 
   pointer-events: none !important;
   cursor: default !important;
+  opacity: var(--opacity-text-disabled);
 }
 
 /* NO SCROLLBARS Property */
@@ -369,6 +370,9 @@ div.progress-bar.intermediate > span.progress-bar-value {
   opacity: var(--app-header-opacity, 1);
 }
 
+[scroll-lock] {
+  overflow: hidden !important;
+}
 
 /* App Bars in Header */
 header > .app-bar {
@@ -382,6 +386,12 @@ header > .app-bar {
   padding: 0 var(--app-bar-padding, 16px);
   background: var(--app-bar-color-background, inherit);
   color: var(--app-bar-color-on-background, inherit);
+
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  -ms-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+
 }
 
 /* Enable Header Sticky */
@@ -838,6 +848,11 @@ a[active] .icon-button, a[role="icon-button"][active] {
   height: 100%;/* b4: calc(100vh - var(--app-bar-size, 54px)); */
   box-sizing: border-box;
   padding: 8px 16px;
+
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 /* [empty] Container in [content] */
@@ -846,6 +861,44 @@ a[active] .icon-button, a[role="icon-button"][active] {
   box-sizing: border-box;
   padding: 24px;
   user-select: none;
+}
+
+/* ==== SPINNERS ==== */
+
+span.spinner {
+  display: block;
+  position: relative;
+  width: var(--spinner-size, 48px);
+  height: var(--spinner-size, 48px);
+
+  background-color: var(--spinner-color, var(--on-background-color));
+  opacity: var(--spinner-opacity, inherit);
+
+  -webkit-mask: var(--spinner-url, url(../spinners/3-dots-scale.svg)) no-repeat 50% 50%;
+  -moz-mask: var(--spinner-url, url(../spinners/3-dots-scale.svg)) no-repeat 50% 50%;
+  mask: var(--spinner-url, url(../spinners/3-dots-scale.svg)) no-repeat 50% 50%;
+
+  -webkit-mask-size: cover;
+  -moz-mask-size: cover;
+  mask-size: cover;
+}
+
+span.spinner.dots-3 {
+  --spinner-url: url(../spinners/3-dots-scale.svg);
+}
+
+span.spinner.dots-12 {
+  --spinner-url: url(../spinners/12-dots-scale-rotate.svg);
+}
+
+
+/* === END of SPINNERS === */
+
+
+
+/* [busy] Container in [content] */
+.app-layout > [content] > .container[busy] {
+
 }
 
 .app-layout > [content] > .container[empty][not-connected] .doodle {
@@ -1133,9 +1186,9 @@ button[contained], a[role="button"][contained] {
   -moz-transform: scale(1);
   transform: scale(1);
 
-  -webkit-transition: all 200ms ease;
-  -moz-transition: all 200ms ease;
-  transition: all 200ms ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 /* Whenever a button that expands is hovered and/or gains focus */
@@ -1549,6 +1602,189 @@ em {
 }
 
 
+/* Slide Animation Delays */
+
+.slide-anim-delay-200ms {
+  --slide-animation-delay: 200ms;
+}
+
+.slide-anim-delay-300ms {
+  --slide-animation-delay: 300ms;
+}
+
+.slide-anim-delay-500ms {
+  --slide-animation-delay: 500ms;
+}
+
+.slide-anim-delay-1s {
+  --slide-animation-delay: 1s;
+}
+
+.slide-anim-delay-2s {
+  --slide-animation-delay: 2s;
+}
+
+
+/* Fade Animation Delays */
+
+.fade-anim-delay-200ms {
+  --fade-animation-delay: 200ms;
+}
+
+.fade-anim-delay-300ms {
+  --fade-animation-delay: 300ms;
+}
+
+.fade-anim-delay-500ms {
+  --fade-animation-delay: 500ms;
+}
+
+.fade-anim-delay-1s {
+  --fade-animation-delay: 1s;
+}
+
+.fade-anim-delay-2s {
+  --fade-animation-delay: 2s;
+}
+
+
+
+/* ==== Chips (Container + Icon Buttons + Chip) ==== */
+
+.chips-container {
+}
+
+.chips-container > * {}
+
+.chips-container > button.icon-button {
+  display: none;
+}
+
+
+
+.chips-container:not([scrollpos="start"]) > ul.chips::before {
+  position: sticky;
+  content: "";
+  width: calc(var(--chips-size, 32px) * 2);
+  min-width: calc(var(--chips-size, 32px) * 2);
+  height: var(--chips-size, 32px);
+  pointer-events: none;
+  top: 0px;
+  left: -3px;
+  z-index: 1;
+  background: linear-gradient(to right, var(--background-color), transparent);
+}
+
+.chips-container:not([scrollpos="start"]) > ul.chips > li.chip:first-child {
+  margin-left: calc(-2 * var(--chips-size, 32px));
+}
+
+.chips-container:not([scrollpos="end"]) > ul.chips > li.chip:last-child {
+  margin-right: calc(-2 * var(--chips-size, 32px));
+}
+
+
+
+.chips-container:not([scrollpos="end"]) > ul.chips::after {
+  position: sticky;
+  content: "";
+  width: calc(var(--chips-size, 32px) * 2);
+  min-width: calc(var(--chips-size, 32px) * 2);
+  height: var(--chips-size, 32px);
+  pointer-events: none;
+  top: 0px;
+  right: -3px;
+  z-index: 1;
+  background: linear-gradient(to right, transparent, var(--background-color));
+}
+
+
+.chips-container > ul.chips {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  height: var(--chips-size, 32px);
+  overflow-y: hidden;
+  overflow-x: auto;
+  margin: 0.5rem;
+  background: var(--chips-background-color, var(--background-color));
+  scroll-behavior: smooth;
+}
+
+ul.chips > li.chip::before {
+  position: absolute;
+  content: '';
+  background: var(--chip-background-color, var(--surface-variant-color));
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  border-radius: var(--chip-radius, 6px);
+  opacity: var(--chip-background-opacity, 0.2);
+
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+ul.chips > li.chip {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: auto;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 0.75rem;
+  margin: 0 0.5rem;
+  border-radius: var(--chip-radius, 6px);
+  font-size: 0.95rem;
+  user-select: none;
+  pointer-events: default;
+  white-space: nowrap;
+
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+}
+
+ul.chips > li.chip:hover::before {
+  opacity: var(--chip-background-opacity-hover, 0.6);
+}
+
+
+ul.chips > li.chip[selected] {
+  background: var(--inverse-surface-color);
+  color: var(--inverse-on-surface-color);
+  font-weight: bold;
+}
+
+ul.chips > li.chip[selected]::before {
+  opacity: var(--chip-background-opacity-selected, var(--opacity-md-icon-active, 0.8));
+  z-index: -1;
+}
+
+
+li.chip span {
+  position: relative;
+  /* opacity: var(--opacity-text-inactive, 0.68); */
+  opacity: var(--opacity-text-active);
+}
+
+ul.chips > li.chip:hover span,
+ul.chips > li.chip[selected]:hover span {
+  opacity: 1;
+}
+
+
+/* ==== End of Chips ==== */
+
+
+
+
+
 /* 
  * --> Wide - Layout <--
  * Phone: ? (Responsive)
@@ -1560,6 +1796,19 @@ em {
  * ***************************************
  */
 @media (min-width: 460px) {
+
+  .chips-container > button.icon-button {
+    display: block;
+  }
+
+  .chips-container[scrollpos="start"] > button.icon-button.left {
+    display: none;
+  }
+  
+  .chips-container[scrollpos="end"] > button.icon-button.right {
+    display: none;
+  }
+
   /* === SPECIFIC VIEWPORTS ONLY === */
 
   [narrow-only] {
