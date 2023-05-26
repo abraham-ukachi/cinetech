@@ -118,7 +118,7 @@ export const html = (strings, ...values) => {
 
   // TEST: Log all the values
   // DEBUG [4dbsmaster]: tell me about all the values
-  values.forEach((value, index) => console.log(`\x1b[42m\x1b[30m[html]: value at ${index} => \x1b[0m`, value));
+  //values.forEach((value, index) => console.log(`\x1b[42m\x1b[30m[html]: value at ${index} => \x1b[0m`, value));
 
 
   // return the raw strings including their values
@@ -619,7 +619,11 @@ export class Engine {
      * @param { String|Number|Boolean|Array } propValue - The new value of the property
      * @private
      */
-    #_propertySetter(propName, propValue) {
+  #_propertySetter(propName, propValue) {
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    // console.log(`\x1b[45m\x1b[2;30m[propertySetter] (1): propName => ${propName} & propValue => ${propValue} \x1b[0m`, this.#_props);
+    // console.log(`\x1b[45m\x1b[2;30m[propertySetter] (2): typeof #_controller.properties?.[propName].type => \x1b[0m`, typeof this.#_controller.properties?.[propName].type());
+
       // Do nothing if the given `propValue` type is not the same as
       // the specified type of the corresponding controller property, using an optional operator ('?.').
       if (typeof propValue !== typeof this.#_controller.properties?.[propName].type()) { return }
