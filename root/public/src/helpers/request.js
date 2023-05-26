@@ -53,6 +53,14 @@ import { ASSETS_DIR } from '../App.js';
 
 "use strict"; // <- use strict mode
 
+
+
+export const TMDB_API_BASE_URL = 'https://api.themoviedb.org/3';
+export const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
+export const TMDB_FILE_DEFAULT_SIZE = 'w500';
+export const TMDB_FILE_ORIGINAL_SIZE = 'original';
+
+
 // Define some constant defaults for the request class
 
 export const REQUEST_DEFAULT_BASE_URL = 'api'; // 'https://api.themoviedb.org/3/';
@@ -131,38 +139,52 @@ class Request {
    * Returns a list of fake movies
    * NOTE: this is just for testing purposes, to show how to use the `getMoviesByGenre()` method
    *
-   * @returns { Array }
+   * @returns { Promise<Array> }
    */
-  async getFakeMovies() {
-    let requestPromise = await fetch(`${this.dataDir}/fake_movies.json`);
-    return await requestPromise.json();
+  getFakeMovies() {
+    return new Promise(async (resolve, reject) => {
+      // fetch the fake movies from the `fake_movies.json` file
+      let requestPromise = await fetch(`${this.dataDir}/fake_movies.json`);
+
+      // get the fake movies JSON data
+      let fakeMovies = await requestPromise.json();
+
+      // after a simulated 2 seconds delay, resolve the promise with the fake movies
+      setTimeout(() => resolve(fakeMovies), 2000);
+
+    });
+
   }
 
 
   /**
-   * Method used to get all the movies with the given `genre` and `page`
+   * Method used to get all the movies with the given `genreId` and `page`
    *
-   * @param { String } genre - the genre to get the movies for (see the `getGenres` method for the list of supported genres)
+   *
+   * @example { PostmanUrl } {{baseUrl}}/discover/movie?page=1&with_original_language=en&language=fr&with_genres=878
+   *
+   * @param { String } genreId - the id of the genre to get the movies for (see the `getGenres` method for the list of supported genres)
    * @param { Number } page - the page to get the movies for (optional, defaults to 1)
    *
    * @returns { Promise } - the promise that will be resolved with the movies data
    * @see https://developers.themoviedb.org/3/discover/movie-discover
+   *
    */
-  getMoviesByGenre(genre, page = 1) {
-    return this._makeRequest(`discover/movie?with_genres=${genre}&page=${page}?language=${this.lang}`);
+  getMoviesByGenreId(genreId, page = 1) {
+    return this._makeRequest(`discover/movie?with_genres=${genreId}&page=${page}?language=${this.lang}`);
   }
 
   /**
-   * Method used to get all the series with the given `genre` and `page`
+   * Method used to get all the series with the given `genreId` and `page`
    *
-   * @param { String } genre - the genre to get the series for (see the `getGenres` method for the list of supported genres)
+   * @param { String } genreId - the id of genre to get the series for (see the `getGenres` method for the list of supported genres)
    * @param { Number } page - the page to get the series for (optional, defaults to 1)
    *
    * @returns { Promise } - the promise that will be resolved with the series data
    * @see https://developers.themoviedb.org/3/discover/tv-discover
    */
-  getSeriesByGenre(genre, page = 1) {
-    return this._makeRequest(`discover/series?with_genres=${genre}&page=${page}?language=${this.lang}`);
+  getSeriesByGenreId(genreId, page = 1) {
+    return this._makeRequest(`discover/series?with_genres=${genreId}&page=${page}?language=${this.lang}`);
   }
 
 
