@@ -300,6 +300,9 @@ export class Page extends Engine {
       // ...call the onReady() method
       this.onReady();
 
+      // notify the app of this page update
+      // muvishoApp.notifyPageUpdate();
+
       // If the current view is not opened
       if (!this.isCurrentViewOpened) {
         // ...open the current view, using the current view's id
@@ -583,6 +586,9 @@ export class Page extends Engine {
       
       // call the `onOpen()` method
       this.onOpen();
+
+
+      // muvishoApp.notifyPageUpdate(); 
 
     } else {
       // TODO: stop the engine and hide or remove the page's host from root
