@@ -94,7 +94,7 @@ export const REQUEST_DEFAULT_WITHOUT_GENRES = null; // <- supported values: 28, 
 
 
 /*
- * Define the Request class that will be used to make requests to the API
+ * Define the Request class that will be used to make requests to our Muvisho API
  *
  * Example usage:
  *   const request = new Request('fr');
@@ -124,7 +124,8 @@ class Request {
     this.baseUrl = baseUrl;
 
     // DEBUG [4dbsmaster]: tell me about it ;)
-    console.log(`\x1b[37m[__constructor]: (${lang}) I'm in the constructor of the class Request\x1b[0m`);
+    console.log(`\x1b[37m[__constructor] (1): Hey !! I'm in the constructor of the class Request\x1b[0m`);
+    console.log(`\x1b[37m[__constructor] (2): lang => ${lang} & baseUrl => ${baseUrl}\x1b[0m`);
 
   }
 
@@ -137,7 +138,7 @@ class Request {
 
   /**
    * Returns a list of fake movies
-   * NOTE: this is just for testing purposes, to show how to use the `getMoviesByGenre()` method
+   * NOTE: this is just for testing purposes, to show how to use the `getMoviesByGenreId()` method
    *
    * @returns { Promise<Array> }
    */
@@ -158,8 +159,31 @@ class Request {
 
 
   /**
-   * Method used to get all the movies with the given `genreId` and `page`
+   * Returns a list of fake series 
+   * NOTE: this is just for testing purposes, to show how to use the `getSeriesByGenreId()` method
    *
+   * @returns { Promise<Array> }
+   */
+  getFakeSeries() {
+    return new Promise(async (resolve, reject) => {
+      // fetch the fake series from the `fake_series.json` file
+      let requestPromise = await fetch(`${this.dataDir}/fake_series.json`);
+
+      // get the fake series JSON data
+      let fakeSeries = await requestPromise.json();
+
+      // after a simulated 2 seconds delay, resolve the promise with the fake series 
+      setTimeout(() => resolve(fakeSeries), 2000);
+
+    });
+
+  }
+
+
+
+
+  /**
+   * Method used to get all the movies with the given `genreId` and `page`
    *
    * @example { PostmanUrl } {{baseUrl}}/discover/movie?page=1&with_original_language=en&language=fr&with_genres=878
    *
@@ -174,8 +198,11 @@ class Request {
     return this._makeRequest(`discover/movie?with_genres=${genreId}&page=${page}?language=${this.lang}`);
   }
 
+
   /**
    * Method used to get all the series with the given `genreId` and `page`
+   *
+   * @example { PostmanUrl } {{baseUrl}}/discover/tv?page=1&with_original_language=en&language=en&with_genres=10759
    *
    * @param { String } genreId - the id of genre to get the series for (see the `getGenres` method for the list of supported genres)
    * @param { Number } page - the page to get the series for (optional, defaults to 1)
@@ -184,7 +211,7 @@ class Request {
    * @see https://developers.themoviedb.org/3/discover/tv-discover
    */
   getSeriesByGenreId(genreId, page = 1) {
-    return this._makeRequest(`discover/series?with_genres=${genreId}&page=${page}?language=${this.lang}`);
+    return this._makeRequest(`discover/tv?with_genres=${genreId}&page=${page}?language=${this.lang}`);
   }
 
 
@@ -210,8 +237,16 @@ class Request {
   // PRIVATE SETTERS
   // PRIVATE GETTERS
   // PRIVATE METHODS
-  //
+  
 
+  /**
+   * Method used to make a request to the Muvisho API
+   *
+   * @param { String } endpoint - the endpoint to make the request to
+   * @param { Object } params - the parameters to use for the request
+   *
+   * @returns { Promise } - the promise that will be resolved with the response data
+   */
   _makeRequest(endpoint, params = {}) {
     return new Promise(async (resolve, reject) => {
       // create the url
