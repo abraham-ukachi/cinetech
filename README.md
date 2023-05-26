@@ -100,7 +100,7 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 31 | *`Register - JS Page`* | **root/public/src/pages/register-page.js** | Pending |
 | 32 | *`Account - JS Page`* | **root/public/src/pages/account-page.js** | Pending |
 | 33 | *`Search - JS Page`* | **root/public/src/pages/search-page.js** | *_In progress_* |
-| 34 | *`Movies - JS Page`* | **root/public/src/pages/movies-page.js** | *_In progress_* |
+| 34 | *`Movies - JS Page`* | **root/public/src/pages/movies-page.js** | [Done](./root/public/src/pages/movies-page.js)\* |
 | 35 | *`TV (Show & Series) - JS Page`* | **root/public/src/pages/series-page.js** | Pending |
 | 36 | *`Database - Muvisho`* | **root/database/Database.php** | Pending |
 | 37 | *`Muvisho / Cinetech - SQL`* | **cinetech.sql** | Pending |
