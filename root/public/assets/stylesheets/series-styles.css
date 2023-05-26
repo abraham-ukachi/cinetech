@@ -31,7 +31,7 @@
 @import '../animations/fade-in-animation.css'; /* <- fade in animation */
 @import '../animations/slide-from-down-animation.css'; /* <- slide from down animation */
 
-/* ====  SERIES STYLES === */
+/* ====  MOVIES STYLES === */
 
 
 /* BODY */
@@ -41,14 +41,259 @@ body {
   --slide-from-down-animation-duration: 1s;
   --slide-from-down-animation-delay: 0s;
 
+  
+  /* Slide From Up Animation */
+  --slide-from-up-animation-duration: 1s;
+  --slide-from-up-animation-delay: 0s;
+
   /* Fade In Animation */
   --fade-in-animation-duration: 1s;
   --fade-in-animation-delay: 0s;
 }
 
 
+.theme, .theme.light {
+  /* --poster-placeholder-opacity: var(--opacity-icon-inactive); */
+}
+
+.theme.dark {
+  /* --poster-placeholder-opacity: var(--opacity-md-icon-disabled); */
+}
+
+
+.theme.classic {
+  /*  --poster-placeholder-opacity: var(--opacity-icon-disabled); */
+}
+
+
+
+
 /* App Logo */
 #appLogo {}
+
+
+
+/* Genre Chips */
+
+#genreChips {}
+
+
+/* === Media List & Grid Layout  === */
+
+ul.media-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--media-min-width, 150px), 1fr));
+  grid-auto-rows: minmax(var(--media-min-height, 150px), 1fr);
+  grid-gap: 1rem;
+  padding: 1.5rem 1rem;
+}
+
+/* === End of Media List & Grid Layout === */
+
+/* === Series === */
+
+/* All series in the media list */
+ul.media-list > li.serie {
+  box-sizing: border-box;
+  padding: 0rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Poster Container - Serie */
+li.serie > .poster-container {
+  position: relative;
+  width: var(--poster-width, 100%);
+  height: var(--poster-height, calc(var(--media-min-height, 150px) * 1.5));
+  background: inherit;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Serie Poster */
+li.serie > .poster-container > .poster {
+  object-fit: cover;
+  object-position: center center;
+  font-size: 1rem;
+  color: #efeeec00; /* var(--outline-color); */
+  pointer-events: none;
+  user-select: none;
+}
+
+li.serie > .poster-container > .poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--poster-background-color, var(--outline-color));
+  opacity: var(--poster-background-opacity, 0.1);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+li.serie > .poster-container > .poster::after {
+  content: '';
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  opacity: var(--poster-placeholder-opacity, var(--opacity-icon-disabled));
+  top: 0;
+  background-color: var(--poster-placeholder-color, var(--outline-color));
+
+  -mask-image: url(../../assets/placeholders/serie-poster-placeholder.svg);
+  -webkit-mask-image: url(../../assets/placeholders/serie-poster-placeholder.svg);
+  -webkit-mask-size: 60%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  -webkit-mask-origin: center center;
+  mask-size: 60%;
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-origin: center center;
+
+}
+
+
+/* Serie Details */
+li.serie > .serie-details {
+  padding-top: 0.5rem;
+}
+
+/* Serie Name */
+li.serie .serie-name {
+  font-size: 0.75rem;
+  margin: 0;
+  line-height: 1rem;
+  flex: 1;
+  justify-content: start;
+  display: flex;
+  align-self: start;
+  padding-left: 0.5rem;
+  letter-spacing: 0.4px;
+}
+
+/* Serie More Icon Button */
+li.serie .more-button.icon-button {
+  --icon-button-size: 32px;
+  --icon-button-padding: 0;
+  display: none;
+}
+
+
+/* Serie Meta */
+li.serie .meta {
+  justify-content: space-between;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+
+/* Serie Meta - Rating */
+li.serie .meta .rating {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1rem;
+  padding: 0.5rem;
+  width: var(--serie-rating-size, 24px);
+  border: var(--serie-rating-border-width, 4px) solid var(--serie-rating-border-color, #d4de2c);
+  height: var(--serie-rating-size, 24px);
+  border-radius: var(--serie-rating-size, 24px);
+  display: flex;
+  align-self: start;
+  letter-spacing: 0.4px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  color: var(--serie-rating-color, white);
+  transform: var(--serie-rating-scale, scale(0.8));
+  margin: var(--serie-rating-margin, 0.5rem);
+  text-shadow: 3px 2px 5px rgba(0,0,0, 0.5);
+  overflow: hidden;
+
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+}
+
+li.serie:hover .meta .rating,  {
+  /* filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5)); */
+  /* transform: var(--serie-rating-scale, scale(0.9)); */
+}
+
+
+li.serie .meta .rating::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--serie-rating-background-color, black);
+  opacity: var(--serie-rating-background-opacity, 0.4);
+  z-index: -1;
+}
+
+
+li.serie .meta .rating.is-bad {
+  --serie-rating-color: var(--bad-rating-color, white);
+  --serie-rating-background-color: var(--bad-rating-background-color, black); /* b4: darkred */
+  --serie-rating-border-color: var(--bad-rating-border-color, #d62b2b);
+}
+
+li.serie .meta .rating.is-good {
+  --serie-rating-color: var(--good-rating-color, white);
+  --serie-rating-background-color: var(--good-rating-background-color, black); /* b4: darkgreen */
+  --serie-rating-border-color: var(--good-rating-border-color, #4ee24e);
+}
+
+
+/* Serie Meta - Year */
+li.serie .meta .year {
+  line-height: 1rem;
+  justify-content: end;
+  display: flex;
+  align-self: start;
+  letter-spacing: 0.4px;
+  align-items: end;
+  padding: 0.25rem 0.75rem;
+  margin: 0.75rem;
+  background: var(--primary-container-color);
+  color: var(--on-primary-container-color);
+  width: fit-content;
+  height: auto;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  opacity: var(--opacity-text-active);
+}
+
+/* == End of Series == */
+
+
+
+
+/* == Loading Spinner  */
+
+#loadingSpinner {
+  position: fixed;
+  bottom: var(--nav-bar-height, 60px);
+  pointer-events: none;
+  user-select: none;
+  justify-content: end;
+}
+
+/* == End of Loading Spinner  == */
+
 
 
 
@@ -69,10 +314,31 @@ body {
   /* App Logo */
   #appLogo {}
 
+  #loadingSpinner {
+    bottom: 0;
+  }
 
 }
 
+@media (min-width: 768px) {
+  /* App Logo */
+  #appLogo {}
 
+  ul.grid-layout {
+    padding: 1.25rem;
+  }
+
+
+  li.serie .more-button.icon-button { 
+    display: block;
+    opacity: 0 !important;
+  }
+
+  li.serie:hover .more-button.icon-button {
+    opacity: var(--opacity-md-icon-active) !important;
+  }
+
+}
 
 /* 
  * --> Tablet - Device <--
@@ -100,4 +366,4 @@ body {
 }
 
 
-/* ====  END of SERIES STYLES === */
+/* ====  END of MOVIES STYLES === */
