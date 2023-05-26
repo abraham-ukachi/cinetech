@@ -1,0 +1,430 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "backdrop_path": "/3cgRI0hOq3dYyezSYrsfdmqxtMw.jpg",
+            "first_air_date": "2023-04-27",
+            "genre_ids": [
+                18,
+                80,
+                10759
+            ],
+            "id": 114922,
+            "name": "Citadel",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Citadel",
+            "overview": "What if you lost your memory? What if a spy didn’t know they were a spy? Years ago, the top agents of Citadel, Mason Kane and Nadia Sinh, had their minds wiped. But, they’re called back to action as sinister forces emerge from the past. With the help of spymaster Bernard Orlick, these former lovers must remember the past to save the future.",
+            "popularity": 417.047,
+            "poster_path": "/AcrDB32TqpAGwvQFbICALGxSzn3.jpg",
+            "vote_average": 7.7,
+            "vote_count": 98
+        },
+        {
+            "backdrop_path": "/6s3ftX4a1kECPCb1Ewq3GLhVFnn.jpg",
+            "first_air_date": "2003-09-23",
+            "genre_ids": [
+                80,
+                18,
+                10759
+            ],
+            "id": 4614,
+            "name": "NCIS",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "NCIS",
+            "overview": "From murder and espionage to terrorism and stolen submarines, a team of special agents investigates any crime that has a shred of evidence connected to Navy and Marine Corps personnel, regardless of rank or position.",
+            "popularity": 328.122,
+            "poster_path": "/2exOHePjOTquUsbThPGhuEjYTyA.jpg",
+            "vote_average": 7.6,
+            "vote_count": 1988
+        },
+        {
+            "backdrop_path": "/9RPLAZEfxAu0SpO2QsHky1vZjJN.jpg",
+            "first_air_date": "1963-11-23",
+            "genre_ids": [
+                10759,
+                18,
+                10765
+            ],
+            "id": 121,
+            "name": "Doctor Who",
+            "origin_country": [
+                "GB"
+            ],
+            "original_language": "en",
+            "original_name": "Doctor Who",
+            "overview": "The adventures of a Time Lord—a time-travelling humanoid alien known as the Doctor—who explores the universe in his TARDIS, a sentient time-travelling space ship. Its exterior appears as a blue British police box, which was a common sight in Britain in 1963 when the series first aired. Along with a succession of companions, the Doctor faces a variety of foes while working to save civilisations, help ordinary people, and right wrongs.",
+            "popularity": 298.387,
+            "poster_path": "/xinqAmYrZ1TEwowcQhgTkZVtVE0.jpg",
+            "vote_average": 7.9,
+            "vote_count": 493
+        },
+        {
+            "backdrop_path": "/6LWy0jvMpmjoS9fojNgHIKoWL05.jpg",
+            "first_air_date": "2011-04-17",
+            "genre_ids": [
+                10765,
+                18,
+                10759
+            ],
+            "id": 1399,
+            "name": "Game of Thrones",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Game of Thrones",
+            "overview": "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+            "popularity": 327.156,
+            "poster_path": "/7WUHnWGx5OO145IRxPDUkQSh4C7.jpg",
+            "vote_average": 8.4,
+            "vote_count": 21144
+        },
+        {
+            "backdrop_path": "/lHe8iwM4Cdm6RSEiara4PN8ZcBd.jpg",
+            "first_air_date": "2013-03-03",
+            "genre_ids": [
+                10759,
+                18,
+                10768
+            ],
+            "id": 44217,
+            "name": "Vikings",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "en",
+            "original_name": "Vikings",
+            "overview": "The adventures of Ragnar Lothbrok, the greatest hero of his age. The series tells the sagas of Ragnar's band of Viking brothers and his family, as he rises to become King of the Viking tribes. As well as being a fearless warrior, Ragnar embodies the Norse traditions of devotion to the gods. Legend has it that he was a direct descendant of Odin, the god of war and warriors.",
+            "popularity": 259.368,
+            "poster_path": "/bQLrHIRNEkE3PdIWQrZHynQZazu.jpg",
+            "vote_average": 8.1,
+            "vote_count": 6184
+        },
+        {
+            "backdrop_path": "/9ijMGlJKqcslswWUzTEwScm82Gs.jpg",
+            "first_air_date": "2019-11-12",
+            "genre_ids": [
+                10765,
+                10759,
+                18
+            ],
+            "id": 82856,
+            "name": "The Mandalorian",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "The Mandalorian",
+            "overview": "After the fall of the Galactic Empire, lawlessness has spread throughout the galaxy. A lone gunfighter makes his way through the outer reaches, earning his keep as a bounty hunter.",
+            "popularity": 268.972,
+            "poster_path": "/eU1i6eHXlzMOlEq0ku1Rzq7Y4wA.jpg",
+            "vote_average": 8.5,
+            "vote_count": 9045
+        },
+        {
+            "backdrop_path": "/92B6765nyQkIW8yLWt3pNcS6Cip.jpg",
+            "first_air_date": "2015-08-23",
+            "genre_ids": [
+                10759,
+                18
+            ],
+            "id": 62286,
+            "name": "Fear the Walking Dead",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Fear the Walking Dead",
+            "overview": "What did the world look like as it was transforming into the horrifying apocalypse depicted in \"The Walking Dead\"? This spin-off set in Los Angeles, following new characters as they face the beginning of the end of the world, will answer that question.",
+            "popularity": 273.826,
+            "poster_path": "/sQleNHhKl32QFnSlahb5IHDWcDq.jpg",
+            "vote_average": 7.7,
+            "vote_count": 4460
+        },
+        {
+            "backdrop_path": "/uCqXSfHymdbDMsFx8t0u0OPSuve.jpg",
+            "first_air_date": "2015-10-10",
+            "genre_ids": [
+                10759,
+                18,
+                10768
+            ],
+            "id": 63333,
+            "name": "The Last Kingdom",
+            "origin_country": [
+                "GB"
+            ],
+            "original_language": "en",
+            "original_name": "The Last Kingdom",
+            "overview": "A show of heroic deeds and epic battles with a thematic depth that embraces politics, religion, warfare, courage, love, loyalty and our universal search for identity. Combining real historical figures and events with fictional characters, it is the story of how a people combined their strength under one of the most iconic kings of history in order to reclaim their land for themselves and build a place they call home.",
+            "popularity": 213.578,
+            "poster_path": "/8eJf0hxgIhE6QSxbtuNCekTddy1.jpg",
+            "vote_average": 8.3,
+            "vote_count": 1409
+        },
+        {
+            "backdrop_path": "/uGy4DCmM33I7l86W7iCskNkvmLD.jpg",
+            "first_air_date": "2013-12-02",
+            "genre_ids": [
+                16,
+                35,
+                10765,
+                10759
+            ],
+            "id": 60625,
+            "name": "Rick and Morty",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Rick and Morty",
+            "overview": "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+            "popularity": 239.592,
+            "poster_path": "/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg",
+            "vote_average": 8.7,
+            "vote_count": 8216
+        },
+        {
+            "backdrop_path": "/qgEqN2evfxGhXyIjIpMdKSc1kF6.jpg",
+            "first_air_date": "2010-10-31",
+            "genre_ids": [
+                10759,
+                18,
+                10765
+            ],
+            "id": 1402,
+            "name": "The Walking Dead",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "The Walking Dead",
+            "overview": "Sheriff's deputy Rick Grimes awakens from a coma to find a post-apocalyptic world dominated by flesh-eating zombies. He sets out to find his family and encounters many other survivors along the way.",
+            "popularity": 240.335,
+            "poster_path": "/xf9wuDcqlUPWABZNeDKPbZUjWx0.jpg",
+            "vote_average": 8.1,
+            "vote_count": 14962
+        },
+        {
+            "backdrop_path": "/vNnLAKmoczRlNarxyGrrw0KSOeX.jpg",
+            "first_air_date": "2012-10-10",
+            "genre_ids": [
+                80,
+                18,
+                9648,
+                10759
+            ],
+            "id": 1412,
+            "name": "Arrow",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Arrow",
+            "overview": "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
+            "popularity": 194.185,
+            "poster_path": "/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg",
+            "vote_average": 6.8,
+            "vote_count": 5443
+        },
+        {
+            "backdrop_path": "/dAepkmD4vdfhS82r2OIqF1nwGR5.jpg",
+            "first_air_date": "2009-09-22",
+            "genre_ids": [
+                10759,
+                18,
+                80,
+                9648
+            ],
+            "id": 17610,
+            "name": "NCIS: Los Angeles",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "NCIS: Los Angeles",
+            "overview": "The exploits of the Los Angeles–based Office of Special Projects (OSP), an elite division of the Naval Criminal Investigative Service that specializes in undercover assignments.",
+            "popularity": 185.315,
+            "poster_path": "/TIIgcznwNfNr3KOZvxn26eKV99.jpg",
+            "vote_average": 7.5,
+            "vote_count": 1011
+        },
+        {
+            "backdrop_path": "/7w165QdHmJuTHSQwEyJDBDpuDT7.jpg",
+            "first_air_date": "2005-08-29",
+            "genre_ids": [
+                10759,
+                80,
+                18
+            ],
+            "id": 2288,
+            "name": "Prison Break",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Prison Break",
+            "overview": "Due to a political conspiracy, an innocent man is sent to death row and his only hope is his brother, who makes it his mission to deliberately get himself sent to the same prison in order to break the both of them out, from the inside out.",
+            "popularity": 187.796,
+            "poster_path": "/ux7OfhhrXO4FzJtuew18ShiBLq7.jpg",
+            "vote_average": 8.1,
+            "vote_count": 4315
+        },
+        {
+            "backdrop_path": "/sRfl6vyzGWutgG0cmXmbChC4iN6.jpg",
+            "first_air_date": "2005-03-26",
+            "genre_ids": [
+                10759,
+                18,
+                10765
+            ],
+            "id": 57243,
+            "name": "Doctor Who",
+            "origin_country": [
+                "GB"
+            ],
+            "original_language": "en",
+            "original_name": "Doctor Who",
+            "overview": "The Doctor is a Time Lord: a 900 year old alien with 2 hearts, part of a gifted civilization who mastered time travel. The Doctor saves planets for a living—more of a hobby actually, and the Doctor's very, very good at it.",
+            "popularity": 181.174,
+            "poster_path": "/sz4zF5z9zyFh8Z6g5IQPNq91cI7.jpg",
+            "vote_average": 7.4,
+            "vote_count": 2566
+        },
+        {
+            "backdrop_path": "/psImsio70fZGLmt6TfyV4N62Ro.jpg",
+            "first_air_date": "2017-11-02",
+            "genre_ids": [
+                80,
+                10759,
+                18
+            ],
+            "id": 71790,
+            "name": "S.W.A.T.",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "S.W.A.T.",
+            "overview": "A locally born and bred S.W.A.T. lieutenant is torn between loyalty to the streets and duty to his fellow officers when he's tasked to run a highly-trained unit that's the last stop for solving crimes in Los Angeles.",
+            "popularity": 240.115,
+            "poster_path": "/7Bttz4hEspKlpU0Me57dkHNR3nf.jpg",
+            "vote_average": 8.1,
+            "vote_count": 1152
+        },
+        {
+            "backdrop_path": "/mt3SRKq7uRBKVntaBg2ofsDfOdg.jpg",
+            "first_air_date": "1997-07-27",
+            "genre_ids": [
+                10765,
+                10759,
+                9648
+            ],
+            "id": 4629,
+            "name": "Stargate SG-1",
+            "origin_country": [
+                "CA",
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Stargate SG-1",
+            "overview": "The story of Stargate SG-1 begins about a year after the events of the feature film, when the United States government learns that an ancient alien device called the Stargate can access a network of such devices on a multitude of planets. SG-1 is an elite Air Force special operations team, one of more than two dozen teams from Earth who explore the galaxy and defend against alien threats such as the Goa'uld, Replicators, and the Ori.",
+            "popularity": 177.901,
+            "poster_path": "/rst5xc4f7v1KiDiQjzDiZqLtBpl.jpg",
+            "vote_average": 8.3,
+            "vote_count": 1298
+        },
+        {
+            "backdrop_path": "/4z9NPyzCl4BlXHdja0TW0wKmF4A.jpg",
+            "first_air_date": "2001-10-16",
+            "genre_ids": [
+                10765,
+                10759,
+                18
+            ],
+            "id": 4604,
+            "name": "Smallville",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Smallville",
+            "overview": "The origins of the world’s greatest hero–from Krypton refugee Kal-el’s arrival on Earth through his tumultuous teen years to Clark Kent’s final steps toward embracing his destiny as the Man of Steel.",
+            "popularity": 175.754,
+            "poster_path": "/pUhJGETy2sec4vEkiqJ9eGeIywc.jpg",
+            "vote_average": 8.2,
+            "vote_count": 3589
+        },
+        {
+            "backdrop_path": "/h58O67phbZhA0vStBxdJHhpksi7.jpg",
+            "first_air_date": "2004-09-22",
+            "genre_ids": [
+                9648,
+                10759
+            ],
+            "id": 4607,
+            "name": "Lost",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Lost",
+            "overview": "Stripped of everything, the survivors of a horrific plane crash  must work together to stay alive. But the island holds many secrets.",
+            "popularity": 173.052,
+            "poster_path": "/og6S0aTZU6YUJAbqxeKjCa3kY1E.jpg",
+            "vote_average": 8,
+            "vote_count": 3462
+        },
+        {
+            "backdrop_path": "/vXpeJJs1z8OKC88CNJX9O9QOhtr.jpg",
+            "first_air_date": "2022-08-21",
+            "genre_ids": [
+                10765,
+                18,
+                10759
+            ],
+            "id": 94997,
+            "name": "House of the Dragon",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "House of the Dragon",
+            "overview": "The Targaryen dynasty is at the absolute apex of its power, with more than 15 dragons under their yoke. Most empires crumble from such heights. In the case of the Targaryens, their slow fall begins when King Viserys breaks with a century of tradition by naming his daughter Rhaenyra heir to the Iron Throne. But when Viserys later fathers a son, the court is shocked when Rhaenyra retains her status as his heir, and seeds of division sow friction across the realm.",
+            "popularity": 188.996,
+            "poster_path": "/1X4h40fcB4WWUmIBK0auT4zRBAV.jpg",
+            "vote_average": 8.5,
+            "vote_count": 3174
+        },
+        {
+            "backdrop_path": "/7UkCASdM2z9HxwayWqbR1PJwlKn.jpg",
+            "first_air_date": "1987-09-28",
+            "genre_ids": [
+                10765,
+                10759,
+                18,
+                9648
+            ],
+            "id": 655,
+            "name": "Star Trek: The Next Generation",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Star Trek: The Next Generation",
+            "overview": "Follow the intergalactic adventures of Capt. Jean-Luc Picard and his loyal crew aboard the all-new USS Enterprise NCC-1701D, as they explore new worlds.",
+            "popularity": 175.464,
+            "poster_path": "/vkLzXddgUKH5VcpnYiRzpJFrZhz.jpg",
+            "vote_average": 8.3,
+            "vote_count": 1198
+        }
+    ],
+    "total_pages": 108,
+    "total_results": 2145
+}
