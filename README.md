@@ -108,6 +108,7 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 39 | *`App - Controller`* | **app/Controllers/AppController.php** | Pending |
 | 40 | *`App Routes`* | **app/Controllers/app-routes.php** | [Done](./root/routes/app-routes.php)\* |
 | 41 | *`API Routes`* | **app/Controllers/api-routes.php** | [Done](./root/routes/api-routes.php)\* |
+| 42 | *`Favorites - JS Page`* | **root/public/src/pages/favorites-page.js** | *_In progress_* |
 
 > WARNING: This list is a working progress and will change soon
 
@@ -211,6 +212,9 @@ These are some of the things we did or plan to do, in addition to this project's
 | 39 | *`Validation Handler - Controller Helper`* | **app/Controllers/Helpers/ValidationHandler.php** | Pending |
 | 40 | *`i18n - JS Helper`* | **root/public/src/helpers/i18n.js** | [Done](./root/public/src/helpers/i18n.js)\* |
 | 41 | *`Request - JS Helper`* | **root/public/src/helpers/request.js** | [Done](./root/public/src/helpers/request.js)\* |
+| 42 | *`Default Favorites - JS View`* | **root/.../views/favorites/default-favorites-view.js** | [Done](./root/public/src/views/favorites/default-favorites-view.js)\* |
+| 43 | *`Movies Favorites - JS View`* | **root/.../views/favorites/movies-favorites-view.js** | Pending |
+| 44 | *`Series Favorites - JS View`* | **root/.../views/favorites/series-favorites-view.js** | Pending |
 
 > NOTE: (\*) = still needs to be updated. <br>
 > There's certainly a couple of file I must've forgot or not added yet, so I'll keep the above list updated obv. :)
