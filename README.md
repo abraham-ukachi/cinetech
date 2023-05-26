@@ -430,6 +430,7 @@ open http://localhost/cinetech
 |:-------------|:-------------|:----------------|
 | ![Splash Screen - Mobile - Light / Screenshot](./.github/screenshots/mobile/splash-screen-mobile-light.png) | ![Splash Screen - Mobile - Dark / Screenshot](./.github/screenshots/mobile/splash-screen-mobile-dark.png) | ![Splash Screen - Mobile - Classic / Screenshot](./.github/screenshots/mobile/splash-screen-mobile-classic.png) | 
 | ![Welcome Screen - Mobile - Light / GIF ](./.github/gifs/mobile/welcome-screen-mobile-light.gif) | ![Welcome Screen - Mobile - Dark / GIF](./.github/gifs/mobile/welcome-screen-mobile-dark.gif) | ![Welcome Screen - Mobile - Classic / GIF](./.github/gifs/mobile/welcome-screen-mobile-classic.gif) | 
+| ![Movives Page - Mobile - Light / Screenshot ](./.github/screenshots/mobile/movies-page-mobile-light.png) | ![Movies Page - Mobile - Dark / Screenshot](./.github/screenshots/mobile/movies-page-mobile-dark.png) | ![Movies Page - Mobile - Classic / Screenshot](./.github/screenshots/mobile/movies-page-mobile-classic.png) | 
 | N/A | N/A | N/A |
 
 
