@@ -197,6 +197,8 @@
 
   "failedToAddSeriesToFavs": "Failed to add series to favorites",
 
+  "loading": "Loading",
+
   "movieRemovedFromFavs": "Movie removed from favorites",
 
   "failedToRemoveMovieFromFavs": "Failed to remove movie from favorites",
