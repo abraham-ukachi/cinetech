@@ -1,0 +1,95 @@
+{
+  "page": 1,
+  "results": [
+        
+                {
+            "adult": false,
+            "backdrop_path": "/jsoz1HlxczSuTx0mDl2h0lxy36l.jpg",
+            "id": 616037,
+            "title": "Thor: Love and Thunder",
+            "original_language": "en",
+            "original_title": "Thor: Love and Thunder",
+            "overview": "After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor Odinson enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now wields Mjolnir as the Mighty Thor. Together they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher’s vengeance and stop him before it’s too late.",
+            "poster_path": "/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                14,
+                28,
+                35
+            ],
+            "popularity": 192.759,
+            "release_date": "2022-07-06",
+            "video": false,
+            "vote_average": 6.569,
+            "vote_count": 5987
+        },
+
+         {
+            "adult": false,
+            "backdrop_path": null,
+            "id": 324595,
+            "title": "Sex",
+            "original_language": "en",
+            "original_title": "Sex",
+            "overview": "A silent film made for the release of Madonna's book 'Sex'",
+            "poster_path": null,
+            "media_type": "movie",
+            "genre_ids": [],
+            "popularity": 1.803,
+            "release_date": "1992-11-15",
+            "video": false,
+            "vote_average": 7.7,
+            "vote_count": 11
+        },
+
+        {
+            "adult": false,
+            "backdrop_path": "/ryQbb26wl1ggtypXiZW0kjKZCrP.jpg",
+            "id": 67308,
+            "title": "3-D Sex and Zen: Extreme Ecstasy",
+            "original_language": "cn",
+            "original_title": "3D肉蒲團之極樂寶鑑",
+            "overview": "Loosely based on a 17th century erotic Chinese story named The Carnal Prayer Mat, the story follows a young scholar named Yangsheng who gets married to the beautiful daughter of a local merchant. When their sex life proves unsatisfactory, Yangsheng leaves home and journeys to the Pavilion of Ultimate Bliss.",
+            "poster_path": "/mmvFokJgpFmNt522Hfpq3Zfs2Ra.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                18,
+                12,
+                10749,
+                28,
+                36
+            ],
+            "popularity": 149.857,
+            "release_date": "2011-04-14",
+            "video": false,
+            "vote_average": 4.932,
+            "vote_count": 96
+        },
+
+{
+            "adult": false,
+            "backdrop_path": "/iF9qJ9EyiKip01DsmmKYI2wcD48.jpg",
+            "id": 24767,
+            "title": "Iron Will",
+            "original_language": "en",
+            "original_title": "Iron Will",
+            "overview": "When Will Stoneman's father dies, he is left alone to take care of his mother and their land. Needing money to maintain it, he decides to join a cross country dogsled race. This race will require days of racing for long hours, through harsh weather and terrain. This young man will need a lot of courage and a strong will to complete this race.",
+            "poster_path": "/6Ujbtp0NklUoQ67s32HyW6R5540.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                10751,
+                28
+            ],
+            "popularity": 12.494,
+            "release_date": "1994-01-14",
+            "video": false,
+            "vote_average": 6.658,
+            "vote_count": 234
+        }
+
+  ],
+
+  "total_pages": 1,
+  "total_results": 5
+}

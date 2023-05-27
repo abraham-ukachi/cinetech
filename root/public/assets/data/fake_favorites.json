@@ -1,0 +1,433 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/1CWhCGpl3sx92OATm3tELtLqBdX.jpg",
+            "id": 220992,
+            "name": "Invincible Love",
+            "original_language": "es",
+            "original_name": "El Amor Invencible",
+            "overview": "After losing all her loved ones fifteen years ago and believing her babies were killed at the hands of the father of her first love, Leona Bravo (Angelique Boyer) embarks on a journey of justice against all those who hurt her. In this process, Leona discovers that her children are actually alive and is reunited with an old friend with whom she finds true love. As a result, she will be torn between her desire for justice and rebuilding her bond with her two children, as well as regaining her faith in love.",
+            "poster_path": "/i6zwenRLASRRKTklSW4r1IAiLKP.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10766
+            ],
+            "popularity": 2103.085,
+            "first_air_date": "2023-02-20",
+            "vote_average": 4.6,
+            "vote_count": 4,
+            "origin_country": [
+                "MX"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/wyJQgqerZ0LuDjqcrbugYwzLcLC.jpg",
+            "id": 874745,
+            "title": "To Me, the One Who Loved You",
+            "original_language": "ja",
+            "original_title": "君を愛したひとりの僕へ",
+            "overview": "Koyomi Hidaka and Shiori Sato meet at his father’s research center and begin to fall in love, but so do their parents, who eventually marry. To avoid becoming stepsiblings, they decide to run away to a parallel universe. Traveling between dimensions is common in their world, but not without repercussions. Does a universe exist for the young couple, and what will it cost them to find it?",
+            "poster_path": "/gt7kD8MjObtgQYH130pZiLTN0qx.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                16,
+                10749,
+                878
+            ],
+            "popularity": 143.511,
+            "release_date": "2022-10-07",
+            "video": false,
+            "vote_average": 5.408,
+            "vote_count": 38
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ic7YfRS52N3m4oalxoOIT665C33.jpg",
+            "id": 104877,
+            "name": "Love Is In The Air",
+            "original_language": "tr",
+            "original_name": "Sen Çal Kapımı",
+            "overview": "Eda, who ties all her hopes to her education, confronts Serkan Bolat, who cuts off her international education scholarship and leaves her with high school diploma. Serkan Bolat offers Eda to give her scholarship back if she pretends to be his fiance for two months. Although Eda rejects the offer of this man as she hates him, she has to accept it when the conditions change. While pretending to be engaged, Serkan and Eda begin to experience a passionate, challenging relationship that will make them forget all they know right. Because love is difficult. And that's why it's amazing.",
+            "poster_path": "/bE71f9A3eztjcd5JT3MmHB8MbzA.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                35
+            ],
+            "popularity": 171.949,
+            "first_air_date": "2020-07-08",
+            "vote_average": 8.19,
+            "vote_count": 2860,
+            "origin_country": [
+                "TR"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/7cjY1IIrW1RwmHN8USPryKTAQHq.jpg",
+            "id": 988165,
+            "title": "H.P. Lovecraft's Witch House",
+            "original_language": "en",
+            "original_title": "H.P. Lovecraft's Witch House",
+            "overview": "Determined to prove the possibility of alternate dimensions, a graduate student unknowingly unlocks a gateway to unimaginable horror. Based on the H.P. Lovecraft's short story The Dreams in the Witch House.",
+            "poster_path": "/5KmscR49WkmuPJKjmK4OUmsRn5C.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                27
+            ],
+            "popularity": 98.037,
+            "release_date": "2022-06-29",
+            "video": false,
+            "vote_average": 5.313,
+            "vote_count": 16
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/jxCU5OU1k7yWmtzqSBcOsCGSKo7.jpg",
+            "id": 74793,
+            "name": "The Endless Love",
+            "original_language": "zh",
+            "original_name": "路从今夜白之遇见青春",
+            "overview": "The young gifted painter Gu Ye Bai is affected by a mental disease; to him, the world has lost all its colors. While preparing for an international arts competition, an accident happens that makes him worried a lot. At this time, he gets to know the cute and amiable sunshine Lu You Yan. She will help him heal his mind and fight for his dream of becoming a recognized painter.",
+            "poster_path": "/8EJU5rwEbyG1Kiu4HXVPS7IW8Qt.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18
+            ],
+            "popularity": 24.789,
+            "first_air_date": "2017-11-01",
+            "vote_average": 8.0,
+            "vote_count": 1,
+            "origin_country": [
+                "CN"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "id": 21756,
+            "name": "Dog love",
+            "original_language": "en",
+            "original_name": "Perro Amor",
+            "overview": "Perro Amor is a Spanish-language telenovela produced by the United States-based television network Telemundo that originally ran in the United States from January to July 2010. This is a Colombian soap opera remake of the 1998 Cenpro Televisión daily telenovela Perro Amor, written by Natalia Ospina & Andrés Salgado. As with most of its other soap operas, Telemundo broadcast English subtitles as closed captions on CC3.",
+            "poster_path": "/AmTjLtjQbl7RyNRf6E1yvvpGXCz.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                35
+            ],
+            "popularity": 29.543,
+            "first_air_date": "2010-01-11",
+            "vote_average": 6.4,
+            "vote_count": 5,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/61vXR9xfgNqidYkBruRXhRTlVzI.jpg",
+            "id": 34742,
+            "name": "To Love-Ru",
+            "original_language": "ja",
+            "original_name": "To LOVEる -とらぶる-",
+            "overview": "The story is about Yuuki Rito, a high-school boy who cannot confess to the girl of his dreams, Sairenji Haruna. One day when coming home and sulking in the bath-tub a mysterious, nude girl, appears out of nowhere. Her name is Lala and she comes from the planet Deviluke, where she is the heir to the throne. Her father wants her to return to her home planet so she can marry one of the husband candidates, but she decides that she wants to marry Rito in order to stay on Earth.",
+            "poster_path": "/vsWNCisRhrBbUaTR56qCk6pLsEn.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                16,
+                35,
+                10765
+            ],
+            "popularity": 73.295,
+            "first_air_date": "2008-04-04",
+            "vote_average": 8.531,
+            "vote_count": 351,
+            "origin_country": [
+                "JP"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/e5jQJwTkBch7rGxl7ao9WNHqwF6.jpg",
+            "id": 65555,
+            "name": "Endless Love",
+            "original_language": "tr",
+            "original_name": "Kara Sevda",
+            "overview": "Two separate worlds lie on two sides of the road in a seaside town. Both too close and way too far from each other. What happens when two young people from these worlds fall in love?  Kemal is one of the three children of a moderate family that lives in one of the inner neighborhoods of the town. His hand to mouth world has pinned all hopes on him. The motive of this world is not high aims, it’s to make a living and survive. It’s Kemal’s last year in mine engineering. His dreams are restricted with the truth and he doesn’t believe in miracles. Especially in miracles like love.  Kemal is soon tested with his disbelief and Nihan hops into his monotonous life. After that day Kemal’s world turns upside down and he loses control.",
+            "poster_path": "/wCo8QUccl6hBkCzOrm4AaLgc87J.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18
+            ],
+            "popularity": 68.879,
+            "first_air_date": "2015-10-14",
+            "vote_average": 7.788,
+            "vote_count": 644,
+            "origin_country": [
+                "TR"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/pGtvfzfIRCsiudAWlzlGZ74co5l.jpg",
+            "id": 124800,
+            "name": "Love & Death",
+            "original_language": "en",
+            "original_name": "Love & Death",
+            "overview": "Candy and Pat Montgomery and Betty and Allan Gore — two churchgoing couples — enjoy their small town Texas life… until an extramarital affair leads somebody to pick up an axe.",
+            "poster_path": "/8WchbT0UPQeo3PZ6G01fhccYaQB.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                80,
+                18
+            ],
+            "popularity": 478.205,
+            "first_air_date": "2023-04-27",
+            "vote_average": 8.5,
+            "vote_count": 89,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4mn4Bn8Cc3OO1drFdGd8scXthW3.jpg",
+            "id": 225178,
+            "name": "The Love You Give Me",
+            "original_language": "zh",
+            "original_name": "你给我的喜欢",
+            "overview": "Many years ago, a young woman named Min Hui fell for a young man named Xin Qi. They dreamed of spending the rest of their lives together and had even planned to marry. But things between them became complicated. Xin Qi suffered from a dangerous and potentially life-threatening heart condition. And a misunderstanding between them led them to split acrimoniously.\n\nNow, years later, they are reunited at a business event. Min Hui has risen to become an R&D director at a tech firm and Xin Qi has also made a name for himself in the business world. Deciding that “fate” has brought them back into contact for a reason, they start to talk. But Min Hui reveals that she has a son. What is more, a paternity test appears to show that the child is Xin Qi’s! Xin Qi reacts by taking on the role of the boy’s father – much to the child’s delight. But will this lead them back down the path to romance? Or has their love ship already sailed?",
+            "poster_path": "/6kKF4Jrs2BcppSh0BAoXxAYn02V.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18
+            ],
+            "popularity": 148.8,
+            "first_air_date": "2023-04-24",
+            "vote_average": 7.4,
+            "vote_count": 5,
+            "origin_country": [
+                "CN"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/955lMKxs9vfYMaPzuS0oV1GHKVL.jpg",
+            "id": 216927,
+            "name": "Love Syndrome III: The Series",
+            "original_language": "th",
+            "original_name": "รักโคตรๆ โหดอย่างมึง",
+            "overview": "An unexpected accident left Day with serious injuries, making Itt blame himself for what happened to him. What will Itt do when Day wakes up with no memory at all? The person who used to be so caring and so loving has become so ruthless? Itt tells himself, \"I must be patient with Day\".",
+            "poster_path": "/kmb4iUlt8hjHW7fkqL42oUumTqD.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18
+            ],
+            "popularity": 43.054,
+            "first_air_date": "2023-03-04",
+            "vote_average": 7.7,
+            "vote_count": 5,
+            "origin_country": [
+                "TH"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "id": 463095,
+            "title": "Lov",
+            "original_language": "en",
+            "original_title": "Lov",
+            "overview": "The year is 2156. The civilization you know more does not exist. All this was preceded by wars. Natural disasters of great magnitude. Now the rule ... that there is no rule, the law does not exist. There is only hunger, death and hunting ...",
+            "poster_path": null,
+            "media_type": "movie",
+            "genre_ids": [
+                18
+            ],
+            "popularity": 0.6,
+            "release_date": "2014-01-01",
+            "video": false,
+            "vote_average": 1.5,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/jYq3tUzWXd4fTZJ0QbDiiEjxY6K.jpg",
+            "id": 225407,
+            "name": "The Day I Loved You",
+            "original_language": "tl",
+            "original_name": "The Day I Loved You",
+            "overview": "Eli gets suspended for vandalizing school properties. At the guidance counselor’s office, he meets Nikko, the straight A student who’s feisty and assertive. From two different clocks, they get the surprise of their lives when they learned they have to dance together… at the school prom.",
+            "poster_path": "/vU1nVgjc7IPIl22lv0uvrQ9FWvo.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18
+            ],
+            "popularity": 42.462,
+            "first_air_date": "2023-04-26",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "origin_country": [
+                "PH"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/nWHzBFURZALG9XHQI0N1f9OWInQ.jpg",
+            "id": 210586,
+            "name": "True to Love",
+            "original_language": "ko",
+            "original_name": "보라! 데보라",
+            "overview": "Dating coach Bo-ra, whose relationship is failing, and prickly publisher Su-hyeok team up to save Bo-ra’s love life for the sake of her upcoming book about dating. The collaboration results in the mind game of romance.",
+            "poster_path": "/oyY2NRn9J1onVAx7NE0ncULtJur.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                35
+            ],
+            "popularity": 89.039,
+            "first_air_date": "2023-04-12",
+            "vote_average": 5.667,
+            "vote_count": 4,
+            "origin_country": [
+                "KR"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/w6A1r4l8NKCuFqYDv7t5HU0kY7U.jpg",
+            "id": 49036,
+            "name": "Love Stories in the Countryside",
+            "original_language": "zh",
+            "original_name": "乡村爱情",
+            "overview": "",
+            "poster_path": "/evojpP9mxLkdZq6ju6KczbzEyBN.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10751,
+                35
+            ],
+            "popularity": 55.713,
+            "first_air_date": "2006-09-30",
+            "vote_average": 6.5,
+            "vote_count": 2,
+            "origin_country": [
+                "CN"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4U5cJTbXBzW1WxDUZErqU3VNNWl.jpg",
+            "id": 208067,
+            "name": "My Love Story With Yamada-kun at Lv999",
+            "original_language": "ja",
+            "original_name": "山田くんとLv999の恋をする",
+            "overview": "Recently dumped, Akane is just about to quit the game she used to play with her boyfriend, when she meets Yamada in the same RPG. Yamada in real life turns out to be somewhat of a legend. The only problem is - he is ONLY interested in the game. As Akane's feelings grow, will Yamada's focus stay on the game?",
+            "poster_path": "/oxoEWoANKedDJfYBAWTXiHuWQh9.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                16,
+                35
+            ],
+            "popularity": 82.479,
+            "first_air_date": "2023-04-02",
+            "vote_average": 7.2,
+            "vote_count": 6,
+            "origin_country": [
+                "JP"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/pECcUE53TjkrR2VsAgF7JICzH7k.jpg",
+            "id": 130368,
+            "name": "Love Between Fairy and Devil",
+            "original_language": "zh",
+            "original_name": "苍兰诀",
+            "overview": "When a low-ranked fairy accidentally resurrects a powerful demon, their fates become cosmically entangled as the world is thrown into turmoil.",
+            "poster_path": "/mNgUuTGkOj19Z09zKa76bE6J5Di.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                10765
+            ],
+            "popularity": 43.987,
+            "first_air_date": "2022-08-07",
+            "vote_average": 8.2,
+            "vote_count": 91,
+            "origin_country": [
+                "CN"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/jsoz1HlxczSuTx0mDl2h0lxy36l.jpg",
+            "id": 616037,
+            "title": "Thor: Love and Thunder",
+            "original_language": "en",
+            "original_title": "Thor: Love and Thunder",
+            "overview": "After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor Odinson enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now wields Mjolnir as the Mighty Thor. Together they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher’s vengeance and stop him before it’s too late.",
+            "poster_path": "/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                14,
+                28,
+                35
+            ],
+            "popularity": 192.759,
+            "release_date": "2022-07-06",
+            "video": false,
+            "vote_average": 6.569,
+            "vote_count": 5987
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/dJ8yrSokdTMnhKJw06MllSfCegb.jpg",
+            "id": 83121,
+            "name": "Kaguya-sama: Love Is War",
+            "original_language": "ja",
+            "original_name": "かぐや様は告らせたい～天才たちの恋愛頭脳戦～",
+            "overview": "Considered a genius due to having the highest grades in the country, Miyuki Shirogane leads the prestigious Shuchiin Academy's student council as its president, working alongside the beautiful and wealthy vice president Kaguya Shinomiya. The two are often regarded as the perfect couple by students despite them not being in any sort of romantic relationship.",
+            "poster_path": "/5khbC6AuNgnvnoDbjIMKCOhEtIc.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                16,
+                35,
+                18
+            ],
+            "popularity": 64.182,
+            "first_air_date": "2019-01-12",
+            "vote_average": 8.685,
+            "vote_count": 613,
+            "origin_country": [
+                "JP"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4HTZc9oPQfbTiFgxXIMDFSeBYq6.jpg",
+            "id": 221968,
+            "name": "The Corner of Love",
+            "original_language": "zh",
+            "original_name": "转角之恋",
+            "overview": "The story of Fang Ling, a white-collar worker in a divorced city, with her son, and Chen Juyi, an elite man who is also divorced with a daughter. They accidentally live in the same new house and fell in love with each other.",
+            "poster_path": "/A81Bpo4vFYZQO8nc9evig5MzIkh.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                35
+            ],
+            "popularity": 1.291,
+            "first_air_date": "2023-03-09",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "origin_country": [
+                "CN"
+            ]
+        }
+    ],
+    "total_pages": 500,
+    "total_results": 10000
+}
