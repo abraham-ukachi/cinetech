@@ -422,6 +422,7 @@ open http://localhost/cinetech
 - [ ] Optimize all `.js` files
 - [ ] Remove unnecessary comments
 - [ ] Add screenshots
+- [ ] Create a `search` JS view for `favorites-page` JS page
 
 ---
 
