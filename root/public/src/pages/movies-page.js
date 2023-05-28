@@ -326,6 +326,9 @@ export class MoviesPage extends Page {
    * Handler that is called when the movies page is ready
    */
   onReady() {
+    // HACK: call the `_handleGenreChange()` method, to force the load
+    this._handleGenreChange();
+
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.info(`\x1b[36m[onReady]: ${this.name} is ready`); 
   }

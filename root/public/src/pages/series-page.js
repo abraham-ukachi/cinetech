@@ -322,8 +322,11 @@ export class SeriesPage extends Page {
    * Handler that is called when the series page is ready
    */
   onReady() {
+    // HACK: call the `_handleGenreChange()` method, to force the load
+    this._handleGenreChange();
+
     // DEBUG [4dbsmaster]: tell me about it ;)
-    console.info(`\x1b[36m[onReady]: ${this.name} is ready`); 
+    console.info(`\x1b[36m[onReady]: ++++ ${this.name} is ready`); 
   }
 
   
@@ -732,6 +735,9 @@ export class SeriesPage extends Page {
     loading ? this._showLoadingSpinner() : this._hideLoadingSpinner();
     // lock or unlock the app layout element accordingly
     loading ? this.lock() : this.unlock();
+    
+    // start or stop the loading the app accordingly
+    // loading ? muvishoApp.startPageLoading() : muvishoApp.stopPageLoading();
 
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.log(`\x1b[35m[_handleLoadingChange]: loading => %s\x1b[0m`, loading);
@@ -770,7 +776,7 @@ export class SeriesPage extends Page {
    * @param { String } ?genre - the new value of the `genre` property (e.g. 'science-fiction')
    */
   _handleGenreChange(genre = this.genre) {
-
+    
     // Select the genre chip by the given `genre`
     this.selectGenreByName(genre);
 

@@ -146,7 +146,7 @@ export class View extends Engine {
    * @returns { String }
    */
   render() {
-    return html`<div id="${this.name.toCamelCase()}" name="${this.name}"></div>`;
+    return html`<div id="${this.viewId}" name="${this.name}" data-real-name="${this.getRealName()}" active></div>`;
   }
   
 
@@ -239,6 +239,10 @@ export class View extends Engine {
     setTimeout(() => {
       // ...call the onReady() method
       this.onReady();
+
+      // trigger the `ready` event
+      this.trigger('ready', { id: this.viewId, name: this.name, realName: this.getRealName(), view: this });
+
     }, 100);
 
 
@@ -349,6 +353,19 @@ export class View extends Engine {
     return this.opened;
   }
 
+  /**
+   * Returns the real page view.
+   * This method removes any trailing '-[pageName]-view'.
+   *
+   * Example: 
+   *   'default-search-view' becomes 'default' ;)
+   *
+   * @returns { String } 
+   */
+  getRealName() {
+    return this.name.split('-')[0];
+  }
+
 
   /* >> Private Methods << */
 
@@ -367,6 +384,8 @@ export class View extends Engine {
     hostEl.id = this.viewId;
     hostEl.classList.add('view');
     hostEl.setAttribute('fit', '');
+    hostEl.setAttribute('active', '');
+    hostEl.dataset.realName = this.getRealName();
     // append this `hostEl` to the root
     this.root.appendChild(hostEl);
      

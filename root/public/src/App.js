@@ -1738,6 +1738,7 @@ export class App extends Engine {
     console.log(`\x1b[35m[_handleNavigation](1): location => ${location} & event => \x1b[0m`, event);
     console.log(`\x1b[35m[_handleNavigation](2): page => ${page} (length: ${page.length}) & view => ${view} & params => \x1b[0m`, params.toString());
     console.log(`\x1b[35m\n[_handleNavigation](3): 
+      + currentScreen => ${this.currentScreen} & 
       + currentPage => ${this.currentPage} & 
       + currentView => ${this.currentView} & 
       + params => \x1b[0m`, params);
@@ -1766,7 +1767,7 @@ export class App extends Engine {
     }
 
     // DEBUG [4dbsmaster]: tell me about it ;)
-    console.log(`\x1b[42m\x1b[30m[_navigateScreens]: params => \x1b[0m`, params);
+    console.log(`\x1b[42m\x1b[30m[_navigateScreens]: currentScreen => ${this.currentScreen} & params => \x1b[0m`, params);
 
   }
 
@@ -1808,6 +1809,9 @@ export class App extends Engine {
 
         // notify page update
         this.notifyPageUpdate();
+
+        // notify the view update
+        pageObject.notifyViewUpdate();
 
         // DEBUG [4dbsmaster]: tell me about it ;)
         console.log(`\x1b[3m[_navigatePages] (1): page loaded!!! view => ${view} & pageObject => \x1b[0m`, pageObject);
@@ -2159,6 +2163,11 @@ export class App extends Engine {
     // listen to the `start` event
     this.welcomeScreen.on('start', () => {
       /* TODO: load again & show the home page */
+
+      // start loading the page
+      this._pageLoading = true;
+
+
       // get the current page route as `pageRoute`
       let pageRoute = getPageRoute(window.location, BASE_DIR);
       let viewRoute = getViewRoute(window.location, BASE_DIR);
@@ -2176,13 +2185,31 @@ export class App extends Engine {
 
       // get the pending page object as `pendingPage`
       let pendingPage = this._getPendingPageObject();
+      // set the pendingPage's view to `currentView`
+      pendingPage.view = this.currentView.length ? this.currentView : 'default';
       // open the `pendingPage`
       pendingPage.open();
       // remove the pending page from 
 
 
+      // When the page is ready...
+      pendingPage.on('ready', (page) => {
+        // ...stop page loading
+        this._pageLoading = false;
+
+        // notify page update
+        this.notifyPageUpdate();
+
+        // notify the view update
+        page.notifyViewUpdate();
+
+        // DEBUG [4dbsmaster]: tell me about it ;)
+        console.log(`\x1b[40;3;34m[pendingPage] (1|ON-READY): pendingPage => \x1b[0m`, pendingPage);
+        console.log(`\x1b[40;3;34m[pendingPage] (2|ON-READY): page => \x1b[0m`, page);
+      });
+
       // DEBUG [4dbsmaster]: tell me about it ;)
-      console.log(`\x1b[40m\x1b[37m[welcomeScreen] (START) & pendingPage => \x1b[0m`, pendingPage);
+      console.log(`\x1b[40m\x1b[37m[welcomeScreen] (START) & currentView => ${this.currentView} & pendingPage => \x1b[0m`, pendingPage);
 
     });
 
@@ -2219,7 +2246,7 @@ export class App extends Engine {
    *
    * @returns { Object } - an instance of the page
    */
-  _initPage(loadedPage, currentView,  autoOpen) {
+  _initPage(loadedPage, currentView, autoOpen) {
     // TODO: do nothing if the `loadedPage` has already been instantiated
     
     // get the page name as `pageName`
@@ -2232,11 +2259,13 @@ export class App extends Engine {
     // get the page id
     let pageId = pageName.toCamelCase(); // <- e.g. returns; homePage (if pageName is 'home-page')
 
+    let view = typeof currentView !== 'undefined' ? currentView : 'default'; // <- HACK
+
     // instantiate the page in this app
     this[pageId] = new PageClass(pageType, pageName);
 
     // update the current view
-    this[pageId].view = currentView;
+    this[pageId].view = view;
 
     // if `autoOpen` is TRUE
     if (autoOpen) {
@@ -2248,7 +2277,7 @@ export class App extends Engine {
 
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.log(`\x1b[40m\x1b[34m[_initPage] (1|in anticipation): pageType => ${pageType} & pageName => ${pageName} & pageId => ${pageId}`); 
-    console.log(`\x1b[40m\x1b[34m[_initPage] (2|in anticipation): currentView => ${currentView} & loadedPage => \x1b[0m`, loadedPage);
+    console.log(`\x1b[40m\x1b[34m[_initPage] (2|in anticipation): view => [[ ${view} ]] & loadedPage => \x1b[0m`, loadedPage);
 
     // return an instance of the page
     return this[pageId];

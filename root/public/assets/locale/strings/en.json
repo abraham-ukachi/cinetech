@@ -20,6 +20,28 @@
 
   "searchMovies": "Search movies",
 
+  "searchFavoriteMovies": "Search favorite movies",
+
+  "searchFavoriteTVShows": "Search favorite TV shows",
+
+  "searchFavoriteSeries": "Search favorite series",
+
+  "findMovies": "Find movies",
+  "findTVShows": "Find TV shows",
+  "findSeries": "Find series",
+
+  "searchInFavorites": "Search in favorites",
+
+  "searchFavorites": "Search favorites",
+
+  "findInFavorites": "Find in favorites",
+
+  "findInFavoriteMovies": "Find in favorite movies",
+
+  "findInFavoriteTVShows": "Find in favorite TV shows",
+
+  "findInFavoriteSeries": "Find in favorite series",
+
   "splashScreen": "Splash screen",
 
   "welcome": "Welcome",

@@ -66,6 +66,10 @@
 
 // defining some constant variables...
 
+export const PAGE_ROUTE_DEFAULT = 'home';
+export const VIEW_ROUTE_DEFAULT = 'default';
+
+
 
 /**
  * `installRouter`
@@ -144,7 +148,7 @@ export const installRouter = (controller, locationUpdatedCallback) => {
  *
  * @returns { String } originRoute
  */
-export const getOriginRoute = (location = window.location, baseDir = '/blog-js/') => {
+export const getOriginRoute = (location = window.location, baseDir = '/cinetech/') => {
   // create a url with the `location`
   let url = new URL(location);
 
@@ -165,7 +169,7 @@ export const getOriginRoute = (location = window.location, baseDir = '/blog-js/'
  *
  * @returns { String } pageRoute
  */
-export const getPageRoute = (location = window.location, baseDir = '/blog-js/') => {
+export const getPageRoute = (location = window.location, baseDir = '/cinetech/') => {
   // create a url with the `location`
   let url = new URL(location);
 
@@ -173,7 +177,7 @@ export const getPageRoute = (location = window.location, baseDir = '/blog-js/') 
   let page = url.pathname.replace(baseDir, '/').split('/')[1];
 
   // make sure the page route is a string (empty or not) as `pageRoute`
-  let pageRoute = (page?.length) ? page : '';
+  let pageRoute = (page?.length) ? page : ''; /* b4: PAGE_ROUTE_DEFAULT; */
 
   // return `pageRoute`
   return pageRoute;
@@ -188,7 +192,7 @@ export const getPageRoute = (location = window.location, baseDir = '/blog-js/') 
  *
  * @returns { String } viewRoute
  */
-export const getViewRoute = (location, baseDir = '/blog-js/') => {
+export const getViewRoute = (location, baseDir = '/cinetech/') => {
   // get the page route
   let pageRoute = getPageRoute(location, baseDir);
 
@@ -204,7 +208,7 @@ export const getViewRoute = (location, baseDir = '/blog-js/') => {
   // If there are more than 3 items in `splitPathname`, 
   // and the `lastName` is not the same as the `page`,
   // use it as the view route
-  let viewRoute = ((splitPathname.length) > 3 && (lastName !== pageRoute)) ? lastName : '';
+  let viewRoute = ((splitPathname.length) > 3 && (lastName !== pageRoute)) ? lastName : ''; /* b4: VIEW_ROUTE_DEFAULT */
 
   // return `viewRoute`
   return viewRoute;

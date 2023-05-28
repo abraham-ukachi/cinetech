@@ -52,6 +52,17 @@ body {
 
 
 
+/* == Loading Spinner  */
+
+#loadingSpinner {
+  position: fixed;
+  bottom: var(--nav-bar-height, 60px);
+  pointer-events: none;
+  user-select: none;
+  justify-content: end;
+}
+
+/* == End of Loading Spinner  == */
 
 
 /* 
@@ -69,6 +80,9 @@ body {
   /* App Logo */
   #appLogo {}
 
+  #loadingSpinner {
+    bottom: 0;
+  }
 
 }
 

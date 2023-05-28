@@ -181,6 +181,30 @@ class Request {
 
 
 
+  /**
+   * Returns a list of fake favorites
+   * NOTE: this is just for testing purposes, to show how to use the `getFavoritesByType()` method
+   *
+   * @param { String } type (eg. 'default', 'movie', 'series') 
+   * @param { Number } page
+   *
+   * @returns { Promise<Array> }
+   */
+  getFakeFavorites(type, page = 1) {
+    return new Promise(async (resolve, reject) => {
+      // fetch the fake favorites from the `fake_favorites.json` file
+      let requestPromise = await fetch(`${this.dataDir}/fake_favorites_${type ?? 'default'}.json`);
+
+      // get the fake favorites JSON data
+      let fakeFavorites = await requestPromise.json();
+
+      // after a simulated 2 seconds delay, resolve the promise with the fake favorites
+      setTimeout(() => resolve(fakeFavorites), 2000);
+
+    });
+
+  }
+
 
   /**
    * Method used to get all the movies with the given `genreId` and `page`
@@ -214,8 +238,24 @@ class Request {
     return this._makeRequest(`discover/tv?with_genres=${genreId}&page=${page}?language=${this.lang}`);
   }
 
+  /**
+   * Method used to get all the favorites of the given `type` and `page`
+   *
+   * @example { MuvishoUrl } {{baseUrl}}/favorites/movie?page=1&language=en
+   * @example { MuvishoUrl } {{baseUrl}}/favorites/tv?page=1&language=en
+   * @example { MuvishoUrl } {{baseUrl}}/favorites?page=1&language=en
+   *
+   * @param { String } type - the type of favorites to get (optional, defaults to 'all')
+   * @param { Number } page - the page to get the favorites for (optional, defaults to 1)
+   *
+   * @returns { Promise } - the promise that will be resolved with the favorites data
+   */
+  getFavoritesByType(type, page = 1) {
+    return this._makeRequest(`favorites/${type}?page=${page}?language=${this.lang}`);
+  }
 
-  
+
+
   /**
    * Method used to retrieve all the genres of the given `mediaType`
    *

@@ -269,47 +269,49 @@ export class Page extends Engine {
   // Opens the page
   async open() {
     // TODO: Make sure the page has not been opened already
+    // do nothing if the page is already opened
+    if (this.opened) return;
+
+
     await this.run();
 
     // load all the views
-    await this._loadViews(this.getViews(), this.getRealName(), VIEWS_DIR).then((loadedViews) => {
-      
-      // Initialize the views
-      this.#_initViews(loadedViews);
+    let loadedViews = await this._loadViews(this.getViews(), this.getRealName(), VIEWS_DIR);
 
-
-      // DEBUG [4dbsmaster]: tell me about it ;)
-      console.log(`\x1b[33m[open]: loadedView => \x1b[0m`, loadedViews);
-
-    });
-
-    // await super.run();
-    this.opened = true;
+    // Initialize the views and get the current view object
+    let currentViewObject = await this.#_initViews(loadedViews);
     
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log('\x1b[43;4;30m[open] (1|loadedViews): loadedViews ===>>>>>> \x1b[0m', loadedViews);
+    console.log('\x1b[43;4;30m[open] (2|currentViewObject): CURRENT VIEW OBJECT ===>>>>>> \x1b[0m', currentViewObject);
+
+
     // show the page
     this.show();
 
-    // open the current view
-    // this.openView(this.getCurrentViewId());
+    // If the current view is not opened
+    if (!this.isCurrentViewOpened) {
+      // ...open the current view, using the current view's id
+      this.openCurrentView();
+    }
     
 
-    // HACK / IDEA: allocating enough time before executing the `onReady()` method,
-    //              this is to prepare for any unforseen issues
-    // after 0.1 seconds or 100 milliseconds...
-    setTimeout(() => {
-      // ...call the onReady() method
+    // Wait for this `currentViewObject` to be ready, 
+    // by listening to its `ready` event ;)
+    // NOTE: params => { id, name, realName, view }
+    currentViewObject.on('ready', (params) => {
+
+      // set the `opened` property to TRUE
+      this.opened = true;
+
+      // call the `onReady()` method of the page
       this.onReady();
 
-      // notify the app of this page update
-      // muvishoApp.notifyPageUpdate();
+      // TODO: trigger the `ready` event of the page
+      this.trigger('ready', this);
 
-      // If the current view is not opened
-      if (!this.isCurrentViewOpened) {
-        // ...open the current view, using the current view's id
-        this.openCurrentView();
-      }
-
-    }, 100);
+    });
 
   }
 
@@ -359,6 +361,28 @@ export class Page extends Engine {
   }
 
 
+  /**
+   * Notifies all views about the recent view change.
+   *
+   * @param { String } ?view - the new or recently updated view (optional - defaults to `default`)
+   * @public
+   */
+  notifyViewUpdate(view = 'default') {
+    // loop through all the views in `viewsEl`
+    this.viewEls.forEach((viewEl) => {
+
+      // IDEA: if the view's id is the same as the current view id,
+      //       set the `active` attribute to this view element
+      //       otherwise, remove the `active` attribute from this view element
+
+      viewEl.dataset.realName === view ? viewEl.setAttribute('active', '') : viewEl.removeAttribute('active');
+      
+    });
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[42;34m[notifyViewUpdate]: view => ${view} & viewEls => %o\x1b[0m`);
+  }
+
 
   /**
    * Handler that is called when the page is ready
@@ -401,7 +425,8 @@ export class Page extends Engine {
    * @returns { String } (e.g. 'defaultHomeView')
    */
   getCurrentViewId() {
-    return this.view + this.getRealName().capitalize() + 'View';
+    let view = this.view?.length ? this.view : 'default';
+    return view + this.getRealName().capitalize() + 'View';
   }
 
   /* >> Public Setters << */
@@ -512,6 +537,14 @@ export class Page extends Engine {
     return this.shadowRoot.getElementById('views');
   }
 
+  /**
+   * Returns a list of all `<div class="view">` elements in `viewsEl`
+   *
+   * @returns { NodeList<Element> }
+   */
+  get viewEls() {
+    return this.viewsEl.querySelectorAll('.view');
+  }
 
 
   /* >> Private Methods << */
@@ -607,36 +640,47 @@ export class Page extends Engine {
    * Method used to initialize all the `loadedViews` of this page
    *
    * @param { Array } loadedViews
+   *
+   * @returns { Promise } - resolves to `true` if all views are initialized successfully
    */
-  async #_initViews(loadedViews) {
-    // looping through each view
-    loadedViews.forEach((view) => {
-      // get the view's id, name and class as `viewId`, `viewName` and `viewClass` respectively
-      let viewId = view.id;
-      let viewName = view.name;
-      let viewClass = view.object;
+  #_initViews(loadedViews) {
+    return new Promise((resolve, reject) => {
+      
+      // Initialize the `currentViewObject` to `null`
+      let currentViewObject = null;
 
-      // get the current view id as `currentViewId`
-      let currentViewId = this.getCurrentViewId();
+      // looping through each view
+      loadedViews.forEach((view) => {
+        // get the view's id, name and class as `viewId`, `viewName` and `viewClass` respectively
+        let viewId = view.id;
+        let viewName = view.name;
+        let viewClass = view.object;
 
-      // instantiate the view class and assign it's object to this page
-      this[viewId] = new viewClass(this.viewsEl, this.viewName);
+        // get the current view id as `currentViewId`
+        let currentViewId = this.getCurrentViewId();
 
+        // instantiate the view class and assign it's object to this page
+        this[viewId] = new viewClass(this.viewsEl, this.viewName);
 
-      // if `viewId` is the same as the current view Id...
-      if (viewId === currentViewId) {
-        // get the view object 
-        let viewObject = this[viewId];
-        console.log('VIEW OBJECT ===>>>>>>', viewObject);
+        // If the view's id is the same as the current view id...
+        if (viewId === currentViewId) {
+          // ...then set the `currentViewObject` to the view's object
+          currentViewObject = this[viewId];
+        }
 
-        // open this view
-        // await viewObject.open();
-      }
+        // DEBUG [4dbsmaster]: tell me about it ;)
+        console.log(`\x1b[35m[_initViews](loadedViews): viewId => ${viewId} & currentViewId => ${currentViewId} & currentViewObject => \x1b[0m`, currentViewObject);
 
-      //
-      // DEBUG [4dbsmaster]: tell me about it ;)
-      console.log(`\x1b[40m\x1b[37m[_initViews](1|loadedViews): viewId => ${viewId} & currentViewId => ${currentViewId} & viewName => ${viewName}\x1b[0m`);
+      });
+
+      // after a simulated delay of 1 second...
+      setTimeout(() => {
+        // ...resolve the promise with the `currentViewObject`
+        resolve(currentViewObject);
+      }, 1000);
+      
     });
+
   }
 
 
@@ -670,22 +714,33 @@ export class Page extends Engine {
     // get the current view Object
     this.viewObject = this[this.viewId];
 
+    // HACK: do nothing if there's no view object 
+    if (!this.viewObject) { return }
+
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.log(`\x1b[34m[_handleViewChange](1|Timstamp): `, new Date().getTime()); // <- BEFORE - timestamp
 
     // open the view
+    // this.viewObject.open();
+
     this.viewObject.open();
 
     // call the `onViewReady()` method
     this.onViewReady(view, this.viewId, this.viewObject);
 
+    // notify the views of the recent change
+    this.notifyViewUpdate(view, this.viewId, this.viewObject);
+
+
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.log(`\x1b[34m[_handleViewChange](2|Timstamp): `, new Date().getTime()); // <- AFTER - timestamp
 
     // DEBUG [4dbsmaster]: tell me about it ;)
-    console.log(`\x1b[34m[_handleViewChange](3): viewId => ${this.viewId} & viewObject => ${this.viewObject}\x1b[0`);
+    console.log(`\x1b[34m[_handleViewChange](3): viewId => ${this.viewId} & viewObject => ${this.viewObject}\x1b[0m`);
 
   }
+
+
 
   /* >> Private Setters << */
 

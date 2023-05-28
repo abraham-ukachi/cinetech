@@ -348,6 +348,8 @@ div.progress-bar.intermediate > span.progress-bar-value {
   z-index: 10;
 }
 
+
+
 /* Header of App Layout */
 .app-layout > header {
   display: block;
@@ -431,6 +433,15 @@ header[sticky-enabled] {
 
 /* ---[ End of App Layout ]--- */
 
+/* == Views Container == */
+
+#views.container {}
+
+#views.container > .view:not([active]) {
+  display: none !important;
+}
+
+/* -- End of Views Container -- */
 
 
 /* === Toasts Styles === */
