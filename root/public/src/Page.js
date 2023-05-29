@@ -290,6 +290,8 @@ export class Page extends Engine {
     // show the page
     this.show();
 
+    console.log(`\x1b[43;4;30m[open] (3|currentViewObject): currentViewId => ${this.getCurrentViewId()} & isCurrentViewOpened ? \x1b[0m`, this.isCurrentViewOpened);
+
     // If the current view is not opened
     if (!this.isCurrentViewOpened) {
       // ...open the current view, using the current view's id
@@ -364,10 +366,10 @@ export class Page extends Engine {
   /**
    * Notifies all views about the recent view change.
    *
-   * @param { String } ?view - the new or recently updated view (optional - defaults to `default`)
+   * @param { String } ?view - the new or recently updated view (optional - defaults to `this.view`)
    * @public
    */
-  notifyViewUpdate(view = 'default') {
+  notifyViewUpdate(view = this.view) {
     // loop through all the views in `viewsEl`
     this.viewEls.forEach((viewEl) => {
 
@@ -717,26 +719,22 @@ export class Page extends Engine {
     // HACK: do nothing if there's no view object 
     if (!this.viewObject) { return }
 
-    // DEBUG [4dbsmaster]: tell me about it ;)
-    console.log(`\x1b[34m[_handleViewChange](1|Timstamp): `, new Date().getTime()); // <- BEFORE - timestamp
 
-    // open the view
-    // this.viewObject.open();
-
-    this.viewObject.open();
-
-    // call the `onViewReady()` method
-    this.onViewReady(view, this.viewId, this.viewObject);
+    // However, if this view object has not been opened yet...
+    if (!this.viewObject.opened) {
+      // ...then open it ;)
+      this.viewObject.open();
+      
+      // call the `onViewReady()` method
+      this.onViewReady(view, this.viewId, this.viewObject);
+    }
 
     // notify the views of the recent change
     this.notifyViewUpdate(view, this.viewId, this.viewObject);
 
 
     // DEBUG [4dbsmaster]: tell me about it ;)
-    console.log(`\x1b[34m[_handleViewChange](2|Timstamp): `, new Date().getTime()); // <- AFTER - timestamp
-
-    // DEBUG [4dbsmaster]: tell me about it ;)
-    console.log(`\x1b[34m[_handleViewChange](3): viewId => ${this.viewId} & viewObject => ${this.viewObject}\x1b[0m`);
+    console.log(`\x1b[34m[_handleViewChange]: view => ${view} & viewId => ${this.viewId} & viewObject => ${this.viewObject}\x1b[0m`);
 
   }
 
