@@ -108,7 +108,7 @@ The official deadline of the jobs below - according to [intra](https://intra.lap
 | 39 | *`App - Controller`* | **app/Controllers/AppController.php** | Pending |
 | 40 | *`App Routes`* | **app/Controllers/app-routes.php** | [Done](./root/routes/app-routes.php)\* |
 | 41 | *`API Routes`* | **app/Controllers/api-routes.php** | [Done](./root/routes/api-routes.php)\* |
-| 42 | *`Favorites - JS Page`* | **root/public/src/pages/favorites-page.js** | *_In progress_* |
+| 42 | *`Favorites - JS Page`* | **root/public/src/pages/favorites-page.js** | [Done](./root/public/src/pages/favorites-page.js)\* |
 
 > WARNING: This list is a working progress and will change soon
 
