@@ -501,7 +501,7 @@ export class DefaultFavoritesView extends View {
          <li class="${data.media_type} flex-layout vertical fade-in" data-id="${data.id}">
            
            <!-- Poster Container -->
-           <a href="./details/${data.media_type}?vid=${this._getComputedId(data.id, data.original_title ?? data.original_name, data.release_date ?? data.first_air_date)}" 
+           <a href="./details/${data.media_type === 'tv' ? 'show' : 'movie'}?vid=${this._getComputedId(data.id, data.original_title ?? data.original_name, data.release_date ?? data.first_air_date)}" 
               class="poster-container"
               title="${data.title ?? data.name} - ${data.overview}">
              <!-- Poster -->
@@ -514,7 +514,6 @@ export class DefaultFavoritesView extends View {
                <!-- Year -->
                <span class="year">
                  <span>${this._getComputedYear(data.release_date ?? data.first_air_date)}</span>
-                 <span class="divider vertical"></span>
                  <span class="media-type-icon"></span>
                </span>
              </div>
