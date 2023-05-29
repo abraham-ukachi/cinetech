@@ -155,8 +155,8 @@ li.tv > .poster-container > .poster::after {
   top: 0;
   background-color: var(--poster-placeholder-color, var(--outline-color));
 
-  -mask-image: url(../../assets/placeholders/series-poster-placeholder.svg);
-  -webkit-mask-image: url(../../assets/placeholders/series-poster-placeholder.svg);
+  -mask-image: url('../../assets/placeholders/series-poster-placeholder.svg'); 
+  -webkit-mask-image: url('../../assets/placeholders/series-poster-placeholder.svg'); 
   -webkit-mask-size: 60%;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center center;
@@ -171,7 +171,7 @@ li.tv > .poster-container > .poster::after {
 
 /* Serie Details */
 li.serie > .serie-details,
-li.tv > .serie-details {
+li.tv > .tv-details {
   padding-top: 0.5rem;
 }
 
@@ -271,9 +271,32 @@ li.tv .meta .rating.is-good {
 }
 
 
+
+/* Media Type Icon */
+li.serie span.media-type-icon,
+li.tv span.media-type-icon { 
+  width: var(--media-type-icon-size, 12px);
+  height: var(--media-type-icon-size, 12px);
+  background-color: var(--poster-placeholder-color, var(--outline-color));
+  display: flex;
+  align-self: center;
+  margin-left: 0.25rem;
+  margin-right: -0.15rem;
+  transform: scale(1.5);
+
+  -webkit-mask: url('../../assets/placeholders/series-poster-placeholder.svg') no-repeat center center; 
+  -webkit-mask-size: 100%;
+
+  mask: url('../../assets/placeholders/series-poster-placeholder.svg') no-repeat center center; 
+  mask-size: 100%;
+
+}
+
+
 /* Serie Meta - Year */
 li.serie .meta .year,
 li.tv .meta .year {
+  position: relative;
   line-height: 1rem;
   justify-content: end;
   display: flex;

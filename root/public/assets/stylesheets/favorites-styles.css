@@ -65,6 +65,64 @@ body {
 /* == End of Loading Spinner  == */
 
 
+/* Tabs Container | App Bar */
+.tabs-container.app-bar {
+ padding: 0; 
+}
+
+nav.tabs {
+  width: var(--tabs-width, 100%);
+  height: var(--tabs-height, 60px);
+}
+
+
+nav.tabs > a.tab {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  width: auto;
+  height: 100%;
+  text-transform: uppercase;
+  text-decoration: none;
+  align-items: center;
+  opacity: var(--opacity-text-inactive);
+  font-size: var(--tab-font-size, 14px);
+  font-weight: var(--tab-font-weight, 500);
+  letter-spacing: var(--tab-letter-spacing, 1px);
+  color: var(--tab-color, var(--on-background-color));
+}
+
+nav.tabs > a.tab[selected] {
+  font-weight: var(--selected-tab-font-weight, bold);
+  color: var(--selected-tab-color, var(--primary-color));
+}
+
+/* Tabs Indicator */
+.tabs-indicator {
+  position: absolute;
+  left: 0;
+  background: var(--primary-color);
+
+  -webkit-transition: var(--tabs-indicator-transition, all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1));
+  -moz-transition: var(--tabs-indicator-transition, all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1));
+  -ms-transition: var(--tabs-indicator-transition, all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1));
+  transition: var(--tabs-indicator-transition, all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1));
+
+}
+
+.tabs-indicator.horizontal {
+  width: 50%;
+  height: var(--tabs-indicator-size, 2px);
+  border-radius: var(--tabs-indicator-border-radius, 2px);
+}
+
+.tabs-indicator.bottom {
+  bottom: 0;
+}
+
+
+
+
 /* 
  * --> Wide - Layout <--
  * Phone: ? (Responsive)

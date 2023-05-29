@@ -257,6 +257,26 @@ li.movie .meta .rating.is-good {
 }
 
 
+/* Media Type Icon */
+li.movie span.media-type-icon { 
+  width: var(--media-type-icon-size, 12px);
+  height: var(--media-type-icon-size, 12px);
+  background-color: var(--poster-placeholder-color, var(--outline-color));
+  display: flex;
+  align-self: center;
+  margin-left: 0.25rem;
+  margin-right: -0.15rem;
+  transform: scale(1.5);
+
+  -webkit-mask: url('../../assets/placeholders/movie-poster-placeholder.svg') no-repeat center center; 
+  -webkit-mask-size: 100%;
+
+  mask: url('../../assets/placeholders/movie-poster-placeholder.svg') no-repeat center center; 
+  mask-size: 100%;
+
+}
+
+
 /* Movie Meta - Year */
 li.movie .meta .year {
   line-height: 1rem;
