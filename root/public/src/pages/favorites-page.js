@@ -223,12 +223,14 @@ export class FavoritesPage extends Page {
               <a href="favorites" data-view="default" class="tab" role="tab" tabindex="0" aria-selected="true" selected><span>All</span></a>
               <a href="favorites/movies" data-view="movies" class="tab" role="tab" tabindex="0" aria-selected="false"><span>Movies</span></a>
               <a href="favorites/series" data-view="series" class="tab" role="tab" tabindex="0" aria-selected="false"><span>Series</span></a>
+
+              <!-- Tabs Indicator -->
+              <span class="tabs-indicator horizontal bottom"></span>
+
             </nav>
 
-            <!-- Tab Indicator -->
-            <span class="tab-indicator horizontal bottom" hidden></span>
 
-            <span class="divider horizontal bottom" hidden></span>
+            <span class="divider horizontal bottom"></span>
           </div>
           
           <span class="divider horizontal bottom" hidden></span>
@@ -412,12 +414,39 @@ export class FavoritesPage extends Page {
   }
 
   /**
+   * Returns the currently selected tab element
+   *
+   * @returns { Element } 
+   * @public
+   */
+  getSelectedTab() {
+    return [...this.allTabs].find((tabEl) => tabEl.hasAttribute('selected'));
+  }
+
+  /**
+   * Returns the tab element by the given `view`
+   *
+   * @param { String } view - The view to select (e.g. `default`, `movies`, `series`)
+   *
+   * @returns { Element }
+   * @public
+   */
+  getTabByView(view) {
+    return [...this.allTabs].find((tabEl) => tabEl.dataset.view === view);
+  }
+
+  /**
    * Method used to select a tab element, using the specified `view`
    *
    * @param { String } view - The view to select (e.g. `default`, `movies`, `series`)
+   *
+   * @returns { Element } selectedTabEl - The selected tab element
    * @public
    */
   selectTabByView(view) {
+    // Initialize the `selectedTabEl` variable
+    let selectedTabEl = null;
+
     // loop through all the tabs
     this.allTabs.forEach((tabEl) => {
       // get the view of the current tab
@@ -431,13 +460,23 @@ export class FavoritesPage extends Page {
         tabEl.setAttribute('selected', '');
         // focus the current tab
         tabEl.focus();
+
+        // update the `selectedTabEl` variable
+        selectedTabEl = tabEl;
       } else {
         // deselect the current tab
         tabEl.setAttribute('aria-selected', 'false');
         // remove the `selected` property from the current tab
         tabEl.removeAttribute('selected');
       }
+
     });
+
+    // notify the tabs to update, based on the current `view`
+    this.notifyTabsUpdate(view);
+
+    // return the selected tab element
+    return selectedTabEl;
   }
 
 
@@ -455,6 +494,28 @@ export class FavoritesPage extends Page {
    */
   unlock() {
     this.appLayoutEl.removeAttribute('scroll-lock');
+  }
+
+
+  /**
+   * Notifies the tabs to update, based on the current `view`
+   *
+   * @public
+   */
+  notifyTabsUpdate(view = this.view) {
+    // get the selected tab element by the given `view`
+    let selectedTabEl = this.getTabByView(view);
+
+    // get the width and height of the selected tab element
+    const selectedTabElWidth = selectedTabEl.offsetWidth;
+    const selectedTabElHeight = selectedTabEl.offsetHeight;
+
+    // update the `tabsIndicatorEl` width and left position according to the selected tab element
+    this.tabsIndicatorEl.style.width = `${selectedTabElWidth}px`;
+    this.tabsIndicatorEl.style.left = `${selectedTabEl.offsetLeft}px`;
+    
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[33m[notifyTabsUpdate]: view => ${view} & selectedTabElWidth => %d & selectedTabElHeight => %d \x1b[0m`, selectedTabElWidth, selectedTabElHeight);
   }
 
 
@@ -566,6 +627,16 @@ export class FavoritesPage extends Page {
     return this.tabsContainerEl.querySelector('nav.tabs');
   }
 
+
+  /**
+   * Returns the `<span class="tabs-indicator">` element inside the `tabsContainerEl`
+   *
+   * @returns { HTMLSpanElement }
+   * @readonly
+   */
+  get tabsIndicatorEl() {
+    return this.tabsContainerEl.querySelector('.tabs-indicator');
+  }
   
 
   /**
@@ -591,15 +662,6 @@ export class FavoritesPage extends Page {
 
   /* >> Private Methods << */
   
-  /**
-   * Method used to hide other views except the one with specified `viewId`
-   *
-   * @param { String } viewId - eg. defaultFavoritesView
-   */
-  //_hideOtherViews(viewId) {
-  //  
-  //}
-
 
   /**
    * Shows the loading spinner element
@@ -659,7 +721,32 @@ export class FavoritesPage extends Page {
     // listen for the `scroll` event on the `appLayoutEl`
     this.appLayoutEl.addEventListener('scroll', this._onAppLayoutScroll.bind(this));
 
+    // Listen for the `resize` event on the `window` object
+    window.addEventListener('resize', this._onWindowResize.bind(this));
+
   }
+
+  /**
+   * Handler that is called whenever the window is resized
+   *
+   * @param { Event } event - The event that triggered the handler
+   * @private
+   */
+  _onWindowResize(event) {
+
+    // clear the resize timer
+    clearTimeout(this.resizeTimer);
+
+    // Set a new resize timer for 250ms
+    this.resizeTimer = setTimeout(() => {
+
+      // notify the tabs that the window has been resized
+      this.notifyTabsUpdate();
+
+    }, 250);
+
+  }
+
 
   /**
    * Handler that is called whenever the app layout gets scrolled
@@ -704,7 +791,9 @@ export class FavoritesPage extends Page {
   _onTabClick(event) {
     // get the view of the clicked tab as `tabView`
     const tabView = event.currentTarget.dataset.view;
-    
+
+    // select the tab with the `tabView`
+    this.selectTabByView(tabView);
 
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.info(`\x1b[36m[_onTabClick]: tabView => ${tabView} & event => \x1b[0m`, event);
@@ -744,8 +833,11 @@ export class FavoritesPage extends Page {
     busy ? this.viewsEl.setAttribute('disabled', '') : this.viewsEl.removeAttribute('disabled');
 
     // disable or enable the tabs element accordingly
-    this.tabsEl.setAttribute('aria-disabled', busy ? 'true' : 'false');
-    busy ? this.tabsEl.setAttribute('disabled', '') : this.tabsEl.removeAttribute('disabled');
+    // this.tabsEl.setAttribute('aria-disabled', busy ? 'true' : 'false');
+    // busy ? this.tabsEl.setAttribute('disabled', '') : this.tabsEl.removeAttribute('disabled');
+
+    // notify the tabs of this update
+    this.notifyTabsUpdate();
 
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.info(`\x1b[36m[_handleBusyChange]: busy => ${busy} \x1b[0m`);
