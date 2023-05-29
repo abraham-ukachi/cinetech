@@ -1837,6 +1837,9 @@ export class App extends Engine {
 
       // notify page update
       this.notifyPageUpdate();
+
+      // notify the view update
+      pageObject.notifyViewUpdate();
      
     }
 
