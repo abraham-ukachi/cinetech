@@ -100,6 +100,7 @@ ul.grid-layout {
 
 /* All series in the media list */
 ul.media-list > li.serie,
+ul.media-list > li.show,
 ul.media-list > li.tv {
   box-sizing: border-box;
   padding: 0rem;
@@ -110,6 +111,7 @@ ul.media-list > li.tv {
 
 /* Poster Container - Serie */
 li.serie > .poster-container,
+li.show > .poster-container,
 li.tv > .poster-container {
   position: relative;
   width: var(--poster-width, 100%);
@@ -121,6 +123,7 @@ li.tv > .poster-container {
 
 /* Serie Poster */
 li.serie > .poster-container > .poster,
+li.show > .poster-container > .poster,
 li.tv > .poster-container > .poster {
   object-fit: cover;
   object-position: center center;
@@ -131,6 +134,7 @@ li.tv > .poster-container > .poster {
 }
 
 li.serie > .poster-container > .poster::before,
+li.show > .poster-container > .poster::before,
 li.tv > .poster-container > .poster::before {
   content: '';
   position: absolute;
@@ -144,6 +148,7 @@ li.tv > .poster-container > .poster::before {
 }
 
 li.serie > .poster-container > .poster::after,
+li.show > .poster-container > .poster::after,
 li.tv > .poster-container > .poster::after {
   content: '';
   position: absolute;
@@ -171,11 +176,13 @@ li.tv > .poster-container > .poster::after {
 
 /* Serie Details */
 li.serie > .serie-details,
+li.show > .show-details,
 li.tv > .tv-details {
   padding-top: 0.5rem;
 }
 
 /* Serie Name */
+li.show .serie-name,
 li.serie .serie-name,
 li.tv .serie-name {
   font-size: 0.75rem;
@@ -190,6 +197,7 @@ li.tv .serie-name {
 }
 
 /* Serie More Icon Button */
+li.show .more-button.icon-button,
 li.serie .more-button.icon-button,
 li.tv .more-button.icon-button {
   --icon-button-size: 32px;
@@ -199,6 +207,7 @@ li.tv .more-button.icon-button {
 
 
 /* Serie Meta */
+li.show .meta, 
 li.serie .meta, 
 li.tv .meta {
   justify-content: space-between;
@@ -209,6 +218,7 @@ li.tv .meta {
 
 
 /* Serie Meta - Rating */
+li.show .meta .rating,
 li.serie .meta .rating,
 li.tv .meta .rating {
   font-size: 1rem;
@@ -239,6 +249,7 @@ li.tv .meta .rating {
 }
 
 li.serie:hover .meta .rating, 
+li.show:hover .meta .rating, 
 li.tv:hover .meta .rating {
   /* filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5)); */
   /* transform: var(--serie-rating-scale, scale(0.9)); */
@@ -246,6 +257,7 @@ li.tv:hover .meta .rating {
 
 
 li.serie .meta .rating::before,
+li.show .meta .rating::before,
 li.tv .meta .rating::before {
   content: '';
   position: absolute;
@@ -257,6 +269,7 @@ li.tv .meta .rating::before {
 
 
 li.serie .meta .rating.is-bad,
+li.show .meta .rating.is-bad,
 li.tv .meta .rating.is-bad {
   --serie-rating-color: var(--bad-rating-color, white);
   --serie-rating-background-color: var(--bad-rating-background-color, black); /* b4: darkred */
@@ -264,6 +277,7 @@ li.tv .meta .rating.is-bad {
 }
 
 li.serie .meta .rating.is-good,
+li.show .meta .rating.is-good,
 li.tv .meta .rating.is-good {
   --serie-rating-color: var(--good-rating-color, white);
   --serie-rating-background-color: var(--good-rating-background-color, black); /* b4: darkgreen */
@@ -274,6 +288,7 @@ li.tv .meta .rating.is-good {
 
 /* Media Type Icon */
 li.serie span.media-type-icon,
+li.show span.media-type-icon,
 li.tv span.media-type-icon { 
   width: var(--media-type-icon-size, 12px);
   height: var(--media-type-icon-size, 12px);
@@ -295,6 +310,7 @@ li.tv span.media-type-icon {
 
 /* Serie Meta - Year */
 li.serie .meta .year,
+li.show .meta .year,
 li.tv .meta .year {
   position: relative;
   line-height: 1rem;

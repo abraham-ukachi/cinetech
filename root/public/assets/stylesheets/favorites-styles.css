@@ -92,9 +92,14 @@ nav.tabs > a.tab {
   color: var(--tab-color, var(--on-background-color));
 }
 
+nav.tabs > a.tab:hover {
+  opacity: var(--opacity-text-active);
+}
+
 nav.tabs > a.tab[selected] {
   font-weight: var(--selected-tab-font-weight, bold);
   color: var(--selected-tab-color, var(--primary-color));
+  opacity: var(--opacity-text-active) !important;
 }
 
 /* Tabs Indicator */

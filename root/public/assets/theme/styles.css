@@ -317,7 +317,7 @@ div.progress-bar.intermediate > span.progress-bar-value {
 
 /* === SPECIFIC VIEWPORTS ONLY === */
 
-[narrow-only], [narrow-and-wide-only] {
+[narrow-only], [narrow-and-wide-only], [narrow-and-tablet-only] {
   display: auto !important;
 }
 
@@ -352,20 +352,29 @@ div.progress-bar.intermediate > span.progress-bar-value {
 
 /* Header of App Layout */
 .app-layout > header {
-  display: block;
+  display: flex;
   position: relative;
-  width: 100%;
-  height: auto;
+  flex-direction: column;
+  width: var(--app-header-width, 100%);
+  height: var(--app-header-height, auto);
+  margin-bottom: var(--app-header-margin-bottom, 0);
+  margin-top: var(--app-header-margin-top, 0);
+  background-color: var(--app-header-background-color, var(--background-color));
 }
 
-.app-layout > header::before {
-  background-color: var(--background-color);
+.app-layout > header[with-overlay]::before {
+  background: var(--app-header-overlay-background, var(--background-color));
   inset: 0;
   content: "";
   position: absolute;
-  opacity: var(--app-header-opacity, 0.9);
+  opacity: var(--app-header-overlay-opacity, 0.5);
   width: 100%;
   height: 100%;
+  z-index: var(--app-header-overlay-z-index, 0); 
+}
+
+.app-layout > header[with-overlay][smooth]::before {
+  background: var(--app-header-overlay-background, linear-gradient(180deg, var(--app-header-overlay-color-start, var(--background-color)), transparent, var(--app-header-overlay-color-end, var(--background-color))));
 }
 
 .app-layout > header[opaque]::before {
@@ -375,6 +384,38 @@ div.progress-bar.intermediate > span.progress-bar-value {
 [scroll-lock] {
   overflow: hidden !important;
 }
+
+/* Overlay */
+.overlay {
+  pointer-events: none;
+}
+
+/* Overlay in Header */
+
+#header > .overlay {
+ z-index: 2;
+ background: var(--background-color);
+}
+
+/* Overlay of a smooth header */
+#header[smooth] > .overlay {
+  /* background: linear-gradient(180deg, rgba(0,0,0,0.5), transparent, var(--background-color)); */
+  background: linear-gradient(180deg, var(--background-color), transparent, var(--background-color));
+}
+
+
+/* TMDB LOGO */
+span.tmdb-logo {
+  display: inline-block;
+  width: var(--tmdb-logo-width, 48px);
+  height: var(--tmdb-logo-height, 32px);
+  background: var(--tmdb-logo-url, url('../../assets/logos/tmdb-logo-short.svg')) no-repeat center center;
+}
+
+span.tmdb-logo.short {
+  --tmdb-logo-url: url('../../assets/logos/tmdb-logo-short.svg');
+}
+
 
 /* App Bars in Header */
 header > .app-bar {
@@ -1978,6 +2019,7 @@ ul.chips > li.chip[selected]:hover span {
 
   /* ASIDE */
   #pages > aside {
+    display: flex;
     position: absolute;
     inset: 0;
     background: var(--aside-background-color, inherit);
