@@ -464,7 +464,7 @@ export class DefaultSeriesView extends View {
          <li class="serie flex-layout vertical fade-in" data-id="${serie.id}">
            
            <!-- Poster Container -->
-           <a href="./details/serie?vid=${this._getComputedId(serie.id, serie.original_name, serie.first_air_date)}" 
+           <a href="./details/show?vid=${this._getComputedId(serie.id, serie.original_name, serie.first_air_date)}" 
               class="poster-container"
               title="${serie.name} - ${serie.overview}">
              <!-- Poster -->
