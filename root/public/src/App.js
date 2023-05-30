@@ -87,6 +87,7 @@ export const EXPLORE_PAGE = 'explore'; // <- or search 😜
 export const MOVIES_PAGE = 'movies';
 export const SERIES_PAGE = 'series';
 export const FAVORITES_PAGE = 'favorites';
+export const DETAILS_PAGE = 'details';
 export const ACCOUNT_PAGE = 'account';
 export const PROFILE_PAGE = 'profile';
 export const SETTINGS_PAGE = 'settings';
@@ -110,6 +111,9 @@ export const VIEW_LANGUAGE = 'language';
 export const VIEW_THEME = 'theme';
 export const VIEW_CONTACT = 'contact';
 export const VIEW_ABOUT = 'about';
+
+export const VIEW_MOVIE = 'movie';
+export const VIEW_SHOW = 'show';
 
 
 // a list of all assets that have been loaded
@@ -259,6 +263,8 @@ export class App extends Engine {
 
       { name: FAVORITES_PAGE, views: [VIEW_DEFAULT] },
 
+      { name: DETAILS_PAGE, views: [VIEW_DEFAULT, VIEW_MOVIE, VIEW_SHOW] },
+
       { name: ACCOUNT_PAGE, views: [VIEW_DEFAULT] },
 
       { name: SETTINGS_PAGE, views: [VIEW_DEFAULT, VIEW_LANGUAGE, VIEW_THEME] },
@@ -309,12 +315,25 @@ export class App extends Engine {
       {id: 'movies', type: 'main', name: 'Movies'},
       {id: 'series', type: 'main', name: 'Series'},
       {id: 'favorites', type: 'main', name: 'Favorites'},
+      {id: 'details', type: 'aside', name: 'Details'},
       {id: 'account', type: 'main', name: 'Account'},
       {id: 'profile', type: 'aside', name: 'Profile'},
       {id: 'settings', type: 'main', name: 'Settings'},
       {id: 'help', type: 'aside', name: 'Help'}
     ];
   }
+
+
+  /**
+   * Config of the app
+   */
+  static get config() {
+    return {
+      baseUrl: '/cinetech/' 
+    };
+  }
+
+
 
 
   // Define some public properties
@@ -342,10 +361,11 @@ export class App extends Engine {
     this.theme = theme;
 
     // set both current screen and page to null
-    // (WE ARE IN BOOTING... So, no screens; no pages)
+    // (WE ARE IN "BOOTING MODE"... So, no screens; no pages)
     this.currentScreen = null;
     this.currentPage = null;
     this.currentView = null;
+    this.currentParams = null;
 
     // create a new `I18n` instance with `lang` as the default language
     this.i18n = new I18n(lang);
@@ -926,6 +946,10 @@ export class App extends Engine {
       console.log(`\x1b[46;30m[notifyPageUpdate] (2):  pageEl => \x1b[0m`, pageEl);
     }
 
+    // Set or remove the `opened` property the page's `<aside>` element relative to the current `pageType` ;)
+    (pageType === 'aside') ? this.asidePagesEl.setAttribute('opened', '') : this.asidePagesEl.removeAttribute('opened');
+
+
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.log(`\x1b[46;30m[notifyPageUpdate] (1): currentPage => ${currentPage} \x1b[0m`);
 
@@ -959,6 +983,15 @@ export class App extends Engine {
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.log(`\x1b[40m\x1b[32m[notifyNavLinks](1): currentPage => ${currentPage} & currentView => ${currentView}\x1b[0m`);
     console.log(`\x1b[40m\x1b[32m[notifyNavLinks](2): navLinks => \x1b[0m`, navLinks);
+  }
+
+  /** 
+   * A SIMPLE method that is used to navigate or change the app's route to the given `url` 
+   *
+   * @param { String } url - The url to navigate to (eg. 'movies', 'favorites/series')
+   */
+  navigate(url) {
+    location.href = this.constructor.config.baseUrl + url;
   }
 
 
@@ -1125,6 +1158,18 @@ export class App extends Engine {
   }
 
 
+  /**
+   * Updates the current params of the app with the given `params`
+   *
+   * @param { URLSearchParams } params
+   */
+  set currentParams(params) {
+    this._currentParams = params;
+    // update the live storage accordingly
+    this.liveStorage?.setItem('params', params.toString(), true);
+  }
+
+
   /* >> PUBLIC GETTERS << */
 
   /**
@@ -1173,6 +1218,16 @@ export class App extends Engine {
    */
   get currentView() {
     return this._currentView;
+  }
+
+
+  /**
+   * Returns the current params of the app
+   *
+   * @returns { URLSearchParams }
+   */
+  get currentParams() {
+    return this._currentParams;
   }
 
   /**
@@ -1716,9 +1771,10 @@ export class App extends Engine {
     // check for pages
     let isPages = (this.mainPagesEl) ? true : false;
 
-    // update the current page and view
+    // update the current page, view and params
     this.currentPage = (!this.currentScreen && page.trim().length === 0) ? 'home' : page;
     this.currentView = (!this.currentScreen && view.trim().length === 0) ? 'default' : view;
+    this.currentParams = params;
     
     // if we are most likely on a splash or welcome screen...
     if (isScreens && [SPLASH_SCREEN, WELCOME_SCREEN].indexOf(this.currentScreen) !== -1) {
@@ -1807,6 +1863,10 @@ export class App extends Engine {
         // update the page's view
         pageObject.view = view;
 
+        // update the page's params
+        pageObject.params = params;
+
+
         // notify page update
         this.notifyPageUpdate();
 
@@ -1826,6 +1886,10 @@ export class App extends Engine {
 
 
 
+
+      // update the page's params
+      pageObject.params = params;
+      
       // If the `pageObject` is not attached to this App...
       if (!pageObject.isAttached) {
         // ...open the page
@@ -1840,11 +1904,14 @@ export class App extends Engine {
 
       // notify the view update
       pageObject.notifyViewUpdate();
+
      
     }
 
+
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.log(`\x1b[47m\x1b[30m[_navigatePages] (2): view => ${view} & pageObject => \x1b[0m`, pageObject);
+    console.log(`\x1b[47m\x1b[30m[_navigatePages] (3): params.get('vid') => ${params.get('vid')}\x1b[0m`);
 
   }
 
@@ -2262,13 +2329,17 @@ export class App extends Engine {
     // get the page id
     let pageId = pageName.toCamelCase(); // <- e.g. returns; homePage (if pageName is 'home-page')
 
-    let view = typeof currentView !== 'undefined' ? currentView : 'default'; // <- HACK
+    let view = typeof currentView !== 'undefined' ? currentView : this.currentView; // 'default'; // <- HACK
 
     // instantiate the page in this app
     this[pageId] = new PageClass(pageType, pageName);
 
     // update the current view
     this[pageId].view = view;
+
+    // update the params
+    this[pageId].params = this.currentParams;
+
 
     // if `autoOpen` is TRUE
     if (autoOpen) {
@@ -2279,8 +2350,9 @@ export class App extends Engine {
     }
 
     // DEBUG [4dbsmaster]: tell me about it ;)
-    console.log(`\x1b[40m\x1b[34m[_initPage] (1|in anticipation): pageType => ${pageType} & pageName => ${pageName} & pageId => ${pageId}`); 
-    console.log(`\x1b[40m\x1b[34m[_initPage] (2|in anticipation): view => [[ ${view} ]] & loadedPage => \x1b[0m`, loadedPage);
+    console.log(`\x1b[40m\x1b[34m[_initPage] (1|in anticipation): pageType => ${pageType} & pageName => ${pageName} & pageId => ${pageId}`);
+  
+    console.log(`\x1b[40m\x1b[34m[_initPage] (2|in anticipation): view => [[ ${view} ]] currentParams => [[ ${this.currentParams.toString()} ]] & loadedPage => \x1b[0m`, loadedPage);
 
     // return an instance of the page
     return this[pageId];
