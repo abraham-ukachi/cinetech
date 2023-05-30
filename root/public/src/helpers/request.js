@@ -58,6 +58,7 @@ import { ASSETS_DIR } from '../App.js';
 export const TMDB_API_BASE_URL = 'https://api.themoviedb.org/3';
 export const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 export const TMDB_FILE_DEFAULT_SIZE = 'w500';
+export const TMDB_FILE_BACKDROP_SIZE = 'w1280';
 export const TMDB_FILE_ORIGINAL_SIZE = 'original';
 
 
@@ -203,6 +204,86 @@ class Request {
 
     });
 
+  }
+
+
+  /**
+   * Returns the fake details of a movie 
+   * NOTE: this is just for testing purposes, to show how to use the `getMovieDetails()` method
+   *
+   * @param { Number } movieId - the id of the movie to get the details for (eg. '399566')
+   *
+   * @returns { Promise<Array> }
+   */
+  getFakeMovieDetails(movieId) {
+    return new Promise(async (resolve, reject) => {
+      // fetch the fake movie details from the `fake_details_movie.json` file
+      let requestPromise = await fetch(`${this.dataDir}/fake_details_movie.json`);
+
+      // get the fake movie details JSON data
+      let fakeMovieDetails = await requestPromise.json();
+
+      // after a simulated 2 seconds delay, resolve the promise with the fake movie details
+      setTimeout(() => resolve(fakeMovieDetails), 2000);
+
+    });
+
+  }
+
+
+  /**
+   * Returns the fake details of a series or tv show 
+   * NOTE: this is just for testing purposes, to show how to use the `getShowDetails()` method
+   *
+   * @param { Number } showId - the id of the show to get the details for (eg. '399566')
+   *
+   * @returns { Promise<Array> }
+   */
+  getFakeShowDetails(showId) {
+    return new Promise(async (resolve, reject) => {
+      // fetch the fake movie details from the `fake_details_show.json` file
+      let requestPromise = await fetch(`${this.dataDir}/fake_details_show.json`);
+
+      // get the fake show details JSON data
+      let fakeShowDetails = await requestPromise.json();
+      
+      // after a simulated 2 seconds delay, resolve the promise with the fake show details
+      setTimeout(() => resolve(fakeShowDetails), 2000);
+
+    });
+
+  }
+
+
+  /**
+   * Method used to get the details of a series or tv show with the given `showId`
+   * NOTE: This method will append the `credits` (i.e casts and crew) and `similar` series / tv shows to the response
+   *
+   * @example { PostmanUrl } {{baseUrl}}/tv/62286?language=fr&append_to_response=credits,similar
+   *
+   * @param { Number } showId - the id of the show to get the details for (eg. '62286')
+   *
+   * @returns { Promise } - the promise that will be resolved with the show details
+   * @see https://developers.themoviedb.org/3/tv/get-tv-details
+   */
+  getShowDetails(showId) {
+    return this._makeRequest(`tv/${showId}?language=${this.lang}&append_to_response=credits,similar`);
+  }
+
+
+  /**
+   * Method used to get the details of a movie with the given `movieId`
+   * NOTE: This method will append the `credits` (i.e casts and crew) and `similar` movies to the response
+   *
+   * @example { PostmanUrl } {{baseUrl}}/movie/447365?language=fr&append_to_response=credits,similar
+   *
+   * @param { Number } movieId - the id of the movie to get the details for (eg. '447365')
+   *
+   * @returns { Promise } - the promise that will be resolved with the movie details
+   * @see https://developers.themoviedb.org/3/movies/get-movie-details
+   */
+  getMovieDetails(movieId) {
+    return this._makeRequest(`movie/${movieId}?language=${this.lang}&append_to_response=credits,similar`);
   }
 
 
