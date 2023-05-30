@@ -1,0 +1,778 @@
+{
+    "adult": false,
+    "backdrop_path": "/92B6765nyQkIW8yLWt3pNcS6Cip.jpg",
+    "created_by": [
+        {
+            "id": 63554,
+            "credit_id": "5d77e07539549a000f96cc12",
+            "name": "Dave Erickson",
+            "gender": 2,
+            "profile_path": "/3xI9ngMIgBKoxXPvPsjmPny49bb.jpg"
+        },
+        {
+            "id": 1223867,
+            "credit_id": "5521364b9251417be2002abc",
+            "name": "Robert Kirkman",
+            "gender": 2,
+            "profile_path": "/ulYOkxtk8lUvg4Ltkg2q22ibg4R.jpg"
+        }
+    ],
+    "episode_run_time": [
+        43,
+        60
+    ],
+    "first_air_date": "2015-08-23",
+    "genres": [
+        {
+            "id": 10759,
+            "name": "Action & Adventure"
+        },
+        {
+            "id": 18,
+            "name": "Drama"
+        }
+    ],
+    "homepage": "https://www.amc.com/twdu/fear-the-walking-dead",
+    "id": 62286,
+    "in_production": true,
+    "languages": [
+        "en",
+        "es"
+    ],
+    "last_air_date": "2023-05-28",
+    "last_episode_to_air": {
+        "id": 4308418,
+        "name": "Odessa",
+        "overview": "Mo's hunt to prove PADRE's true intentions has her in over her head as she's drawn into the larger web of secrets and subterfuge of the adults who care for her.",
+        "vote_average": 2.0,
+        "vote_count": 1,
+        "air_date": "2023-05-28",
+        "episode_number": 3,
+        "production_code": "",
+        "runtime": 44,
+        "season_number": 8,
+        "show_id": 62286,
+        "still_path": "/sNszAEdYUKP1EoPxppurGm2MqgZ.jpg"
+    },
+    "name": "Fear the Walking Dead",
+    "next_episode_to_air": {
+        "id": 4391504,
+        "name": "King County",
+        "overview": "Morgan's return to King County gets complicated when PADRE comes to collect.",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "air_date": "2023-06-04",
+        "episode_number": 4,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 8,
+        "show_id": 62286,
+        "still_path": null
+    },
+    "networks": [
+        {
+            "id": 174,
+            "logo_path": "/alqLicR1ZMHMaZGP3xRQxn9sq7p.png",
+            "name": "AMC",
+            "origin_country": "US"
+        }
+    ],
+    "number_of_episodes": 107,
+    "number_of_seasons": 8,
+    "origin_country": [
+        "US"
+    ],
+    "original_language": "en",
+    "original_name": "Fear the Walking Dead",
+    "overview": "What did the world look like as it was transforming into the horrifying apocalypse depicted in \"The Walking Dead\"? This spin-off set in Los Angeles, following new characters as they face the beginning of the end of the world, will answer that question.",
+    "popularity": 287.943,
+    "poster_path": "/sQleNHhKl32QFnSlahb5IHDWcDq.jpg",
+    "production_companies": [
+        {
+            "id": 11533,
+            "logo_path": "/tWM9pmzVYxok4GbQIttxdcml1yT.png",
+            "name": "Valhalla Motion Pictures",
+            "origin_country": "US"
+        },
+        {
+            "id": 23242,
+            "logo_path": "/ucE6dN6pUPfZHH5JlXkq44TDUMS.png",
+            "name": "AMC Studios",
+            "origin_country": "US"
+        },
+        {
+            "id": 23921,
+            "logo_path": "/simDvqT8y6jhP530ggUMbikvVKc.png",
+            "name": "Circle of Confusion",
+            "origin_country": "US"
+        },
+        {
+            "id": 170794,
+            "logo_path": null,
+            "name": "Idiotbox",
+            "origin_country": "US"
+        },
+        {
+            "id": 50032,
+            "logo_path": "/ojrMksdtR7Bs2vwERU1LCrjv7vx.png",
+            "name": "Skybound Entertainment",
+            "origin_country": "US"
+        }
+    ],
+    "production_countries": [
+        {
+            "iso_3166_1": "US",
+            "name": "United States of America"
+        }
+    ],
+    "seasons": [
+        {
+            "air_date": "2015-10-04",
+            "episode_count": 33,
+            "id": 70218,
+            "name": "Specials",
+            "overview": "Fear the Walking Dead: Flight 462 follows the story of a group of airline passengers who discover that one of their fellow travelers is infected with the virus, putting their lives at risk.\n\nA new installment of the 16-part series is available every sunday online, and on-air as promos during two commercial breaks of The Walking Dead.",
+            "poster_path": "/9fXoAcfHTktdWIUr7BopLqelb8Y.jpg",
+            "season_number": 0
+        },
+        {
+            "air_date": "2015-08-23",
+            "episode_count": 6,
+            "id": 65692,
+            "name": "Season 1",
+            "overview": "After a string of ominous warnings, guidance counselor Madison Clark and the rest of her family are horrified to see their world descend into a zombie nightmare -- which will soon become their new reality.",
+            "poster_path": "/fVmwjZ9yaR0OFkbPjgHI6zmrCzp.jpg",
+            "season_number": 1
+        },
+        {
+            "air_date": "2016-04-10",
+            "episode_count": 15,
+            "id": 73780,
+            "name": "Season 2",
+            "overview": "Abandoning land, the group sets out for ports unknown, some place where Infection has not hit. They will discover that the water may be no safer than land.",
+            "poster_path": "/oxAm6varqgV3WOGYX2OrgCGKnZo.jpg",
+            "season_number": 2
+        },
+        {
+            "air_date": "2017-06-04",
+            "episode_count": 16,
+            "id": 87822,
+            "name": "Season 3",
+            "overview": "The families will be brought together in the vibrant and violent region formerly known as the U.S.-Mexico border. International lines done away with following the world's end, our characters must attempt to rebuild not only society but the family as well.",
+            "poster_path": "/yd8cDZG4XjNRk7jfEWy18KH07d2.jpg",
+            "season_number": 3
+        },
+        {
+            "air_date": "2018-04-15",
+            "episode_count": 16,
+            "id": 99582,
+            "name": "Season 4",
+            "overview": "The world of Madison Clark and her family is seen through new eyes -- the eyes of Morgan Jones. The characters' immediate past mixes with an uncertain present of struggle and discovery as they meet new friends, foes and threats. They fight for each other, against each other and against a legion of the dead to somehow build an existence against the crushing pressure of lives coming apart. There will be darkness and light; terror and grace; the heroic, mercenary, and craven, all crashing together towards a new reality.",
+            "poster_path": "/k8T1iiKU9zQ8NAvwsB95KZXJ3O6.jpg",
+            "season_number": 4
+        },
+        {
+            "air_date": "2019-06-02",
+            "episode_count": 16,
+            "id": 121629,
+            "name": "Season 5",
+            "overview": "The mission to help others will be put to the ultimate test when our group lands in uncharted territory. They will be forced to face not just their pasts but also their fears, leaving them forever changed.",
+            "poster_path": "/aUBFD7zPl4fyE8e4FjASq4OgOUc.jpg",
+            "season_number": 5
+        },
+        {
+            "air_date": "2020-10-11",
+            "episode_count": 16,
+            "id": 157589,
+            "name": "Season 6",
+            "overview": "The group's mission is clear: locate survivors and help make what's left of the world a slightly better place. With dogged determination, Morgan Jones leads the group with a philosophy rooted in benevolence, community and hope. Each character believes that helping others will allow them to make up for the wrongs of their pasts. But trust won't be easily earned. Their mission of helping others will be put to the ultimate test when the members of the group find themselves in uncharted territory, forced to face not just their pasts but also their fears. It is only by facing those fears that the group will discover an entirely new way to live, one that will leave them changed forever changed.",
+            "poster_path": "/66zTxl3DMy1WH4U4SoeTkl5Yvpe.jpg",
+            "season_number": 6
+        },
+        {
+            "air_date": "2021-10-17",
+            "episode_count": 16,
+            "id": 203528,
+            "name": "Season 7",
+            "overview": "Teddy brought about his vision of \"The End\" when he detonated nuclear warheads across the Texas landscape, but it will be up to those who survived to decide what \"The Beginning\" will look like. And they'll have to do it in a world devoid of light and hope, where the outside air is just as deadly as the walkers they face. The survivors will find out who they really are and what they're really made of. Some will rise to the occasion, some will find new purpose, and some will redefine themselves -- even if it comes at a terrible cost to those they once considered family.",
+            "poster_path": "/zyshFjmlDXSzfns2Qk81cfIFfPP.jpg",
+            "season_number": 7
+        },
+        {
+            "air_date": "2023-05-14",
+            "episode_count": 6,
+            "id": 322251,
+            "name": "Season 8",
+            "overview": "Morgan, Madison and the others they brought to the island are living under PADRE's cynical rule. With our characters demoralized and dejected, the task of reigniting belief in a better world rests with the person Morgan and Madison set out to rescue in the first place -- Morgan's daughter, Mo.",
+            "poster_path": "/5qmuVxqIG2uv5gZiWfkrGLaNLq7.jpg",
+            "season_number": 8
+        }
+    ],
+    "spoken_languages": [
+        {
+            "english_name": "English",
+            "iso_639_1": "en",
+            "name": "English"
+        },
+        {
+            "english_name": "Spanish",
+            "iso_639_1": "es",
+            "name": "Español"
+        }
+    ],
+    "status": "Returning Series",
+    "tagline": "Every decision is life or death.",
+    "type": "Scripted",
+    "vote_average": 7.7,
+    "vote_count": 4470,
+    "credits": {
+        "cast": [
+            {
+                "adult": false,
+                "gender": 2,
+                "id": 1120,
+                "known_for_department": "Acting",
+                "name": "Lennie James",
+                "original_name": "Lennie James",
+                "popularity": 7.594,
+                "profile_path": "/hfZrdEkBHxYYbMoGHAaVomlgMi.jpg",
+                "character": "Morgan Jones",
+                "credit_id": "5aa70e7a0e0a263dc7013581",
+                "order": 0
+            },
+            {
+                "adult": false,
+                "gender": 1,
+                "id": 21165,
+                "known_for_department": "Acting",
+                "name": "Kim Dickens",
+                "original_name": "Kim Dickens",
+                "popularity": 14.426,
+                "profile_path": "/bYIQGHeSIt4G2tLrLt61FJ2CD7h.jpg",
+                "character": "Madison Clark",
+                "credit_id": "552135dec3a3684dc9002fcb",
+                "order": 1
+            },
+            {
+                "adult": false,
+                "gender": 2,
+                "id": 91671,
+                "known_for_department": "Acting",
+                "name": "Colman Domingo",
+                "original_name": "Colman Domingo",
+                "popularity": 7.326,
+                "profile_path": "/2tu6T9ugnf82qIMGVKWSb0dvvq5.jpg",
+                "character": "Victor Strand",
+                "credit_id": "560aa2dc92514171990027fe",
+                "order": 3
+            },
+            {
+                "adult": false,
+                "gender": 1,
+                "id": 1225996,
+                "known_for_department": "Acting",
+                "name": "Danay García",
+                "original_name": "Danay García",
+                "popularity": 13.43,
+                "profile_path": "/iS4vwXHoPhOdwUQS7J9kplitvlh.jpg",
+                "character": "Luciana Galvez",
+                "credit_id": "59623febc3a3680dec0b02e6",
+                "order": 4
+            },
+            {
+                "adult": false,
+                "gender": 2,
+                "id": 1552436,
+                "known_for_department": "Acting",
+                "name": "Austin Amelio",
+                "original_name": "Austin Amelio",
+                "popularity": 9.562,
+                "profile_path": "/y4QTXuSSmD99n8dinMiTRBkUnAp.jpg",
+                "character": "Dwight",
+                "credit_id": "5cffae330e0a26333acb64dc",
+                "order": 5
+            },
+            {
+                "adult": false,
+                "gender": 1,
+                "id": 79124,
+                "known_for_department": "Acting",
+                "name": "Karen David",
+                "original_name": "Karen David",
+                "popularity": 7.641,
+                "profile_path": "/mVEkM2LFiB2cmMHDYFFTE7wkHtY.jpg",
+                "character": "Grace Mukherjee",
+                "credit_id": "5cffae4ac3a368445b215a82",
+                "order": 7
+            },
+            {
+                "adult": false,
+                "gender": 1,
+                "id": 208160,
+                "known_for_department": "Acting",
+                "name": "Christine Evangelista",
+                "original_name": "Christine Evangelista",
+                "popularity": 7.889,
+                "profile_path": "/9k52zlDn28wmAcCbXwnr5L5A5JF.jpg",
+                "character": "Sherry",
+                "credit_id": "5fb552cb945c200040f0cb9e",
+                "order": 9
+            },
+            {
+                "adult": false,
+                "gender": 1,
+                "id": 40279,
+                "known_for_department": "Acting",
+                "name": "Jenna Elfman",
+                "original_name": "Jenna Elfman",
+                "popularity": 15.501,
+                "profile_path": "/AsXlf2XtVF3tyx0GrUPRq72NLIa.jpg",
+                "character": "June",
+                "credit_id": "5adb9e060e0a261430012b23",
+                "order": 11
+            },
+            {
+                "adult": false,
+                "gender": 2,
+                "id": 2049,
+                "known_for_department": "Acting",
+                "name": "Rubén Blades",
+                "original_name": "Rubén Blades",
+                "popularity": 5.317,
+                "profile_path": "/kOgVo3qDJ9jXgIZJRJI3I1bm6sA.jpg",
+                "character": "Daniel Salazar",
+                "credit_id": "55cdcd75c3a3681bee001af7",
+                "order": 12
+            }
+        ],
+        "crew": []
+    },
+    "similar": {
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/tSCRnfNAmfW5KrGBc4A1ro8edfa.jpg",
+                "genre_ids": [
+                    99
+                ],
+                "id": 87269,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "Nature Is Speaking",
+                "overview": "Nature is given a voice to raise awareness that people need nature in order to survive.",
+                "popularity": 4.189,
+                "poster_path": "/7FuFsaIdPYXT5Q4qVMNwgZYxPYZ.jpg",
+                "first_air_date": "2015-08-12",
+                "name": "Nature Is Speaking",
+                "vote_average": 10.0,
+                "vote_count": 1
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/6GIf7uiQ4Y5xPzIRkTct2NIyBqK.jpg",
+                "genre_ids": [
+                    10759,
+                    18,
+                    9648
+                ],
+                "id": 365,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "Jericho",
+                "overview": "Jericho is an American action/drama series that centers on the residents of the fictional town of Jericho, Kansas, in the aftermath of nuclear attacks on 23 major cities in the contiguous United States.",
+                "popularity": 24.095,
+                "poster_path": "/a57H9UsS388Av2LSLKO9inNmY7j.jpg",
+                "first_air_date": "2006-09-20",
+                "name": "Jericho",
+                "vote_average": 7.415,
+                "vote_count": 393
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/wATuyj0wYqR9eBArVoPdVp8ndPb.jpg",
+                "genre_ids": [
+                    18
+                ],
+                "id": 398,
+                "origin_country": [
+                    "GB"
+                ],
+                "original_language": "en",
+                "original_name": "The Last Train",
+                "overview": "The Last Train is a British six-part post-apocalyptic television drama serial first broadcast on the ITV network in 1999. It has since been repeated on ITV2 in 1999/2001 and on numerous occasions on the UK Sci-Fi Channel. The serial was written by Matthew Graham and produced for ITV by Granada Television.\n\nIn the United States, the Fox Network purchased the rights to produce a new version of the series soon after its original UK transmission. Retitled The Ark, the idea did not progress beyond the pilot stage.\n\nAs of May 2013, the series has not been released on DVD or any other format, and has never aired in the US.",
+                "popularity": 3.653,
+                "poster_path": "/mUoU7HaG7fjyOcwJvLJIPuh1jk.jpg",
+                "first_air_date": "1999-04-07",
+                "name": "The Last Train",
+                "vote_average": 7.3,
+                "vote_count": 13
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/2w0hLtjbpE2JUQ9W0vBqAOchXVM.jpg",
+                "genre_ids": [
+                    10765,
+                    10759,
+                    18
+                ],
+                "id": 424,
+                "origin_country": [
+                    "GB"
+                ],
+                "original_language": "en",
+                "original_name": "Torchwood",
+                "overview": "The exploits a team of people whose job is to investigate the unusual, the strange and the extraterrestrial.",
+                "popularity": 42.333,
+                "poster_path": "/xuKTw7LuluCoe3GyOie5XV1yZ4X.jpg",
+                "first_air_date": "2006-10-22",
+                "name": "Torchwood",
+                "vote_average": 7.295,
+                "vote_count": 418
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/eQSKPHhtWwH1xQjkbx8djave64u.jpg",
+                "genre_ids": [
+                    10759,
+                    16,
+                    35
+                ],
+                "id": 430,
+                "origin_country": [
+                    "CA",
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "The Adventures of Sam & Max: Freelance Police",
+                "overview": "The adventures of Sam the Bogart-like dog and Max the hyper-kinetic bunny.",
+                "popularity": 6.743,
+                "poster_path": "/5ESgQe5oxFKIy3zWaRhUHSDlxeb.jpg",
+                "first_air_date": "1997-10-04",
+                "name": "The Adventures of Sam & Max: Freelance Police",
+                "vote_average": 7.7,
+                "vote_count": 3
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/q0bLjLCBZGhnMcRprx2gWRGdlrp.jpg",
+                "genre_ids": [
+                    16,
+                    10759
+                ],
+                "id": 132,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "Fantastic Four: World's Greatest Heroes",
+                "overview": "Mister Fantastic, the Invisible Woman, the Human Torch, and Thing battle some of their greatest foes, including Doctor Doom, Ronan the Accuser, the Multiple Man, and Mole Man.",
+                "popularity": 17.885,
+                "poster_path": "/zCtCW0JlbMpzfQDAX1bO1o1KLi.jpg",
+                "first_air_date": "2006-09-02",
+                "name": "Fantastic Four: World's Greatest Heroes",
+                "vote_average": 7.579,
+                "vote_count": 76
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/jxogXMd8npA5tZJNRUqAxE6QQRm.jpg",
+                "genre_ids": [
+                    35,
+                    16
+                ],
+                "id": 195922,
+                "origin_country": [
+                    "BR"
+                ],
+                "original_language": "pt",
+                "original_name": "Any Malu Show",
+                "overview": "Any Malu is a funky, charismatic and fun girl with a big heart and a even bigger mouth. She always dreamt to become a true diva and now she has finally been given the chance to prove that she has what it takes.",
+                "popularity": 4.358,
+                "poster_path": "/xhLzEJJFYhWNrrmlcwPlcjqGOO5.jpg",
+                "first_air_date": "2020-05-04",
+                "name": "Any Malu Show",
+                "vote_average": 7.0,
+                "vote_count": 1
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/e4eOnPhpJjZth3Y0wQqrDuFTteU.jpg",
+                "genre_ids": [
+                    16,
+                    35
+                ],
+                "id": 195923,
+                "origin_country": [
+                    "JP"
+                ],
+                "original_language": "ja",
+                "original_name": "名探偵コナン 犯人の犯沢さん",
+                "overview": "A silhouetted suspect moves to the crime-infested town of Beika with murder in mind, in this spinoff spoof of \"Detective Conan.\"",
+                "popularity": 20.391,
+                "poster_path": "/ihbClpZvOSyPfYbq8JJ8Dl4ZAMj.jpg",
+                "first_air_date": "2022-10-04",
+                "name": "Case Closed: The Culprit Hanzawa",
+                "vote_average": 7.6,
+                "vote_count": 23
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/hB1QQswzy2aZ1uDYbSWOghLu2Lk.jpg",
+                "genre_ids": [
+                    16,
+                    10759
+                ],
+                "id": 195926,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "Samurai Rabbit: The Usagi Chronicles",
+                "overview": "A teenage rabbit aspiring to become a real samurai teams up with new warrior friends to protect their city from Yokai monsters, ninjas and evil aliens.",
+                "popularity": 15.21,
+                "poster_path": "/wX9TmobwtIX8OCWJiG0tU8vsPmS.jpg",
+                "first_air_date": "2022-04-28",
+                "name": "Samurai Rabbit: The Usagi Chronicles",
+                "vote_average": 5.8,
+                "vote_count": 16
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/eJjM0s1YIsf9CtIQTIb81tl1I4I.jpg",
+                "genre_ids": [
+                    10765
+                ],
+                "id": 195930,
+                "origin_country": [
+                    "TR"
+                ],
+                "original_language": "tr",
+                "original_name": "Yakamoz S-245",
+                "overview": "After disaster strikes the Earth, a marine biologist on a research mission in a submarine must fight to advance the process into a conspiracy.",
+                "popularity": 14.397,
+                "poster_path": "/zaPSsdJrRZFtMRNrS4OqTpSkGFo.jpg",
+                "first_air_date": "2022-04-20",
+                "name": "Yakamoz S-245",
+                "vote_average": 6.957,
+                "vote_count": 47
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/9VHM6VWjNlb5FtYMv8n1YeBVhFk.jpg",
+                "genre_ids": [
+                    35
+                ],
+                "id": 27119,
+                "origin_country": [
+                    "GB"
+                ],
+                "original_language": "en",
+                "original_name": "The Comic Strip Presents",
+                "overview": "The Comic Strip is a group of British comedians, who came to prominence in the 1980s. They are known for their television series The Comic Strip Presents... which was labelled as an example of alternative comedy. The core members are Adrian Edmondson, Dawn French, Rik Mayall, Nigel Planer, Peter Richardson, Jennifer Saunders and Alexei Sayle with frequent appearances by Keith Allen, Robbie Coltrane and others.",
+                "popularity": 25.764,
+                "poster_path": "/jUMJPj1nEiDBpccJvgKDMt6XKEN.jpg",
+                "first_air_date": "1982-11-02",
+                "name": "The Comic Strip Presents",
+                "vote_average": 7.091,
+                "vote_count": 11
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/oYQYb6k0qyGNrneyldbGxgosGGU.jpg",
+                "genre_ids": [
+                    10764
+                ],
+                "id": 86804,
+                "origin_country": [],
+                "original_language": "en",
+                "original_name": "Bear's Mission with...",
+                "overview": "Bear Grylls takes a celebrity on a mission to test their survival skills.",
+                "popularity": 1.4,
+                "poster_path": "/dWibf8volOmohLiCrPY6ANMmh1Q.jpg",
+                "first_air_date": "2017-10-27",
+                "name": "Bear's Mission with...",
+                "vote_average": 7.0,
+                "vote_count": 1
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/arMVsZzCk2RZhln6VmvUte7wAXX.jpg",
+                "genre_ids": [
+                    16,
+                    10765
+                ],
+                "id": 86831,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "Love, Death & Robots",
+                "overview": "Terrifying creatures, wicked surprises and dark comedy converge in this NSFW anthology of animated stories presented by Tim Miller and David Fincher.",
+                "popularity": 70.873,
+                "poster_path": "/cRiDlzzZC5lL7fvImuSjs04SUIJ.jpg",
+                "first_air_date": "2019-03-15",
+                "name": "Love, Death & Robots",
+                "vote_average": 8.276,
+                "vote_count": 2611
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/xAUgzFrOC28qY7bEB5cRuCfCgwF.jpg",
+                "genre_ids": [
+                    16,
+                    10759,
+                    10765
+                ],
+                "id": 86919,
+                "origin_country": [
+                    "JP"
+                ],
+                "original_language": "ja",
+                "original_name": "さらざんまい",
+                "overview": "After accidentally breaking a statue of the guardian god of the Asakusa district, middle school students Kazuki, Toi and Enta are transformed into kappas -creatures from japanese folklore- by Keppi, self-proclaimed prince of the Kappa Kingdom. If they want to regain their human form, they must collect the five Dishes of Hope for him, which fulfill the wishes of whoever possesses them. To do so, they will fight against the kappa-zombies and extract their \"shirikodama\", the mythical organ containing humans' deepest desires. Two policemen, Reo and Mabu, are the ones behind this evil scheme, turning humans into zombies as agents of the Otter Empire, enemy of the Kappa Kingdom since ancient times. In the guise of \"Kappazon, Inc.\", they control society by manipulating the desires of the masses for their own goals. To succeed in their mission, the boys must be connected through the \"Sarazanmai\", revealing their most intimate secrets in the process...",
+                "popularity": 12.494,
+                "poster_path": "/fRWF8xDA9ZGuvbFE8NLGZoBRuqK.jpg",
+                "first_air_date": "2019-04-12",
+                "name": "Sarazanmai",
+                "vote_average": 7.0,
+                "vote_count": 20
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/xa1Km6WccUOTpEXVjwvRn6B0AFr.jpg",
+                "genre_ids": [
+                    16,
+                    10765
+                ],
+                "id": 117595,
+                "origin_country": [
+                    "JP"
+                ],
+                "original_language": "ja",
+                "original_name": "セイント・ビースト～聖獣降臨編～",
+                "overview": "In the ancient past, the Highest level of angels, the Six Saintly Beasts reigned supreme as the beast kings. Two of the Saint Beasts disobeyed Gods order and was sealed away in a Hellish place. Now after thousands of days and nights, the barrier has weakened and they escape. So the remaining four must go to Earth and stop them from causing trouble.",
+                "popularity": 3.765,
+                "poster_path": "/bc1M1nOkoaI8ojfeLeEEtgtooYc.jpg",
+                "first_air_date": "2003-05-09",
+                "name": "Saint Beast: Seijuu Kourin Hen",
+                "vote_average": 0.0,
+                "vote_count": 0
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/oLuhePSdMkISnTBssolaVr3CpDv.jpg",
+                "genre_ids": [
+                    35,
+                    18,
+                    10768
+                ],
+                "id": 497,
+                "origin_country": [
+                    "GB"
+                ],
+                "original_language": "en",
+                "original_name": "Lipstick on Your Collar",
+                "overview": "During the Suez Crisis of 1956, two young clerks at the stuffy Foreign Office in Whitehall display little interest in the decline of the British Empire. To their eyes, it can hardly compete with girls, rock music, and the intrigue of romantic entanglements.",
+                "popularity": 3.463,
+                "poster_path": "/87bxyjSx1DZPicwEYzEIoAdLVSR.jpg",
+                "first_air_date": "1993-02-21",
+                "name": "Lipstick on Your Collar",
+                "vote_average": 7.294,
+                "vote_count": 17
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/bffs3LApuDNAzGp6XKwOFI8e6dt.jpg",
+                "genre_ids": [
+                    35
+                ],
+                "id": 527,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "Joanie Loves Chachi",
+                "overview": "Joanie Loves Chachi is an American television spin-off of the American sitcom Happy Days that was originally broadcast on ABC from March 23, 1982 to May 24, 1983. It stars Erin Moran and Scott Baio as the titular Joanie Cunningham and Chachi Arcola, respectively.",
+                "popularity": 7.43,
+                "poster_path": "/kPJGFJJ6ID3vPo77nXJeZr33y9Y.jpg",
+                "first_air_date": "1982-03-23",
+                "name": "Joanie Loves Chachi",
+                "vote_average": 5.467,
+                "vote_count": 15
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/cQANaoaCLLwC6BVdOr02t6yO9CF.jpg",
+                "genre_ids": [
+                    10765,
+                    18
+                ],
+                "id": 1410,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "Revolution",
+                "overview": "One day, electricity just stopped working and the world was suddenly thrust back into the dark ages. Now, 15 years later, a young woman's life is dramatically changed when a local militia arrives and kills her father, who mysteriously—and unbeknownst to her—had something to do with the blackout. An unlikely group sets out off on a daring journey to find answers about the past in the hopes of reclaiming the future.",
+                "popularity": 19.754,
+                "poster_path": "/pNyg4V6kuDstSSxk6Q9GgaBn4B8.jpg",
+                "first_air_date": "2012-09-17",
+                "name": "Revolution",
+                "vote_average": 6.4,
+                "vote_count": 448
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/vNnLAKmoczRlNarxyGrrw0KSOeX.jpg",
+                "genre_ids": [
+                    80,
+                    18,
+                    9648,
+                    10759
+                ],
+                "id": 1412,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "Arrow",
+                "overview": "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
+                "popularity": 169.647,
+                "poster_path": "/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg",
+                "first_air_date": "2012-10-10",
+                "name": "Arrow",
+                "vote_average": 6.774,
+                "vote_count": 5446
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/8kBhAP03JpPcTklJp5idCNJhRqE.jpg",
+                "genre_ids": [
+                    18,
+                    9648,
+                    10765
+                ],
+                "id": 1413,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "American Horror Story",
+                "overview": "An anthology horror drama series centering on different characters and locations, including a house with a murderous past, an asylum, a witch coven, a freak show, a hotel, a farmhouse in Roanoke, a cult, the apocalypse and a summer camp.",
+                "popularity": 114.533,
+                "poster_path": "/tiuzjuzalHj377XER1sfq7XQEIT.jpg",
+                "first_air_date": "2011-10-05",
+                "name": "American Horror Story",
+                "vote_average": 8.152,
+                "vote_count": 5047
+            }
+        ],
+        "total_pages": 65,
+        "total_results": 1288
+    }
+}
