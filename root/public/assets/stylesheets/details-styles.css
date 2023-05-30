@@ -1,0 +1,176 @@
+/*
+* @license MIT
+* cinetech (muvisho)
+* Copyright (c) 2023 Abraham Ukachi. The Muvisho Project Contributors. All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE
+* 
+* @name: Details
+* @type: Stylesheets 
+* @author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
+*/
+
+/* Importing some VIP styles */
+@import '../theme/color.css'; /* <- color from theme */
+@import '../animations/fade-in-animation.css'; /* <- fade in animation */
+@import '../animations/slide-from-down-animation.css'; /* <- slide from down animation */
+
+/* ====  PROFILE STYLES === */
+
+
+/* BODY */
+body {
+  
+  /* Slide From Down Animation */
+  --slide-from-down-animation-duration: 1s;
+  --slide-from-down-animation-delay: 0s;
+
+  /* Fade In Animation */
+  --fade-in-animation-duration: 1s;
+  --fade-in-animation-delay: 0s;
+}
+
+
+/* App Header */
+#header.app-header {
+  --app-header-width: 100%;
+  --app-header-height: 400px;
+  --app-header-margin-bottom: var(--app-bar-size, 54px);
+  --app-header-overlay-z-index: 2;
+  --app-header-overlay-opacity: 1;
+  --app-header-overlay-background: linear-gradient(180deg, transparent, var(--background-color));
+
+  overflow: visible;
+}
+
+#header > .app-bar {
+  --app-bar-color-background: transparent;
+}
+
+#closeIconButton {
+  background: rgba(0,0,0,0.5);
+  opacity: 1;
+  border-radius: 0.5rem;
+}
+
+#header span.tmdb-logo {
+  margin-right: 0.5rem;
+}
+
+#header span.vote-average {}
+
+
+#header span.vote-count, 
+#header span.vote-separator {
+  opacity: var(--opacity-text-disabled);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+#header span.vote-separator {
+  margin-left: 0.25rem;
+}
+
+
+#busyContainer {
+  z-index: 100;
+  position: fixed;
+}
+
+/* === Backdrop Image === */
+
+#header > img.backdrop-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+#header > .app-bar {
+  z-index: 2;
+}
+
+#header > .app-bar.bottom {
+  bottom: calc(-1 * var(--app-bar-size, 54px));
+}
+
+/* == END of Backdrop Image == */
+
+
+
+
+
+/* 
+ * --> Wide - Layout <--
+ * Phone: ? (Responsive)
+ * Dimension: 460px+ (width)
+ *
+ * ***************************************
+ * when the viewport is bigger than 460px,
+ * layout changes to wide-layout.
+ * ***************************************
+ */
+@media (min-width: 460px) {
+ 
+  /* App Logo */
+  #appLogo {}
+
+}
+
+
+
+@media (min-width: 768px) {
+  /* App Logo */
+  #appLogo {}
+
+  #busyContainer {
+    position: absolute;
+  }
+}
+
+
+
+/* 
+ * --> Tablet - Device <--
+ * Phone: ? (Responsive)
+ * Width: 768px <-to-> 1024px
+ */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* App Logo */
+  #appLogo {}
+
+}
+
+
+/* 
+ * --> Laptop - Device <--
+ * Phone: ? (Responsive)
+ * Width: 1024px <-to-> 2560px
+ */
+@media (min-width: 1024px) and (max-width: 2560px) {
+
+  /* App Logo */
+  #appLogo {}
+
+}
+
+
+/* ====  END of PROFILE STYLES === */
