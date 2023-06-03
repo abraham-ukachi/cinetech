@@ -115,6 +115,104 @@ body {
 
 
 
+.media-details {
+  box-sizing: border-box;
+  padding: var(--media-details-padding, 1rem 0);
+}
+
+
+.media-details > h2.title {
+  margin: 0 0 0.5rem;
+  padding: var(--media-details-content-padding, 0 1rem);
+
+  letter-spacing: 0.1rem;
+
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.media-details > h4.meta {
+  font-weight: 300;
+  font-size: 0.9rem;
+  margin-top: 0;
+  padding: var(--media-details-content-padding, 0 1rem);
+  opacity: var(--opacity-text-inactive);
+}
+
+.media-details > p.overview {
+  opacity: var(--opacity-text-active);
+  padding: var(--media-details-content-padding, 0 1rem);
+}
+
+
+.media-details h3.title {
+  font-weight: bold;
+  padding: var(--media-details-content-padding, 0 1rem);
+}
+
+.media-details > .wrapper {
+  margin: 2rem 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+ul.top-cast-list {
+  width: 100%;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding-left: var(--top-cast-list-padding-left, 1rem);
+  padding-right: var(--top-cast-list-padding-right, 1rem);
+}
+
+
+li.cast-item {
+  width: var(--cast-item-width, 100px);
+  min-width: var(--cast-item-width, 100px);
+  height: var(--cast-item-height, 150px);
+  margin: 0 var(--cast-item-margin-right, 0.5rem);
+  user-select: none;
+  overflow: hidden;
+  text-align: center;
+}
+
+
+img.cast-item-img {
+  width: var(--cast-image-size, 80px);
+  height: var(--cast-image-size, 80px);
+  border-radius: var(--cast-image-size, 80px);
+  object-fit: cover;
+  object-position: center center;
+}
+
+
+span.cast-item-name {
+  display: block;
+  margin: 0.5rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  max-width: 95%;
+}
+
+
+span.cast-item-character {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  max-width: 80%;
+  margin: 0 auto;
+
+  opacity: var(--opacity-text-inactive);
+}
+
+
 
 
 /* 
@@ -131,6 +229,32 @@ body {
  
   /* App Logo */
   #appLogo {}
+
+  .media-details {
+    --media-details-content-padding: 0 1.5rem;
+    --top-cast-list-padding-left: 2rem;
+    --top-cast-list-padding-right: 2rem;
+
+    --cast-image-size: 100px;
+    --cast-item-width: 120px;
+    --cast-item-height: 200px;
+  }
+
+
+  .media-details > h2.title {
+    font-size: 3rem;
+    line-height: 3.2rem;
+  }
+
+  .media-details > h4.meta {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .media-details > p.overview {
+    font-size: 1.25rem;
+    /* line-height: 1.5rem; */
+  }
 
 }
 
