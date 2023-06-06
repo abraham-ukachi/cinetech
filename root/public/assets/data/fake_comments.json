@@ -1,0 +1,65 @@
+{
+        "page": 1,
+        "belongs_to": {
+            "media_type": "movie",
+            "media_id": 1
+        },
+        "results": [
+            {
+                "id": 1,
+                "name": "John Doe",
+                "username": "johndoe",
+                "initials": "jd",
+                "user_id": 21,
+                "email": "john.doe@gmail.com",
+                "profile_path": "",
+                "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget ultricies aliquam, nunc sapien ultricies velit, vitae luctus nisl nunc eu nunc. Sed vitae nisl euismod, aliquet nisl vitae, aliquet nisl. Sed vitae nisl euismod, aliquet nisl vitae, aliquet nisl.",
+                "created_at": "2022-05-03T12:00:00",
+                "modified": true,
+                "total_replies": 0
+            },
+            {
+                "id": 2,
+                "name": "Jane Doe",
+                "username": "janedoe",
+                "initials": "jd",
+                "user_id": 22,
+                "profile_path": "",
+                "email": "jane.doe@laplateforme.io",
+                "body": "This is an amazing movie",
+                "created_at": "2022-05-04T12:00:00", 
+                "modified": false,
+                "total_replies": 4
+            },
+            {
+                "id": 3,
+                "name": "Will Smith",
+                "username": "will69",
+                "initials": "ws",
+                "user_id": 24,
+                "profile_path": "",
+                "email": "will.smith@ilove.com",
+                "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget ultricies aliquam, nunc sapien ultricies velit, vitae luctus nisl nunc eu nunc. Sed vitae nisl euismod, aliquet nisl vitae, aliquet nisl. Sed vitae nisl euismod, aliquet nisl vitae, aliquet nisl.",
+                "created_at": "2022-05-11T12:00:00",
+                "modified": false,
+                "total_replies": 0
+            },
+            {
+                "id": 4,
+                "name": "Abraham Lincoln",
+                "username": "abraham_lincoln33",
+                "initials": "al",
+                "user_id": 25,
+                "profile_path": "",
+                "email": "abraham.lincoln@laplateforme.io",
+                "body": "Lorem is not ipsum,but this movie is :fire:",
+                "created_at": "2022-05-12T13:00:00", 
+                "modified": false,
+                "total_replies": 4
+            }
+        ],
+        "total_pages": 2,
+        "total_results": 4
+        
+    }
+
