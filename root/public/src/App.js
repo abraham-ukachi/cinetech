@@ -145,7 +145,7 @@ export const ERROR_TOAST_TYPE = 'error';
 export const DEFAULT_TOAST_TIMEOUT = 5000; // <- 5 seconds
 
 // ++++++ Constants 4rm Maxaboom +++++++
-/*
+
 // toast types
 export const ERROR_TOAST = 'et';
 export const SUCCESS_TOAST = 'st';
@@ -154,7 +154,7 @@ export const BAD_TOAST = '2t';
 export const NORMAL_TOAST = '0t';
 export const DEFAULT_TOAST = NORMAL_TOAST; // <- default toast type is normal
 // default toast timeout
-export const DEFAULT_TOAST_TIMEOUT = 5; // <- default toast timeout is 5 seconds
+// export const DEFAULT_TOAST_TIMEOUT = 5; // <- default toast timeout is 5 seconds
 export const DEFAULT_MENU_TIMEOUT = 0.5;
 export const DEFAULT_BACKDROP_TIMEOUT = 0.5;
 
@@ -164,10 +164,9 @@ export const ASIDE_PART = '1p';
 export const FULL_PART = '2p';
 export const DEFAULT_PART = FULL_PART; // <- default part is full
 
-*/
+
 // +++++ End of Constants 4rm Maxaboom +++++++
 
-console.log(Engine);
 
 
 // TODO: Turn the App into a custom element by extending `HTMLElement`
@@ -206,7 +205,7 @@ export class App extends Engine {
    * @type { Array }
    */
   static get theme() {
-    return [ 'color', 'typography', 'styles' ];
+    return [ 'typography', 'color', 'styles' ];
   }
 
   /**
@@ -227,10 +226,10 @@ export class App extends Engine {
    */
   static get animations() {
     return [ 
-      'fade-in',
+      'fade-in', 'fade-out',
       'pop-in',
-      'slide-from-left',
-      'slide-from-down'
+      'slide-from-left', 'slide-from-down',
+      'slide-from-up', 'slide-up'
     ];
   }
 
@@ -310,16 +309,16 @@ export class App extends Engine {
    */
   static get supportedPages() {
     return [
-      {id: 'home', type: 'main', name: 'Home'},
-      {id: 'search', type: 'aside', name: 'Search'},
-      {id: 'movies', type: 'main', name: 'Movies'},
-      {id: 'series', type: 'main', name: 'Series'},
-      {id: 'favorites', type: 'main', name: 'Favorites'},
-      {id: 'details', type: 'aside', name: 'Details'},
-      {id: 'account', type: 'main', name: 'Account'},
-      {id: 'profile', type: 'aside', name: 'Profile'},
-      {id: 'settings', type: 'main', name: 'Settings'},
-      {id: 'help', type: 'aside', name: 'Help'}
+      {id: 'home', type: MAIN_PAGE_TYPE, name: 'Home'},
+      {id: 'search', type: ASIDE_PAGE_TYPE, name: 'Search'},
+      {id: 'movies', type: MAIN_PAGE_TYPE, name: 'Movies'},
+      {id: 'series', type: MAIN_PAGE_TYPE, name: 'Series'},
+      {id: 'favorites', type: MAIN_PAGE_TYPE, name: 'Favorites'},
+      {id: 'details', type: ASIDE_PAGE_TYPE, name: 'Details'},
+      {id: 'account', type: MAIN_PAGE_TYPE, name: 'Account'},
+      {id: 'profile', type: ASIDE_PAGE_TYPE, name: 'Profile'},
+      {id: 'settings', type: MAIN_PAGE_TYPE, name: 'Settings'},
+      {id: 'help', type: ASIDE_PAGE_TYPE, name: 'Help'}
     ];
   }
 
@@ -433,29 +432,29 @@ export class App extends Engine {
    */
   render() {
     return html`
-
+      
       <!-- App Container --> 
       <div id="appContainer" class="theme ${this.theme}" lang="${this.lang}" fit>
-
+        
         <!-- Screens -->
         <div id="screens" fit hidden></div>
         <!-- End of Screens -->
-
+        
         <!-- Pages -->
         <div id="pages" class="flex-layout horizontal" fit hidden></div>
         <!-- End of Pages -->
 
+        <!-- Backdrop -->
+        <div id="backdrop" fit hidden></div>
+
         <!-- Dialogs -->
         <div id="dialogs" fit hidden></div>
-        <!-- End of Dialogs -->
 
         <!-- Menus -->
         <div id="menus" fit hidden></div>
-        <!-- End of Menus -->
 
         <!-- Toasts -->
         <div id="toasts" class="fade-in" fit hidden></div>
-        <!-- End of Toasts -->
 
         <!-- Progress Bar -->
         <div id="progressBar" class="progress-bar" hidden>
@@ -562,6 +561,311 @@ export class App extends Engine {
 
 
   /* >> PUBLIC METHODS << */
+
+
+  /**
+   * Method used to open a menu using the given `params`
+   *
+   * @param { Object } params - The params object
+   *
+   * @param { String } params.id - The id of the menu
+   * @param { String } params.title - The title of the menu
+   * @param { Array } params.items - The items of the menu (e.g [{icon: '', text: 'delete', link: '/delete', onClick: () => console.log()}, {...}, ...]
+   * @param { Boolean } params.noDivider - Whether to hide the divider between the buttons
+   * 
+   * @param { Number } timeout - How long it will take to open the menu
+   * @param { String } part - Which part of the app the menu should be display.
+   *
+   * @returns { Promise } - A promise that will be resolved when the menu is opened
+   */
+  openMenu(params, timeout = 0.5, part = DEFAULT_PART) {
+    return new Promise ((resolve, reject) => {
+      // get the menus element of the given `part` as `dialogsEl`
+      let menusEl = this.getCurrentMenusElement(part);
+
+      // initialize the `menuId` variable
+      let menuId = params.id || 'menu';
+      
+      // reject the promise, if there's already a menu with this `menuId`
+      // in the specified `part`
+      if (this.getMenuById(menuId, part)) {
+        return reject(`The menu with id "${menuId}" is already open, close it and try again!`);
+      }
+
+
+      // Now, rendering the menu...
+      // get the menu's html template with the given `params` as `menuHTMLTemplate`
+      let menuHTMLTemplate = this._getMenuHTMLTemplate(params);
+
+      // insert 'beforend' the `menuHTMLTemplate` to `menusEl`
+      menusEl.insertAdjacentHTML('beforeend', menuHTMLTemplate);
+
+      // get the menu element using `menuId`
+      let menuEl = this.getMenuById(menuId, part);
+
+      // get the close button element as `closeBtnEl`
+      // let closeBtnEl = menuEl.querySelector('.close-btn');
+      
+      // add a `click` event to the `closeBtnEl` 
+      // confirmBtnEl.onclick = this.closeMenuById(menuId, timeout, part));
+      
+      // show the backdrop of the given `part` 
+      this.showBackdropOf(part, params.isCancelable ?? true);
+
+      // show or unhide the `menusEl`
+      menusEl.hidden = false;
+      // show or unhide the `menuEl`
+      menuEl.hidden = false;
+
+      // remove the `fade-out` class from `menusEl`
+      menusEl.classList.remove('fade-out');
+      // add the `fade-in` class to `menusEl`
+      menusEl.classList.add('fade-in');
+
+      // remove the `slide-down` class from `menuEl`
+      menuEl.classList.remove('slide-down');
+      // add the `slide-from-down` class to `menuEl`
+      menuEl.classList.add('slide-from-down');
+
+      
+      // cancel any active timers
+      clearTimeout(this._closeMenuTimer);
+      clearTimeout(this._openMenuTimer);
+
+      // resolve the promise after `duration` seconds
+      this._openMenuTmer = setTimeout(() => {
+        // TODO ? Do something before resolving the promise
+
+        // add a `opened` property to `menuEl`
+        menuEl.setAttribute('opened', '');
+
+        // resolve the promise
+        resolve(menuEl);
+
+      }, timeout * 1000);
+
+    });
+  }
+
+
+  /**
+   * Method used to open a dialog using the given `params`
+   *
+   * @param { Object } params - The params object
+   *
+   * @param { String } params.id - The id of the dialog
+   * @param { String } params.title - The title of the dialog
+   * @param { String } params.message - The message of the dialog
+   * @param { String } params.confirmBtnText - The text of the confirm button
+   * @param { String } params.cancelBtnText - The text of the cancel button
+   * @param { Boolean } params.noDivider - Whether to hide the divider between the buttons
+   * @param { Function } params.onConfirm - The function to call when the confirm button is clicked
+   * @param { Function } params.onCancel - The function to call when the cancel button is clicked
+   * 
+   * @returns { Promise } - A promise that will be resolved when the dialog is opened
+   */
+  openDialog(params, timeout = 0.5, part = DEFAULT_PART) {
+    return new Promise ((resolve, reject) => {
+      // get the dialogs element of the given `part` as `dialogsEl`
+      let dialogsEl = this.getCurrentDialogsElement(part);
+
+      // initialize the `dialogId` variable
+      let dialogId = params.id || 'dialog';
+       
+      // reject the promise, if there's already a dialog with this `dialogId`
+      // in the specified `part`
+      if (this.getDialogById(dialogId, part)) {
+        return reject(`The dialog with id "${dialogId}" is already open, close it and try again!`);
+      }
+
+      
+      // Now, rendering the dialog...
+      // get the dialog html template with the given `params` as `dialogHTMLTemplate`
+      let dialogHTMLTemplate = this._getDialogHTMLTemplate(params);
+      
+      // insert 'beforend' the `dialogHTMLTemplate` to `dialogsEl`
+      dialogsEl.insertAdjacentHTML('beforeend', dialogHTMLTemplate);
+      
+      // get the dialog element using `dialogId`
+      let dialogEl = this.getDialogById(dialogId, part);
+
+      // get the confirm button element as `confirmBtnEl`
+      let confirmBtnEl = dialogEl.querySelector('.confirm-btn');
+      // get the cancel button element as `cancelBtnEl`
+      let cancelBtnEl = dialogEl.querySelector('.cancel-btn');
+
+      // attach the `onConfirm` and `onCancel` functions to the buttons
+      confirmBtnEl.onclick = params.onConfirm ?? (() => this.closeDialog(dialogId, timeout, part));
+      cancelBtnEl.onclick = params.onCancel ?? (() => this.closeDialog(dialogId, timeout, part));
+
+
+      // if the dialog element doesn't exist, reject the promise
+      // if (!dialogEl) { reject(`Dialog with id "${dialogId}" doesn't exist`); }
+
+      // show the backdrop of the given `part` 
+      this.showBackdropOf(part, params.isCancelable ?? true);
+
+      // show or unhide the `dialogsEl`
+      dialogsEl.hidden = false;
+      // show or unhide the `dialogEl`
+      dialogEl.hidden = false;
+
+      // remove the `fade-out` class from `dialogsEl`
+      dialogsEl.classList.remove('fade-out');
+      // add the `fade-in` class to `dialogsEl`
+      dialogsEl.classList.add('fade-in');
+
+      // remove the `slide-up` class from `dialogEl`
+      dialogEl.classList.remove('slide-up');
+      // add the `slide-from-up` class to `dialogEl`
+      dialogEl.classList.add('slide-from-up');
+
+      
+      // cancel any active timers
+      clearTimeout(this._closeDialogTimer);
+      clearTimeout(this._openDialogTimer);
+
+      // resolve the promise after `duration` seconds
+      this._openDialogTmer = setTimeout(() => {
+        // TODO ? Do something before resolving the promise
+
+        // add a `opened` property to `dialogEl`
+        dialogEl.setAttribute('opened', '');
+
+        // resolve the promise
+        resolve(dialogEl);
+
+      }, timeout * 1000);
+
+    });
+  }
+
+
+  /**
+   * Method used to close the dialog with the given `dialogId`
+   *
+   * @param { String } dialogId - The id of the dialog to close
+   * @param { Number } duration - The duration of the animation (in seconds)
+   * @param { String } part - The part of the app where the menu will be hidden (eg. MAIN_PART, ASIDE_PART, FULL_PART)
+   * 
+   * @returns { Promise } - A promise that will be resolved when the dialog is closed
+   */
+  closeDialog(dialogId = 'dialog', duration = 0.5, part = DEFAULT_PART) {
+    return new Promise((resolve, reject) => {
+      // get the dialogs element of the given `part` as `menusEl`
+      let dialogsEl = this.getCurrentDialogsElement(part);
+
+      // get the dialog element with the given `dialogId` as `dialogEl`
+      let dialogEl = this.getDialogById(dialogId, part); 
+
+      // if the dialog element doesn't exist, reject the promise
+      if (!dialogEl) { return reject(`Dialog with id "${dialogId}" doesn't exist`) }
+
+      
+      // hide the backdrop of the given `part` 
+      this.hideBackdropOf(part);
+      
+
+      // remove the `fade-in` class from `dialogsEl`
+      dialogsEl.classList.remove('fade-in');
+      // add the `fade-out` class to `dialogsEl`
+      dialogsEl.classList.add('fade-out');
+
+      // remove slide-from-up class from `dialogEl`
+      dialogEl.classList.remove('slide-from-up');
+      // add the `slide-up` class to `dialogEl`
+      dialogEl.classList.add('slide-up');
+
+      // cancel any active timers
+      clearTimeout(this._closeDialogTimer);
+      clearTimeout(this._openDialogTimer);
+
+      // resolve the promise after `duration` seconds
+      this._closeDialogTimer = setTimeout(() => {
+        // TODO ? Do something before resolving the promise
+        
+        // remove the `opened` property from `dialogEl`
+        dialogEl.removeAttribute('opened');
+
+        // deactivate the dialog element`
+        dialogEl.removeAttribute('active');
+
+        // hide the `dialogEl`
+        dialogEl.hidden = true;
+
+        // hide the `dialogsEl`
+        dialogsEl.hidden = true;
+
+        // remove the `fade-out` class from `dialogsEl`
+        dialogsEl.classList.remove('fade-out');
+        // remove the `dialogEl` from `dialogsEl`
+        dialogEl.remove();
+
+        // DEBUG [4dbsmaster]: tell me about it ;)
+        console.log(`\x1b[34m[closeDialog](_closeDialogTimer): dialogEl ==> \x1b[0m`, dialogEl);
+
+        // resolve the promise
+        resolve();
+
+      }, duration * 1000);
+
+    });
+
+  }
+
+  /**
+   * Shows or unhides the backdrop of the app (or a specific part of the app)
+   *
+   * @param { String } part - The part of the app to show the backdrop of
+   * @param { Boolean } isCancelable - If TRUE, the backdrop will be cancelable
+   */
+  showBackdropOf(part = DEFAULT_PART, isCancelable = true) {
+    // get the correct backdrop element
+    let backdropEl = part === MAIN_PART ? this.mainBackdropEl : (part === ASIDE_PART ? this.asideBackdropEl : this.backdropEl);
+    // set the cancelable attribute of the backdrop element
+    backdropEl.setAttribute('cancelable', isCancelable);
+
+    // set the `hidden` attribute to false 
+    backdropEl.hidden = false;
+  }
+
+
+  /**
+   * Hides the backdrop of the app (or a specific part of the app)
+   *
+   * @param { String } part - The part of the app to show the backdrop of
+   * @param { Number } duration - The duration (in milliseconds) of the hiding animation
+   */
+  hideBackdropOf(part = DEFAULT_PART, duration = 300) {
+    // get the correct backdrop element
+    let backdropEl = part === MAIN_PART ? this.mainBackdropEl : (part === ASIDE_PART ? this.asideBackdropEl : this.backdropEl);
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[34m[hideBackdropOf]: backdropEl => \x1b[0m`, backdropEl);
+
+    // add the `fade-out` class to the backdrop element
+    backdropEl.classList.add('fade-out');
+
+    // hide the backdrop element after 300 milliseconds
+    this.hideBackdropTimer = setTimeout(() => {
+      // set the `hidden` attribute to true 
+      backdropEl.hidden = true;
+      // remove the `fade-out` class from the backdrop element
+      backdropEl.classList.remove('fade-out');
+    }, duration);
+
+  }
+
+
+  /**
+   * Toggles the default backdrop of the app
+   */
+  toggleBackdrop() {
+    // if the backdrop is hidden, then show it
+    if (this.backdropEl.hidden) this.showBackdropOf(DEFAULT_PART);
+    // if the backdrop is not hidden, then hide it
+    else this.hideBackdropOf(DEFAULT_PART);
+  }
 
   /**
    * Shows all the labels in both side and nav labels
@@ -1113,13 +1417,16 @@ export class App extends Engine {
    * Returns the type of the given `page`
    *
    * @param { String } pageId - id of the page
-   *
+   * 
    * @returns { String } 
    */
   getPageTypeOf(pageId) {
     return this.getSupportedPages().filter((page) => page.id === pageId)[0].type;
   }
 
+
+
+  
 
   /* >> PUBLIC SETTERS << */
   
@@ -1172,6 +1479,57 @@ export class App extends Engine {
 
   /* >> PUBLIC GETTERS << */
 
+  
+  /**
+   * Returns the current menus element of the given `part`
+   *
+   * @param { String } part - The part of the app where the menu will be shown (eg. MAIN_PART, ASIDE_PART, FULL_PART)
+   *
+   * @returns { Element } - The current menus element of the given `part`
+   */
+  getCurrentMenusElement(part = DEFAULT_PART) {
+    return (part === MAIN_PART) ? this.mainMenusEl : (part === ASIDE_PART ? this.asideMenusEl : this.menusEl);
+  }
+
+
+  /**
+   * Returns the current menu element of the given `id` and `part`
+   *
+   * @param { String } menuId - The id of the menu to get
+   * @param { String } part - The part of the app where the menu will be shown (eg. MAIN_PART, ASIDE_PART, FULL_PART)
+   *
+   * @returns { Element } - The current menu element of the given `id` and `part`
+   */
+  getMenuById(menuId, part = DEFAULT_PART) {
+    return this.getCurrentMenusElement(part).querySelector(`menu[data-id="${menuId}"]`);
+  }
+
+
+  /**
+   * Returns the current dialog element of the given `id` and `part`
+   *
+   * @param { String } dialogId - The id of the dialog to get
+   * @param { String } part - The part of the app where the dialogwill be shown (eg. MAIN_PART, ASIDE_PART, FULL_PART)
+   *
+   * @returns { Element } - The current dialogelement of the given `id` and `part`
+   */
+  getDialogById(dialogId, part = DEFAULT_PART) {
+    return this.getCurrentDialogsElement(part).querySelector(`.dialog[data-id="${dialogId}"]`);
+  }
+
+
+  /**
+   * Returns the current dialogs element of the given `part`
+   *
+   * @param { String } part - The part of the app where the dialog will be shown (eg. MAIN_PART, ASIDE_PART, FULL_PART)
+   *
+   * @returns { Element } - The current dialogs element of the given `part`
+   */
+  getCurrentDialogsElement(part = DEFAULT_PART) {
+    return (part === MAIN_PART) ? this.mainDialogsEl : (part === ASIDE_PART ? this.asideDialogsEl : this.dialogsEl);
+  }
+  
+
   /**
    * Returns TRUE if the current device is mobile, FALSE if desktop
    *
@@ -1180,6 +1538,39 @@ export class App extends Engine {
   get isTouchDevice() {
     return 'ontouchstart' in document.documentElement;
   }
+
+  
+  /**
+   * Returns the main backdrop element.
+   * NOTE: This is the `<div class="backdrop">` element inside the `<main>` element.
+   *
+   * @returns { Element } - The main backdrop element
+   */
+  get mainBackdropEl() {
+    return this.mainPagesEl.querySelector('.backdrop');
+  }
+
+  /**
+   * Returns the aside backdrop element.
+   * NOTE: This is the `<div class="backdrop">` element inside the `<aside>` element.
+   *
+   * @returns { Element } - The main backdrop element
+   */
+  get asideBackdropEl() {
+    return this.asidePagesEl.querySelector('.backdrop');
+  }
+  
+
+  /**
+   * Returns the default backdrop element.
+   * NOTE: This is the `<div id="backdrop">` element inside the `<body>` element.
+   *
+   * @returns { Element } - The main backdrop element
+   */
+  get backdropEl() {
+    return this.shadowRoot.getElementById('backdrop');
+  }
+
 
 
   /**
@@ -1328,6 +1719,26 @@ export class App extends Engine {
 
 
   /**
+   * Returns the main dialogs element.
+   *
+   * @returns { Element } - The main dialogs element
+   */
+  get mainDialogsEl() {
+    return this.mainPagesEl.querySelector('.dialogs');
+  }
+
+
+  /**
+   * Returns the aside dialogs element.
+   *
+   * @returns { Element } - The aside dialogs element
+   */
+  get asideDialogsEl() {
+    return this.asidePagesEl.querySelector('.dialogs');
+  }
+
+
+  /**
    * Returns the `<div id="menus">` element from the app's shadow root
    *
    * @returns { Element } 
@@ -1336,6 +1747,27 @@ export class App extends Engine {
     return this.shadowRoot.getElementById('menus');
   }
 
+  /**
+   * Returns the main menus element.
+   * NOTE: This is the `<div class="menus">` element inside the `<main>` element.
+   *
+   * @returns { Element } - The main menus element
+   * @private
+   */
+  get mainMenusEl() {
+    return this.mainPagesEl.querySelector('.menus');
+  }
+
+  /**
+   * Returns the aside menus element.
+   * NOTE: This is the `<div class="menus">` element inside the `<aside>` element.
+   *
+   * @returns { Element } - The aside menus element
+   * @private
+   */
+  get asideMenusEl() {
+    return this.asidePagesEl.querySelector('.menus');
+  }
 
   /**
    * Returns the `<div id="toasts">` element from the app's shadow root
@@ -1451,6 +1883,100 @@ export class App extends Engine {
 
   // =========== Dynamic HTML Templates =============== //
 
+  
+  /**
+   * Returns the html template of the app's menu 
+   *
+   * @param { Object } data - The data to use for the menu
+   *
+   * @param { String } data.title - The title of the menu
+   * @param { String } data.items - The items of the dialog
+   * @param { Boolean } data.noDivider - Whether to hide the divider between the buttons
+   * 
+   * @returns { HTMLTemplate }
+   */
+  _getMenuHTMLTemplate(data) {
+    return html`
+      <!-- Menu -->
+      <menu data-id="${data.id ?? 'menu'}" class="menu vertical flex-layout slide-from-down" hidden>
+        <!-- Close Menu + Icon Button -->
+        <li role="close-menu">
+          <button class="icon-button close-btn">
+            <span class="material-icons icon">arrow_back_ios</span>
+          </button>
+        </li>
+        
+        ${data.items.map((item, index) => html`
+
+            <li title="${item.text}" class="menu-item">
+              <a role="button" tabindex="${index}" href="${item.link}">
+                <span class="material-icons icon">${item.icon}</span>
+                <span>${item.text}</span>
+              </a>
+            </li>
+        `)}
+
+      </menu>
+      <!-- End of Menu -->
+    `;
+  }
+
+
+  /**
+   * Returns the html template of the app's dialog
+   *
+   * @param { Object } data - The data to use for the dialog
+   *
+   * @param { String } data.title - The title of the dialog
+   * @param { String } data.message - The message of the dialog
+   * @param { String } data.confirmBtnText - The text of the confirm button
+   * @param { String } data.cancelBtnText - The text of the cancel button
+   * @param { Boolean } data.noDivider - Whether to hide the divider between the buttons
+   * @param { Function } data.onConfirm - The function to call when the confirm button is clicked
+   * @param { Function } data.onCancel - The function to call when the cancel button is clicked
+   * 
+   * @returns { HTMLTemplate }
+   */
+  _getDialogHTMLTemplate(data) {
+    return html`
+      <!-- Dialog -->
+      <div data-id="${data.id ?? 'dialog'}" class="dialog slide-from-up" hidden>
+        <!-- Dialog Title -->
+        <h2 class="dialog-title">${data.title}</h2>
+        <!-- Dialog Message -->
+        <p class="dialog-msg">${data.message}</p>
+
+        <!-- Dialog Buttons -->
+        <div class="dialog-buttons">
+          <!-- Confirm Button -->
+          <a role="button" 
+             tabindex="0" 
+             class="dialog-button confirm-btn" 
+             default 
+             autofocus>
+            ${data.confirmBtnText ?? 'Confirm'}
+          </a>
+
+          <!-- Divider -->
+          <span class="divider horizontal left" ${data.noDivider ? 'hidden' : ''}></span>
+
+          <!-- Cancel Button -->
+          <a role="button" 
+             tabindex="0" 
+             class="dialog-button cancel-btn" 
+             confirm>
+            ${data.cancelBtnText ?? 'Cancel'}
+          </a>
+
+        </div>
+        <!-- End of Dialog Buttons -->
+
+      </div>
+      <!-- End of Dialog -->
+    `;
+  }
+
+
   /**
    * Returns the html template of a toast based on the specified `type` and `message`
    *
@@ -1486,20 +2012,7 @@ export class App extends Engine {
       <main class="flex-layout vertical">
 
         <!-- Pages-Wrapper -->
-        <div class="pages-wrapper">
-  
-          <!-- Backdrop -->
-          <div class="backdrop fade-in" fit hidden></div>
-  
-          <!-- Dialogs-Container -->
-          <div class="dialogs-container vertical flex-layout" fit hidden></div>
-          <!-- End of Dialogs-Container -->
-  
-          <!-- Menus-Container -->
-          <div class="menus-container vertical flex-layout" fit hidden></div>
-          <!-- End of Menus-Container -->
-  
-        </div>
+        <div class="pages-wrapper"></div>
         <!-- End of Pages-Wrapper -->
   
         <!-- NOTE: NavBar will be injected here -->
@@ -1524,20 +2037,7 @@ export class App extends Engine {
       <!-- Aside Pages -->
       <aside class="flex-layout vertical centered">
         <!-- Pages-Wrapper -->
-        <div class="pages-wrapper" fit>
-
-          <!-- Backdrop -->
-          <div class="backdrop fade-in" fit hidden></div>
-
-          <!-- Dialogs-Container -->
-          <div class="dialogs-container vertical flex-layout" fit hidden></div>
-          <!-- End of Dialogs-Container -->
-
-          <!-- Menus-Container -->
-          <div class="menus-container vertical flex-layout" fit hidden></div>
-          <!-- End of Menus-Container -->
-  
-        </div>
+        <div class="pages-wrapper" fit></div>
         <!-- End of Pages-Wrapper -->
 
 

@@ -36,6 +36,20 @@
 /* ====<<< Mulish Font >>>=== */
 
 
+/* Zilla Slab - Bold (700) */
+@font-face {
+  font-family: 'ZillaSlab-Bold';
+  font-weight: 700;
+  font-style: bold;
+  src: url('../fonts/zilla_slab/zillaSlab-Bold.ttf') format('truetype');
+}
+
+
+
+
+/* ====<<< Mulish Font >>>=== */
+
+
 /* Mulish - ExtraLight (200) */
 @font-face {
   font-family: 'Mulish-ExtraLight';
@@ -137,6 +151,14 @@
 
 
 
+/***** CSS rules for ZillaSlab Font *****/
+
+/* Light - Mulish Font */
+.font.zilla-slab.bold {
+  font-family: 'ZillaSlab-Bold';
+}
+
+
 /***** CSS rules for Mulish Font *****/
 
 /* Light - Mulish Font */
@@ -176,7 +198,7 @@
 
 /* Applying the Mulish, 'Mulish-Regular', system-ui, etc
  * font to all key elements by default... */
-body, h1, h2, h3, p, button, span, input {
+body, h1, h2, h3, p, button, span, input, textarea {
   font-family: Mulish, 'Mulish-Regular', system-ui, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -281,7 +303,7 @@ span.caption {
 }
 
 /* Input & Label Styles */
-input, label {
+input, label, textarea {
   font-size: 16px;
   line-height: 28px;
   letter-spacing: 1.4px;
@@ -292,6 +314,11 @@ label {
   /* font-size: 14px; */
   text-transform: capitalize;
   opacity: var(--opacity-text-inactive);
+
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
 }
 
 

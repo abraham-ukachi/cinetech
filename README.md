@@ -242,10 +242,11 @@ A table containing all currently registered users. his table has a [**one-to-man
 | 5 | *`email`* | **VARCHAR** | 50_<sup>2</sup>_ | No | None | **UNIQUE KEY** |
 | 6 | *`password`* | **VARCHAR** | 255 | No | None | - |
 | 7 | *`birth_date`* | **DATE** | - | Yes | *NULL* | - | 
-| 8 | *`role`* | **VARCHAR** | 13 | No | *member* | - | 
-| 9 | *`token`* | **VARCHAR** | 255 | Yes | *NULL* | - | 
-| 10 | *`updated_at`* | **DATETIME** | - | Yes | *NULL* | - |  
-| 11 | *`created_at`* | **DATETIME** | - | No | None | - |  
+| 8 | *`role`* | **VARCHAR** | 13 | No | *member* | - |
+| 9 | *`profile_path`* | **VARCHAR** | 30 | Yes | *NULL* | - | 
+| 10 | *`token`* | **VARCHAR** | 255 | Yes | *NULL* | - | 
+| 11 | *`updated_at`* | **DATETIME** | - | Yes | *NULL* | - |  
+| 12 | *`created_at`* | **DATETIME** | - | No | None | - |  
 
 > NOTE: (1) The **`UUID()`** and **`UUID_TO_BIN()`** functions are used to convert a [UUID](https://www.mysqltutorial.org/mysql-uuid/) from a human-readable format (VARCHAR) into a compact format (BINARY) for storing in the *`id`* column.
 
@@ -449,7 +450,7 @@ open http://localhost/cinetech
 | N/A | N/A | N/A |
 
 
---- 
+---
 
 ## Credits
 

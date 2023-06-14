@@ -8,8 +8,8 @@
   },
   "scripts": {
     "restart-xampp": "sudo /Applications/XAMPP/xamppfiles/xampp restart",
-    "start": "open http://localhost/cinetect/",
-    "test": "open http://localhost/cinetect/test/"
+    "start": "open http://localhost/cinetech/",
+    "test": "open http://localhost/cinetech/test/"
   },
   "repository": {
     "type": "git",

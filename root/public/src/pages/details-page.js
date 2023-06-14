@@ -75,11 +75,14 @@ export class DetailsPage extends Page {
       mediaId: { type: Number },
       params: { type: Object },
       data: { type: Object },
+      commentsLoading: { type: Boolean },
       backdropImage: { type: String },
       posterImage: { type: String },
       title: { type: String },
       voteAverage: { type: Number },
       voteCount: { type: Number },
+      commentBarHidden: { type: Boolean },
+      user: { type: Object },
     };
   }
 
@@ -155,12 +158,15 @@ export class DetailsPage extends Page {
     this.mediaId = 0;
     this.params = new URLSearchParams();
     this.data = {};
+    this.commentsLoading = false;
 
     this.backdropImage = '';
     this.posterImage = '';
     this.title = '';
     this.voteAverage = 0;
     this.voteCount = 0;
+    this.commentBarHidden = true;
+    this.user = {};
     
     // Initialize private properties
     
@@ -248,7 +254,72 @@ export class DetailsPage extends Page {
       </div>
       <!-- End of Details Page Container -->
 
-      <span> extra content </span>
+      <!-- Footer -->
+      <footer>
+        <!-- Comment Bar -->
+        <div id="commentBar" class="bar flex-layout horizontal slide-from-down" hidden>
+
+          <button class="icon-button close-btn">
+            <span class="material-icons icon">close</span>
+          </button>
+
+          <!-- Avatar Wrapper -->
+          <div class="avatar-wrapper flex-layout vertical">
+            <!-- Avatar -->
+            <img class="avatar" data-src="../assets/images/profile/${this.user.profilePath}" alt="${this.user.fullname}" ${!this.user.profilePath?.length ? 'hidden' : ''} />
+             
+            <!-- Avatar Placeholder -->
+            <div class="avatar-placeholder flex-layout vertical centered" ${this.user.profilePath?.length ? 'hidden' : ''}>
+              <span class="material-icons icon">person</span>
+            </div>
+            
+          </div>
+
+          <!-- Initials Wrapper -->
+          <span class="initials-wrapper" hidden>
+            <span class="initials">${this.user.initials}</span>
+          </span>
+          
+          <!-- Input Wrapper -->
+          <div class="input-wrapper flex-layout vertical flex">
+            <!-- Label -->
+            <label for="commentInput" raised hidden>${muvishoApp.i18n.getString('replyingToX').replace(/%s/, '<span>' + 'jamie_lanister382' + '</span>')}</label>
+            
+            <!-- Comment Input | Text Area -->
+            <textarea id="commentInput" rows="1" required name="comment" class="" 
+              placeholder="${muvishoApp.i18n.getString('addACommentPlaceholder')}"></textarea>
+            
+            <!-- Inidicator -->
+            <span class="input-indicator"><span bar></span><span val></span></span>
+            
+            <p class="input-message fade-in error" hidden>Incorrect password</p>
+          </div>
+          <!-- End of Input Wrapper -->
+           
+          <!-- Comment - Button -->
+          <button id="commentButton" contained class="icon-button flex-layout centered">
+            <span class="material-icons icon">send</span>
+          </button>
+
+        </div>
+
+
+        <!-- Action Buttons -->
+        <div id="actionButtons" class="flex-layout horizontal slide-from-down">
+          <!-- Comment - Action Button -->
+          <button id="commentBtn" class="action-button horizontal flex-layout centered" outlined>
+            <span class="material-icons icon">comment</span>
+            <span class="label txt upper">${muvishoApp.i18n.getString('comment')}</span>
+          </button>
+           
+          <!-- Watch Trailer - Action Button -->
+          <button id="watchTrailerBtn" class="action-button horizontal flex-layout centered" contained>
+            <span class="material-icons icon">play_arrow</span>
+            <span class="label txt upper">${muvishoApp.i18n.getString('watchTrailer')}</span>
+          </button>
+        </div>
+
+      </footer>
 
 
       <!-- Busy Container -->
@@ -322,7 +393,10 @@ export class DetailsPage extends Page {
       if (prop.name === 'voteCount') {
         this._handleVoteCountChange(prop.value);
       }
-
+      
+      if (prop.name === 'commentBarHidden') {
+        this._handleCommentBarHiddenChange(prop.value);
+      }
     });
     
 
@@ -354,6 +428,25 @@ export class DetailsPage extends Page {
   onViewReady(view, viewId, viewObject) {
     // update `href` of the close icon button
     this.closeIconButtonEl.href = this._computeCloseUrl(view);
+
+    // listen to the 'reply' event
+
+    this.currentView.on('reply', (params) => {
+      // set the `commentLabelSpan` value or text content to the retrieved username in `params`
+      this.commentLabelSpanEl.textContent = params.authorUsername;
+      // show the comment label
+      this.commentLabelEl.hidden = false;
+      
+      // show the comment bar
+      this.showCommentBar();
+
+      // focus on the comment's input element
+      this.commentInputEl.focus();
+
+      // DEBUG [4dbsmaster]: tell me about it ;)
+      console.log(`\x1b[onViewReady](REPLY|EVENT): commentId => ${params.commentId} & authorId => ${params.authorId} & authorUsername => ${params.authorUsername} \x1b[0m`);
+      
+    });
 
     // request the movie or show details as 
     
@@ -395,6 +488,56 @@ export class DetailsPage extends Page {
    * Handler that is called whenever the bottom of the app layout is reached
    */
   onBottomReached() {
+    // If the current view (movie or show) has more comments to load,
+    // and there're no comments loadint at the moment...
+    if (this.currentView.hasMoreComments && !this.commentsLoading) {
+      // ...show the comment spinner of this view
+      this.currentView.showCommentSpinner();
+
+      // set `commentsLoading` to TRUE
+      this.commentsLoading = true;
+
+      // If this is a movie..
+      if (this.isMovie) {
+        // ...load or fetch the comments of this movie
+        muvishoApp.request.getFakeComments().then((comments) => {
+          // set the `commentsLoading` property to FALSE
+          this.commentsLoading = false;
+          
+          // hide the comment spinner of this view
+          this.currentView.hideCommentSpinner();
+          
+          // add the comments to this view
+          this.currentView.addComments(comments.results);
+
+          // update the `commentsPage` and `commentsTotalPages` properties of the `currentView`
+          this.currentView.commentsPage = comments.page;
+          this.currentView.commentsTotalPages = comments.total_pages;
+          
+        });
+      }else { // <- this is a tv show
+        // ...load or fetch the comments of this tv show
+        // TODO: Use the `getCommentsByShowId()` instead when out of the development phase
+        muvishoApp.request.getFakeComments().then((comments) => {
+          // set the `commentsLoading` property to FALSE
+          this.commentsLoading = false;
+          
+          // hide the comment spinner of this view
+          this.currentView.hideCommentSpinner();
+          
+          // add the comments to this view
+          this.currentView.addComments(comments.results);
+
+          // update the `commentsPage` and `commentsTotalPages` properties of the `currentView`
+          this.currentView.commentsPage = comments.page;
+          this.currentView.commentsTotalPages = comments.total_pages;
+          
+        });
+
+      }
+      
+    }
+
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.log(`\x1b[44;30m[onBottomReached]: this => %o \x1b[0m`, this);
   }
@@ -414,6 +557,28 @@ export class DetailsPage extends Page {
    */
   unlock() {
     this.appLayoutEl.removeAttribute('scroll-lock');
+  }
+
+  /**
+   * Shows the comment bar
+   */
+  showCommentBar() {
+    this.commentBarHidden = false;
+  }
+
+
+  /**
+   * Hides the comment bar
+   */
+  hideCommentBar() {
+    this.commentBarHidden = true;
+  }
+
+  /**
+   * Toggles the comment bar
+   */
+  toggleCommentBar() {
+    this.commentBarHidden = !this.commentBarHidden;
   }
 
 
@@ -446,6 +611,64 @@ export class DetailsPage extends Page {
   /* >> Public Setters << */
 
   /* >> Public Getters << */
+
+  
+  /**
+   * Returns the `<button id="commentBtn">` element
+   *
+   * @returns { Element }
+   */
+  get commentButtonEl() {
+    return this.shadowRoot.getElementById('commentBtn');
+  }
+
+
+  /**
+   * Returns the span element in comment bar's label
+   *
+   * @returns { HTMLSpanElement }
+   */
+  get commentLabelSpanEl() {
+    return this.commentBarEl.querySelector('label span');
+  }
+
+
+  /**
+   * Returns the comment bar's label element
+   *
+   * @returns { Element }
+   */
+  get commentLabelEl() {
+    return this.commentBarEl.querySelector('label');
+  }
+
+  /**
+   * Returns the `<textarea id="commentInput">` element
+   *
+   * @returns { Element }
+   */
+  get commentInputEl() {
+    return this.commentBarEl.querySelector('textarea');
+  }
+
+
+  /**
+   * Returns the close comment Icon-Buttton element
+   *
+   * @returns { Element }
+   */
+  get closeCommentBarBtnEl() {
+    return this.commentBarEl.querySelector('.close-btn');
+  }
+
+  /**
+   * Returns the `<div id="actionButtons">` element
+   *
+   * @returns { Element }
+   */
+  get actionButtonsEl() {
+    return this.shadowRoot.getElementById('actionButtons');
+  }
 
   /**
    * Returns the current View class instance of the Details page
@@ -556,8 +779,40 @@ export class DetailsPage extends Page {
     return this.shadowRoot.getElementById('voteCount');
   }
 
+  /**
+   * Returns the `<div id="commentBar">` element
+   *
+   * @returns { Element }
+   */
+  get commentBarEl() {
+    return this.shadowRoot.getElementById('commentBar');
+  }
 
   /* >> Private Methods << */
+
+  /**
+   * Handler that is called whenever the `commentBarHidden` property changes
+   *
+   * @param { Boolean } commentBarHidden
+   */
+  _handleCommentBarHiddenChange(commentBarHidden = this.commentBarHidden) {
+    // if the `commentBarHidden` is TRUE
+    if (commentBarHidden) {
+      // hide the comment bar obv. #lol ;)
+      this.commentBarEl.hidden = true;
+      // show the action buttons
+      this.actionButtonsEl.hidden = false;
+    }else {
+      // show the comment bar 
+      this.commentBarEl.hidden = false;
+      // hide the action buttons
+      this.actionButtonsEl.hidden = true;
+    }
+    
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.info(`\x1b[35m[_handleCommentBarHiddenChange]: commentBarHidden ? `, commentBarHidden);
+  }
+
 
   /**
    * Method used to compute the close url
@@ -577,12 +832,55 @@ export class DetailsPage extends Page {
    */
   _installEventListeners() {
 
+    // listen for the `click` event on the `commentButtonEl`
+    this.commentButtonEl.addEventListener('click', this._onCommentButtonClick.bind(this));
+    
+    // listen for the `click` event on the `closeCommentBarBtnEl`
+    this.closeCommentBarBtnEl.addEventListener('click', this._onCloseCommentBarBtnClick.bind(this));
+
     // listen for the `click` event on `closeIconButtonEl`
     // this.closeIconButtonEl.addEventListener('click', this._onCloseIconButtonClick.bind(this));
 
     // listen for the `scroll` event on the `appLayoutEl`
     this.appLayoutEl.addEventListener('scroll', this._onAppLayoutScroll.bind(this));
 
+  }
+
+  /**
+   * Handler that is called whenever the `commentButtonEl` is clicked
+   *
+   * @param { Event } event - The event that triggered the handler
+   *
+   * @private
+   */
+  _onCommentButtonClick(event) {
+    // toggle the comment bar
+    this.toggleCommentBar();
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.info(`\x1b[36m[_onCommentButtonClick]: event => `, event);
+  }
+  
+
+  /**
+   * Handler that is called whenever the `closeCommentBarBtnEl` is clicked
+   *
+   * @param { Event } event - The event that triggered the handler
+   *
+   * @private
+   */
+  _onCloseCommentBarBtnClick(event) {
+    // toggle the comment bar
+    this.toggleCommentBar();
+
+    // hide the comment label
+    this.commentLabelEl.hidden = true;
+
+    // TODO: Clear the comment input element
+    this.commentInputEl.value = '';
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.info(`\x1b[35m[_onCloseCommentBarBtnClick]: event => `, event);
   }
 
 
@@ -593,10 +891,9 @@ export class DetailsPage extends Page {
    * @private
    */
   _onCloseIconButtonClick(event) {
-
     // navigate to the movies or shows page
     (this.isMovie) ? muvishoApp.navigate('movies') : muvishoApp.navigate('shows');
-
+     
     // DEBUG [4dbsmaster]: tell me about it ;)
     console.info(`\x1b[36m[_onCloseIconButtonClick]: event => `, event);
      

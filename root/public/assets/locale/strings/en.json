@@ -258,7 +258,7 @@
 
   "watch": "Watch",
 
-  "watchTrailer": "WatchTrailer",
+  "watchTrailer": "Watch Trailer",
 
   "watchNow": "Watch now",
 
@@ -335,8 +335,51 @@
 
  "languageDescription": "🤟 This Web App has currently been translated into 4 different languages (i.e. English, French, Russian and Spanish). Feel free to switch between languages anytime from the settings page. 📡",
 
- "themeDescriptionXYZ": "Don't like how it looks? With 3 themes to choose from (%s for crazy people, %s for geniuses, and %s for simple folks), you'll never get bored. And, your eyes will thank you :) 🤓"
-    
+ "themeDescriptionXYZ": "Don't like how it looks? With 3 themes to choose from (%s for crazy people, %s for geniuses, and %s for simple folks), you'll never get bored. And, your eyes will thank you :) 🤓",
+ "comment": "Comment",
+ "comments": "Comments",
+
+ "similarMovies": "Similar movies",
+ "similarSeries": "Similar series",
+ "similarTVShows": "Similar tv shows",
+ "replies": "Replies",
+ "reply": "Reply",
+ "noMovieCommentLeaveOne": "There's no comment for this movie yet. Be the first to leave one!",
+ "noSeriesCommentLeaveOne": "There's no comment for this series yet. Be the first to leave one!",
+ "noTVShowCommentLeaveOne": "There's no comment for this tv show yet. Be the first to leave one!",
+ 
+ "oneSecondAgo": "1 second ago",
+ "secondsAgo": "%d seconds ago",
+
+ "oneMinuteAgo": "1 minute ago",
+ "minutesAgo": "%d minutes ago",
+ 
+ "oneHourAgo": "1 hour ago",
+ "hoursAgo": "%d hours ago",
+
+ "oneDayAgo": "1 day ago",
+ "daysAgo": "%d days ago",
+ 
+ "oneWeekAgo": "1 week ago",
+ "weeksAgo": "%d weeks ago",
+
+ "oneMonthAgo": "1 month ago",
+ "monthsAgo": "%d months ago",
+
+ "oneYearAgo": "1 year ago",
+ "yearsAgo": "%d years ago",
+
+ "modified": "Modified",
+
+
+ "addAComment": "Add a comment",
+ "addACommentPlaceholder": "Add a comment...",
+ 
+ "addAReply": "Add a reply",
+ "addAReplyPlaceholder": "Add a reply...",
+
+ "replyingToX": "Replying to %s"
+ 
 }
 
 

@@ -304,10 +304,6 @@ div.progress-bar.intermediate > span.progress-bar-value {
   display: none !important;
 }
 
-/* Dialogs */
-#dialogs {
-  z-index: 2;
-} 
 
 /* Menus */
 #menus {
@@ -546,6 +542,7 @@ aside > .toasts {
   flex: 1;
   width: 100%;
   height: 100%;
+  z-index: 99;
 }
 
 /* ASIDE part of App Layout */
@@ -1145,6 +1142,11 @@ label {
 }
 
 
+label span {
+  color: var(--label-span-color, var(--secondary-color));
+  font-weight: bold;
+}
+
 /* Labels with [raised] attribute / property */
 label[raised] {
   transform: translateY(-18px);
@@ -1170,7 +1172,7 @@ label[raised] {
 }
 
 /* Input Styles */
-input {
+input, textarea {
   background: inherit;
   color: inherit;
   border: 0;
@@ -1323,7 +1325,8 @@ button[contained]:focus-visible, a[role="button"][contained]:focus-visible {
  * 1. whenever an input inside a form gains focus
  * 2. if the input indicator has a `no-effect` attribute
  * */
-input:focus ~ .input-indicator > span[val], .input-indicator[no-effect] span[val]  {
+input:focus ~ .input-indicator > span[val], .input-indicator[no-effect] span[val],
+textarea:focus ~ .input-indicator > span[val] {
   width: 100%;
   opacity: 1;
 }
@@ -1357,19 +1360,28 @@ p.input-message {
   background: var(--backdrop-color, rgba(0, 0, 0, var(--opacity-backdrop, 0.7)));
 }
 
+#backdrop:not(.fade-out), .backdrop:not(.fade-out) {
+  -webkit-animation: fadeIn 0.5s ease-in-out forwards;
+  -moz-animation: fadeIn 0.5s ease-in-out forwards;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
 
-/* Dialogs Container */
-#dialogsContainer, .dialogs-container {
+/* Dialogs */
+#dialogs, .dialogs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
   z-index: 101;
   pointer-events: none;
   box-sizing: border-box;
-  padding: var(--dialogs-container-padding, 24px);
+  padding: var(--dialogs-padding, 24px);
 }
-
 
 /* Dialog */
 #dialog, .dialog {
-  position: relative;
+  width: 100%;
+  position: absolute;
   user-select: none;
   pointer-events: auto;
   background: var(--dialog-color-background, var(--background-color));
@@ -1377,9 +1389,10 @@ p.input-message {
   box-sizing: border-box;
   padding: var(--dialog-padding, 8px 16px);
   border-radius: var(--dialog-border-radius, 12px);
-  opacity: 0;
+  /* opacity: 0; */
   text-align: center;
-
+  max-width: 512px;
+  
   --fade-in-animation-delay: var(--dialog-animation-delay, 200ms);
 }
 
@@ -1436,15 +1449,25 @@ a.dialog-button:focus, a[role="button"].dialog-button:focus {
 
 /* === Menu Styles === */
 
-/* Menus Container */
-#menusContainer, .menus-container {
+/* Menus */
+#menus, .menus {
   z-index: 102;
   pointer-events: none;
   justify-content: end;
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  overflow: hidden;
+  padding: 24px;
+  margin: 0;
 }
 
 /* Menu of Menus-Container */
-#menusContainer > menu, .menus-container > menu {
+#menus > menu, .menus > menu {
+  width: 100%;
+  max-width: 500px;
   list-style: none;
   pointer-events: auto;
   box-sizing: border-box;
@@ -2106,8 +2129,8 @@ ul.chips > li.chip[selected]:hover span {
     width: 60%;
   }
 
-  /* Dialog Container */
-  #dialogsContainer, .dialogs-container {
+  /* Dialogs */
+  #dialogs, .dialogs {
     padding: var(--dialogs-container-padding, 24px 48px);
   }
 

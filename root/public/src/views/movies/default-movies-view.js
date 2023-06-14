@@ -473,7 +473,7 @@ export class DefaultMoviesView extends View {
              <!-- Meta -->
              <div class="meta flex-layout vertical center" fit>
                <!-- Rating -->
-               <span class="rating is-${this._getComputedRatingStatus(movie.vote_average)}">${movie.vote_average}</span>
+               <span class="rating is-${this._getComputedRatingStatus(movie.vote_average)}">${movie.vote_average?.toFixed(1)}</span>
                <!-- Year -->
                <span class="year">${this._getComputedYear(movie.release_date)}</span>
              </div>

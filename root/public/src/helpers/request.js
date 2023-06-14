@@ -138,6 +138,49 @@ class Request {
 
 
   /**
+   * Returns a list of fake comments
+   * NOTE: this is just for testing purposes, to tv show how to use the `getCommentsByMovieId()` method
+   * 
+   * @returns { Promise<Array> }
+   */
+  getFakeComments(delay = 2000) {
+    return new Promise(async (resolve, reject) => {
+      // fetch the fake movies from the `fake_comments.json` file
+      let requestPromise = await fetch(`${this.dataDir}/fake_comments.json`);
+
+      // get the fake comments JSON data
+      let fakeComments = await requestPromise.json();
+      
+      // after a simulated 2 seconds delay, resolve the promise with the fake comments
+      setTimeout(() => resolve(fakeComments), delay);
+
+    });
+
+  }
+
+  /**
+   * Returns a list of fake replies
+   * NOTE: this is just for testing purposes, to show how to use the `getRepliesByCommentId()` method
+   * 
+   * @returns { Promise<Array> }
+   */
+  getFakeReplies(delay = 2000) {
+    return new Promise(async (resolve, reject) => {
+      // fetch the fake movies from the `fake_replies.json` file
+      let requestPromise = await fetch(`${this.dataDir}/fake_replies.json`);
+
+      // get the fake replies JSON data
+      let fakeReplies = await requestPromise.json();
+      
+      // after a simulated 2 seconds delay, resolve the promise with the fake replies
+      setTimeout(() => resolve(fakeReplies), delay);
+
+    });
+
+  }
+
+
+  /**
    * Returns a list of fake movies
    * NOTE: this is just for testing purposes, to show how to use the `getMoviesByGenreId()` method
    *
@@ -260,14 +303,14 @@ class Request {
    * NOTE: This method will append the `credits` (i.e casts and crew) and `similar` series / tv shows to the response
    *
    * @example { PostmanUrl } {{baseUrl}}/tv/62286?language=fr&append_to_response=credits,similar
-   *
+   * 
    * @param { Number } showId - the id of the show to get the details for (eg. '62286')
    *
    * @returns { Promise } - the promise that will be resolved with the show details
    * @see https://developers.themoviedb.org/3/tv/get-tv-details
    */
   getShowDetails(showId) {
-    return this._makeRequest(`tv/${showId}?language=${this.lang}&append_to_response=credits,similar`);
+    return this._makeRequest(`show/${showId}?language=${this.lang}&append_to_response=credits,similar`);
   }
 
 
@@ -300,10 +343,37 @@ class Request {
    *
    */
   getMoviesByGenreId(genreId, page = 1) {
-    return this._makeRequest(`discover/movie?with_genres=${genreId}&page=${page}?language=${this.lang}`);
+    return this._makeRequest(`discover/movie?with_genres=${genreId}&page=${page}&language=${this.lang}`);
+  }
+  
+  /**
+   * Method used to get all the movie comments of the given `movieId`, `page` and `pageSize`
+   *
+   * @param { Number } movieId - the id of the movie to get the comments for (eg. '399566')
+   * @param { Number } page - the page to get the comments for (optional, defaults to 1)
+   * @param { Number } pageSize - the page size to get the comments for (optional, defaults to 10)
+   *
+   * @returns { Promise } - the promise that will be resolved with the comments data
+   */
+  getCommentsByMovieId(movieId, page = 1, pageSize = 10) {
+    return this._makeRequest(`comments/movie/${movieId}?page=${page}&per_page=${pageSize}&language=${this.lang}`);
+  }
+  
+  
+  /**
+   * Method used to get all the tv show comments of the given `showId`, `page` and `pageSize`
+   *
+   * @param { Number } showId - the id of the show to get the comments for (eg. '399566')
+   * @param { Number } page - the page to get the comments for (optional, defaults to 1)
+   * @param { Number } pageSize - the page size to get the comments for (optional, defaults to 10)
+   *
+   * @returns { Promise } - the promise that will be resolved with the comments data
+   */
+  getCommentsByShowId(showId, page = 1, pageSize = 10) {
+    return this._makeRequest(`comments/show/${showId}?page=${page}&per_page=${pageSize}&language=${this.lang}`);
   }
 
-
+  
   /**
    * Method used to get all the series with the given `genreId` and `page`
    *
@@ -311,12 +381,12 @@ class Request {
    *
    * @param { String } genreId - the id of genre to get the series for (see the `getGenres` method for the list of supported genres)
    * @param { Number } page - the page to get the series for (optional, defaults to 1)
-   *
+   *  
    * @returns { Promise } - the promise that will be resolved with the series data
    * @see https://developers.themoviedb.org/3/discover/tv-discover
    */
   getSeriesByGenreId(genreId, page = 1) {
-    return this._makeRequest(`discover/tv?with_genres=${genreId}&page=${page}?language=${this.lang}`);
+    return this._makeRequest(`discover/show?with_genres=${genreId}&page=${page}&language=${this.lang}`);
   }
 
   /**
@@ -332,7 +402,7 @@ class Request {
    * @returns { Promise } - the promise that will be resolved with the favorites data
    */
   getFavoritesByType(type, page = 1) {
-    return this._makeRequest(`favorites/${type}?page=${page}?language=${this.lang}`);
+    return this._makeRequest(`favorites/${type}?page=${page}&language=${this.lang}`);
   }
 
 
@@ -352,7 +422,7 @@ class Request {
 
   // PUBLIC METHODS
 
-
+  
 
 
   // PRIVATE SETTERS
@@ -375,7 +445,7 @@ class Request {
 
       // create the request
       let request = new Request(url, params);
-
+      
       
       try { // <- try to get a response
 

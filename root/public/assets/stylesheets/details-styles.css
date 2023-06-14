@@ -213,6 +213,286 @@ span.cast-item-character {
 }
 
 
+ul.similar-movies-list {
+  display: inline-flex;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  width: 100%;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+
+ul.media-list > li.movie {
+  width: var(--similar-movie-item-width, 150px);
+  min-width: var(--similar-movie-item-width, 150px);
+  height: var(--similar-movie-item-height, 270px);
+  margin: 1rem 0.5rem;
+}
+
+
+
+li.movie > .movie-details {
+  height: var(--movie-details-height, 24px);
+  overflow: hidden;
+  min-height: var(--movie-details-height, 24px);
+}
+
+/* === ACTION BUTTONS === */
+
+#actionButtons {
+  max-width: var(--action-buttons-max-width: 500px);
+  margin: var(--action-buttons-margin, initial) auto;
+  z-index: 100;
+}
+
+
+#actionButtons > button {
+  font-size: var(--action-buttons-font-size, 0.9rem);
+  padding: var(--action-buttons-inner-padding, 0.25rem 0.5rem);
+}
+
+#actionButtons .icon {
+  margin-right: var(--action-buttons-icon-margin, 0.25rem);
+}
+
+#actionButtons > button:first-child {
+  margin: 0;
+  margin-right: calc(var(--action-buttons-divider-width, 0.5rem) / 2);
+  flex: 1.5;
+}
+
+#actionButtons > button:last-child {
+  margin-left: calc(var(--action-buttons-divider-width, 0.5rem) / 2);
+  flex: 2;
+}
+
+/* === END of ACTION BUTTONS === */
+
+
+
+
+/* ==== COMMENTS ==== */
+
+ul.comments-list {}
+
+li.comment {
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+}
+
+li.comment > .avatar-wrapper {
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+
+
+.avatar-wrapper > img.avatar {}
+
+.avatar-wrapper > .avatar-placeholder {}
+
+
+.avatar-wrapper > img.avatar,
+.avatar-wrapper > .avatar-placeholder {
+  position: relative;
+  width: var(--avatar-size, 48px);
+  height: var(--avatar-size, 48px);
+  border-radius: var(--avatar-size, 48px);
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 2;
+}
+
+.avatar-wrapper > img.avatar::before,
+.avatar-wrapper > .avatar-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--avatar-background-color, var(--on-background-color));
+  opacity: var(--avatar-background-opacity, 0.3);
+  z-index: 1;
+}
+
+
+.avatar-placeholder > span.icon {}
+
+li.comment > .initials-wrapper {}
+
+.initials-wrapper > span.initials {}
+
+
+.comment-item-content {
+  position: relative;
+  width: 100%;
+}
+
+.comment-item-author {
+  margin: 0.5rem;
+  white-space: nowrap;
+}
+
+
+.comment-item-author > .author-name,
+.comment-item-author > .author-username {
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+.comment-item-date {
+  opacity: var(--opacity-text-inactive); 
+  margin: 0 0.25rem;
+}
+
+.modified-status {
+  font-weight: normal;
+  opacity: var(--opacity-text-disabled);
+  text-transform: lowercase;
+  font-size: smaller;
+}
+
+.comment-item-text {
+  position: relative;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  z-index: 2;
+  width: fit-content;
+}
+
+.comment-item-text::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--on-background-color);
+  opacity: 0.04;
+  z-index: 1;
+}
+
+.reply-buttons-wrapper {}
+
+.reply-buttons-wrapper > .btn {
+  border: 0;
+  font-size: var(--reply-button-font-size, 0.75rem);
+  font-weight: bold;
+  opacity: var(--opacity-text-inactive);
+  letter-spacing: 0.1rem;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+}
+
+.reply-buttons-wrapper > .btn > * {
+  pointer-events: none;
+}
+
+button.reply-btn {}
+
+button.reply-btn > span.icon {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+button .replies-btn {}
+
+
+ul.replies-list {}
+
+#commentSpinner {
+  margin: 0 1rem;
+}
+
+.comments-list-wrapper > p.placeholder {
+  opacity: var(--opacity-text-inactive);
+  padding: 0.25rem 1rem;
+  font-size: var(--comment-placeholder-font-size, 1rem);
+}
+
+
+.comment-item-content .more.icon-button {}
+
+/* ==== END of COMMENTS ==== */
+
+
+/* === FOOTER === */
+footer {
+  position: sticky;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: var(--footer-padding, 0.5rem);
+  background: var(--background-color);
+  z-index: 100;
+}
+
+
+
+/* === COMMENT BAR === */
+
+#commentBar {
+  align-items: end;
+  padding: 0.5rem 0;
+}
+
+#commentBar > button.close-btn {}
+
+#commentBar > button.close-btn > span.icon {}
+
+#commentBar .avatar-wrapper {
+  --avatar-size: var(--comment-avatar-size, 32px);
+    margin: 0.5rem;
+    margin-left: 0;
+}
+
+#commentBar .avatar-wrapper > img.avatar {}
+
+#commentBar .avatar-wrapper > .avatar-placeholder {}
+
+#commentBar .avatar-wrapper > .avatar-placeholder .icon {
+  font-size: var(--comment-avatar-icon-size, 1.25rem);
+}
+
+#commentBar .initials-wrapper {}
+
+#commentBar .initials-wrapper > span.initials {}
+
+#commentBar .input-indicator {}
+
+textarea#commentInput {
+  margin: var(--comment-input-margin, 0.25rem 0.5rem);
+  position: relative;
+  box-sizing: border-box;
+  resize: none;
+}
+
+#inputMessage {}
+
+#commentButton {
+  --icon-button-size: 40px;
+
+  width: var(--comment-button-size, 48px);
+  height: var(--comment-button-size, 48px);
+  border-radius: var(--comment-button-size, 48px);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  opacity: 0.75;
+  margin: 0.5rem;
+}
+
+#commentButton > .icon {
+  width: fit-content;
+  height: fit-content;
+  opacity: 1;
+}
+
+/* === END of COMMENT BAR === */
+
+
+
 
 
 /* 
@@ -256,6 +536,8 @@ span.cast-item-character {
     /* line-height: 1.5rem; */
   }
 
+
+
 }
 
 
@@ -267,6 +549,49 @@ span.cast-item-character {
   #busyContainer {
     position: absolute;
   }
+
+
+  .comments-list-wrapper > p.placeholder {
+    --comment-placeholder-font-size: 1.25rem;
+  }
+
+  footer {
+    --footer-padding: 1rem;
+  }
+
+
+  #actionButtons {
+    --action-buttons-divider-width: 1rem;
+    --action-buttons-max-width: 768px;
+    --action-buttons-margin: 0 auto;
+    --action-buttons-icon-margin: 0.5rem;
+    --action-buttons-font-size: 1.15rem;
+    --action-buttons-inner-padding: 0.5rem 1rem;
+  }
+
+
+  .comment-item-author, .comment-item-text {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .comment-item-content .more.icon-button {
+    visibility: hidden; 
+  }
+
+  .comment-item-content:hover .more.icon-button {
+    visibility: visible;
+  }
+
+  .avatar-wrapper > img.avatar,
+  .avatar-wrapper > .avatar-placeholder {
+    margin-right: 0.5rem;
+    /* 
+    margin-top: 0.5rem;
+    margin-right: 0.75rem; */
+
+  }
+
 }
 
 

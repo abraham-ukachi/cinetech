@@ -116,66 +116,66 @@ export const getTimePeriod = () => {
  * @param { String } dateString - eg. 2019-01-01T00:00:00.000Z
  * @returns { String } timeAgo - eg. 2 days ago
  */
-export getTimeAgo = (dateString) => {
+export const getTimeAgo = (dateString) => {
   const seconds = Math.floor((new Date() - new Date(dateString)) / 1000);
   let interval = Math.floor(seconds / 31536000); /* 1 year */
 
   if (interval === 1) {
-    return muvishoApp.getString("oneYearAgo");
+    return muvishoApp.i18n.getString("oneYearAgo");
   }
 
   if (interval > 1) {
-    return muvishoApp.getString("yearsAgo").replace(/d/, interval);
+    return muvishoApp.i18n.getString("yearsAgo").replace(/d/, interval);
   }
   
   interval = Math.floor(seconds / 2592000); /* 1 month */
   if (interval === 1) {
-    return muvishoApp.getString("oneMonthAgo");
+    return muvishoApp.i18n.getString("oneMonthAgo");
   }
 
   if (interval > 1) {
-    return muvishoApp.getString("monthsAgo").replace(/d/, interval);
+    return muvishoApp.i18n.getString("monthsAgo").replace(/d/, interval);
   }
 
 
   interval = Math.floor(seconds / 86400); /* 1 day */
 
   if (interval === 1) {
-    return muvishoApp.getString("oneDayAgo");
+    return muvishoApp.i18n.getString("oneDayAgo");
   }
   
   if (interval > 1) {
-    return muvishoApp.getString("daysAgo").replace(/d/, interval);
+    return muvishoApp.i18n.getString("daysAgo").replace(/d/, interval);
   }
 
 
 
   interval = Math.floor(seconds / 3600); /* 1 hour */
   if (interval === 1) {
-    return muvishoApp.getString("oneHourAgo");
+    return muvishoApp.i18n.getString("oneHourAgo");
   }
   
   if (interval > 1) {
-    return muvishoApp.getString("hoursAgo").replace(/d/, interval);
+    return muvishoApp.i18n.getString("hoursAgo").replace(/d/, interval);
   }
 
 
   interval = Math.floor(seconds / 60); /* 1 minute */
   if (interval === 1) {
-    return muvishoApp.getString("oneMinuteAgo");
+    return muvishoApp.i18n.getString("oneMinuteAgo");
   }
   
   if (interval > 1) {
-    return muvishoApp.getString("minutesAgo").replace(/d/, interval);
+    return muvishoApp.i18n.getString("minutesAgo").replace(/d/, interval);
   }
 
   interval = Math.floor(seconds); /* 1 second */
   if (interval === 1) {
-    return muvishoApp.getString("oneSecondAgo");
+    return muvishoApp.i18n.getString("oneSecondAgo");
   }
 
   if (interval > 1) { 
-    return muvishoApp.getString("secondsAgo").replace(/d/, interval);
+    return muvishoApp.i18n.getString("secondsAgo").replace(/d/, interval);
   }
 
 };

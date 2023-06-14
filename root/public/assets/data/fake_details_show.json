@@ -225,6 +225,7 @@
     "type": "Scripted",
     "vote_average": 7.7,
     "vote_count": 4470,
+    "total_comments": 0,
 
 
 
@@ -775,7 +776,6 @@
                 "vote_count": 5047
             }
         ],
-        "total_comments": 0,
         "total_pages": 65,
         "total_results": 1288
     }
