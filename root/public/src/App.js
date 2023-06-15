@@ -593,10 +593,11 @@ export class App extends Engine {
       }
 
 
+     
       // Now, rendering the menu...
       // get the menu's html template with the given `params` as `menuHTMLTemplate`
       let menuHTMLTemplate = this._getMenuHTMLTemplate(params);
-
+      
       // insert 'beforend' the `menuHTMLTemplate` to `menusEl`
       menusEl.insertAdjacentHTML('beforeend', menuHTMLTemplate);
 
