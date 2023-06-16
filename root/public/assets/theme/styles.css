@@ -1380,7 +1380,7 @@ p.input-message {
 
 /* Dialog */
 #dialog, .dialog {
-  width: 100%;
+  width: var(--dialog-width, 80%);
   position: absolute;
   user-select: none;
   pointer-events: auto;
@@ -1391,7 +1391,7 @@ p.input-message {
   border-radius: var(--dialog-border-radius, 12px);
   /* opacity: 0; */
   text-align: center;
-  max-width: 512px;
+  max-width: var(--dialog-max-width, 320px);
   
   --fade-in-animation-delay: var(--dialog-animation-delay, 200ms);
 }
@@ -1514,8 +1514,13 @@ menu > li.menu-item:hover {
   opacity: var(--opacity-text-active);
 }
 
+menu > li.menu-item:hover > a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* Button in Menu-Item */
-.menu-item button {
+.menu-item button, .menu-item a[role="button"] {
   --material-icon-size: 24px;
 
   display: flex;
@@ -1532,13 +1537,15 @@ menu > li.menu-item:hover {
   cursor: default;
   user-select: none;
   letter-spacing: 0.96px;
+  margin: 0;
 }
 
-.menu-item button .icon {
+.menu-item button .icon, .menu-item a[role="button"] .icon {
   margin-right: 12px;
+  max-width: 24px; /* <- HACK ;) */
 }
 
-.menu-item button :not(.icon) {
+.menu-item button :not(.icon), .menu-item a[role="button"] :not(.icon) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1971,11 +1978,11 @@ ul.chips > li.chip[selected]:hover span {
   }
   
   /* Button in Menu-Item */
-  .menu-item button {
+  .menu-item button, .menu-item a[role="button"] {
     font-size: 20px;
   }
 
-  .menu-item button .icon {
+  .menu-item button .icon, .menu-item a[role="button"] .icon {
     margin-right: 16px;
   }
 
@@ -2016,6 +2023,10 @@ ul.chips > li.chip[selected]:hover span {
 
 
 @media (min-width: 768px) {
+  #dialog, .dialog {
+    max-width: var(--dialog-max-width, 480px);
+  }
+
   /* === SPECIFIC VIEWPORTS ONLY === */
   [narrow-only] {
     display: none !important;
