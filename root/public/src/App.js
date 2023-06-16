@@ -26,12 +26,65 @@
 * @author: Abraham Ukachi <abraham.ukachi@laplateforme.io>
 *
 * Example usage:
-*   1-|> var muvishoApp = new App(DEFAULT_LANGUAGE, LIGHT_THEME);
+*   1+|> var muvishoApp = new App(DEFAULT_LANGUAGE, LIGHT_THEME);
 *    -|>
 *    -|> muvishoApp.setTitle('Movies & TV Shows Online Free - Muvisho');
 *    -|>
 *    -|> muvishoApp.run();
 *
+*
+*   2+|> // Open a dialog in the main part in 0.5 seconds
+*    -|> 
+*    -|> muvishoApp.openDialog({
+*    -|>  id: 'deleteAccount',
+*    -|>  title: 'Delete Account',
+*    -|>  message: 'Are you sure?',
+*    -|>  confirmBtnText: 'Yes',
+*    -|>  cancelBtnText: 'No',
+*    -|>  onConfirm: () => console.log(`confirm button clicked`),
+*    -|>  onCancel: () => console.log(`cancel button clicked`),
+*    -|>  noDivider: false,
+*    -|>  isCancelable: true
+*    -|>  }, 0.5, MAIN_PART);
+*    -|> 
+*
+*   2+|> // Close a dialog from the main part
+*    -|> 
+*    -|> muvishoApp.closeDialog('deleteAccount', 0.5, MAIN_PART);
+*    -|>
+*
+*
+*   3+|> // Open a menu in the aside part in 0.3 seconds
+*    -|> 
+*    -|> muvishoApp.openMenu({
+*    -|>  id: 'default',
+*    -|>  title: '',
+*    -|>  items: [
+*    -|>    {
+*    -|>      id: 'favInfo',
+*    -|>      icon: 'about_outline',
+*    -|>      text: 'Details',
+*    -|>      link: '/',
+*    -|>      onClick: () => console.log(`favInfo item clicked...`)
+*    -|>    },
+*    -|>    {
+*    -|>      id: 'removeFav',
+*    -|>      icon: 'delete_outline',
+*    -|>      text: 'Remove from favorites',
+*    -|>      link: '/delete/favorite/[:id]',
+*    -|>      onClick: () => console.log(`removeFav item clicked...`)
+*    -|>    }
+*    -|>  ],
+*    -|>  noDivider: false,
+*    -|>  isCancelable: true
+*    -|>  }, 0.5, ASIDE_PART);
+*    -|> 
+* 
+*
+*   2+|> // Close a menu from the main part
+*    -|> 
+*    -|> muvishoApp.closeMenu('default', 0.5, MAIN_PART);
+*    -|>
 */
 
 import { html, Engine } from './Engine.js'; // <- we just need stuff from our custom engine to get started #LOL !!! :)
@@ -228,7 +281,7 @@ export class App extends Engine {
     return [ 
       'fade-in', 'fade-out',
       'pop-in',
-      'slide-from-left', 'slide-from-down',
+      'slide-from-left', 'slide-from-down', 'slide-down',
       'slide-from-up', 'slide-up'
     ];
   }
@@ -603,15 +656,15 @@ export class App extends Engine {
 
       // get the menu element using `menuId`
       let menuEl = this.getMenuById(menuId, part);
-
-      // get the close button element as `closeBtnEl`
-      // let closeBtnEl = menuEl.querySelector('.close-btn');
       
-      // add a `click` event to the `closeBtnEl` 
-      // confirmBtnEl.onclick = this.closeMenuById(menuId, timeout, part));
+      // install menu event listeners on this `menuEl`
+      this.#installMenuEventListeners(menuEl, params);
+
+      // DEBUG [4dbsmaster]: tell me about it ;)
+      console.log(`\x1b[35m[openMenu]: menuId => ${menuId} & menusEl => \x1b[0m`, menusEl);
       
       // show the backdrop of the given `part` 
-      this.showBackdropOf(part, params.isCancelable ?? true);
+      this.showBackdropOf(part, params.isCancelable ?? false);
 
       // show or unhide the `menusEl`
       menusEl.hidden = false;
@@ -632,22 +685,90 @@ export class App extends Engine {
       // cancel any active timers
       clearTimeout(this._closeMenuTimer);
       clearTimeout(this._openMenuTimer);
-
+      
       // resolve the promise after `duration` seconds
-      this._openMenuTmer = setTimeout(() => {
+      this._openMenuTimer = setTimeout(() => {
         // TODO ? Do something before resolving the promise
 
         // add a `opened` property to `menuEl`
         menuEl.setAttribute('opened', '');
-
+         
         // resolve the promise
         resolve(menuEl);
-
+        
       }, timeout * 1000);
 
     });
   }
 
+
+  /**
+   * Method used to close the menu with the given `menuId`
+   *
+   * @param { String } menuId - The id of the menu to close
+   * @param { Number } duration - The duration of the animation (in seconds)
+   * @param { String } part - The part of the app where the menu will be hidden (eg. MAIN_PART, ASIDE_PART, FULL_PART)
+   * 
+   * @returns { Promise } - A promise that will be resolved when the menu is closed
+   */
+  closeMenu(menuId = 'menu', duration = 0.5, part = DEFAULT_PART) {
+    return new Promise((resolve, reject) => {
+      // get the menus element of the given `part` as `menusEl`
+      let menusEl = this.getCurrentMenusElement(part);
+
+      // get the menu element with the given `menuId` as `menuEl`
+      let menuEl = this.getMenuById(menuId, part); 
+
+      // if the menu element doesn't exist, reject the promise
+      if (!menuEl) { return reject(`Menu with id "${menuId}" doesn't exist`) }
+
+      
+      // hide the backdrop of the given `part` 
+      this.hideBackdropOf(part);
+      
+
+      // remove the `fade-in` class from `menusEl`
+      menusEl.classList.remove('fade-in');
+      // add the `fade-out` class to `menusEl`
+      menusEl.classList.add('fade-out');
+
+      // remove slide-from-down class from `menuEl`
+      menuEl.classList.remove('slide-from-down');
+      // add the `slide-down` class to `menuEl`
+      menuEl.classList.add('slide-down');
+
+
+      // cancel any active timers
+      clearTimeout(this._closeMenuTimer);
+      clearTimeout(this._openMenuTimer);
+      
+      // resolve the promise after `duration` seconds
+      this._closeMenuTimer = setTimeout(() => {
+        // TODO ? Do something before resolving the promise
+        
+        // remove the `opened` property from `menuEl`
+        menuEl.removeAttribute('opened');
+
+        // hide the `menuEl`
+        menuEl.hidden = true;
+
+        // hide the `menusEl`
+        menusEl.hidden = true;
+
+        // remove the `menuEl` from `menusEl`
+        menuEl.remove();
+
+        // DEBUG [4dbsmaster]: tell me about it ;)
+        console.log(`\x1b[34m[closeMenu](_closeMenuTimer): menuEl ==> \x1b[0m`, menuEl);
+
+        // resolve the promise
+        resolve();
+
+      }, duration * 1000);
+
+    });
+
+  }
 
   /**
    * Method used to open a dialog using the given `params`
@@ -704,7 +825,7 @@ export class App extends Engine {
       // if (!dialogEl) { reject(`Dialog with id "${dialogId}" doesn't exist`); }
 
       // show the backdrop of the given `part` 
-      this.showBackdropOf(part, params.isCancelable ?? true);
+      this.showBackdropOf(part, params.isCancelable ?? false);
 
       // show or unhide the `dialogsEl`
       dialogsEl.hidden = false;
@@ -820,7 +941,7 @@ export class App extends Engine {
    * @param { String } part - The part of the app to show the backdrop of
    * @param { Boolean } isCancelable - If TRUE, the backdrop will be cancelable
    */
-  showBackdropOf(part = DEFAULT_PART, isCancelable = true) {
+  showBackdropOf(part = DEFAULT_PART, isCancelable = false) {
     // get the correct backdrop element
     let backdropEl = part === MAIN_PART ? this.mainBackdropEl : (part === ASIDE_PART ? this.asideBackdropEl : this.backdropEl);
     // set the cancelable attribute of the backdrop element
@@ -1505,6 +1626,15 @@ export class App extends Engine {
     return this.getCurrentMenusElement(part).querySelector(`menu[data-id="${menuId}"]`);
   }
 
+  /**
+   * Returns all menu item buttons of the given `menuElement`
+   *
+   * @returns { NodeList[Element] } 
+   */
+  getMenuItemButtonsOf(menuElement) {
+    return menuElement.querySelectorAll(`li.menu-item > button, li.menu-item > a[role="button"]`);
+  }
+
 
   /**
    * Returns the current dialog element of the given `id` and `part`
@@ -1529,8 +1659,41 @@ export class App extends Engine {
   getCurrentDialogsElement(part = DEFAULT_PART) {
     return (part === MAIN_PART) ? this.mainDialogsEl : (part === ASIDE_PART ? this.asideDialogsEl : this.dialogsEl);
   }
+
+
+  /**
+   * Returns the id of the current menu
+   * NOTE: This is the menu that has an `opened` attribute,
+   * and is shown in the default or full part of the app.
+   * 
+   * @returns { String } - The id of the opened main menu
+   */
+  get currentMenuId() {
+    return this.menusEl.querySelector('menu[opened]')?.dataset?.id;
+  }
   
 
+  /**
+   * Returns the id of the currently opened menu in the main part of the app
+   *
+   * @returns { String }
+   */
+  get currentMainMenuId() {
+    return this.mainMenusEl.querySelector('menu[opened]')?.dataset?.id;
+  }
+
+
+  /**
+   * Returns the id of the currently opened menu in the aside part of the app
+   *
+   * @returns { String } - The id of the opened aside menu
+   */
+  get currentAsideMenuId() {
+    return this.asideMenusEl.querySelector('menu[opened]')?.dataset?.id;
+  }
+  
+
+  
   /**
    * Returns TRUE if the current device is mobile, FALSE if desktop
    *
@@ -1709,6 +1872,7 @@ export class App extends Engine {
     return this.shadowRoot.getElementById('pages');
   }
 
+
   /**
    * Returns the `<div id="dialogs">` element from the app's shadow root
    *
@@ -1746,6 +1910,38 @@ export class App extends Engine {
    */
   get menusEl() {
     return this.shadowRoot.getElementById('menus');
+  }
+
+
+  /**
+   * Returns a list of all the main close menu icon buttons.
+   * NOTE: This is the `<button class="icon-button">` element inside the `<li role="close-menu">` of all main menus.
+   *
+   * @returns { NodeList } - A list of all the main close-menu icon-buttons
+   */
+  get mainCloseMenuIconButtons() {
+    return this.mainMenusEl.querySelectorAll('li[role="close-menu"] > .icon-button');
+  }
+
+  /**
+   * Returns a list of all the aside close menu icon buttons.
+   * NOTE: This is the `<button class="icon-button">` element inside the `<li role="close-menu">` of all aside menus.
+   *
+   * @returns { NodeList } - A list of all the aside close-menu icon-buttons
+   */
+  get asideCloseMenuIconButtons() {
+    return this.asideMenusEl.querySelectorAll('li[role="close-menu"] > .icon-button');
+  }
+
+
+  /**
+   * Returns a list of all the close menu icon buttons.
+   * NOTE: This is the `<button class="icon-button">` element inside the `<li role="close-menu">` of all menus.
+   *
+   * @returns { NodeList } - A list of all the close-menu icon-buttons
+   */
+  get closeMenuIconButtons() {
+    return this.menusEl.querySelectorAll('li[role="close-menu"] > .icon-button');
   }
 
   /**
@@ -1897,6 +2093,8 @@ export class App extends Engine {
    * @returns { HTMLTemplate }
    */
   _getMenuHTMLTemplate(data) {
+    const jump = (event) => alert(event);
+
     return html`
       <!-- Menu -->
       <menu data-id="${data.id ?? 'menu'}" class="menu vertical flex-layout slide-from-down" hidden>
@@ -1909,12 +2107,12 @@ export class App extends Engine {
         
         ${data.items.map((item, index) => html`
 
-            <li title="${item.text}" class="menu-item">
-              <a role="button" tabindex="${index}" href="${item.link}">
-                <span class="material-icons icon">${item.icon}</span>
-                <span>${item.text}</span>
-              </a>
-            </li>
+          <li title="${item.text}" class="menu-item">
+            <a role="button" tabindex="${index}" href="${item.link}">
+              <span class="material-icons icon">${item.icon}</span>
+              <span>${item.text}</span>
+            </a>
+          </li>
         `)}
 
       </menu>
@@ -2614,7 +2812,134 @@ export class App extends Engine {
       this.pagesEl.insertAdjacentHTML('afterbegin', navbarHtml);
     }
 
+ 
+
   }
+
+  /**
+   * Installs all the event listeners for pages
+   * NOTE: This method is called after `#renderPages()` 
+   */
+  #installPagesEventListeners() {
+    // installing event listeners for all `backdrop` elements...
+    
+    // ...for the `mainBackdropEl`
+    this.mainBackdropEl.addEventListener('click', (event) => {
+      // get the backdrop element as  backdropEl
+      let backdropEl = event.currentTarget;
+      
+      // If the backdrop is cancelable...
+      if (backdropEl.getAttribute('cancelable') === 'true') {
+        // ...close any opened main dialog
+        
+        // close any opened main menu
+        this.closeMenu(this.currentMainMenuId, DEFAULT_BACKDROP_TIMEOUT, MAIN_PART);
+
+        // TODO: Close any opened main drawer
+        
+      }
+
+      // this.toggleMenuById(this.openMainMenuId, DEFAULT_BACKDROP_TIMEOUT, MAIN_PART);
+      
+      // TODO: Cancel the backdrop element if it has a `cancelable` attribute
+      
+      // DEBUG [4dbsmaster]: tell me about it ;)
+      console.log(`\x1b[35m[installPagesEventListeners] (mainBackdropEl): backdropEl => \x1b[0m`, backdropEl, ` & event => `, event);
+
+    });
+
+
+    // ...for the `asideBackdropEl`
+    this.asideBackdropEl.addEventListener('click', (event) => {
+
+      // If the backdrop is cancelable...
+      if (event.currentTarget.getAttribute('cancelable') === 'true') {
+        // close the currently opened aside menu
+        // TODO: Create a `closeMenu()` method & call it here instead
+        this.closeMenu(this.currentAsideMenuId, DEFAULT_BACKDROP_TIMEOUT, ASIDE_PART);
+      }
+    });
+     
+    // ...for the default `backdropEl`
+    this.backdropEl.addEventListener('click', (event) => {
+
+      // If the backdrop is cancelable...
+      if (event.currentTarget.getAttribute('cancelable') === 'true') {
+        // close the current (default) menu
+        // TODO: Create a `closeMenu()` method & call it here instead
+        this.closeMenu(this.currentMenuId, DEFAULT_BACKDROP_TIMEOUT, DEFAULT_PART);
+      }
+
+    });  
+   
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[30m[installPagesEventListeners]: INSTALLING EVENT LISTENERS FOR PAGES !!!!!\x1b[0m`);
+  }
+
+
+  /**
+   * Method used to install event listeners on the given `menuElement`
+   *
+   * @param { Element } menuElement
+   * @param { Object } params
+   */
+  #installMenuEventListeners(menuElement, params) {
+    // installing event listeners for all `closeMenu` Icon-Buttons...
+    
+    // get all the menu-item buttons of the specified
+    let menuItemButtons = this.getMenuItemButtonsOf(menuElement);
+
+    // loop through each `menuItemButtons`
+    menuItemButtons.forEach((menuItemButton, index) => {
+      // get the current item
+      const currentItem = params.items[index];
+      // if the current item has the `onClick` property..
+      if (currentItem.hasOwnProperty('onClick')) {
+        // ...listen to the `click` event
+        menuItemButton.addEventListener('click', currentItem.onClick.bind(this)); 
+      }
+      
+    });
+
+
+    // ...for the `mainCloseMenuIconButtons`
+    this.mainCloseMenuIconButtons.forEach(iconButton => {
+      iconButton.addEventListener('click', () => {
+        // close the currently opened main menu
+        // TODO: Create a `closeMenu()` & call it here instead
+        this.closeMenu(this.currentMainMenuId, DEFAULT_MENU_TIMEOUT, MAIN_PART);
+      });
+    });
+
+    // ...for the `asideCloseMenuIconButtons`
+    this.asideCloseMenuIconButtons.forEach(iconButton => {
+      iconButton.addEventListener('click', () => {
+        // close the currently opened aside menu
+        // TODO: Create a `closeMenu()` & call it here instead
+        this.closeMenu(this.currentAsideMenuId, DEFAULT_MENU_TIMEOUT, ASIDE_PART);
+      });
+    });
+    
+    // ...for the default `closeMenuIconButtons`
+    this.closeMenuIconButtons.forEach(iconButton => {
+      iconButton.addEventListener('click', () => {
+        // close the currently opened (default) menu
+        // TODO: Create a `closeMenu()` & call it here instead
+        this.closeMenu(this.currentMenuId, DEFAULT_MENU_TIMEOUT, DEFAULT_PART);
+      });
+    });
+     
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[33m[installMenuEventListeners]: INSTALLING EVENT LISTENERS FOR MENUS !!!!!\x1b[0m`);
+  }
+
+
+  
+  /**
+   * Method used to install event listeners for dialogs
+   */
+  #installDialogsEventListeners() {}
 
 
   /**
@@ -2708,6 +3033,9 @@ export class App extends Engine {
       if (this.hasMainPages === false) {
         // ...render / create pages template
         this.#renderPages();
+
+        // install pages event listeners
+        this.#installPagesEventListeners();
       }
 
       // IDEA: Programatically load the current page
