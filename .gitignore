@@ -146,3 +146,5 @@ backups/
 # Vendor
 vendor/
 
+# Build
+build/
