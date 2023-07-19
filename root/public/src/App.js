@@ -56,7 +56,7 @@
 *
 *   3+|> // Open a menu in the aside part in 0.3 seconds
 *    -|> 
-*    -|> muvishoApp.openMenu({
+*    -|> muvishoApp.openMenu(this, {
 *    -|>  id: 'default',
 *    -|>  title: '',
 *    -|>  items: [
@@ -628,10 +628,11 @@ export class App extends Engine {
    * 
    * @param { Number } timeout - How long it will take to open the menu
    * @param { String } part - Which part of the app the menu should be display.
+   * @param { Object } controller - a class object (e.g. `this` or `muvishoApp.detailsPage`)
    *
    * @returns { Promise } - A promise that will be resolved when the menu is opened
    */
-  openMenu(params, timeout = 0.5, part = DEFAULT_PART) {
+  openMenu(params, timeout = 0.5, part = DEFAULT_PART, controller) {
     return new Promise ((resolve, reject) => {
       // get the menus element of the given `part` as `dialogsEl`
       let menusEl = this.getCurrentMenusElement(part);
@@ -658,7 +659,7 @@ export class App extends Engine {
       let menuEl = this.getMenuById(menuId, part);
       
       // install menu event listeners on this `menuEl`
-      this.#installMenuEventListeners(menuEl, params);
+      this.#installMenuEventListeners(menuEl, params, controller);
 
       // DEBUG [4dbsmaster]: tell me about it ;)
       console.log(`\x1b[35m[openMenu]: menuId => ${menuId} & menusEl => \x1b[0m`, menusEl);
@@ -2884,7 +2885,7 @@ export class App extends Engine {
    * @param { Element } menuElement
    * @param { Object } params
    */
-  #installMenuEventListeners(menuElement, params) {
+  #installMenuEventListeners(menuElement, params, controller) {
     // installing event listeners for all `closeMenu` Icon-Buttons...
     
     // get all the menu-item buttons of the specified
@@ -2897,9 +2898,9 @@ export class App extends Engine {
       // if the current item has the `onClick` property..
       if (currentItem.hasOwnProperty('onClick')) {
         // ...listen to the `click` event
-        menuItemButton.addEventListener('click', currentItem.onClick.bind(this)); 
+        menuItemButton.addEventListener('click', currentItem.onClick.bind(controller)); 
       }
-      
+
     });
 
 
