@@ -378,7 +378,11 @@
  "addAReply": "Add a reply",
  "addAReplyPlaceholder": "Add a reply...",
 
- "replyingToX": "Replying to %s"
+ "replyingToX": "Replying to %s",
+
+ "commentMenuTitle": "Comment menu",
+
+ "report": "Report"
  
 }
 
