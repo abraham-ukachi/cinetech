@@ -47,6 +47,8 @@ import { html } from '../Engine.js';
 import { Page } from '../Page.js';
 import { TMDB_IMAGE_BASE_URL, TMDB_FILE_BACKDROP_SIZE, TMDB_FILE_DEFAULT_SIZE } from '../helpers/request.js';
 
+import { MAIN_PART, ASIDE_PART } from '../App.js';
+
 "use strict"; 
 // ^^^^^^^^^ This keeps us on our toes, as it forces us to use all pre-defined variables, among other things 😅
 
@@ -83,6 +85,9 @@ export class DetailsPage extends Page {
       voteCount: { type: Number },
       commentBarHidden: { type: Boolean },
       user: { type: Object },
+
+      _commentMenuId: { type: String },
+      _commentMenuDuration: { type: Number }
     };
   }
 
@@ -169,7 +174,10 @@ export class DetailsPage extends Page {
     this.user = {};
     
     // Initialize private properties
-    
+
+    this._commentMenuId = 'commentMenu';
+    this._commentMenuDuration = 0.5;
+
   }
 
 
@@ -429,24 +437,8 @@ export class DetailsPage extends Page {
     // update `href` of the close icon button
     this.closeIconButtonEl.href = this._computeCloseUrl(view);
 
-    // listen to the 'reply' event
-
-    this.currentView.on('reply', (params) => {
-      // set the `commentLabelSpan` value or text content to the retrieved username in `params`
-      this.commentLabelSpanEl.textContent = params.authorUsername;
-      // show the comment label
-      this.commentLabelEl.hidden = false;
-      
-      // show the comment bar
-      this.showCommentBar();
-
-      // focus on the comment's input element
-      this.commentInputEl.focus();
-
-      // DEBUG [4dbsmaster]: tell me about it ;)
-      console.log(`\x1b[onViewReady](REPLY|EVENT): commentId => ${params.commentId} & authorId => ${params.authorId} & authorUsername => ${params.authorUsername} \x1b[0m`);
-      
-    });
+    // install view event listeners
+    this.#installViewEventListeners();
 
     // request the movie or show details as 
     
@@ -581,6 +573,50 @@ export class DetailsPage extends Page {
     this.commentBarHidden = !this.commentBarHidden;
   }
 
+  /**
+   * Opens the comment menu
+   *
+   * @param { Number } commentId - The id of the comment
+   * @param { Number } authorId - The id of the comment's author
+   * @param { String } authorUsername - The username of the comment's author
+   */
+  openCommentMenu(commentId, authorId, authorUsername) {
+    muvishoApp.openMenu({
+      id: this._commentMenuId,
+      title: muvishoApp.i18n.getString('commentMenuTitle'),
+      items: [
+        {
+          icon: 'reply',
+          text: muvishoApp.i18n.getString('reply'),
+          onClick: (event) => {
+            console.log(`commentId ===>>> ${commentId} + event => `, event);
+          } 
+        },
+
+        {
+          icon: 'flag',
+          text: muvishoApp.i18n.getString('report'),
+          onClick: () => {
+            console.log(`TODO: report this comment !!!`);
+            this.closeCommentMenu();
+          }
+        }
+      ],
+      noDivider: true,
+      isCancelable: true
+    }, this._commentMenuDuration, ASIDE_PART, this);
+  }
+
+
+  /**
+   * Closes the comment menu
+   *
+   * @param { Number } duration - The duration of the closing animation
+   * @public
+   */
+  closeCommentMenu(duration = this._commentMenuDuration) {
+    muvishoApp.closeMenu(this._commentMenuId, duration, ASIDE_PART);
+  }
 
   /**
    * Returns the current media id
@@ -1259,6 +1295,61 @@ export class DetailsPage extends Page {
       </div>
     `;
   }
+
+
+  /**
+   * Method used to install event listeners on the current view
+   * @private
+   */
+  #installViewEventListeners() {
+
+    // listening to the 'more-comment' event...
+
+    this.currentView.on('more-comment', (params) => {
+      // open the comment menu with the given `params`
+      this.openCommentMenu(params.commentId, params.authorId, params.authorUsername);
+    });
+
+
+    // listening to the 'reply' event...
+
+    this.currentView.on('reply', (params) => {
+      // handle the reply event
+      this._onReplyHandler(params.commentId, params.authorId, params.authorUsername);
+    });
+
+  }
+
+
+
+
+  /**
+   * Handler that is called whenever the `reply` event is triggered from a view
+   *
+   * @param { Number } commentId
+   * @param { Number } authorId
+   * @param { String } authorUsername
+   *
+   * @private
+   */
+  _onReplyHandler(commentId, authorId, authorUsername) {
+    // set the `commentLabelSpan` value or text content to the retrieved username
+    this.commentLabelSpanEl.textContent = authorUsername;
+    // show the comment label
+    this.commentLabelEl.hidden = false;
+    
+    // show the comment bar
+    this.showCommentBar();
+
+    // focus on the comment's input element
+    this.commentInputEl.focus();
+
+    // DEBUG [4dbsmaster]: tell me about it ;)
+    console.log(`\x1b[_onReplyHandler]: commentId => ${commentId} & authorId => ${authorId} & authorUsername => ${authorUsername} \x1b[0m`);
+      
+
+  }
+
 
   /* >> Private Setters << */
 
