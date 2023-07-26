@@ -444,7 +444,7 @@ export class MovieDetailsView extends View {
     // get the author's username  form the target's dataset
     let authorUsername = commentEl.dataset.authorUsername;
     
-    
+     
      
     // Check if the target element is a reply button
     let isReplyButton = event.target.classList.contains('reply-btn');
@@ -452,7 +452,16 @@ export class MovieDetailsView extends View {
     // Check if the target element is a replies button
     let isRepliesButton = event.target.classList.contains('replies-btn');
 
-    
+    // Check if the target element is a more icon-button
+    let isMoreIconButton = event.target.classList.contains('more-icon-btn');
+
+
+    // if the more icon button was clicked...
+    if (isMoreIconButton) {
+      // ...trigger the `more-comment` event
+      this.trigger('more-comment', {commentId, authorId, authorUsername});
+    }
+
     // If the reply button was clicked...
     if (isReplyButton) {
       // ...trigger the 'reply' event
@@ -865,7 +874,7 @@ export class MovieDetailsView extends View {
               <span class="modified-status" ${!comment.modified ? 'hidden' : ''}>(${muvishoApp.i18n.getString('modified')})</span>
               <span class="flex"></span>
 
-              <button class="icon-button more" naked>
+              <button class="icon-button more-icon-btn" naked>
                 <span class="material-icons icon">more_vert</span>
               </button>
             </p>
@@ -947,7 +956,7 @@ export class MovieDetailsView extends View {
              <h3 class="movie-title">${movie.title}</h3>
              
              <!-- More - Icon Button -->
-             <button class="more-button icon-button fade-in" title="More">
+             <button class="more-button icon-button fade-in more-icon-btn" title="More">
                <span class="material-icons icon">more_horiz</span>
              </button>
              
